@@ -1,0 +1,19 @@
+<div class="row">
+
+    <div class="col-md-3">
+
+        <div class="list-group" ng-controller="CategoryCtrl as CatCtrl">
+            <a href="#/category/{{category.id}}" class="list-group-item" ng-class="{active: CatCtrl.isSelected(category.id)}" ng-repeat="category in CatCtrl.categories | orderBy: 'name'" ng-click="CatCtrl.setCategory(category.id)">
+               {{ category.name }} </a>
+        </div>
+
+    </div>
+    <div class="col-md-9">
+
+        <ngcart-summary></ngcart-summary>
+
+        <ngcart-cart></ngcart-cart>
+
+    </div>
+
+</div>

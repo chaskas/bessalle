@@ -1,0 +1,94 @@
+
+.content {
+  padding-top: 30px;
+}
+
+.container {
+    width: 970px;
+}
+
+.compre-aqui {
+    background: #ee881a;
+}
+.compre-aqui > a {
+    color: #ffffff !important;
+}
+
+/* CSS Document */
+body.bessalle {  font-family: Arial, Verdana; font-style:normal; font-size: 12px; color: #999; 
+        border-width: 6px 0 0 0; border-style: solid; margin: 0; padding: 0;
+        background: url(../images/body-bg.gif) repeat-x left top #fff; padding-top: 30px;} 
+h1.bessalle, h2.bessalle, h3.bessalle, h4.bessalle, p.bessalle , ul.bessalle { padding: 0 10px 5px 10px; } 
+h1.bessalle, h2.bessalle, h3.bessalle, h4.bessalle, { font-family: Arial, Verdana; padding: 0 0 5px 0; }
+h1.bessalle { font-size: 24px; color: #ee881a;  }
+h2.bessalle { font-size: 18px; padding: 0; margin: 0 0 10px 0; }
+h3.bessalle { font-size: 14px; color: #666; }
+h4.bessalle { font-size: 12px; border-bottom: 1px solid #000; text-transform: uppercase; }
+p.bessalle { padding: 8px;}
+blockquote.bessalle { Arial, Verdana; font-style: italic; margin: 0 0 1em 0; line-height: 1.75em; }
+ol.bessalle, ul.bessalle { overflow: hidden; font-family: Arial, Verdana; margin: 0 0 1em 0; padding: 0; }
+li.bessalle { line-height: 1.22em; list-style: none; margin: 0 0 0.4em 0; padding: 0; line-height: 1.5em; }
+li a { display: inline; }
+form.bessalle { margin: 0 0 1em 0; padding: 0; background: #000; height: 1%; }
+fieldset.bessalle { color: #fff; display: block; text-align: center; height: 1%; padding: 1.5em 0;  }
+legend.bessalle { margin: 0.5em 0.5em 1em 0.5em; padding: 5px; background: #fff; }
+label.bessalle { margin: 0 0.5em; display: block; }
+input.bessalle { border: 1px solid #ccc; }
+hr.bessalle { height: 1px; width: 100%; margin: 20px 0 20px 0; border: 0; border-top: 1px dotted #000; display: block; clear: both; }
+a.bessalle { color: #a23d29; margin: 0; padding: 0; height: 1%; }
+a:hover { color: #000; }
+strong.bessalle { font-weight: bold; }
+img.bessalle {  margin: 0; padding: 0; float: left; }    
+
+/*Usar si necesitas un contenedor sin paddings laterales*/
+#contenedor.extendido { width: 960px; background: yellow; padding: 0; border: 1px solid red; border-width: 1px 0; 
+                        margin-bottom: 20px; }
+
+ul.list li {color: #444; font-size: 12px; width: 100%; padding: 6px 0 6px 14px; }
+
+/** Menu Navegación*/
+.list { padding: 0 0 0px 0; overflow: hidden;}
+.list2 {padding: 0 0 0px 15px; overflow: hidden; list-style: outside; list-style-type:circle;}
+.list li {line-height: 12px;    font-size: 10px;    font-weight: bold; color: #010101;}
+.list li a {background: url(../images/mark.gif) no-repeat 0% 0px; display: inline-block; padding: 0 0 0 20px; text-decoration: none; color: #666;}
+.list li a:hover {background: url(../images/mark.gif) no-repeat 0% 0px; color:#ee881a;}
+strong {color:#333; font-style:oblique; margin-right:15px;} 
+.margin {float: left; height: 25px; width: 700px; margin-top:10px; margin-bottom:5px; }
+.tipsy { padding: 1px 0; font-size: 10px; opacity: 0.8; filter: alpha(opacity=80); background-repeat: no-repeat; }
+ul.social-media li {float: left;}
+a.social {width: 32px; height: 32px; display: block; margin-right:5px; float: left;}
+.webmail {float: left; height: 32px; width: 135px; margin-top:8px; padding-left:80px;}
+
+
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+  z-index: 2;
+  color: #fff;
+  background-color: #a23d29;
+  border-color: #a23d29;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #a23d29;
+  border-color: #a23d29;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #c9563f;
+  border-color: #c9563f;
+  background-position: 0 -15px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  font-size: 14px;
+}
+
+@media (min-width: 768px){
+    .navbar-nav{
+        margin: 0 auto;
+        display: table;
+        table-layout: fixed;
+        float:none;
+    }
+}

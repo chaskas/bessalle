@@ -1,0 +1,27 @@
+<?php
+class Product extends CI_Controller {
+
+        public function __construct()
+        {
+                parent::__construct();
+                $this->load->model('product_model');
+        }
+
+        public function index($category_id)
+        {
+
+                header('Content-Type: application/json');
+
+                $data['products'] = $this->product_model->get_products($category_id);
+
+                echo json_encode( $data['products'] );
+
+                // $data['title'] = 'Productos';
+
+                // $this->load->view('templates/header', $data);
+                // $this->load->view('product/index', $data);
+                // $this->load->view('templates/footer');
+
+        }
+
+}

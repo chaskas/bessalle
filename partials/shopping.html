@@ -1,0 +1,50 @@
+<div class="row">
+
+    <div class="col-md-3">
+
+        <div class="list-group" ng-controller="CategoryCtrl as CatCtrl">
+            <a href="#/category/{{category.id}}" class="list-group-item" ng-class="{active: CatCtrl.isSelected(category.id)}" ng-repeat="category in CatCtrl.categories | orderBy: 'name'" ng-click="CatCtrl.setCategory(category.id)">
+               {{ category.name }} </a>
+        </div>
+
+    </div>
+    <div class="col-md-9">
+
+        <ngcart-summary></ngcart-summary>
+        
+        <div class="row" ng-controller="ProductListCtrl as ProdCtrl">
+
+            <div class="col-md-4" ng-repeat="product in ProdCtrl.products | orderBy: 'name'">
+
+              <div class="panel panel-default">
+
+                <div class="panel-heading">
+                  <h3 class="panel-title">{{ product.name }}</h3>
+                </div>
+
+                <div class="panel-body">
+                  <img ng-src="{{ product.image }}" alt="{{ product.name }}" class="img-rounded">
+                  <br><br>
+                  {{ product.price | currency }} / {{ product.unit }}
+                  <br>
+                  {{ product.description }}
+                </div>
+                
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>
+                            {{ product.price * product.minimun | currency : '$' : 0 }}<ngcart-addtocart id="{{ product.id }}" name="{{ product.name }}" price="{{ product.price * product.minimun }}" data="product">Agregar</ngcart-addtocart>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+              
+              </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,13 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid navbar-right">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/cart">
+                <img alt="Bessalle" src="images/cart.png">
+            </a>
+            <p class="navbar-text text-right">Tienes {{ ngCart.getTotalItems() }} <ng-pluralize count="ngCart.getTotalItems()" when="{1: 'producto', 'other':'productos'}"></ng-pluralize> en tu carro.
+                <br />Por un total de {{ ngCart.totalCost() | currency : '$' : 0 }}.-
+            </p>
+            
+        </div>
+    </div>
+</nav>
