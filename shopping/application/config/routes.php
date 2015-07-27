@@ -45,16 +45,29 @@ $route['product/(:num)'] = 'product/index/$1';
 
 
 // Backend
+
+$route['admin'] = 'login/index';
+$route['admin/login'] = 'login/index';
+
+
 $route['admin/categories'] = 'admin/categories';
 $route['admin/category/new'] = 'admin/category_new';
 $route['admin/category/edit/(:num)'] = 'admin/category_edit/$1';
 $route['admin/category/delete/(:num)'] = 'admin/category_delete/$1';
 
+$route['admin/products'] = 'admin/products';
+$route['admin/product/new'] = 'admin/product_new';
+$route['admin/product/edit/(:num)'] = 'admin/product_edit/$1';
+$route['admin/product/delete/(:num)'] = 'admin/product_delete/$1';
+$route['admin/pre_upload/(:num)'] = 'admin/pre_upload/$1';
+$route['admin/upload/(:num)'] = 'admin/upload/$1';
+$route['admin/post_upload/(:num)'] = 'admin/post_upload/$1';
+
 $route['admin'] = 'admin/categories';
 
 // Defaults
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "admin";
 $route['404_override'] = '';
 
 

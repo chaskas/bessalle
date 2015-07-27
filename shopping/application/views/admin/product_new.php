@@ -1,0 +1,82 @@
+<div>
+  <ul class="nav nav-tabs right-to-left" role="tablist">
+    <li role="presentation" class="active"><a href="<?php echo site_url('admin/product/new');?>" aria-controls="nuevo" role="tab">Nuevo</a></li>
+    <li role="presentation"><a href="<?php echo site_url('admin/products');?>" aria-controls="productos" role="tab">Productos</a></li>
+  </ul>
+
+  <div class="tab-content padding-top-30">
+    <div role="tabpanel" class="tab-pane active">
+        <?php echo form_open('admin/product/new') ?>
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Nuevo Producto</h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group text-center">
+                                <br>
+                                <?php echo img(array('src'=>'assets/images/placeholder.jpg','class'=>'img-thumbnail')); ?>
+                                <span class="error"><?php echo form_error('image'); ?></span>
+                                <br><br><button type="button" class="btn btn-warning btn-sm">Editar</button>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">Nombre</label> 
+                                        <input type="text" class="form-control" id="name" name="name" value="<?php echo set_value('name'); ?>"><span class="error"><?php echo form_error('name'); ?></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="caterogy_id">Categoría</label>
+                                        <?php echo $categories; ?><span class="error"><?php echo form_error('category_id'); ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <label for="description">Descripción</label> 
+                                <textarea class="form-control" id="description" name="description"><?php echo set_value('description'); ?></textarea><span class="error"><?php echo form_error('description'); ?></span>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="price">Precio</label> 
+                                        <input type="text" class="form-control" id="price" name="price" value="<?php echo set_value('price'); ?>"><span class="error"><?php echo form_error('price'); ?></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="minimun">Mínimo</label> 
+                                        <input type="text" class="form-control" id="minimun" name="minimun" value="<?php echo set_value('minimun'); ?>"><span class="error"><?php echo form_error('minimun'); ?></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="unit">Unidad</label> 
+                                        <input type="text" class="form-control" id="unit" name="unit" value="<?php echo set_value('unit'); ?>"><span class="error"><?php echo form_error('unit'); ?></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="panel-footer">
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
+
+</div>

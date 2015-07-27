@@ -10,7 +10,7 @@ storeControllers.controller('ProductListCtrl', ['$scope', '$routeParams', '$http
     else 
         $scope.currentCategoryId = $routeParams.categoryId;
 
-    $http.get('shopping/product/'+$scope.currentCategoryId).success(function(data) {
+    $http.get('shopping/index.php/product/'+$scope.currentCategoryId).success(function(data) {
         store.products = data;
     });
 
@@ -25,7 +25,7 @@ storeControllers.controller('CategoryCtrl', ['$scope', '$routeParams', '$http', 
     ngCart.setTaxRate(19);
     //ngCart.setShipping(2500); 
 
-    $http.get('shopping/category').success(function(data) {
+    $http.get('shopping/index.php/category').success(function(data) {
         store.categories = data;
     });
 

@@ -23,8 +23,7 @@ class Category_model extends CI_Model {
         {
             return $row = $query->row();
         }
-
-        // return $this->db->where('id', $category_id);
+        
     }
 
     public function create()
