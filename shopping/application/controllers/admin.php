@@ -66,7 +66,7 @@ class Admin extends CI_Controller {
         $this->load->library('form_validation');
 
         $data['title'] = 'Editar Categoría';
-        
+
 
         $category = $this->category_model->getById($category_id);
 
@@ -144,7 +144,7 @@ class Admin extends CI_Controller {
         $this->load->library('form_validation');
 
         $data['title'] = 'Editar Producto';
-        
+
 
         $product = $this->product_model->getById($product_id);
 
@@ -165,7 +165,6 @@ class Admin extends CI_Controller {
             $this->load->view('admin/templates/navbar');
             $this->load->view('admin/product_edit', $data);
             $this->load->view('admin/templates/footer');
-
         }
         else
         {
@@ -195,8 +194,8 @@ class Admin extends CI_Controller {
 
         $this->load->helper('form');
         $this->load->library('form_validation');
+
         $data['product'] = $this->product_model->getById($product_id);
-        $data['image'] = '';
         $data['error'] = '';
 
         $this->load->view('admin/templates/header');
@@ -211,9 +210,8 @@ class Admin extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $data['product_id'] = $product_id;
-        $data['image'] = '';
-        
+        $product = $this->product_model->getById($product_id);
+        $data['product'] = $product;
 
         $config['upload_path'] = "uploads/";
         $config['allowed_types'] = "jpg|jpeg|png";
@@ -228,8 +226,8 @@ class Admin extends CI_Controller {
             $this->load->view('admin/pre_upload', $data);
         } else {
             $file_data = $this->upload->data();
-            $data['image'] = base_url().'uploads/'.$file_data['file_name'];
-            $this->product_model->update_image($product_id, $data['image']);
+            $this->product_model->update_image($product->id, base_url().'uploads/'.$file_data['file_name']);
+            $data['product'] = $this->product_model->getById($product_id);
             $this->load->view('admin/post_upload', $data);
         }
 
@@ -237,6 +235,12 @@ class Admin extends CI_Controller {
     }
 
     public function post_upload($product_id = 0){
+
+        $this->load->helper('form');
+
+        $data['product'] = $this->product_model->getById($product_id);
+        $data['categories'] = $this->dropdown_categories($data['product']->category_id);
+
         $this->load->view('admin/templates/header');
         $this->load->view('admin/templates/navbar');
         $this->load->view('admin/product_edit', $data);

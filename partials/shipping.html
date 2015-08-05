@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-md-3">
+
+        <div class="list-group" ng-controller="CategoryCtrl as CatCtrl">
+            <a href="#/category/{{category.id}}" class="list-group-item" ng-class="{active: CatCtrl.isSelected(category.id)}" ng-repeat="category in CatCtrl.categories | orderBy: 'name'" ng-click="CatCtrl.setCategory(category.id)">
+               {{ category.name }} </a>
+        </div>
+
+    </div>
+
+
+
+    <div class="col-md-8" ng-controller="ShippingCtrl as ShippCtrl">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Datos de Envío</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="rut">RUT:</label>
+                        <input type="text" name="rut" id="rut" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="firstname">Nombres:</label>
+                        <input type="text" name="firstname" id="firstname" class="form-control">
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label for="lastname">Apellidos:</label>
+                        <input type="text" name="lastname" id="lastname" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" id="email" class="form-control">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="phone">Teléfono:</label>
+                        <input type="text" name="phone" id="phone" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="region">Región</label>
+                        <select id="region" name="region" ng-model="region" ng-options="region as region.REGION_NOMBRE for region in ShippCtrl.regiones" ng-change="ShippCtrl.setRegion(region.REGION_ID)" class="form-control">
+                            <option value="">Seleccione</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="provincia">Provincia</label>
+                        <select id="provincia" name="provincia" ng-model="provincia" ng-options="provincia as provincia.PROVINCIA_NOMBRE for provincia in ShippCtrl.provincias" ng-change="ShippCtrl.setProvincia(provincia.PROVINCIA_ID)" class="form-control">
+                            <option value="">Seleccione</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="comuna">Comuna</label>
+                        <select id="comuna" name="comuna" ng-model="comuna" ng-options="comuna as comuna.COMUNA_NOMBRE for comuna in ShippCtrl.comunas" ng-change="ShippCtrl.setComuna(comuna.COMUNA_ID)" class="form-control">
+                            <option value="">Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8 form-group">
+                        <label for="address1">Dirección:</label>
+                        <input type="text" name="address1" id="address1" class="form-control">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="address2">Block/Depto/Casa:</label>
+                        <input type="text" name="address2" id="address2" class="form-control">
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="panel-footer text-right">
+                <a href="#/cart" class="btn btn-success">Atrás</a>
+                <a href="#/shopping" class="btn btn-success">Siguiente</a>
+            </div>
+        </div>
+
+    </div>
+</div>

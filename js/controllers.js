@@ -7,7 +7,7 @@ storeControllers.controller('ProductListCtrl', ['$scope', '$routeParams', '$http
 
     if (!angular.isDefined($routeParams.categoryId))
         $scope.currentCategoryId = 1;
-    else 
+    else
         $scope.currentCategoryId = $routeParams.categoryId;
 
     $http.get('shopping/index.php/product/'+$scope.currentCategoryId).success(function(data) {
@@ -23,7 +23,7 @@ storeControllers.controller('CategoryCtrl', ['$scope', '$routeParams', '$http', 
     $scope.currentCategory = [];
 
     ngCart.setTaxRate(19);
-    //ngCart.setShipping(2500); 
+    //ngCart.setShipping(2500);
 
     $http.get('shopping/index.php/category').success(function(data) {
         store.categories = data;
@@ -31,7 +31,7 @@ storeControllers.controller('CategoryCtrl', ['$scope', '$routeParams', '$http', 
 
     if (!angular.isDefined($routeParams.categoryId))
     {    $scope.currentCategory.id = 1; }
-    else 
+    else
     {    $scope.currentCategory.id = $routeParams.categoryId; }
 
     this.isSelected = function(idCategory){
@@ -40,6 +40,46 @@ storeControllers.controller('CategoryCtrl', ['$scope', '$routeParams', '$http', 
 
     this.setCategory = function(idCategory){
         $scope.currentCategory.id = idCategory;
+    }
+
+}]);
+
+storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', function($scope, $routeParams, $http, $filter, ngCart){
+
+    var store = this;
+
+    store.regiones = [];
+    $scope.currentRegion = [];
+
+    store.provincias = [];
+    $scope.currentProvincia = [];
+
+    store.comunas = [];
+    $scope.currentComuna = [];
+
+    $http.get('shopping/index.php/region').success(function(data)
+    {
+        store.regiones = data;
+    });
+
+    this.setRegion = function(idRegion)
+    {
+        $scope.currentRegion.id = idRegion;
+        $http.get('shopping/index.php/provincia/'+$scope.currentRegion.id).success(function(data)
+        {
+            store.provincias = data;
+        });
+        console.log($scope.currentRegion.id);
+    }
+
+    this.setProvincia = function(idProvincia)
+    {
+        $scope.currentProvincia.id = idProvincia;
+        $http.get('shopping/index.php/comuna/'+$scope.currentProvincia.id).success(function(data)
+        {
+            store.comunas = data;
+        });
+        console.log($scope.currentProvincia.id);
     }
 
 }]);

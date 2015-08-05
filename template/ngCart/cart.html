@@ -24,13 +24,13 @@
             <td>IVA ({{ ngCart.getTaxRate() }}%):</td>
             <td class="text-right">{{ ngCart.getTax() | currency : '$' : 0 }}</td>
         </tr>
-        <tr ng-show="ngCart.getShipping()">
+        <!-- <tr ng-show="ngCart.getShipping()">
             <td></td>
             <td></td>
             <td></td>
             <td>Costo del envío:</td>
             <td class="text-right">{{ ngCart.getShipping() | currency : '$' : 0 }}</td>
-        </tr>
+        </tr> -->
         <tr>
             <td></td>
             <td></td>
