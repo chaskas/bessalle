@@ -1,1 +1,3 @@
 shopping/uploads/*
+
+shopping/application/config/database.php
