@@ -62,6 +62,10 @@ class Product_model extends CI_Model {
             'description' => $this->input->post('description'),
             'category_id' => $this->input->post('category_id'),
             'unit' => $this->input->post('unit'),
+            'length' => $this->input->post('length'),
+            'width' => $this->input->post('width'),
+            'height' => $this->input->post('height'),
+            'weight' => $this->input->post('weight'),
             'minimun' => $this->input->post('minimun')
         );
 
@@ -78,6 +82,10 @@ class Product_model extends CI_Model {
             'description' => $this->input->post('description'),
             'category_id' => $this->input->post('category_id'),
             'unit' => $this->input->post('unit'),
+            'length' => $this->input->post('length'),
+            'width' => $this->input->post('width'),
+            'height' => $this->input->post('height'),
+            'weight' => $this->input->post('weight'),
             'minimun' => $this->input->post('minimun')
         );
 
