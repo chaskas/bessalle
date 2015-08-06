@@ -119,6 +119,13 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('price', 'Precio', 'required');
         $this->form_validation->set_rules('category_id', 'Categoría', 'required');
         $this->form_validation->set_rules('minimun', 'Mínimo', 'required');
+        $this->form_validation->set_rules('unit', 'Unidad', 'required');
+
+        $this->form_validation->set_rules('length', 'Largo', 'required');
+        $this->form_validation->set_rules('width', 'Ancho', 'required');
+        $this->form_validation->set_rules('height', 'Alto', 'required');
+        $this->form_validation->set_rules('weight', 'Peso', 'required');
+
         $this->form_validation->set_message('required', 'Obligatorio');
 
         $data['categories'] = $this->dropdown_categories();
@@ -154,7 +161,13 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('price', 'Precio', 'required');
         $this->form_validation->set_rules('category_id', 'Categoría', 'required');
         $this->form_validation->set_rules('minimun', 'Mínimo', 'required');
-        $this->form_validation->set_message('required', 'Obligatorio');
+        $this->form_validation->set_rules('unit', 'Unidad', 'required');
+
+        $this->form_validation->set_rules('length', 'Largo', 'required');
+        $this->form_validation->set_rules('width', 'Ancho', 'required');
+        $this->form_validation->set_rules('height', 'Alto', 'required');
+        $this->form_validation->set_rules('weight', 'Peso', 'required');
+
         $this->form_validation->set_message('required', 'Obligatorio');
 
         $data['categories'] = $this->dropdown_categories($product->category_id);
@@ -188,6 +201,10 @@ class Admin extends CI_Controller {
         if ($selected_id != 0)
             return form_dropdown('category_id', $categories, $selected_id, 'class="form-control"');
         else return form_dropdown('category_id', $categories, '', 'class="form-control"');
+    }
+
+    private function dropdown_unit($selected_id = 0){
+
     }
 
     public function pre_upload($product_id = 0){

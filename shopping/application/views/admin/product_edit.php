@@ -31,50 +31,86 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="name">Nombre</label> 
+                                        <label for="name">Nombre</label>
                                         <input type="text" class="form-control" id="name" name="name" value="<?php echo $product->name; ?>"><span class="error"><?php echo form_error('name'); ?></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="category_id">Categoría</label> 
+                                        <label for="category_id">Categoría</label>
                                         <?php echo $categories; ?><span class="error"><?php echo form_error('category_id'); ?></span>
                                     </div>
                                 </div>
                             </div>
 
-                            
+
                             <div class="form-group">
-                                <label for="description">Descripción</label> 
+                                <label for="description">Descripción</label>
                                 <textarea class="form-control" id="description" name="description"><?php echo $product->description; ?></textarea><span class="error"><?php echo form_error('description'); ?></span>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="price">Precio</label> 
+                                        <label for="price">Precio</label>
                                         <input type="text" class="form-control" id="price" name="price" value="<?php echo $product->price; ?>"><span class="error"><?php echo form_error('price'); ?></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="minimun">Mínimo</label> 
+                                        <label for="minimun">Mínimo</label>
                                         <input type="text" class="form-control" id="minimun" name="minimun" value="<?php echo $product->minimun; ?>"><span class="error"><?php echo form_error('minimun'); ?></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="unit">Unidad</label> 
-                                        <input type="text" class="form-control" id="unit" name="unit" value="<?php echo $product->unit; ?>"><span class="error"><?php echo form_error('unit'); ?></span>
+                                        <label for="unit">Unidad</label>
+                                        <select name="unit" id="unit" class="form-control">
+                                            <option value="0" <?php if($product->unit == 0) echo "selected"; ?>>Kg</option>
+                                            <option value="1" <?php if($product->unit == 1) echo "selected"; ?>>Unidad</option>
+                                        </select>
+                                        <span class="error"><?php echo form_error('unit'); ?></span>
                                     </div>
                                 </div>
                             </div>
-                            
+
+                            <br>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title">Opciones de Envío</div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for="length">Largo (cm)</label>
+                                            <input type="text" class="form-control" id="length" name="length" value="<?php echo $product->length; ?>">
+                                            <span class="error"><?php echo form_error('length'); ?></span>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="width">Ancho (cm)</label>
+                                            <input type="text" class="form-control" id="width" name="width" value="<?php echo $product->width; ?>">
+                                            <span class="error"><?php echo form_error('width'); ?></span>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="height">Alto (cm)</label>
+                                            <input type="text" class="form-control" id="height" name="height" value="<?php echo $product->height; ?>">
+                                            <span class="error"><?php echo form_error('height'); ?></span>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="weight">Peso  (kg)</label>
+                                            <input type="text" class="form-control" id="weight" name="weight" value="<?php echo $product->weight; ?>">
+                                            <span class="error"><?php echo form_error('weight'); ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    
+
                 </div>
-                <div class="panel-footer">
+                <div class="panel-footer text-right">
                     <button type="submit" class="btn btn-success">Guardar</button>
                 </div>
             </div>

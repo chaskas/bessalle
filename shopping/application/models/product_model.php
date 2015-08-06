@@ -49,12 +49,12 @@ class Product_model extends CI_Model {
         {
             return $row = $query->row();
         }
-        
+
     }
 
     public function create()
     {
-        $this->load->helper('url'); 
+        $this->load->helper('url');
 
         $data = array(
             'name' => $this->input->post('name'),
@@ -70,7 +70,7 @@ class Product_model extends CI_Model {
 
     public function edit($product_id){
 
-        $this->load->helper('url'); 
+        $this->load->helper('url');
 
         $data = array(
             'name' => $this->input->post('name'),
@@ -87,7 +87,7 @@ class Product_model extends CI_Model {
 
     public function update_image($product_id, $image){
 
-        $this->load->helper('url'); 
+        $this->load->helper('url');
 
         $data = array(
             'image' => $image
@@ -98,9 +98,9 @@ class Product_model extends CI_Model {
     }
 
     public function delete($product_id){
-        
+
         $this->db->where('id', $product_id);
-        $this->db->delete('product'); 
+        $this->db->delete('product');
     }
 
 }
