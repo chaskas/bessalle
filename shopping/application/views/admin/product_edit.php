@@ -78,7 +78,7 @@
 
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <div class="panel-title">Opciones de Envío</div>
+                                    <div class="panel-title">Datos de Transporte</div>
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
