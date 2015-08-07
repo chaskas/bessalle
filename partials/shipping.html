@@ -14,58 +14,69 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Datos de Envío</h3>
+                <h3 class="panel-title">Información de la Compra</h3>
             </div>
             <div class="panel-body">
 
                 <div class="row">
-                    <div class="col-md-4 form-group">
-                        <label for="rut">RUT:</label>
-                        <input type="text" name="rut" id="rut" class="form-control">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label for="firstname">Nombres:</label>
-                        <input type="text" name="firstname" id="firstname" class="form-control">
-                    </div>
-
-                    <div class="col-md-6 form-group">
-                        <label for="lastname">Apellidos:</label>
-                        <input type="text" name="lastname" id="lastname" class="form-control">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" id="email" class="form-control">
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label for="phone">Teléfono:</label>
-                        <input type="text" name="phone" id="phone" class="form-control">
+                    <div class="col-md-12">
+                        <h4>Datos de Facturación</h4>
+                        <hr>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 form-group">
-                        <label for="region">Región</label>
-                        <select id="region" name="region" ng-model="region" ng-options="region as region.REGION_NOMBRE for region in ShippCtrl.regiones" ng-change="ShippCtrl.setRegion(region.REGION_ID)" class="form-control">
+                        <label for="billing_rut">RUT:</label>
+                        <input type="text" name="billing_rut" id="billing_rut" class="form-control">
+                    </div>
+                    <div class="col-md-8 form-group">
+                        <label for="billing_business">Giro:</label>
+                        <input type="text" name="billing_business" id="billing_business" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="billing_firstname">Nombres:</label>
+                        <input type="text" name="billing_firstname" id="billing_firstname" class="form-control">
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label for="billing_lastname">Apellidos:</label>
+                        <input type="text" name="billing_lastname" id="billing_lastname" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="billing_email">Email:</label>
+                        <input type="text" name="billing_email" id="billing_email" class="form-control">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="billing_phone">Teléfono:</label>
+                        <input type="text" name="billing_phone" id="billing_phone" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="billing_region">Región</label>
+                        <select id="billing_region" name="billing_region" ng-model="region" ng-options="region as region.REGION_NOMBRE for region in ShippCtrl.regiones" ng-change="ShippCtrl.setRegion(region.REGION_ID)" class="form-control">
                             <option value="">Seleccione</option>
                         </select>
                     </div>
 
                     <div class="col-md-4 form-group">
-                        <label for="provincia">Provincia</label>
-                        <select id="provincia" name="provincia" ng-model="provincia" ng-options="provincia as provincia.PROVINCIA_NOMBRE for provincia in ShippCtrl.provincias" ng-change="ShippCtrl.setProvincia(provincia.PROVINCIA_ID)" class="form-control">
+                        <label for="billing_provincia">Provincia</label>
+                        <select id="billing_provincia" name="billing_provincia" ng-model="provincia" ng-options="provincia as provincia.PROVINCIA_NOMBRE for provincia in ShippCtrl.provincias" ng-change="ShippCtrl.setProvincia(provincia.PROVINCIA_ID)" class="form-control">
                             <option value="">Seleccione</option>
                         </select>
                     </div>
 
                     <div class="col-md-4 form-group">
-                        <label for="comuna">Comuna</label>
-                        <select id="comuna" name="comuna" ng-model="comuna" ng-options="comuna as comuna.COMUNA_NOMBRE for comuna in ShippCtrl.comunas" ng-change="ShippCtrl.setComuna(comuna.COMUNA_ID)" class="form-control">
+                        <label for="billing_comuna">Comuna</label>
+                        <select id="billing_comuna" name="billing_comuna" ng-model="comuna" ng-options="comuna as comuna.COMUNA_NOMBRE for comuna in ShippCtrl.comunas" ng-change="ShippCtrl.setComuna(comuna.COMUNA_ID)" class="form-control">
                             <option value="">Seleccione</option>
                         </select>
                     </div>
@@ -73,12 +84,92 @@
 
                 <div class="row">
                     <div class="col-md-8 form-group">
-                        <label for="address1">Dirección:</label>
-                        <input type="text" name="address1" id="address1" class="form-control">
+                        <label for="billing_address1">Dirección:</label>
+                        <input type="text" name="billing_address1" id="billing_address1" class="form-control">
                     </div>
                     <div class="col-md-4 form-group">
-                        <label for="address2">Block/Depto/Casa:</label>
-                        <input type="text" name="address2" id="address2" class="form-control">
+                        <label for="billing_address2">Block/Depto/Casa:</label>
+                        <input type="text" name="billing_address2" id="billing_address2" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Datos de Envío</h4>
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <div class="form-inline">
+                            <div class="checkbox"><input type="checkbox" id="sameAsBilling" name="sameAsBilling"><label for="sameAsBilling"> &nbsp; ¿Datos de envío iguales a Facturación?</label></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="shipping_rut">RUT:</label>
+                        <input type="text" name="shipping_rut" id="shipping_rut" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="shipping_firstname">Nombres:</label>
+                        <input type="text" name="shipping_firstname" id="shipping_firstname" class="form-control">
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label for="shipping_lastname">Apellidos:</label>
+                        <input type="text" name="shipping_lastname" id="shipping_lastname" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="shipping_email">Email:</label>
+                        <input type="text" name="shipping_email" id="shipping_email" class="form-control">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="shipping_phone">Teléfono:</label>
+                        <input type="text" name="shipping_phone" id="shipping_phone" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="shipping_region">Región</label>
+                        <select id="shipping_region" name="shipping_region" ng-model="region" ng-options="region as region.REGION_NOMBRE for region in ShippCtrl.regiones" ng-change="ShippCtrl.setRegion(region.REGION_ID)" class="form-control">
+                            <option value="">Seleccione</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="shipping_provincia">Provincia</label>
+                        <select id="shipping_provincia" name="shipping_provincia" ng-model="provincia" ng-options="provincia as provincia.PROVINCIA_NOMBRE for provincia in ShippCtrl.provincias" ng-change="ShippCtrl.setProvincia(provincia.PROVINCIA_ID)" class="form-control">
+                            <option value="">Seleccione</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="shipping_comuna">Comuna</label>
+                        <select id="shipping_comuna" name="shipping_comuna" ng-model="comuna" ng-options="comuna as comuna.COMUNA_NOMBRE for comuna in ShippCtrl.comunas" ng-change="ShippCtrl.setComuna(comuna.COMUNA_ID)" class="form-control">
+                            <option value="">Seleccione</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8 form-group">
+                        <label for="shipping_address1">Dirección:</label>
+                        <input type="text" name="shipping_address1" id="shipping_address1" class="form-control">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="shipping_address2">Block/Depto/Casa:</label>
+                        <input type="text" name="shipping_address2" id="shipping_address2" class="form-control">
                     </div>
                 </div>
 
@@ -92,3 +183,78 @@
 
     </div>
 </div>
+
+<script type="text/javascript">
+
+    var j = jQuery.noConflict();
+    j(document).ready(function() {
+
+        j('#sameAsBilling').change(function () {
+            if(j('#sameAsBilling').is(':checked')){
+
+                j('#shipping_rut').val(j('#billing_rut').val());
+                j('#shipping_rut').prop('disabled', true);
+
+                j('#shipping_firstname').val(j('#billing_firstname').val());
+                j('#shipping_firstname').prop('disabled', true);
+
+                j('#shipping_lastname').val(j('#billing_lastname').val());
+                j('#shipping_lastname').prop('disabled', true);
+
+                j('#shipping_email').val(j('#billing_email').val());
+                j('#shipping_email').prop('disabled', true);
+
+                j('#shipping_phone').val(j('#billing_phone').val());
+                j('#shipping_phone').prop('disabled', true);
+
+                j('#shipping_region').val(j('#billing_region').val());
+                j('#shipping_region').prop('disabled', true);
+
+                j('#shipping_provincia').val(j('#billing_provincia').val());
+                j('#shipping_provincia').prop('disabled', true);
+
+                j('#shipping_comuna').val(j('#billing_comuna').val());
+                j('#shipping_comuna').prop('disabled', true);
+
+                j('#shipping_address1').val(j('#billing_address1').val());
+                j('#shipping_address1').prop('disabled', true);
+
+                j('#shipping_address2').val(j('#billing_address2').val());
+                j('#shipping_address2').prop('disabled', true);
+
+
+            } else {
+                j('#shipping_rut').val();
+                j('#shipping_rut').prop('disabled', false);
+
+                j('#shipping_firstname').val();
+                j('#shipping_firstname').prop('disabled', false);
+
+                j('#shipping_lastname').val();
+                j('#shipping_lastname').prop('disabled', false);
+
+                j('#shipping_email').val();
+                j('#shipping_email').prop('disabled', false);
+
+                j('#shipping_phone').val();
+                j('#shipping_phone').prop('disabled', false);
+
+                j('#shipping_region').val();
+                j('#shipping_region').prop('disabled', false);
+
+                j('#shipping_provincia').val();
+                j('#shipping_provincia').prop('disabled', false);
+
+                j('#shipping_comuna').val();
+                j('#shipping_comuna').prop('disabled', false);
+
+                j('#shipping_address1').val();
+                j('#shipping_address1').prop('disabled', false);
+
+                j('#shipping_address2').val();
+                j('#shipping_address2').prop('disabled', false);
+            }
+        });
+    });
+
+</script>

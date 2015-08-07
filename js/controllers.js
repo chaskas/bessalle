@@ -69,7 +69,6 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         {
             store.provincias = data;
         });
-        console.log($scope.currentRegion.id);
     }
 
     this.setProvincia = function(idProvincia)
@@ -79,7 +78,6 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         {
             store.comunas = data;
         });
-        console.log($scope.currentProvincia.id);
     }
 
 }]);
