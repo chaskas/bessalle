@@ -47,6 +47,9 @@
             when('/cart', {
               templateUrl: 'partials/cart.html',
             }).
+            when('/summary', {
+              templateUrl: 'partials/summary.html',
+            }).
             otherwise({
               redirectTo: '/home'
             });

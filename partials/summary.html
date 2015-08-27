@@ -1,0 +1,220 @@
+<div class="row">
+    <div class="col-md-3">
+
+        <div class="list-group" ng-controller="CategoryCtrl as CatCtrl">
+            <a href="#/category/{{category.id}}" class="list-group-item" ng-class="{active: CatCtrl.isSelected(category.id)}" ng-repeat="category in CatCtrl.categories | orderBy: 'name'" ng-click="CatCtrl.setCategory(category.id)">
+               {{ category.name }} </a>
+        </div>
+
+    </div>
+
+    <div class="col-md-9" ng-controller="ShippingCtrl as ShippCtrl">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Resumen del Pedido</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Información del Envío</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Nombre Completo:</label>
+                        <br>
+                        Rodrigo Campos H.
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>RUT:</label>
+                        <br>
+                        16.020.757-4
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Direción:</label>
+                        <br>
+                        Serrano 141, Depto 24
+                    </div>
+                    <div class="col-md-3">
+                        <label>Comuna:</label>
+                        <br>
+                        Concepción
+                    </div>
+                    <div class="col-md-3">
+                        <label>Provincia:</label>
+                        <br>
+                        Concepción
+                    </div>
+                    <div class="col-md-3">
+                        <label>Región:</label>
+                        <br>
+                        Región del Bio Bio
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Fono:</label>
+                        <br>
+                        +569 5629 5683
+                    </div>
+                    <div class="col-md-6">
+                        <label>Email:</label>
+                        <br>
+                        rodrigo@webdevel.cl
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Información de Facturación</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Razón Social:</label>
+                        <br>
+                        Rodrigo Campos H.
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>RUT:</label>
+                        <br>
+                        16.020.757-4
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Direción:</label>
+                        <br>
+                        Serrano 141, Depto 24
+                    </div>
+                    <div class="col-md-3">
+                        <label>Comuna:</label>
+                        <br>
+                        Concepción
+                    </div>
+                    <div class="col-md-3">
+                        <label>Provincia:</label>
+                        <br>
+                        Concepción
+                    </div>
+                    <div class="col-md-3">
+                        <label>Región:</label>
+                        <br>
+                        Región del Bio Bio
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Fono:</label>
+                        <br>
+                        +569 5629 5683
+                    </div>
+                    <div class="col-md-6">
+                        <label>Email:</label>
+                        <br>
+                        rodrigo@webdevel.cl
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Productos</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th class="text-center">Cantidad</th>
+                                    <th class="text-right">Valor Unitario</th>
+                                    <th class="text-right">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in ShippCtrl.ngCart.getCart().items track by $index">
+                                    <td>{{ item.getName() }}</td>
+                                    <td class="text-center">{{ item.getQuantity() | number }}</td>
+                                    <td class="text-right">{{ item.getPrice() | currency : '$' : 0 }}</td>
+                                    <td class="text-right">{{ item.getTotal() | currency : '$' : 0 }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="3" class="text-right">Subtotal</td>
+                                    <td class="text-right">{{ ShippCtrl.ngCart.getSubTotal() | currency : '$' : 0 }}</td>
+                                </tr>
+
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="shippingType">Método de Envío:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="radio">
+                            <label>
+                            <input type="radio" name="shippingType" id="shippingType" value="0" checked class="radio" ng-click="ShippCtrl.setShipping(0)"> &nbsp; Chilexpress {{ ShippCtrl.shippingT1 | currency : '$' : 0 }}
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                            <input type="radio" name="shippingType" id="shippingType" value="1" class="radio" ng-click="ShippCtrl.setShipping(1)"> &nbsp; Normal {{ ShippCtrl.shippingT2 | currency : '$' : 0 }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <table class="table table-condensed">
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" class="text-right">Subtotal</td>
+                                    <td class="text-right">{{ ShippCtrl.ngCart.getSubTotal() | currency : '$' : 0 }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-right">IVA</td>
+                                    <td class="text-right">{{ ShippCtrl.ngCart.getTax() | currency : '$' : 0 }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-right">Envío</td>
+                                    <td class="text-right">{{ ShippCtrl.ngCart.getShipping() | currency : '$' : 0 }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-right">Total</td>
+                                    <td class="text-right">{{ ShippCtrl.ngCart.totalCost() | currency : '$' : 0 }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="panel-footer text-right">
+                <a href="#/shipping" class="btn btn-success">Atrás</a>
+                <a href="#/shopping" class="btn btn-success">Confirmar Pedido</a>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -57,6 +57,11 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
     store.comunas = [];
     $scope.currentComuna = [];
 
+    store.ngCart = ngCart;
+
+    store.shippingT1 = 4500;
+    store.shippingT2 = 2000;
+
     $http.get('shopping/index.php/region').success(function(data)
     {
         store.regiones = data;
@@ -78,6 +83,15 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         {
             store.comunas = data;
         });
+    }
+
+    this.setShipping = function(type) {
+
+        if(type === 0) {
+            ngCart.setShipping(store.shippingT1);
+        } else if (type === 1) {
+            ngCart.setShipping(store.shippingT2);
+        }
     }
 
 }]);

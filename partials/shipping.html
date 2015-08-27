@@ -37,14 +37,9 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label for="billing_firstname">Nombres:</label>
-                        <input type="text" name="billing_firstname" id="billing_firstname" class="form-control">
-                    </div>
-
-                    <div class="col-md-6 form-group">
-                        <label for="billing_lastname">Apellidos:</label>
-                        <input type="text" name="billing_lastname" id="billing_lastname" class="form-control">
+                    <div class="col-md-12 form-group">
+                        <label for="billing_name">Razón Social:</label>
+                        <input type="text" name="billing_name" id="billing_name" class="form-control">
                     </div>
                 </div>
 
@@ -117,14 +112,9 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label for="shipping_firstname">Nombres:</label>
-                        <input type="text" name="shipping_firstname" id="shipping_firstname" class="form-control">
-                    </div>
-
-                    <div class="col-md-6 form-group">
-                        <label for="shipping_lastname">Apellidos:</label>
-                        <input type="text" name="shipping_lastname" id="shipping_lastname" class="form-control">
+                    <div class="col-md-12 form-group">
+                        <label for="shipping_name">Nombre Completo:</label>
+                        <input type="text" name="shipping_name" id="shipping_name" class="form-control">
                     </div>
                 </div>
 
@@ -177,7 +167,7 @@
             </div>
             <div class="panel-footer text-right">
                 <a href="#/cart" class="btn btn-success">Atrás</a>
-                <a href="#/shopping" class="btn btn-success">Siguiente</a>
+                <a href="#/summary" class="btn btn-success">Siguiente</a>
             </div>
         </div>
 
@@ -195,8 +185,8 @@
                 j('#shipping_rut').val(j('#billing_rut').val());
                 j('#shipping_rut').prop('disabled', true);
 
-                j('#shipping_firstname').val(j('#billing_firstname').val());
-                j('#shipping_firstname').prop('disabled', true);
+                j('#shipping_name').val(j('#billing_name').val());
+                j('#shipping_name').prop('disabled', true);
 
                 j('#shipping_lastname').val(j('#billing_lastname').val());
                 j('#shipping_lastname').prop('disabled', true);
@@ -227,8 +217,8 @@
                 j('#shipping_rut').val();
                 j('#shipping_rut').prop('disabled', false);
 
-                j('#shipping_firstname').val();
-                j('#shipping_firstname').prop('disabled', false);
+                j('#shipping_name').val();
+                j('#shipping_name').prop('disabled', false);
 
                 j('#shipping_lastname').val();
                 j('#shipping_lastname').prop('disabled', false);
