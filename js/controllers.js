@@ -44,18 +44,32 @@ storeControllers.controller('CategoryCtrl', ['$scope', '$routeParams', '$http', 
 
 }]);
 
-storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', function($scope, $routeParams, $http, $filter, ngCart){
+storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', 'Data', function($scope, $routeParams, $http, $filter, ngCart, Data){
 
     var store = this;
 
-    store.regiones = [];
-    $scope.currentRegion = [];
+    store.Data = Data;
 
-    store.provincias = [];
-    $scope.currentProvincia = [];
+    store.shipping = [];
+    $scope.shipping = [];
 
-    store.comunas = [];
-    $scope.currentComuna = [];
+    store.billing = [];
+    $scope.billing = [];
+
+    store.shipping.regiones = [];
+    store.billing.regiones = [];
+    $scope.shipping.currentRegion = [];
+    $scope.billing.currentRegion = [];
+
+    store.shipping.provincias = [];
+    store.billing.provincias = [];
+    $scope.shipping.currentProvincia = [];
+    $scope.billing.currentProvincia = [];
+
+    store.shipping.comunas = [];
+    store.billing.comunas = [];
+    $scope.shipping.currentComuna = [];
+    $scope.billing.currentComuna = [];
 
     store.ngCart = ngCart;
 
@@ -64,24 +78,42 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
 
     $http.get('shopping/index.php/region').success(function(data)
     {
-        store.regiones = data;
+        store.shipping.regiones = data;
+        store.billing.regiones = data;
     });
 
-    this.setRegion = function(idRegion)
+    this.setRegionShipping = function(idRegion)
     {
-        $scope.currentRegion.id = idRegion;
-        $http.get('shopping/index.php/provincia/'+$scope.currentRegion.id).success(function(data)
+        $scope.shipping.currentRegion.id = idRegion;
+        $http.get('shopping/index.php/provincia/'+$scope.shipping.currentRegion.id).success(function(data)
         {
-            store.provincias = data;
+            store.shipping.provincias = data;
+        });
+    }
+    this.setRegionBilling = function(idRegion)
+    {
+        $scope.billing.currentRegion.id = idRegion;
+        $http.get('shopping/index.php/provincia/'+$scope.billing.currentRegion.id).success(function(data)
+        {
+            store.billing.provincias = data;
         });
     }
 
-    this.setProvincia = function(idProvincia)
+    this.setProvinciaShipping = function(idProvincia)
     {
-        $scope.currentProvincia.id = idProvincia;
-        $http.get('shopping/index.php/comuna/'+$scope.currentProvincia.id).success(function(data)
+        $scope.shipping.currentProvincia.id = idProvincia;
+        $http.get('shopping/index.php/comuna/'+$scope.shipping.currentProvincia.id).success(function(data)
         {
-            store.comunas = data;
+            store.shipping.comunas = data;
+        });
+    }
+
+    this.setProvinciaBilling = function(idProvincia)
+    {
+        $scope.billing.currentProvincia.id = idProvincia;
+        $http.get('shopping/index.php/comuna/'+$scope.billing.currentProvincia.id).success(function(data)
+        {
+            store.billing.comunas = data;
         });
     }
 
@@ -95,3 +127,10 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
     }
 
 }]);
+
+storeControllers.factory('Data', function(){
+
+    var data = [];
+
+    return data;
+});

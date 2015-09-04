@@ -26,20 +26,20 @@
                     <div class="col-md-6">
                         <label>Nombre Completo:</label>
                         <br>
-                        Rodrigo Campos H.
+                        {{ ShippCtrl.Data.shipping.name }}
                     </div>
 
                     <div class="col-md-6">
                         <label>RUT:</label>
                         <br>
-                        16.020.757-4
+                        {{ ShippCtrl.Data.shipping.rut }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
                         <label>Direción:</label>
                         <br>
-                        Serrano 141, Depto 24
+                        {{ ShippCtrl.Data.shipping.address1 }}, {{ ShippCtrl.Data.shipping.address2 }}
                     </div>
                     <div class="col-md-3">
                         <label>Comuna:</label>
@@ -61,12 +61,12 @@
                     <div class="col-md-6">
                         <label>Fono:</label>
                         <br>
-                        +569 5629 5683
+                        {{ ShippCtrl.Data.shipping.phone }}
                     </div>
                     <div class="col-md-6">
                         <label>Email:</label>
                         <br>
-                        rodrigo@webdevel.cl
+                        {{ ShippCtrl.Data.shipping.email }}
                     </div>
                 </div>
 
@@ -79,23 +79,30 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label>Razón Social:</label>
                         <br>
-                        Rodrigo Campos H.
+                        {{ ShippCtrl.Data.billing.name }}
                     </div>
+                </div>
 
-                    <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4">
                         <label>RUT:</label>
                         <br>
-                        16.020.757-4
+                        {{ ShippCtrl.Data.billing.rut }}
+                    </div>
+                    <div class="col-md-8">
+                        <label>Giro:</label>
+                        <br>
+                        {{ ShippCtrl.Data.billing.business }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
                         <label>Direción:</label>
                         <br>
-                        Serrano 141, Depto 24
+                        {{ ShippCtrl.Data.billing.address1 }}, {{ ShippCtrl.Data.billing.address2 }}
                     </div>
                     <div class="col-md-3">
                         <label>Comuna:</label>
@@ -117,12 +124,12 @@
                     <div class="col-md-6">
                         <label>Fono:</label>
                         <br>
-                        +569 5629 5683
+                        {{ ShippCtrl.Data.billing.phone }}
                     </div>
                     <div class="col-md-6">
                         <label>Email:</label>
                         <br>
-                        rodrigo@webdevel.cl
+                        {{ ShippCtrl.Data.billing.email }}
                     </div>
                 </div>
 

@@ -28,50 +28,50 @@
                 <div class="row">
                     <div class="col-md-4 form-group">
                         <label for="billing_rut">RUT:</label>
-                        <input type="text" name="billing_rut" id="billing_rut" class="form-control">
+                        <input type="text" name="billing_rut" id="billing_rut" class="form-control" ng-model="ShippCtrl.Data.billing.rut">
                     </div>
                     <div class="col-md-8 form-group">
                         <label for="billing_business">Giro:</label>
-                        <input type="text" name="billing_business" id="billing_business" class="form-control">
+                        <input type="text" name="billing_business" id="billing_business" class="form-control" ng-model="ShippCtrl.Data.billing.business">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12 form-group">
                         <label for="billing_name">Razón Social:</label>
-                        <input type="text" name="billing_name" id="billing_name" class="form-control">
+                        <input type="text" name="billing_name" id="billing_name" class="form-control" ng-model="ShippCtrl.Data.billing.name">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="billing_email">Email:</label>
-                        <input type="text" name="billing_email" id="billing_email" class="form-control">
+                        <input type="text" name="billing_email" id="billing_email" class="form-control" ng-model="ShippCtrl.Data.billing.email">
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="billing_phone">Teléfono:</label>
-                        <input type="text" name="billing_phone" id="billing_phone" class="form-control">
+                        <input type="text" name="billing_phone" id="billing_phone" class="form-control" ng-model="ShippCtrl.Data.billing.phone">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 form-group">
                         <label for="billing_region">Región</label>
-                        <select id="billing_region" name="billing_region" ng-model="region" ng-options="region as region.REGION_NOMBRE for region in ShippCtrl.regiones" ng-change="ShippCtrl.setRegion(region.REGION_ID)" class="form-control">
+                        <select id="billing_region" name="billing_region" ng-options="region as region.REGION_NOMBRE for region in ShippCtrl.billing.regiones" ng-change="ShippCtrl.setRegionBilling(ShippCtrl.Data.billing.region.REGION_ID)" class="form-control" ng-model="ShippCtrl.Data.billing.region">
                             <option value="">Seleccione</option>
                         </select>
                     </div>
 
                     <div class="col-md-4 form-group">
                         <label for="billing_provincia">Provincia</label>
-                        <select id="billing_provincia" name="billing_provincia" ng-model="provincia" ng-options="provincia as provincia.PROVINCIA_NOMBRE for provincia in ShippCtrl.provincias" ng-change="ShippCtrl.setProvincia(provincia.PROVINCIA_ID)" class="form-control">
+                        <select id="billing_provincia" name="billing_provincia" ng-options="provincia as provincia.PROVINCIA_NOMBRE for provincia in ShippCtrl.billing.provincias" ng-change="ShippCtrl.setProvinciaBilling(ShippCtrl.Data.billing.provincia.PROVINCIA_ID)" class="form-control" ng-model="ShippCtrl.Data.billing.provincia">
                             <option value="">Seleccione</option>
                         </select>
                     </div>
 
                     <div class="col-md-4 form-group">
                         <label for="billing_comuna">Comuna</label>
-                        <select id="billing_comuna" name="billing_comuna" ng-model="comuna" ng-options="comuna as comuna.COMUNA_NOMBRE for comuna in ShippCtrl.comunas" ng-change="ShippCtrl.setComuna(comuna.COMUNA_ID)" class="form-control">
+                        <select id="billing_comuna" name="billing_comuna" ng-options="comuna as comuna.COMUNA_NOMBRE for comuna in ShippCtrl.billing.comunas" ng-change="ShippCtrl.setComunaBilling(ShippCtrl.Data.billing.comuna.COMUNA_ID)" class="form-control" ng-model="ShippCtrl.Data.billing.comuna">
                             <option value="">Seleccione</option>
                         </select>
                     </div>
@@ -80,11 +80,11 @@
                 <div class="row">
                     <div class="col-md-8 form-group">
                         <label for="billing_address1">Dirección:</label>
-                        <input type="text" name="billing_address1" id="billing_address1" class="form-control">
+                        <input type="text" name="billing_address1" id="billing_address1" class="form-control" ng-model="ShippCtrl.Data.billing.address1">
                     </div>
                     <div class="col-md-4 form-group">
                         <label for="billing_address2">Block/Depto/Casa:</label>
-                        <input type="text" name="billing_address2" id="billing_address2" class="form-control">
+                        <input type="text" name="billing_address2" id="billing_address2" class="form-control" ng-model="ShippCtrl.Data.billing.address2">
                     </div>
                 </div>
 
@@ -107,46 +107,46 @@
                 <div class="row">
                     <div class="col-md-4 form-group">
                         <label for="shipping_rut">RUT:</label>
-                        <input type="text" name="shipping_rut" id="shipping_rut" class="form-control">
+                        <input type="text" name="shipping_rut" id="shipping_rut" class="form-control" ng-model="ShippCtrl.Data.shipping.rut">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12 form-group">
                         <label for="shipping_name">Nombre Completo:</label>
-                        <input type="text" name="shipping_name" id="shipping_name" class="form-control">
+                        <input type="text" name="shipping_name" id="shipping_name" class="form-control" ng-model="ShippCtrl.Data.shipping.name">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="shipping_email">Email:</label>
-                        <input type="text" name="shipping_email" id="shipping_email" class="form-control">
+                        <input type="text" name="shipping_email" id="shipping_email" class="form-control" ng-model="ShippCtrl.Data.shipping.email">
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="shipping_phone">Teléfono:</label>
-                        <input type="text" name="shipping_phone" id="shipping_phone" class="form-control">
+                        <input type="text" name="shipping_phone" id="shipping_phone" class="form-control" ng-model="ShippCtrl.Data.shipping.phone">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 form-group">
                         <label for="shipping_region">Región</label>
-                        <select id="shipping_region" name="shipping_region" ng-model="region" ng-options="region as region.REGION_NOMBRE for region in ShippCtrl.regiones" ng-change="ShippCtrl.setRegion(region.REGION_ID)" class="form-control">
+                        <select id="shipping_region" name="shipping_region" ng-options="region as region.REGION_NOMBRE for region in ShippCtrl.shipping.regiones" ng-change="ShippCtrl.setRegionShipping(ShippCtrl.Data.shipping.region.REGION_ID)" class="form-control" ng-model="ShippCtrl.Data.shipping.region">
                             <option value="">Seleccione</option>
                         </select>
                     </div>
 
                     <div class="col-md-4 form-group">
                         <label for="shipping_provincia">Provincia</label>
-                        <select id="shipping_provincia" name="shipping_provincia" ng-model="provincia" ng-options="provincia as provincia.PROVINCIA_NOMBRE for provincia in ShippCtrl.provincias" ng-change="ShippCtrl.setProvincia(provincia.PROVINCIA_ID)" class="form-control">
+                        <select id="shipping_provincia" name="shipping_provincia" ng-options="provincia as provincia.PROVINCIA_NOMBRE for provincia in ShippCtrl.shipping.provincias" ng-change="ShippCtrl.setProvinciaShipping(ShippCtrl.Data.shipping.provincia.PROVINCIA_ID)" class="form-control" ng-model="ShippCtrl.Data.shipping.provincia">
                             <option value="">Seleccione</option>
                         </select>
                     </div>
 
                     <div class="col-md-4 form-group">
                         <label for="shipping_comuna">Comuna</label>
-                        <select id="shipping_comuna" name="shipping_comuna" ng-model="comuna" ng-options="comuna as comuna.COMUNA_NOMBRE for comuna in ShippCtrl.comunas" ng-change="ShippCtrl.setComuna(comuna.COMUNA_ID)" class="form-control">
+                        <select id="shipping_comuna" name="shipping_comuna" ng-options="comuna as comuna.COMUNA_NOMBRE for comuna in ShippCtrl.shipping.comunas" ng-change="ShippCtrl.setComunaShipping(ShippCtrl.Data.shipping.comuna.COMUNA_ID)" class="form-control" ng-model="ShippCtrl.Data.shipping.comuna">
                             <option value="">Seleccione</option>
                         </select>
                     </div>
@@ -155,11 +155,11 @@
                 <div class="row">
                     <div class="col-md-8 form-group">
                         <label for="shipping_address1">Dirección:</label>
-                        <input type="text" name="shipping_address1" id="shipping_address1" class="form-control">
+                        <input type="text" name="shipping_address1" id="shipping_address1" class="form-control" ng-model="ShippCtrl.Data.shipping.address1">
                     </div>
                     <div class="col-md-4 form-group">
                         <label for="shipping_address2">Block/Depto/Casa:</label>
-                        <input type="text" name="shipping_address2" id="shipping_address2" class="form-control">
+                        <input type="text" name="shipping_address2" id="shipping_address2" class="form-control" ng-model="ShippCtrl.Data.shipping.address2">
                     </div>
                 </div>
 
@@ -187,9 +187,6 @@
 
                 j('#shipping_name').val(j('#billing_name').val());
                 j('#shipping_name').prop('disabled', true);
-
-                j('#shipping_lastname').val(j('#billing_lastname').val());
-                j('#shipping_lastname').prop('disabled', true);
 
                 j('#shipping_email').val(j('#billing_email').val());
                 j('#shipping_email').prop('disabled', true);
@@ -219,9 +216,6 @@
 
                 j('#shipping_name').val();
                 j('#shipping_name').prop('disabled', false);
-
-                j('#shipping_lastname').val();
-                j('#shipping_lastname').prop('disabled', false);
 
                 j('#shipping_email').val();
                 j('#shipping_email').prop('disabled', false);

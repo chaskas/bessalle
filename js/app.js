@@ -49,6 +49,7 @@
             }).
             when('/summary', {
               templateUrl: 'partials/summary.html',
+              controller: 'ShippingCtrl'
             }).
             otherwise({
               redirectTo: '/home'
