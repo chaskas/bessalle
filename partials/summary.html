@@ -44,17 +44,17 @@
                     <div class="col-md-3">
                         <label>Comuna:</label>
                         <br>
-                        Concepción
+                        {{ ShippCtrl.Data.shipping.comuna.COMUNA_NOMBRE }}
                     </div>
                     <div class="col-md-3">
                         <label>Provincia:</label>
                         <br>
-                        Concepción
+                        {{ ShippCtrl.Data.shipping.provincia.PROVINCIA_NOMBRE }}
                     </div>
                     <div class="col-md-3">
                         <label>Región:</label>
                         <br>
-                        Región del Bio Bio
+                        {{ ShippCtrl.Data.shipping.region.REGION_NOMBRE }}
                     </div>
                 </div>
                 <div class="row">
@@ -107,17 +107,17 @@
                     <div class="col-md-3">
                         <label>Comuna:</label>
                         <br>
-                        Concepción
+                        {{ ShippCtrl.Data.billing.comuna.COMUNA_NOMBRE }}
                     </div>
                     <div class="col-md-3">
                         <label>Provincia:</label>
                         <br>
-                        Concepción
+                        {{ ShippCtrl.Data.billing.provincia.PROVINCIA_NOMBRE }}
                     </div>
                     <div class="col-md-3">
                         <label>Región:</label>
                         <br>
-                        Región del Bio Bio
+                        {{ ShippCtrl.Data.billing.region.REGION_NOMBRE }}
                     </div>
                 </div>
                 <div class="row">
@@ -179,12 +179,12 @@
                     <div class="col-md-9">
                         <div class="radio">
                             <label>
-                            <input type="radio" name="shippingType" id="shippingType" value="0" checked class="radio" ng-click="ShippCtrl.setShipping(0)"> &nbsp; Chilexpress {{ ShippCtrl.shippingT1 | currency : '$' : 0 }}
+                            <input type="radio" name="shippingType" id="shippingType" value="0" checked class="radio" ng-click="ShippCtrl.setShipping(0)"> &nbsp; Chilexpress {{ ShippCtrl.Data.shippingT1 | currency : '$' : 0 }}
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                            <input type="radio" name="shippingType" id="shippingType" value="1" class="radio" ng-click="ShippCtrl.setShipping(1)"> &nbsp; Normal {{ ShippCtrl.shippingT2 | currency : '$' : 0 }}
+                            <input type="radio" name="shippingType" id="shippingType" value="1" class="radio" ng-click="ShippCtrl.setShipping(1)"> &nbsp; Normal {{ ShippCtrl.Data.shippingT2 | currency : '$' : 0 }}
                             </label>
                         </div>
                     </div>

@@ -23,7 +23,6 @@ storeControllers.controller('CategoryCtrl', ['$scope', '$routeParams', '$http', 
     $scope.currentCategory = [];
 
     ngCart.setTaxRate(19);
-    //ngCart.setShipping(2500);
 
     $http.get('shopping/index.php/category').success(function(data) {
         store.categories = data;
@@ -48,7 +47,8 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
 
     var store = this;
 
-    store.Data = Data;
+    Data.shippingT1 = 0;
+    Data.shippingT2 = 0;
 
     store.shipping = [];
     $scope.shipping = [];
@@ -72,9 +72,6 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
     $scope.billing.currentComuna = [];
 
     store.ngCart = ngCart;
-
-    store.shippingT1 = 4500;
-    store.shippingT2 = 2000;
 
     $http.get('shopping/index.php/region').success(function(data)
     {
@@ -117,14 +114,42 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         });
     }
 
+    this.setComunaShipping = function(idComuna)
+    {
+        $scope.shipping.currentComuna.id = idComuna;
+    }
+
     this.setShipping = function(type) {
 
         if(type === 0) {
-            ngCart.setShipping(store.shippingT1);
+            ngCart.setShipping(Data.shippingT1);
         } else if (type === 1) {
-            ngCart.setShipping(store.shippingT2);
+            ngCart.setShipping(Data.shippingT2);
         }
     }
+
+    this.calcChilexpressCost = function(){
+        $scope.shipping.currentComuna.id;
+
+        $scope.shipping.shippingT1 = 0;
+
+        angular.forEach(ngCart.getCart().items, function(value, key){
+
+            costo = 0;
+            //console.log("comunaID: " + $scope.shipping.currentComuna.id + " itemID: " + value.getId() + " cantidad: " + value.getQuantity());
+            $http.get('shopping/index.php/getShippCost/'+$scope.shipping.currentComuna.id+'/'+value.getId()).success(function(data)
+            {
+                //console.log(data['costo']);
+                costo = data['costo'] * value.getQuantity();
+                Data.shippingT1 = Data.shippingT1 + costo;
+                ngCart.setShipping(Data.shippingT1);
+                //console.log($scope.shipping.shippingT1);
+            });
+
+        });
+    }
+
+    store.Data = Data;
 
 }]);
 

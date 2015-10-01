@@ -45,6 +45,7 @@ $route['product/(:num)'] = 'product/index/$1';
 $route['region'] = 'region';
 $route['provincia/(:num)'] = 'provincia/index/$1';
 $route['comuna/(:num)'] = 'comuna/index/$1';
+$route['getShippCost/(:num)/(:num)'] = 'shipCalc/getCost/$1/$2';
 
 
 // Backend
