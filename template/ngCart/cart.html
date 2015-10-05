@@ -11,7 +11,7 @@
         <tr>
             <th></th>
             <th></th>
-            <th>Cantidad</th>
+            <th class="text-center">Cantidad</th>
             <th class="text-right">Valor</th>
             <th class="text-right">Total</th>
         </tr>
@@ -24,13 +24,6 @@
             <td>IVA ({{ ngCart.getTaxRate() }}%):</td>
             <td class="text-right">{{ ngCart.getTax() | currency : '$' : 0 }}</td>
         </tr>
-        <!-- <tr ng-show="ngCart.getShipping()">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Costo del envío:</td>
-            <td class="text-right">{{ ngCart.getShipping() | currency : '$' : 0 }}</td>
-        </tr> -->
         <tr>
             <td></td>
             <td></td>
@@ -44,9 +37,15 @@
             <td><span ng-click="ngCart.removeItemById(item.getId())" class="glyphicon glyphicon-remove"></span></td>
 
             <td>{{ item.getName() }}</td>
-            <td><span class="glyphicon glyphicon-minus" ng-class="{'disabled':item.getQuantity()==1}" ng-click="item.setQuantity(-1, true)"></span>&nbsp;&nbsp;
-                {{ item.getQuantity() | number }}&nbsp;&nbsp;
-                <span class="glyphicon glyphicon-plus" ng-click="item.setQuantity(1, true)"></span></td>
+            <form name="myCart">
+            <td class="text-center">
+                <span class="glyphicon glyphicon-minus" ng-class="{'disabled':item.getQuantity()==1}" ng-click="item.setQuantity(-1, true); q > 1 ? q = q - 1 : q = q"></span>
+                &nbsp;&nbsp;
+                <input type="text" value="{{ item.getQuantity() | number }}" class="itemQuantity" ng-change="item.setQuantity(q,false)" name="q" ng-model="q" ng-init="q = item.getQuantity()"/>
+                &nbsp;&nbsp;
+                <span class="glyphicon glyphicon-plus" ng-click="item.setQuantity(1, true); q = q + 1;"></span>
+            </td>
+            </form>
             <td class="text-right">{{ item.getPrice() | currency : '$' : 0 }}</td>
             <td class="text-right">{{ item.getTotal() | currency : '$' : 0 }}</td>
         </tr>

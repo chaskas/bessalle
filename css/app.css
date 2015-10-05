@@ -96,3 +96,8 @@ a.social {width: 32px; height: 32px; display: block; margin-right:5px; float: le
 .radio {
     margin-top: 1px !important;
 }
+
+.itemQuantity {
+    width: 40px;
+    text-align: right;
+}
