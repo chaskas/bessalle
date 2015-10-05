@@ -43,12 +43,15 @@ storeControllers.controller('CategoryCtrl', ['$scope', '$routeParams', '$http', 
 
 }]);
 
-storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', 'Data', function($scope, $routeParams, $http, $filter, ngCart, Data){
+storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', 'Data', function($scope, $routeParams, $http,$filter, ngCart, Data){
 
     var store = this;
 
     Data.shippingT1 = 0;
     Data.shippingT2 = 0;
+
+    Data.shipping = [];
+    Data.billing = [];
 
     store.shipping = [];
     $scope.shipping = [];
@@ -136,17 +139,29 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         angular.forEach(ngCart.getCart().items, function(value, key){
 
             costo = 0;
-            //console.log("comunaID: " + $scope.shipping.currentComuna.id + " itemID: " + value.getId() + " cantidad: " + value.getQuantity());
             $http.get('shopping/index.php/getShippCost/'+$scope.shipping.currentComuna.id+'/'+value.getId()).success(function(data)
             {
-                //console.log(data['costo']);
                 costo = data['costo'] * value.getQuantity();
                 Data.shippingT1 = Data.shippingT1 + costo;
                 ngCart.setShipping(Data.shippingT1);
-                //console.log($scope.shipping.shippingT1);
             });
 
         });
+    }
+
+    this.sameAsBilling = function(){
+
+        Data.shipping.rut = Data.billing.rut;
+        Data.shipping.name = Data.billing.name;
+        Data.shipping.email = Data.billing.email;
+        Data.shipping.phone = Data.billing.phone;
+        Data.shipping.region = Data.billing.region;
+        store.shipping.provincias = store.billing.provincias;
+        Data.shipping.provincia = Data.billing.provincia;
+        store.shipping.comunas = store.billing.comunas;
+        Data.shipping.comuna = Data.billing.comuna;
+        Data.shipping.address1 = Data.billing.address1;
+        Data.shipping.address2 = Data.billing.address2;
     }
 
     store.Data = Data;

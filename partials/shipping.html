@@ -16,6 +16,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title">Información de la Compra</h3>
             </div>
+            <form role="form"  name="myForm">
             <div class="panel-body">
 
                 <div class="row">
@@ -26,9 +27,9 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4 form-group">
+                    <div class="col-md-4 form-group has-feedback" ng-class="{'has-success':myForm.billing_rut.$error.rutValido,'has-error':!myForm.billing_rut.$error.rutValido}">
                         <label for="billing_rut">RUT:</label>
-                        <input type="text" name="billing_rut" id="billing_rut" class="form-control" ng-model="ShippCtrl.Data.billing.rut">
+                        <input ng-rut type="text" name="billing_rut" id="billing_rut" class="form-control" ng-model="ShippCtrl.Data.billing.rut">
                     </div>
                     <div class="col-md-8 form-group">
                         <label for="billing_business">Giro:</label>
@@ -98,55 +99,55 @@
                 <div class="row">
                     <div class="col-md-12 form-group">
                         <div class="form-inline">
-                            <div class="checkbox"><input type="checkbox" id="sameAsBilling" name="sameAsBilling"><label for="sameAsBilling"> &nbsp; ¿Datos de envío iguales a Facturación?</label></div>
+                            <div class="checkbox"><input type="checkbox" id="sameAsBilling" name="sameAsBilling" ng-model="sameAsBilling" ng-change="ShippCtrl.sameAsBilling()"><label for="sameAsBilling"> &nbsp; ¿Datos de envío iguales a Facturación?</label></div>
                         </div>
 
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4 form-group">
+                    <div class="col-md-4 form-group has-feedback" ng-class="{'has-success':myForm.shipping_rut.$error.rutValido,'has-error':!myForm.shipping_rut.$error.rutValido}">
                         <label for="shipping_rut">RUT:</label>
-                        <input type="text" name="shipping_rut" id="shipping_rut" class="form-control" ng-model="ShippCtrl.Data.shipping.rut">
+                        <input ng-rut type="text" name="shipping_rut" id="shipping_rut" class="form-control" ng-model="ShippCtrl.Data.shipping.rut" ng-disabled="sameAsBilling">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12 form-group">
                         <label for="shipping_name">Nombre Completo:</label>
-                        <input type="text" name="shipping_name" id="shipping_name" class="form-control" ng-model="ShippCtrl.Data.shipping.name">
+                        <input type="text" name="shipping_name" id="shipping_name" class="form-control" ng-model="ShippCtrl.Data.shipping.name" ng-disabled="sameAsBilling">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="shipping_email">Email:</label>
-                        <input type="text" name="shipping_email" id="shipping_email" class="form-control" ng-model="ShippCtrl.Data.shipping.email">
+                        <input type="text" name="shipping_email" id="shipping_email" class="form-control" ng-model="ShippCtrl.Data.shipping.email" ng-disabled="sameAsBilling">
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="shipping_phone">Teléfono:</label>
-                        <input type="text" name="shipping_phone" id="shipping_phone" class="form-control" ng-model="ShippCtrl.Data.shipping.phone">
+                        <input type="text" name="shipping_phone" id="shipping_phone" class="form-control" ng-model="ShippCtrl.Data.shipping.phone" ng-disabled="sameAsBilling">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 form-group">
                         <label for="shipping_region">Región</label>
-                        <select id="shipping_region" name="shipping_region" ng-options="region as region.REGION_NOMBRE for region in ShippCtrl.shipping.regiones" ng-change="ShippCtrl.setRegionShipping(ShippCtrl.Data.shipping.region.REGION_ID)" class="form-control" ng-model="ShippCtrl.Data.shipping.region">
+                        <select id="shipping_region" name="shipping_region" ng-options="region as region.REGION_NOMBRE for region in ShippCtrl.shipping.regiones" ng-change="ShippCtrl.setRegionShipping(ShippCtrl.Data.shipping.region.REGION_ID)" class="form-control" ng-model="ShippCtrl.Data.shipping.region" ng-disabled="sameAsBilling">
                             <option value="">Seleccione</option>
                         </select>
                     </div>
 
                     <div class="col-md-4 form-group">
                         <label for="shipping_provincia">Provincia</label>
-                        <select id="shipping_provincia" name="shipping_provincia" ng-options="provincia as provincia.PROVINCIA_NOMBRE for provincia in ShippCtrl.shipping.provincias" ng-change="ShippCtrl.setProvinciaShipping(ShippCtrl.Data.shipping.provincia.PROVINCIA_ID)" class="form-control" ng-model="ShippCtrl.Data.shipping.provincia">
+                        <select id="shipping_provincia" name="shipping_provincia" ng-options="provincia as provincia.PROVINCIA_NOMBRE for provincia in ShippCtrl.shipping.provincias" ng-change="ShippCtrl.setProvinciaShipping(ShippCtrl.Data.shipping.provincia.PROVINCIA_ID)" class="form-control" ng-model="ShippCtrl.Data.shipping.provincia" ng-disabled="sameAsBilling">
                             <option value="">Seleccione</option>
                         </select>
                     </div>
 
                     <div class="col-md-4 form-group">
                         <label for="shipping_comuna">Comuna</label>
-                        <select id="shipping_comuna" name="shipping_comuna" ng-options="comuna as comuna.COMUNA_NOMBRE for comuna in ShippCtrl.shipping.comunas" ng-change="ShippCtrl.setComunaShipping(ShippCtrl.Data.shipping.comuna.COMUNA_ID)" class="form-control" ng-model="ShippCtrl.Data.shipping.comuna">
+                        <select id="shipping_comuna" name="shipping_comuna" ng-options="comuna as comuna.COMUNA_NOMBRE for comuna in ShippCtrl.shipping.comunas" ng-change="ShippCtrl.setComunaShipping(ShippCtrl.Data.shipping.comuna.COMUNA_ID)" class="form-control" ng-model="ShippCtrl.Data.shipping.comuna" ng-disabled="sameAsBilling">
                             <option value="">Seleccione</option>
                         </select>
                     </div>
@@ -155,16 +156,17 @@
                 <div class="row">
                     <div class="col-md-8 form-group">
                         <label for="shipping_address1">Dirección:</label>
-                        <input type="text" name="shipping_address1" id="shipping_address1" class="form-control" ng-model="ShippCtrl.Data.shipping.address1">
+                        <input type="text" name="shipping_address1" id="shipping_address1" class="form-control" ng-model="ShippCtrl.Data.shipping.address1" ng-disabled="sameAsBilling">
                     </div>
                     <div class="col-md-4 form-group">
                         <label for="shipping_address2">Block/Depto/Casa:</label>
-                        <input type="text" name="shipping_address2" id="shipping_address2" class="form-control" ng-model="ShippCtrl.Data.shipping.address2">
+                        <input type="text" name="shipping_address2" id="shipping_address2" class="form-control" ng-model="ShippCtrl.Data.shipping.address2" ng-disabled="sameAsBilling">
                     </div>
                 </div>
 
 
             </div>
+            </form>
             <div class="panel-footer text-right">
                 <a href="#/cart" class="btn btn-success">Atrás</a>
                 <a href="#/summary" class="btn btn-success" ng-click="ShippCtrl.calcChilexpressCost()">Siguiente</a>
@@ -173,72 +175,3 @@
 
     </div>
 </div>
-
-<script type="text/javascript">
-
-    var j = jQuery.noConflict();
-    j(document).ready(function() {
-
-        j('#sameAsBilling').change(function () {
-            if(j('#sameAsBilling').is(':checked')){
-
-                j('#shipping_rut').val(j('#billing_rut').val());
-                j('#shipping_rut').prop('disabled', true);
-
-                j('#shipping_name').val(j('#billing_name').val());
-                j('#shipping_name').prop('disabled', true);
-
-                j('#shipping_email').val(j('#billing_email').val());
-                j('#shipping_email').prop('disabled', true);
-
-                j('#shipping_phone').val(j('#billing_phone').val());
-                j('#shipping_phone').prop('disabled', true);
-
-                j('#shipping_region').val(j('#billing_region').val());
-                j('#shipping_region').prop('disabled', true);
-
-                j('#shipping_provincia').val(j('#billing_provincia').val());
-                j('#shipping_provincia').prop('disabled', true);
-
-                j('#shipping_comuna').val(j('#billing_comuna').val());
-                j('#shipping_comuna').prop('disabled', true);
-
-                j('#shipping_address1').val(j('#billing_address1').val());
-                j('#shipping_address1').prop('disabled', true);
-
-                j('#shipping_address2').val(j('#billing_address2').val());
-                j('#shipping_address2').prop('disabled', true);
-
-
-            } else {
-                j('#shipping_rut').val();
-                j('#shipping_rut').prop('disabled', false);
-
-                j('#shipping_name').val();
-                j('#shipping_name').prop('disabled', false);
-
-                j('#shipping_email').val();
-                j('#shipping_email').prop('disabled', false);
-
-                j('#shipping_phone').val();
-                j('#shipping_phone').prop('disabled', false);
-
-                j('#shipping_region').val();
-                j('#shipping_region').prop('disabled', false);
-
-                j('#shipping_provincia').val();
-                j('#shipping_provincia').prop('disabled', false);
-
-                j('#shipping_comuna').val();
-                j('#shipping_comuna').prop('disabled', false);
-
-                j('#shipping_address1').val();
-                j('#shipping_address1').prop('disabled', false);
-
-                j('#shipping_address2').val();
-                j('#shipping_address2').prop('disabled', false);
-            }
-        });
-    });
-
-</script>
