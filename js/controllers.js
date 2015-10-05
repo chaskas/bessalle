@@ -50,8 +50,8 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
     Data.shippingT1 = 0;
     Data.shippingT2 = 0;
 
-    Data.shipping = [];
-    Data.billing = [];
+    // Data.shipping = [];
+    // Data.billing = [];
 
     store.shipping = [];
     $scope.shipping = [];
@@ -155,11 +155,18 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         Data.shipping.name = Data.billing.name;
         Data.shipping.email = Data.billing.email;
         Data.shipping.phone = Data.billing.phone;
+
         Data.shipping.region = Data.billing.region;
+        $scope.shipping.currentRegion.id = Data.shipping.region.REGION_ID;
+
         store.shipping.provincias = store.billing.provincias;
         Data.shipping.provincia = Data.billing.provincia;
+        $scope.billing.currentProvincia.id = Data.shipping.provincia.PROVINCIA_ID;
+
         store.shipping.comunas = store.billing.comunas;
         Data.shipping.comuna = Data.billing.comuna;
+        $scope.shipping.currentComuna.id = Data.shipping.comuna.COMUNA_ID;
+
         Data.shipping.address1 = Data.billing.address1;
         Data.shipping.address2 = Data.billing.address2;
     }
@@ -171,6 +178,8 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
 storeControllers.factory('Data', function(){
 
     var data = [];
+    data.shipping = [];
+    data.billing = [];
 
     return data;
 });
