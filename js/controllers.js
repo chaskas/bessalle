@@ -149,6 +149,84 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         });
     }
 
+    this.getPreviousData = function () {
+
+        //console.log(Data.billing.rut);
+
+        $http.get('shopping/index.php/user/'+Data.billing.rut).success(function(data)
+        {
+            //console.log(data.billing_region);
+
+            Data.billing.rut = data.billing_rut;
+            Data.billing.business = data.billing_business;
+            Data.billing.name = data.billing_name;
+            Data.billing.email = data.billing_email;
+            Data.billing.phone = data.billing_phone;
+
+            // Data.billing.region = Data.billing.region;
+            $scope.billing.currentRegion.id = data.billing_region;
+
+            //setRegionBilling(data.billing_region);
+            //
+            // store.billing.provincias = store.billing.provincias;
+            // Data.billing.provincia = Data.billing.provincia;
+            // $scope.billing.currentProvincia.id = Data.billing.provincia.PROVINCIA_ID;
+            //
+            // store.billing.comunas = store.billing.comunas;
+            // Data.billing.comuna = Data.billing.comuna;
+            // $scope.billing.currentComuna.id = Data.billing.comuna.COMUNA_ID;
+
+            Data.billing.address1 = data.billing_address1;
+            Data.billing.address2 = data.billing_address2;
+
+            Data.shipping.rut = data.shipping_rut;
+            Data.shipping.name = data.shipping_name;
+            Data.shipping.email = data.shipping_email;
+            Data.shipping.phone = data.shipping_phone;
+
+            // Data.shipping.region = Data.billing.region;
+            // $scope.shipping.currentRegion.id = Data.shipping.region.REGION_ID;
+            //
+            // store.shipping.provincias = store.billing.provincias;
+            // Data.shipping.provincia = Data.billing.provincia;
+            // $scope.billing.currentProvincia.id = Data.shipping.provincia.PROVINCIA_ID;
+            //
+            // store.shipping.comunas = store.billing.comunas;
+            // Data.shipping.comuna = Data.billing.comuna;
+            // $scope.shipping.currentComuna.id = Data.shipping.comuna.COMUNA_ID;
+
+            Data.shipping.address1 = data.shipping_address1;
+            Data.shipping.address2 = data.shipping_address2;
+
+        });
+    }
+
+    this.saveUserData = function () {
+
+        var billing = Data.billing;
+        var shipping = Data.shipping;
+
+        //console.log(billing);
+
+        $http({
+            method: 'POST',
+            url: 'shopping/index.php/user/add',
+            data: JSON.stringify({ billing: { "rut": billing.rut, "business": billing.business, "name": billing.name, "email": billing.email, "phone": billing.phone, "region": billing.region.REGION_ID, "provincia": billing.provincia.PROVINCIA_ID, "comuna": billing.comuna.COMUNA_ID, "address1": billing.address1, "address2": billing.address2 }, shipping: { "rut": shipping.rut, "name": shipping.name, "email": shipping.email, "phone": shipping.phone, "region": shipping.region.REGION_ID, "provincia": shipping.provincia.PROVINCIA_ID, "comuna": shipping.comuna.COMUNA_ID, "address1": shipping.address1, "address2": shipping.address2 } }),
+            headers: {'Content-Type': 'application/json'}
+        }).success(function(data){
+            //console.log(data);
+        });
+
+    }
+
+    this.processShipping = function () {
+
+        store.calcChilexpressCost();
+
+        store.saveUserData();
+
+    }
+
     this.sameAsBilling = function(){
 
         Data.shipping.rut = Data.billing.rut;
@@ -170,6 +248,8 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         Data.shipping.address1 = Data.billing.address1;
         Data.shipping.address2 = Data.billing.address2;
     }
+
+
 
     store.Data = Data;
 

@@ -46,6 +46,8 @@ $route['region'] = 'region';
 $route['provincia/(:num)'] = 'provincia/index/$1';
 $route['comuna/(:num)'] = 'comuna/index/$1';
 $route['getShippCost/(:num)/(:num)'] = 'shipCalc/getCost/$1/$2';
+$route['user/(:any)'] = 'user/getUser/$1';
+$route['user/add'] = 'user/addUser';
 
 
 // Backend
