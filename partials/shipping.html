@@ -22,18 +22,17 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h4>Datos de Facturación</h4>
-                         <span style="color: red">* Datos Requeridos</span>
                         <hr>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4 form-group has-feedback" ng-class="{'has-success':myForm.billing_rut.$error.rutValido,'has-error':!myForm.billing_rut.$error.rutValido}">
-                        <label for="billing_rut">RUT: <span ng-show="myForm.billing_rut.$error.required" style="color: red">*</span></label>
-                        <input ng-rut type="text" name="billing_rut" id="billing_rut" class="form-control" ng-model="ShippCtrl.Data.billing.rut" required ng-blur="ShippCtrl.getPreviousData()">
+                    <div class="col-md-4 form-group has-feedback" ng-class="{'has-success': !myForm.billing_rut.$invalid,'has-error': myForm.billing_rut.$invalid }">
+                        <label for="billing_rut">RUT: <span ng-show="myForm.billing_rut.$invalid" class="requerido">* Requerido</span></label>
+                        <input ng-rut type="text" name="billing_rut" id="billing_rut" class="form-control" ng-model="ShippCtrl.Data.billing.rut" ng-blur="ShippCtrl.getPreviousData()">
                     </div>
                     <div class="col-md-8 form-group" ng-class="{ 'has-success': !myForm.billing_business.$invalid, 'has-error': myForm.billing_business.$invalid }">
-                        <label for="billing_business">Giro: <span ng-show="myForm.billing_business.$error.required" style="color: red">*</span></label>
+                        <label for="billing_business">Giro: <span ng-show="myForm.billing_business.$error.required" class="requerido">* Requerido</span></label>
                         <input type="text" name="billing_business" id="billing_business" class="form-control" ng-model="ShippCtrl.Data.billing.business" required>
 
                     </div>
@@ -41,39 +40,39 @@
 
                 <div class="row">
                     <div class="col-md-12 form-group" ng-class="{ 'has-success': !myForm.billing_name.$invalid, 'has-error': myForm.billing_name.$invalid }">
-                        <label for="billing_name">Razón Social: <span ng-show="myForm.billing_name.$error.required" style="color: red">*</span></label>
+                        <label for="billing_name">Razón Social: <span ng-show="myForm.billing_name.$error.required" class="requerido">* Requerido</span></label>
                         <input type="text" name="billing_name" id="billing_name" class="form-control" ng-model="ShippCtrl.Data.billing.name" required>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 form-group" ng-class="{ 'has-success': !myForm.billing_email.$invalid, 'has-error': myForm.billing_email.$invalid }">
-                        <label for="billing_email">Email: <span ng-show="myForm.billing_email.$invalid" style="color: red">*</span></label>
+                        <label for="billing_email">Email: <span ng-show="myForm.billing_email.$invalid" class="requerido">* Requerido</span></label>
                         <input type="email" name="billing_email" id="billing_email" class="form-control" ng-model="ShippCtrl.Data.billing.email" required>
                     </div>
                     <div class="col-md-6 form-group" ng-class="{ 'has-success': !myForm.billing_phone.$invalid, 'has-error': myForm.billing_phone.$invalid }">
-                        <label for="billing_phone">Teléfono: <span ng-show="myForm.billing_phone.$error.required" style="color: red">*</span></label>
+                        <label for="billing_phone">Teléfono: <span ng-show="myForm.billing_phone.$error.required" class="requerido">* Requerido</span></label>
                         <input type="text" name="billing_phone" id="billing_phone" class="form-control" ng-model="ShippCtrl.Data.billing.phone" required>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 form-group" ng-class="{ 'has-success': !myForm.billing_region.$invalid, 'has-error': myForm.billing_region.$invalid }">
-                        <label for="billing_region">Región: <span ng-show="myForm.billing_region.$error.required" style="color: red">*</span></label>
+                        <label for="billing_region">Región: <span ng-show="myForm.billing_region.$error.required" class="requerido">* Requerido</span></label>
                         <select id="billing_region" name="billing_region" ng-options="region as region.REGION_NOMBRE for region in ShippCtrl.billing.regiones" ng-change="ShippCtrl.setRegionBilling(ShippCtrl.Data.billing.region.REGION_ID)" class="form-control" ng-model="ShippCtrl.Data.billing.region" required>
                             <option value="">Seleccione</option>
                         </select>
                     </div>
 
                     <div class="col-md-4 form-group" ng-class="{ 'has-success': !myForm.billing_provincia.$invalid, 'has-error': myForm.billing_provincia.$invalid }">
-                        <label for="billing_provincia">Provincia: <span ng-show="myForm.billing_provincia.$error.required" style="color: red">*</span></label>
+                        <label for="billing_provincia">Provincia: <span ng-show="myForm.billing_provincia.$error.required" class="requerido">* Requerido</span></label>
                         <select id="billing_provincia" name="billing_provincia" ng-options="provincia as provincia.PROVINCIA_NOMBRE for provincia in ShippCtrl.billing.provincias" ng-change="ShippCtrl.setProvinciaBilling(ShippCtrl.Data.billing.provincia.PROVINCIA_ID)" class="form-control" ng-model="ShippCtrl.Data.billing.provincia" required>
                             <option value="">Seleccione</option>
                         </select>
                     </div>
 
                     <div class="col-md-4 form-group" ng-class="{ 'has-success': !myForm.billing_comuna.$invalid, 'has-error': myForm.billing_comuna.$invalid }">
-                        <label for="billing_comuna">Comuna: <span ng-show="myForm.billing_comuna.$error.required" style="color: red">*</span></label>
+                        <label for="billing_comuna">Comuna: <span ng-show="myForm.billing_comuna.$error.required" class="requerido">* Requerido</span></label>
                         <select id="billing_comuna" name="billing_comuna" ng-options="comuna as comuna.COMUNA_NOMBRE for comuna in ShippCtrl.billing.comunas" ng-change="ShippCtrl.setComunaBilling(ShippCtrl.Data.billing.comuna.COMUNA_ID)" class="form-control" ng-model="ShippCtrl.Data.billing.comuna" required>
                             <option value="">Seleccione</option>
                         </select>
@@ -82,12 +81,12 @@
 
                 <div class="row">
                     <div class="col-md-8 form-group" ng-class="{ 'has-success': !myForm.billing_address1.$invalid, 'has-error': myForm.billing_address1.$invalid }">
-                        <label for="billing_address1">Dirección: <span ng-show="myForm.billing_address1.$error.required" style="color: red">*</span></label>
+                        <label for="billing_address1">Dirección: <span ng-show="myForm.billing_address1.$error.required" class="requerido">* Requerido</span></label>
                         <input type="text" name="billing_address1" id="billing_address1" class="form-control" ng-model="ShippCtrl.Data.billing.address1" required>
                     </div>
                     <div class="col-md-4 form-group" ng-class="{ 'has-success': !myForm.billing_address2.$invalid, 'has-error': myForm.billing_address2.$invalid }">
-                        <label for="billing_address2">Block/Depto/Casa: <span ng-show="myForm.billing_address2.$error.required" style="color: red">*</span></label>
-                        <input type="text" name="billing_address2" id="billing_address2" class="form-control" ng-model="ShippCtrl.Data.billing.address2" required>
+                        <label for="billing_address2">Block/Depto/Casa: <span ng-show="myForm.billing_address2.$error.required" class="requerido">* Requerido</span></label>
+                        <input type="text" name="billing_address2" id="billing_address2" class="form-control" ng-model="ShippCtrl.Data.billing.address2">
                     </div>
                 </div>
 
@@ -108,47 +107,47 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4 form-group has-feedback" ng-class="{'has-success':myForm.shipping_rut.$error.rutValido,'has-error':!myForm.shipping_rut.$error.rutValido}">
-                        <label for="shipping_rut">RUT: <span ng-show="myForm.shipping_rut.$error.required" style="color: red">*</span></label>
-                        <input ng-rut type="text" name="shipping_rut" id="shipping_rut" class="form-control" ng-model="ShippCtrl.Data.shipping.rut" ng-disabled="sameAsBilling" required>
+                    <div class="col-md-4 form-group has-feedback" ng-class="{'has-success': !myForm.shipping_rut.$invalid,'has-error': myForm.shipping_rut.$invalid }">
+                        <label for="shipping_rut">RUT: <span ng-show="myForm.shipping_rut.$invalid" class="requerido">* Requerido</span></label>
+                        <input ng-rut type="text" name="shipping_rut" id="shipping_rut" class="form-control" ng-model="ShippCtrl.Data.shipping.rut" ng-disabled="sameAsBilling">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12 form-group" ng-class="{ 'has-success': !myForm.shipping_name.$invalid, 'has-error': myForm.shipping_name.$invalid }">
-                        <label for="shipping_name">Nombre Completo: <span ng-show="myForm.shipping_name.$error.required" style="color: red">*</span></label>
+                        <label for="shipping_name">Nombre Completo: <span ng-show="myForm.shipping_name.$error.required" class="requerido">* Requerido</span></label>
                         <input type="text" name="shipping_name" id="shipping_name" class="form-control" ng-model="ShippCtrl.Data.shipping.name" ng-disabled="sameAsBilling" required>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 form-group" ng-class="{ 'has-success': !myForm.shipping_email.$invalid, 'has-error': myForm.shipping_email.$invalid }">
-                        <label for="shipping_email">Email: <span ng-show="myForm.shipping_email.$invalid" style="color: red">*</span></label>
+                        <label for="shipping_email">Email: <span ng-show="myForm.shipping_email.$invalid" class="requerido">* Requerido</span></label>
                         <input type="email" name="shipping_email" id="shipping_email" class="form-control" ng-model="ShippCtrl.Data.shipping.email" ng-disabled="sameAsBilling" required>
                     </div>
                     <div class="col-md-6 form-group" ng-class="{ 'has-success': !myForm.shipping_phone.$invalid, 'has-error': myForm.shipping_phone.$invalid }">
-                        <label for="shipping_phone">Teléfono: <span ng-show="myForm.shipping_phone.$error.required" style="color: red">*</span></label>
+                        <label for="shipping_phone">Teléfono: <span ng-show="myForm.shipping_phone.$error.required" class="requerido">* Requerido</span></label>
                         <input type="text" name="shipping_phone" id="shipping_phone" class="form-control" ng-model="ShippCtrl.Data.shipping.phone" ng-disabled="sameAsBilling" required>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 form-group" ng-class="{ 'has-success': !myForm.shipping_region.$invalid, 'has-error': myForm.shipping_region.$invalid }">
-                        <label for="shipping_region">Región: <span ng-show="myForm.shipping_region.$error.required" style="color: red">*</span></label>
+                        <label for="shipping_region">Región: <span ng-show="myForm.shipping_region.$error.required" class="requerido">* Requerido</span></label>
                         <select id="shipping_region" name="shipping_region" ng-options="region as region.REGION_NOMBRE for region in ShippCtrl.shipping.regiones" ng-change="ShippCtrl.setRegionShipping(ShippCtrl.Data.shipping.region.REGION_ID)" class="form-control" ng-model="ShippCtrl.Data.shipping.region" ng-disabled="sameAsBilling" required>
                             <option value="">Seleccione</option>
                         </select>
                     </div>
 
                     <div class="col-md-4 form-group" ng-class="{ 'has-success': !myForm.shipping_provincia.$invalid, 'has-error': myForm.shipping_provincia.$invalid }">
-                        <label for="shipping_provincia">Provincia: <span ng-show="myForm.shipping_provincia.$error.required" style="color: red">*</span></label>
+                        <label for="shipping_provincia">Provincia: <span ng-show="myForm.shipping_provincia.$error.required" class="requerido">* Requerido</span></label>
                         <select id="shipping_provincia" name="shipping_provincia" ng-options="provincia as provincia.PROVINCIA_NOMBRE for provincia in ShippCtrl.shipping.provincias" ng-change="ShippCtrl.setProvinciaShipping(ShippCtrl.Data.shipping.provincia.PROVINCIA_ID)" class="form-control" ng-model="ShippCtrl.Data.shipping.provincia" ng-disabled="sameAsBilling" required>
                             <option value="">Seleccione</option>
                         </select>
                     </div>
 
                     <div class="col-md-4 form-group" ng-class="{ 'has-success': !myForm.shipping_comuna.$invalid, 'has-error': myForm.shipping_comuna.$invalid }">
-                        <label for="shipping_comuna">Comuna: <span ng-show="myForm.shipping_comuna.$error.required" style="color: red">*</span></label>
+                        <label for="shipping_comuna">Comuna: <span ng-show="myForm.shipping_comuna.$error.required" class="requerido">* Requerido</span></label>
                         <select id="shipping_comuna" name="shipping_comuna" ng-options="comuna as comuna.COMUNA_NOMBRE for comuna in ShippCtrl.shipping.comunas" ng-change="ShippCtrl.setComunaShipping(ShippCtrl.Data.shipping.comuna.COMUNA_ID)" class="form-control" ng-model="ShippCtrl.Data.shipping.comuna" ng-disabled="sameAsBilling" required>
                             <option value="">Seleccione</option>
                         </select>
@@ -157,12 +156,12 @@
 
                 <div class="row">
                     <div class="col-md-8 form-group" ng-class="{ 'has-success': !myForm.shipping_address1.$invalid, 'has-error': myForm.shipping_address1.$invalid }">
-                        <label for="shipping_address1">Dirección: <span ng-show="myForm.shipping_address1.$error.required" style="color: red">*</span></label>
+                        <label for="shipping_address1">Dirección: <span ng-show="myForm.shipping_address1.$error.required" class="requerido">* Requerido</span></label>
                         <input type="text" name="shipping_address1" id="shipping_address1" class="form-control" ng-model="ShippCtrl.Data.shipping.address1" ng-disabled="sameAsBilling" required>
                     </div>
                     <div class="col-md-4 form-group" ng-class="{ 'has-success': !myForm.shipping_address2.$invalid, 'has-error': myForm.shipping_address2.$invalid }">
-                        <label for="shipping_address2">Block/Depto/Casa: <span ng-show="myForm.shipping_address2.$error.required" style="color: red">*</span></label>
-                        <input type="text" name="shipping_address2" id="shipping_address2" class="form-control" ng-model="ShippCtrl.Data.shipping.address2" ng-disabled="sameAsBilling" required>
+                        <label for="shipping_address2">Block/Depto/Casa: <span ng-show="myForm.shipping_address2.$error.required" class="requerido">* Requerido</span></label>
+                        <input type="text" name="shipping_address2" id="shipping_address2" class="form-control" ng-model="ShippCtrl.Data.shipping.address2" ng-disabled="sameAsBilling">
                     </div>
                 </div>
 
@@ -170,9 +169,11 @@
             </div>
             </form>
             <div class="panel-footer text-right">
+
                 <a href="#/cart" class="btn btn-success">Atrás</a>
-                <a href="#/summary" class="btn btn-success" ng-click="ShippCtrl.processShipping()">Siguiente</a>
+                <button class="btn btn-success" ng-disabled="myForm.$invalid"  ng-click="ShippCtrl.processShipping()">Siguiente</button>
             </div>
+
         </div>
 
     </div>

@@ -43,15 +43,12 @@ storeControllers.controller('CategoryCtrl', ['$scope', '$routeParams', '$http', 
 
 }]);
 
-storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', 'Data', function($scope, $routeParams, $http,$filter, ngCart, Data){
+storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', 'Data', '$location', function($scope, $routeParams, $http,$filter, ngCart, Data, $location){
 
     var store = this;
 
     Data.shippingT1 = 0;
     Data.shippingT2 = 0;
-
-    // Data.shipping = [];
-    // Data.billing = [];
 
     store.shipping = [];
     $scope.shipping = [];
@@ -163,18 +160,31 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
             Data.billing.email = data.billing_email;
             Data.billing.phone = data.billing_phone;
 
-            // Data.billing.region = Data.billing.region;
             $scope.billing.currentRegion.id = data.billing_region;
+            angular.forEach(store.billing.regiones, function(value, key) {
+                if(data.billing_region == value.REGION_ID)
+                    Data.billing.region = value;
+            });
 
-            //setRegionBilling(data.billing_region);
-            //
-            // store.billing.provincias = store.billing.provincias;
-            // Data.billing.provincia = Data.billing.provincia;
-            // $scope.billing.currentProvincia.id = Data.billing.provincia.PROVINCIA_ID;
-            //
-            // store.billing.comunas = store.billing.comunas;
-            // Data.billing.comuna = Data.billing.comuna;
-            // $scope.billing.currentComuna.id = Data.billing.comuna.COMUNA_ID;
+            $http.get('shopping/index.php/provincia/'+data.billing_region).success(function(provincias)
+            {
+                store.billing.provincias = provincias;
+                $scope.billing.currentProvincia.id = data.billing_provincia;
+                angular.forEach(store.billing.provincias, function(value, key) {
+                    if(data.billing_provincia == value.PROVINCIA_ID)
+                        Data.billing.provincia = value;
+                });
+            });
+
+            $http.get('shopping/index.php/comuna/'+data.billing_provincia).success(function(comunas)
+            {
+                store.billing.comunas = comunas;
+                $scope.billing.currentComuna.id = data.billing_comuna;
+                angular.forEach(store.billing.comunas, function(value, key) {
+                    if(data.billing_comuna == value.COMUNA_ID)
+                        Data.billing.comuna = value;
+                });
+            });
 
             Data.billing.address1 = data.billing_address1;
             Data.billing.address2 = data.billing_address2;
@@ -184,16 +194,31 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
             Data.shipping.email = data.shipping_email;
             Data.shipping.phone = data.shipping_phone;
 
-            // Data.shipping.region = Data.billing.region;
-            // $scope.shipping.currentRegion.id = Data.shipping.region.REGION_ID;
-            //
-            // store.shipping.provincias = store.billing.provincias;
-            // Data.shipping.provincia = Data.billing.provincia;
-            // $scope.billing.currentProvincia.id = Data.shipping.provincia.PROVINCIA_ID;
-            //
-            // store.shipping.comunas = store.billing.comunas;
-            // Data.shipping.comuna = Data.billing.comuna;
-            // $scope.shipping.currentComuna.id = Data.shipping.comuna.COMUNA_ID;
+            $scope.shipping.currentRegion.id = data.shipping_region;
+            angular.forEach(store.shipping.regiones, function(value, key) {
+                if(data.shipping_region == value.REGION_ID)
+                    Data.shipping.region = value;
+            });
+
+            $http.get('shopping/index.php/provincia/'+data.shipping_region).success(function(provincias)
+            {
+                store.shipping.provincias = provincias;
+                $scope.shipping.currentProvincia.id = data.shipping_provincia;
+                angular.forEach(store.shipping.provincias, function(value, key) {
+                    if(data.shipping_provincia == value.PROVINCIA_ID)
+                        Data.shipping.provincia = value;
+                });
+            });
+
+            $http.get('shopping/index.php/comuna/'+data.shipping_provincia).success(function(comunas)
+            {
+                store.shipping.comunas = comunas;
+                $scope.shipping.currentComuna.id = data.shipping_comuna;
+                angular.forEach(store.shipping.comunas, function(value, key) {
+                    if(data.shipping_comuna == value.COMUNA_ID)
+                        Data.shipping.comuna = value;
+                });
+            });
 
             Data.shipping.address1 = data.shipping_address1;
             Data.shipping.address2 = data.shipping_address2;
@@ -221,9 +246,11 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
 
     this.processShipping = function () {
 
-        store.calcChilexpressCost();
 
+        store.calcChilexpressCost();
         store.saveUserData();
+
+        $location.path('summary');
 
     }
 
@@ -235,15 +262,15 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         Data.shipping.phone = Data.billing.phone;
 
         Data.shipping.region = Data.billing.region;
-        $scope.shipping.currentRegion.id = Data.shipping.region.REGION_ID;
+        $scope.shipping.currentRegion.id = Data.billing.region.REGION_ID;
 
         store.shipping.provincias = store.billing.provincias;
         Data.shipping.provincia = Data.billing.provincia;
-        $scope.billing.currentProvincia.id = Data.shipping.provincia.PROVINCIA_ID;
+        $scope.shipping.currentProvincia.id = Data.billing.provincia.PROVINCIA_ID;
 
         store.shipping.comunas = store.billing.comunas;
         Data.shipping.comuna = Data.billing.comuna;
-        $scope.shipping.currentComuna.id = Data.shipping.comuna.COMUNA_ID;
+        $scope.shipping.currentComuna.id = Data.billing.comuna.COMUNA_ID;
 
         Data.shipping.address1 = Data.billing.address1;
         Data.shipping.address2 = Data.billing.address2;
@@ -252,6 +279,18 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
 
 
     store.Data = Data;
+
+}]);
+
+storeControllers.controller('CheckOutCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', 'Data', '$location', function($scope, $routeParams, $http,$filter, ngCart, Data, $location){
+
+    var store = this;
+
+    store.ngCart = ngCart;
+    ngCart.setShipping(0);
+    store.ngCart.empty();
+    Data.billing = [];
+    Data.shipping = [];
 
 }]);
 

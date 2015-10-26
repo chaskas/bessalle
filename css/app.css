@@ -101,3 +101,8 @@ a.social {width: 32px; height: 32px; display: block; margin-right:5px; float: le
     width: 40px;
     text-align: right;
 }
+
+.requerido {
+    color: red;
+    font-size: 7pt;
+}

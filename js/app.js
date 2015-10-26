@@ -52,6 +52,10 @@
               templateUrl: 'partials/summary.html',
               controller: 'ShippingCtrl'
             }).
+            when('/checkout', {
+              templateUrl: 'partials/checkout.html',
+              controller: 'CheckOutCtrl'
+            }).
             otherwise({
               redirectTo: '/home'
             });
@@ -69,8 +73,8 @@ angular.module('ng-rut', [])
                     validaRut : function (rutCompleto) {
                         if (!/^[0-9]+-[0-9kK]{1}$/.test( rutCompleto )) return false;
                         var tmp = rutCompleto.split('-');
-
-                        return (Fn.dv(tmp[0])) == tmp[1].toLowerCase();
+                        if ( tmp[1] == 'K' ) tmp[1] = 'k';
+                        return (Fn.dv(tmp[0])) == tmp[1];
                     },
                     dv : function(T){
                         var M=0,S=1;
@@ -82,14 +86,10 @@ angular.module('ng-rut', [])
                 scope.$watch(attr.ngModel, function(value) {
                     if (value=='') return;
 
-                    if (!Fn.validaRut(value)) {
-                        ctrl.$rutValido=false;
-                        ctrl.$setValidity('rutValido',true);
-
-                    } else  ctrl.$setValidity('rutValido',false);
+                    if (!Fn.validaRut(value))
+                        ctrl.$setValidity('rut', false);
+                    else ctrl.$setValidity('rut', true);
                 });
-
-
             }
         }
     });
