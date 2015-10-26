@@ -103,6 +103,20 @@
                                 </div>
                             </div>
 
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title">Stock</div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="stock">Cantidad</label>
+                                            <input type="text" class="form-control" id="stock" name="stock" value="<?php echo set_value('stock'); ?>">
+                                            <span class="error"><?php echo form_error('stock'); ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                     </div>

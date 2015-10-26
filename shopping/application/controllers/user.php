@@ -21,10 +21,7 @@ class User extends CI_Controller
 
         $user = json_decode(file_get_contents('php://input'));
 
-        //echo $data->billing->rut;
-
         $this->user_model->add_user($user);
-
 
     }
 }

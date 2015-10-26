@@ -25,6 +25,7 @@ class Product_model extends CI_Model {
             product.image,
             product.unit,
             product.minimun,
+            product.stock,
             category.name as category_name');
 
         $this->db->from('product');
@@ -66,7 +67,8 @@ class Product_model extends CI_Model {
             'width' => $this->input->post('width'),
             'height' => $this->input->post('height'),
             'weight' => $this->input->post('weight'),
-            'minimun' => $this->input->post('minimun')
+            'minimun' => $this->input->post('minimun'),
+            'stock' => $this->input->post('stock')
         );
 
         return $this->db->insert('product', $data);

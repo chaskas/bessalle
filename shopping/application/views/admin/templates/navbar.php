@@ -21,10 +21,11 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transportes <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">ETC1</a></li>
-              <li><a href="#">ETC1</a></li>
+              <li><a href="#">Chilexpress</a></li>
+              <li><a href="#">Memphis</a></li>
             </ul>
           </li>
+          <li><a href="<?php echo site_url('admin/users') ?>">Usuarios</a></li>
         </ul>
         <p class="navbar-text navbar-right"><a href="<?php echo site_url('admin/logout'); ?>" class="navbar-link">Salir</a></p>
       </div>

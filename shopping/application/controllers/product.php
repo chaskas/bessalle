@@ -16,12 +16,6 @@ class Product extends CI_Controller {
 
                 echo json_encode( $data['products'] );
 
-                // $data['title'] = 'Productos';
-
-                // $this->load->view('templates/header', $data);
-                // $this->load->view('product/index', $data);
-                // $this->load->view('templates/footer');
-
         }
 
 }

@@ -14,6 +14,7 @@ class Admin extends CI_Controller {
 
             $this->load->model('category_model');
             $this->load->model('product_model');
+            $this->load->model('user_model');
         }
         else
         {
@@ -262,6 +263,117 @@ class Admin extends CI_Controller {
         $this->load->view('admin/templates/navbar');
         $this->load->view('admin/product_edit', $data);
         $this->load->view('admin/templates/footer');
+    }
+
+    public function users(){
+
+        $data['users'] = $this->user_model->get_users();
+
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/navbar');
+        $this->load->view('admin/users', $data);
+        $this->load->view('admin/templates/footer');
+
+    }
+
+    public function user_new()
+    {
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $data['title'] = 'Nuevo Usuario';
+
+        $this->form_validation->set_rules('billing_rut', 'RUT', 'required');
+        $this->form_validation->set_rules('billing_business', 'Razón Social', 'required');
+        $this->form_validation->set_rules('billing_name', 'Nombre', 'required');
+        $this->form_validation->set_rules('billing_email', 'Email', 'required');
+        $this->form_validation->set_rules('billing_phone', 'Fono', 'required');
+        $this->form_validation->set_rules('billing_region', 'Región', 'required');
+        $this->form_validation->set_rules('billing_provincia', 'Provincia', 'required');
+        $this->form_validation->set_rules('billing_comuna', 'Comuna', 'required');
+        $this->form_validation->set_rules('billing_address1', 'Dirección', 'required');
+        $this->form_validation->set_rules('billing_address2', 'Block / Depto / Casa');
+
+        $this->form_validation->set_rules('shipping_rut', 'RUT', 'required');
+        $this->form_validation->set_rules('shipping_name', 'Nombre', 'required');
+        $this->form_validation->set_rules('shipping_email', 'Email', 'required');
+        $this->form_validation->set_rules('shipping_phone', 'Fono', 'required');
+        $this->form_validation->set_rules('shipping_region', 'Región', 'required');
+        $this->form_validation->set_rules('shipping_provincia', 'Provincia', 'required');
+        $this->form_validation->set_rules('shipping_comuna', 'Comuna', 'required');
+        $this->form_validation->set_rules('shipping_address1', 'Dirección', 'required');
+        $this->form_validation->set_rules('shipping_address2', 'Block / Depto / Casa');
+
+        $this->form_validation->set_message('required', 'Obligatorio');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('admin/templates/header');
+            $this->load->view('admin/templates/navbar');
+            $this->load->view('admin/user_new', $data);
+            $this->load->view('admin/templates/footer');
+
+        }
+        else
+        {
+            $this->user_model->create();
+            redirect('admin/users', 'refresh');
+        }
+    }
+
+    public function user_edit($user_id){
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $data['title'] = 'Editar Usuario';
+
+        $user = $this->user_model->get_user_by_id($user_id);
+
+        $data['user'] = $user;
+
+        $this->form_validation->set_rules('billing_rut', 'RUT', 'required');
+        $this->form_validation->set_rules('billing_business', 'Razón Social', 'required');
+        $this->form_validation->set_rules('billing_name', 'Nombre', 'required');
+        $this->form_validation->set_rules('billing_email', 'Email', 'required');
+        $this->form_validation->set_rules('billing_phone', 'Fono', 'required');
+        $this->form_validation->set_rules('billing_region', 'Región', 'required');
+        $this->form_validation->set_rules('billing_provincia', 'Provincia', 'required');
+        $this->form_validation->set_rules('billing_comuna', 'Comuna', 'required');
+        $this->form_validation->set_rules('billing_address1', 'Dirección', 'required');
+        $this->form_validation->set_rules('billing_address2', 'Block / Depto / Casa');
+
+        $this->form_validation->set_rules('shipping_rut', 'RUT', 'required');
+        $this->form_validation->set_rules('shipping_name', 'Nombre', 'required');
+        $this->form_validation->set_rules('shipping_email', 'Email', 'required');
+        $this->form_validation->set_rules('shipping_phone', 'Fono', 'required');
+        $this->form_validation->set_rules('shipping_region', 'Región', 'required');
+        $this->form_validation->set_rules('shipping_provincia', 'Provincia', 'required');
+        $this->form_validation->set_rules('shipping_comuna', 'Comuna', 'required');
+        $this->form_validation->set_rules('shipping_address1', 'Dirección', 'required');
+        $this->form_validation->set_rules('shipping_address2', 'Block / Depto / Casa');
+
+        $this->form_validation->set_message('required', 'Obligatorio');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('admin/templates/header');
+            $this->load->view('admin/templates/navbar');
+            $this->load->view('admin/user_edit', $data);
+            $this->load->view('admin/templates/footer');
+
+        }
+        else
+        {
+            $this->user_model->edit($user_id);
+            redirect('admin/users', 'refresh');
+        }
+    }
+
+    public function user_delete($user_id){
+        $this->user_model->delete($user_id);
+        redirect('admin/users', 'refresh');
     }
 
     public function logout()

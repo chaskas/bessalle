@@ -69,6 +69,11 @@ $route['admin/pre_upload/(:num)'] = 'admin/pre_upload/$1';
 $route['admin/upload/(:num)'] = 'admin/upload/$1';
 $route['admin/post_upload/(:num)'] = 'admin/post_upload/$1';
 
+$route['admin/users'] = 'admin/users';
+$route['admin/user/new'] = 'admin/user_new';
+$route['admin/user/edit/(:num)'] = 'admin/user_edit/$1';
+$route['admin/user/delete/(:num)'] = 'admin/user_delete/$1';
+
 $route['admin'] = 'admin/categories';
 
 // Defaults
