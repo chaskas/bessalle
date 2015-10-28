@@ -50,6 +50,8 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
     Data.shippingT1 = 0;
     Data.shippingT2 = 0;
 
+    Data.carrier = 0;
+
     store.shipping = [];
     $scope.shipping = [];
 
@@ -122,28 +124,40 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
     this.setShipping = function(type) {
 
         if(type === 0) {
+            Data.carrier = 0;
             ngCart.setShipping(Data.shippingT1);
         } else if (type === 1) {
+            Data.carrier = 1;
             ngCart.setShipping(Data.shippingT2);
         }
     }
 
-    this.calcChilexpressCost = function(){
-        $scope.shipping.currentComuna.id;
+    this.calcShippingCost = function(){
 
+        $scope.shipping.currentComuna.id;
         $scope.shipping.shippingT1 = 0;
+        $scope.shipping.shippingT2 = 0;
 
         angular.forEach(ngCart.getCart().items, function(value, key){
-
             costo = 0;
-            $http.get('shopping/index.php/getShippCost/'+$scope.shipping.currentComuna.id+'/'+value.getId()).success(function(data)
+            $http.get('shopping/index.php/getShippCost/'+$scope.shipping.currentComuna.id+'/'+value.getId()+'/1').success(function(data)
+            {
+                costo = data['costo'] * value.getQuantity();
+                Data.shippingT2 = Data.shippingT2 + costo;
+                ngCart.setShipping(Data.shippingT2);
+            });
+        });
+
+        angular.forEach(ngCart.getCart().items, function(value, key){
+            costo = 0;
+            $http.get('shopping/index.php/getShippCost/'+$scope.shipping.currentComuna.id+'/'+value.getId()+'/0').success(function(data)
             {
                 costo = data['costo'] * value.getQuantity();
                 Data.shippingT1 = Data.shippingT1 + costo;
                 ngCart.setShipping(Data.shippingT1);
             });
-
         });
+
     }
 
     this.getPreviousData = function () {
@@ -247,7 +261,7 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
     this.processShipping = function () {
 
 
-        store.calcChilexpressCost();
+        store.calcShippingCost();
         store.saveUserData();
 
         $location.path('summary');
@@ -286,11 +300,30 @@ storeControllers.controller('CheckOutCtrl',['$scope', '$routeParams', '$http', '
 
     var store = this;
 
-    store.ngCart = ngCart;
-    ngCart.setShipping(0);
-    store.ngCart.empty();
-    Data.billing = [];
-    Data.shipping = [];
+    $http({
+
+        method: 'POST',
+        url: 'shopping/index.php/checkout/process',
+        data: JSON.stringify({ 'user_rut': Data.billing.rut, 'cart': ngCart.getCart(), 'carrier': Data.carrier }),
+        headers: { 'Content-Type': 'application/json' }
+
+    }).success(function(data) {
+
+        store.ngCart = ngCart;
+        ngCart.setShipping(0);
+        store.ngCart.empty();
+        Data.billing = [];
+        Data.shipping = [];
+
+        $location.path('success');
+
+    });
+
+}]);
+
+storeControllers.controller('SuccessCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', 'Data', '$location', function($scope, $routeParams, $http,$filter, ngCart, Data, $location){
+
+
 
 }]);
 

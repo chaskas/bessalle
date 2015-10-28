@@ -53,6 +53,22 @@ class Product_model extends CI_Model {
 
     }
 
+    public function get_final_price_by_id($id){
+
+        $this->db->select('price, minimun');
+
+        $this->db->where('id', $id);
+
+        $query = $this->db->get('product');
+
+        if ($query->num_rows() > 0)
+        {
+            $row = $query->row();
+            return $row->price * $row->minimun;
+        }
+
+    }
+
     public function create()
     {
         $this->load->helper('url');

@@ -56,6 +56,10 @@
               templateUrl: 'partials/checkout.html',
               controller: 'CheckOutCtrl'
             }).
+            when('/success', {
+              templateUrl: 'partials/success.html',
+              controller: 'SuccessCtrl'
+            }).
             otherwise({
               redirectTo: '/home'
             });
