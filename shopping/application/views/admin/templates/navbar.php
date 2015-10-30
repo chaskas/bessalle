@@ -26,6 +26,7 @@
             </ul>
           </li>
           <li><a href="<?php echo site_url('admin/users') ?>">Usuarios</a></li>
+          <li><a href="<?php echo site_url('admin/orders') ?>">Órdenes</a></li>
         </ul>
         <p class="navbar-text navbar-right"><a href="<?php echo site_url('admin/logout'); ?>" class="navbar-link">Salir</a></p>
       </div>

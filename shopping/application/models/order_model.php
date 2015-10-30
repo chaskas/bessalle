@@ -72,13 +72,16 @@ class Order_model extends CI_Model {
     public function get_orders(){
 
         $this->db->select('
-            user.id,
-            user.billing_rut,
-            user.billing_name,
-            user.billing_email,
-            user.billing_phone');
+            order.id,
+            order.code,
+            order.user_id,
+            order.total,
+            order.carrier,
+            user.billing_rut as rut,
+            user.billing_name as name');
 
         $this->db->from('order');
+        $this->db->join('user', 'user.id = order.user_id');
 
         $query = $this->db->get();
 

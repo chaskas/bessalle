@@ -75,6 +75,8 @@ $route['admin/user/new'] = 'admin/user_new';
 $route['admin/user/edit/(:num)'] = 'admin/user_edit/$1';
 $route['admin/user/delete/(:num)'] = 'admin/user_delete/$1';
 
+$route['admin/orders'] = 'admin/orders';
+
 $route['admin'] = 'admin/categories';
 
 // Defaults

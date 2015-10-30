@@ -15,6 +15,7 @@ class Admin extends CI_Controller {
             $this->load->model('category_model');
             $this->load->model('product_model');
             $this->load->model('user_model');
+            $this->load->model('order_model');
         }
         else
         {
@@ -374,6 +375,18 @@ class Admin extends CI_Controller {
     public function user_delete($user_id){
         $this->user_model->delete($user_id);
         redirect('admin/users', 'refresh');
+    }
+
+    public function orders()
+    {
+
+        $data['orders'] = $this->order_model->get_orders();
+
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/navbar');
+        $this->load->view('admin/orders', $data);
+        $this->load->view('admin/templates/footer');
+
     }
 
     public function logout()
