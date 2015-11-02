@@ -42,7 +42,35 @@ class Checkout extends CI_Controller {
 
             $total = round($products_cost + $iva + $shipping_cost);
 
-            $this->order_model->create($user->id, $code, $cart->items, $total, $carrier);
+            $this->order_model->create(
+                $user->id,
+                $code,
+                $cart->items,
+                $products_cost,
+                $iva,
+                $shipping_cost,
+                $total,
+                $carrier,
+                $user->billing_rut,
+                $user->billing_business,
+                $user->billing_name,
+                $user->billing_email,
+                $user->billing_phone,
+                $user->billing_region,
+                $user->billing_provincia,
+                $user->billing_comuna,
+                $user->billing_address1,
+                $user->billing_address2,
+                $user->shipping_rut,
+                $user->shipping_name,
+                $user->shipping_email,
+                $user->shipping_phone,
+                $user->shipping_region,
+                $user->shipping_provincia,
+                $user->shipping_comuna,
+                $user->shipping_address1,
+                $user->shipping_address2
+            );
 
         }
 

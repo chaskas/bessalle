@@ -5,17 +5,43 @@ class Order_model extends CI_Model {
     public function __construct()
     {
         $this->load->database();
+        $this->load->model('product_model');
     }
 
-    public function create($user_id, $code, $items, $total, $carrier)
+    public function create( $user_id, $code, $items, $neto, $iva, $shipping_cost, $total, $carrier, $billing_rut, $billing_business, $billing_name, $billing_email, $billing_phone, $billing_region, $billing_provincia, $billing_comuna, $billing_address1, $billing_address2, $shipping_rut, $shipping_name, $shipping_email, $shipping_phone, $shipping_region, $shipping_provincia, $shipping_comuna, $shipping_address1, $shipping_address2 )
     {
         $this->load->helper('url');
+
+        $date = date("Y-m-d H:i:s");
 
         $data = array(
             'code' => $code,
             'user_id' => $user_id,
+            'neto' => $neto,
+            'iva' => $iva,
+            'shipping_cost' => $shipping_cost,
             'total' => $total,
-            'carrier' => $carrier
+            'carrier' => $carrier,
+            'billing_rut' => $billing_rut,
+            'billing_business' => $billing_business,
+            'billing_name' => $billing_name,
+            'billing_email' => $billing_email,
+            'billing_phone' => $billing_phone,
+            'billing_region' => $billing_region,
+            'billing_provincia' => $billing_provincia,
+            'billing_comuna' => $billing_comuna,
+            'billing_address1' => $billing_address1,
+            'billing_address2' => $billing_address2,
+            'shipping_rut' => $shipping_rut,
+            'shipping_name' => $shipping_name,
+            'shipping_email' => $shipping_email,
+            'shipping_phone' => $shipping_phone,
+            'shipping_region' => $shipping_region,
+            'shipping_provincia' => $shipping_provincia,
+            'shipping_comuna' => $shipping_comuna,
+            'shipping_address1' => $shipping_address1,
+            'shipping_address2' => $shipping_address2,
+            'date' => $date
         );
 
         $this->db->insert('order', $data);
@@ -23,44 +49,18 @@ class Order_model extends CI_Model {
         $order_id = $this->db->insert_id();
 
         foreach ($items as $item) {
+
+            $item_price = $this->product_model->get_final_price_by_id($item->_id);
+
             $data = array(
                 'order_id' => $order_id,
                 'product_id' => $item->_id,
+                'price' => $item_price,
                 'quantity' => $item->_quantity
             );
             $this->db->insert('order_product', $data);
         }
 
-    }
-
-    public function edit($order_id) {
-
-        $this->load->helper('url');
-
-        // $data = array(
-        //     'billing_rut' => $this->input->post('billing_rut'),
-        //     'billing_business' => $this->input->post('billing_business'),
-        //     'billing_name' => $this->input->post('billing_name'),
-        //     'billing_email' => $this->input->post('billing_email'),
-        //     'billing_phone' => $this->input->post('billing_phone'),
-        //     'billing_region' => $this->input->post('billing_region'),
-        //     'billing_provincia' => $this->input->post('billing_provincia'),
-        //     'billing_comuna' => $this->input->post('billing_comuna'),
-        //     'billing_address1' => $this->input->post('billing_address1'),
-        //     'billing_address2' => $this->input->post('billing_address2'),
-        //     'shipping_rut' => $this->input->post('shipping_rut'),
-        //     'shipping_name' => $this->input->post('shipping_name'),
-        //     'shipping_email' => $this->input->post('shipping_email'),
-        //     'shipping_phone' => $this->input->post('shipping_phone'),
-        //     'shipping_region' => $this->input->post('shipping_region'),
-        //     'shipping_provincia' => $this->input->post('shipping_provincia'),
-        //     'shipping_comuna' => $this->input->post('shipping_comuna'),
-        //     'shipping_address1' => $this->input->post('shipping_address1'),
-        //     'shipping_address2' => $this->input->post('shipping_address2')
-        // );
-
-        $this->db->where('id', $order_id);
-        $this->db->update('order', $data);
     }
 
     public function delete($order_id){
@@ -73,12 +73,16 @@ class Order_model extends CI_Model {
 
         $this->db->select('
             order.id,
+            order.date,
             order.code,
             order.user_id,
-            order.total,
+            order.neto,
+            order.iva,
             order.carrier,
             user.billing_rut as rut,
             user.billing_name as name');
+
+        $this->db->order_by('order.date','DESC');
 
         $this->db->from('order');
         $this->db->join('user', 'user.id = order.user_id');
@@ -88,6 +92,38 @@ class Order_model extends CI_Model {
         if($query->num_rows() > 0) {
             return $query->result();
         } else return array();
+
+    }
+
+    public function get_order_by_id($order_id){
+
+        $this->db->where('order.id', $order_id);
+
+        $query = $this->db->get('order');
+
+        if ($query->num_rows() > 0)
+        {
+            return $row = $query->row();
+        }
+
+    }
+
+    public function get_order_products_by_order_id($order_id){
+
+        $this->db->select('
+            order_product.quantity,
+            order_product.price,
+            product.name');
+
+        $this->db->where('order_product.order_id', $order_id);
+        $this->db->join('product', 'product.id = order_product.product_id');
+
+        $query = $this->db->get('order_product');
+
+        if ($query->num_rows() > 0)
+        {
+            return $query->result();
+        }
 
     }
 

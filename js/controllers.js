@@ -43,7 +43,7 @@ storeControllers.controller('CategoryCtrl', ['$scope', '$routeParams', '$http', 
 
 }]);
 
-storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', 'Data', '$location', function($scope, $routeParams, $http,$filter, ngCart, Data, $location){
+storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', 'Data', '$location', '$timeout', function($scope, $routeParams, $http,$filter, ngCart, Data, $location, $timeout){
 
     var store = this;
 
@@ -138,6 +138,8 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         $scope.shipping.shippingT1 = 0;
         $scope.shipping.shippingT2 = 0;
 
+        Data.carrier = 0;
+
         angular.forEach(ngCart.getCart().items, function(value, key){
             costo = 0;
             $http.get('shopping/index.php/getShippCost/'+$scope.shipping.currentComuna.id+'/'+value.getId()+'/1').success(function(data)
@@ -148,15 +150,19 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
             });
         });
 
-        angular.forEach(ngCart.getCart().items, function(value, key){
-            costo = 0;
-            $http.get('shopping/index.php/getShippCost/'+$scope.shipping.currentComuna.id+'/'+value.getId()+'/0').success(function(data)
-            {
-                costo = data['costo'] * value.getQuantity();
-                Data.shippingT1 = Data.shippingT1 + costo;
-                ngCart.setShipping(Data.shippingT1);
+        $timeout(function(){
+            angular.forEach(ngCart.getCart().items, function(value, key){
+                costo = 0;
+                $http.get('shopping/index.php/getShippCost/'+$scope.shipping.currentComuna.id+'/'+value.getId()+'/0').success(function(data)
+                {
+                    costo = data['costo'] * value.getQuantity();
+                    Data.shippingT1 = Data.shippingT1 + costo;
+                    ngCart.setShipping(Data.shippingT1);
+                });
             });
-        });
+        },1000);
+
+
 
     }
 

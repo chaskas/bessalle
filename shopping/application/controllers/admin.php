@@ -16,6 +16,9 @@ class Admin extends CI_Controller {
             $this->load->model('product_model');
             $this->load->model('user_model');
             $this->load->model('order_model');
+            $this->load->model('comuna_model');
+            $this->load->model('provincia_model');
+            $this->load->model('region_model');
         }
         else
         {
@@ -385,6 +388,29 @@ class Admin extends CI_Controller {
         $this->load->view('admin/templates/header');
         $this->load->view('admin/templates/navbar');
         $this->load->view('admin/orders', $data);
+        $this->load->view('admin/templates/footer');
+
+    }
+
+    public function order_show($order_id)
+    {
+
+        $data['order'] = $this->order_model->get_order_by_id($order_id);
+
+        $data['billing_comuna'] = $this->comuna_model->get_comuna_by_id($data['order']->billing_comuna)['COMUNA_NOMBRE'];
+        $data['shipping_comuna'] = $this->comuna_model->get_comuna_by_id($data['order']->shipping_comuna)['COMUNA_NOMBRE'];
+
+        $data['billing_provincia'] = $this->provincia_model->get_provincia_by_id($data['order']->billing_provincia)['PROVINCIA_NOMBRE'];
+        $data['shipping_provincia'] = $this->provincia_model->get_provincia_by_id($data['order']->shipping_provincia)['PROVINCIA_NOMBRE'];
+
+        $data['billing_region'] = $this->region_model->get_region_by_id($data['order']->billing_region)['REGION_NOMBRE'];
+        $data['shipping_region'] = $this->region_model->get_region_by_id($data['order']->shipping_region)['REGION_NOMBRE'];
+
+        $data['products'] = $this->order_model->get_order_products_by_order_id($order_id);
+
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/navbar');
+        $this->load->view('admin/order_show', $data);
         $this->load->view('admin/templates/footer');
 
     }
