@@ -50,6 +50,8 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
     Data.shippingT1 = 0;
     Data.shippingT2 = 0;
 
+    Data.paymentType = 0;
+
     Data.carrier = 0;
 
     store.shipping = [];
@@ -296,7 +298,24 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         Data.shipping.address2 = Data.billing.address2;
     }
 
+    this.isCartEmpty = function () {
+        return ngCart.getTotalItems() == 0;
+    }
 
+    this.askForShippingInfo = function () {
+        $location.path('shipping');
+    }
+
+    this.setPaymentType = function (type) {
+        if(type === 0)
+            Data.paymentType = 0;
+        else if (type === 1)
+            Data.paymentType = 1;
+    }
+
+    this.getPaymentType = function () {
+        return Data.paymentType;
+    }
 
     store.Data = Data;
 
@@ -310,7 +329,7 @@ storeControllers.controller('CheckOutCtrl',['$scope', '$routeParams', '$http', '
 
         method: 'POST',
         url: 'shopping/index.php/checkout/process',
-        data: JSON.stringify({ 'user_rut': Data.billing.rut, 'cart': ngCart.getCart(), 'carrier': Data.carrier }),
+        data: JSON.stringify({ 'user_rut': Data.billing.rut, 'cart': ngCart.getCart(), 'carrier': Data.carrier, 'paymentType': Data.paymentType }),
         headers: { 'Content-Type': 'application/json' }
 
     }).success(function(data) {

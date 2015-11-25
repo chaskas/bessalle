@@ -198,7 +198,6 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-
                         <table class="table table-condensed">
                             <tbody>
                                 <tr>
@@ -219,6 +218,70 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <hr>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="shippingType">Pago:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="radio">
+                            <label>
+                            <input type="radio" name="paymentType" id="paymentType" value="0" checked class="radio" ng-click="ShippCtrl.setPaymentType(0)"> &nbsp; Transferencia Bancaria
+                            </label>
+                        </div>
+                        <!-- <div class="radio">
+                            <label>
+                            <input type="radio" name="paymentType" id="paymentType" value="1" class="radio" ng-click="ShippCtrl.setPaymentType(1)"> &nbsp; WebPay
+                            </label>
+                        </div> -->
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-12" ng-show="!ShippCtrl.getPaymentType()">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h4>Datos Transferencia</h4>
+                                Debe realizar una transferencia con los siguientes datos, una vez realizada envíe el comprobante a: pagos@bessalle.cl.
+                                Luego de comprobado el pago su orden será envíada.
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-2"><label>Banco:</label></div>
+                                    <div class="col-md-9">Banco Estado</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-2"><label>Nº Cuenta:</label></div>
+                                    <div class="col-md-9">16020757</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-2"><label>RUT:</label></div>
+                                    <div class="col-md-9">16.020.757-4</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-2"><label>Nombre:</label></div>
+                                    <div class="col-md-9">Rodrigo Campos Hernández</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-2"><label>Email:</label></div>
+                                    <div class="col-md-9">rodrigo@webdevel.cl</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-2"><label>Monto:</label></div>
+                                    <div class="col-md-9">{{ ShippCtrl.ngCart.totalCost() | currency : '$' : 0 }}</div>
+                                </div>
+
+
+                            </div>
+                        </div>
                     </div>
                 </div>
 

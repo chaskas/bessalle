@@ -12,7 +12,7 @@
 
         <ngcart-summary></ngcart-summary>
 
-        <div class="panel panel-default">
+        <div class="panel panel-default" ng-controller="ShippingCtrl as ShippCtrl">
             <div class="panel-heading">
                 <div class="panel-title">Carrito de Compras</div>
             </div>
@@ -22,13 +22,9 @@
 
             </div>
             <div class="panel-footer text-right">
-                <a href="#/shipping" class="btn btn-success">Siguiente</a>
+                <button ng-disabled="ShippCtrl.isCartEmpty()" class="btn btn-success" ng-click="ShippCtrl.askForShippingInfo()">Siguiente</button>
             </div>
         </div>
-
-
-
-
 
     </div>
 

@@ -397,14 +397,20 @@ class Admin extends CI_Controller {
 
         $data['order'] = $this->order_model->get_order_by_id($order_id);
 
-        $data['billing_comuna'] = $this->comuna_model->get_comuna_by_id($data['order']->billing_comuna)['COMUNA_NOMBRE'];
-        $data['shipping_comuna'] = $this->comuna_model->get_comuna_by_id($data['order']->shipping_comuna)['COMUNA_NOMBRE'];
+        $billing_comuna = $this->comuna_model->get_comuna_by_id($data['order']->billing_comuna);
+        $data['billing_comuna'] = $billing_comuna['COMUNA_NOMBRE'];
+        $shipping_comuna = $this->comuna_model->get_comuna_by_id($data['order']->shipping_comuna);
+        $data['shipping_comuna'] = $shipping_comuna['COMUNA_NOMBRE'];
 
-        $data['billing_provincia'] = $this->provincia_model->get_provincia_by_id($data['order']->billing_provincia)['PROVINCIA_NOMBRE'];
-        $data['shipping_provincia'] = $this->provincia_model->get_provincia_by_id($data['order']->shipping_provincia)['PROVINCIA_NOMBRE'];
+        $billing_provincia = $this->provincia_model->get_provincia_by_id($data['order']->billing_provincia);
+        $data['billing_provincia'] = $billing_provincia['PROVINCIA_NOMBRE'];
+        $shipping_provincia = $this->provincia_model->get_provincia_by_id($data['order']->shipping_provincia);
+        $data['shipping_provincia'] = $shipping_provincia['PROVINCIA_NOMBRE'];
 
-        $data['billing_region'] = $this->region_model->get_region_by_id($data['order']->billing_region)['REGION_NOMBRE'];
-        $data['shipping_region'] = $this->region_model->get_region_by_id($data['order']->shipping_region)['REGION_NOMBRE'];
+        $billing_region = $this->region_model->get_region_by_id($data['order']->billing_region);
+        $data['billing_region'] = $billing_region['REGION_NOMBRE'];
+        $shipping_region = $this->region_model->get_region_by_id($data['order']->shipping_region);
+        $data['shipping_region'] = $shipping_region['REGION_NOMBRE'];
 
         $data['products'] = $this->order_model->get_order_products_by_order_id($order_id);
 
