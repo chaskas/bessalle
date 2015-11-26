@@ -130,4 +130,12 @@ class Product_model extends CI_Model {
         $this->db->delete('product');
     }
 
+    public function discount_stock($product_id, $quantity) {
+
+        $this->db->where('id', $product_id);
+        $this->db->set('stock', 'stock-'.$quantity, FALSE);
+        $this->db->update('product');
+        
+    }
+
 }

@@ -21,7 +21,7 @@
                 <?php foreach ($orders as $order): ?>
                 <tr>
                     <td class="text-center"><?php echo  date_format(date_create($order->date), 'd/m/Y'); ?></td>
-                    <td class="text-center"><?php echo $order->code; ?></td>
+                    <td class="text-center"><?php echo "I".$order->id; ?></td>
                     <td class="text-center"><?php echo $order->rut; ?></td>
                     <td><?php echo $order->name; ?></td>
                     <td class="text-right">$<?php echo number_format ( $order->neto + $order->iva , 0 , "," , "." ); ?>.-</td>

@@ -426,14 +426,20 @@ class Admin extends CI_Controller {
         $order = $this->order_model->get_order_by_id($order_id);
         $products = $this->order_model->get_order_products_by_order_id($order_id);
 
-        $billing_comuna = $this->comuna_model->get_comuna_by_id($order->billing_comuna)['COMUNA_NOMBRE'];
-        $shipping_comuna = $this->comuna_model->get_comuna_by_id($order->shipping_comuna)['COMUNA_NOMBRE'];
+        $billing_comuna = $this->comuna_model->get_comuna_by_id($order->billing_comuna);
+        $billing_comuna = $billing_comuna['COMUNA_NOMBRE'];
+        $shipping_comuna = $this->comuna_model->get_comuna_by_id($order->shipping_comuna);
+        $shipping_comuna = $shipping_comuna['COMUNA_NOMBRE'];
 
-        $billing_provincia = $this->provincia_model->get_provincia_by_id($order->billing_provincia)['PROVINCIA_NOMBRE'];
-        $shipping_provincia = $this->provincia_model->get_provincia_by_id($order->shipping_provincia)['PROVINCIA_NOMBRE'];
+        $billing_provincia = $this->provincia_model->get_provincia_by_id($order->billing_provincia);
+        $billing_provincia = $billing_provincia['PROVINCIA_NOMBRE'];
+        $shipping_provincia = $this->provincia_model->get_provincia_by_id($order->shipping_provincia);
+        $shipping_provincia = $shipping_provincia['PROVINCIA_NOMBRE'];
 
-        $billing_region = $this->region_model->get_region_by_id($order->billing_region)['REGION_NOMBRE'];
-        $shipping_region = $this->region_model->get_region_by_id($order->shipping_region)['REGION_NOMBRE'];
+        $billing_region = $this->region_model->get_region_by_id($order->billing_region);
+        $billing_region = $billing_region['REGION_NOMBRE'];
+        $shipping_region = $this->region_model->get_region_by_id($order->shipping_region);
+        $shipping_region = $shipping_region['REGION_NOMBRE'];
 
         $this->load->library('Pdf');
 
@@ -458,7 +464,7 @@ class Admin extends CI_Controller {
 
         $pdf->Cell(0,5,'Order de Compra',$border = 0,$ln = 0,$align = 'C',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
         $pdf->Ln();
-        $pdf->Cell(0,5,'Nº: '.$order->code,$border = 0,$ln = 0,$align = 'C',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
+        $pdf->Cell(0,5,'Nº: I'.$order->id,$border = 0,$ln = 0,$align = 'C',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
         $pdf->Ln();
 
         $pdf->Line(10,40,200,40,array());
