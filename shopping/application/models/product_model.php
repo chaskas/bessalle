@@ -104,7 +104,8 @@ class Product_model extends CI_Model {
             'width' => $this->input->post('width'),
             'height' => $this->input->post('height'),
             'weight' => $this->input->post('weight'),
-            'minimun' => $this->input->post('minimun')
+            'minimun' => $this->input->post('minimun'),
+            'stock' => $this->input->post('stock')
         );
 
         $this->db->where('id', $product_id);

@@ -114,7 +114,8 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label>Cantidad en Bodega: </label>
-                                            <?php echo $product->stock; ?>
+                                            <input type="text" class="form-control" id="stock" name="stock" value="<?php echo $product->stock; ?>">
+                                            <span class="error"><?php echo form_error('stock'); ?></span>
                                         </div>
                                     </div>
                                 </div>
