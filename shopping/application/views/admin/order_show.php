@@ -208,6 +208,6 @@
 
     </div>
     <div class="panel-footer text-right">
-        <a href="#" class="btn btn-success">PDF</a>
+        <a href="<?php echo site_url('admin/order/download/'.$order->id);?>" class="btn btn-success" target="_blank">PDF</a>
     </div>
 </div>

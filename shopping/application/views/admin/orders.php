@@ -29,7 +29,7 @@
                     <td class="text-center">
                         <div class="btn-group btn-group-xs" role="group">
                             <a href="<?php echo site_url('admin/order/'.$order->id);?>" class="btn" title="Detalle"><span class="glyphicon glyphicon-list-alt"></span></a>
-                            <a href="#<?php //echo site_url('admin/order/download/'.$order->id);?>" class="btn" title="Descargar"><span class="glyphicon glyphicon-download-alt"></span></a>
+                            <a href="<?php echo site_url('admin/order/download/'.$order->id);?>" class="btn" title="Descargar" target="_blank"><span class="glyphicon glyphicon-download-alt"></span></a>
                         </div>
                     </td>
                 </tr>

@@ -77,6 +77,7 @@ $route['admin/user/delete/(:num)'] = 'admin/user_delete/$1';
 
 $route['admin/orders'] = 'admin/orders';
 $route['admin/order/(:num)'] = 'admin/order_show/$1';
+$route['admin/order/download/(:num)'] = 'admin/order_get_pdf/$1';
 
 $route['admin'] = 'admin/categories';
 
