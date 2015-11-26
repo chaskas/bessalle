@@ -75,4 +75,19 @@ class Checkout extends CI_Controller {
 
         }
 
+        public function send_email($mail_recipient)
+        {
+            $this->load->library('email');
+
+            $this->email->from('your@example.com', 'Your Name');
+            $this->email->to($mail_recipient); 
+
+            $this->email->subject('Email Test');
+            $this->email->message('Testing the email class.');
+
+            $this->email->send();
+
+            echo $this->email->print_debugger();
+        }
+
 }

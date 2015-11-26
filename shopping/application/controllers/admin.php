@@ -380,15 +380,35 @@ class Admin extends CI_Controller {
         redirect('admin/users', 'refresh');
     }
 
-    public function orders()
+    public function orders_paid()
     {
 
-        $data['orders'] = $this->order_model->get_orders();
+        $data['orders'] = $this->order_model->get_orders_paid();
 
         $this->load->view('admin/templates/header');
         $this->load->view('admin/templates/navbar');
-        $this->load->view('admin/orders', $data);
+        $this->load->view('admin/orders_paid', $data);
         $this->load->view('admin/templates/footer');
+
+    }
+    public function orders_payable()
+    {
+
+        $data['orders'] = $this->order_model->get_orders_payable();
+
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/navbar');
+        $this->load->view('admin/orders_payable', $data);
+        $this->load->view('admin/templates/footer');
+
+    }
+
+    public function order_payment_confirm($order_id)
+    {
+
+        $this->order_model->payment_confirm($order_id);
+
+        redirect('admin/orders/payable', 'refresh');
 
     }
 

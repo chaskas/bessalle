@@ -69,7 +69,7 @@ class Order_model extends CI_Model {
         $this->db->delete('order');
     }
 
-    public function get_orders(){
+    public function get_orders_paid(){
 
         $this->db->select('
             order.id,
@@ -81,6 +81,36 @@ class Order_model extends CI_Model {
             order.carrier,
             user.billing_rut as rut,
             user.billing_name as name');
+
+        $this->db->where('order.payment_status = 1');
+
+        $this->db->order_by('order.date','DESC');
+
+        $this->db->from('order');
+        $this->db->join('user', 'user.id = order.user_id');
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0) {
+            return $query->result();
+        } else return array();
+
+    }
+
+    public function get_orders_payable(){
+
+        $this->db->select('
+            order.id,
+            order.date,
+            order.code,
+            order.user_id,
+            order.neto,
+            order.iva,
+            order.carrier,
+            user.billing_rut as rut,
+            user.billing_name as name');
+
+        $this->db->where('order.payment_status = 0');
 
         $this->db->order_by('order.date','DESC');
 
@@ -124,6 +154,15 @@ class Order_model extends CI_Model {
         {
             return $query->result();
         }
+
+    }
+
+    public function payment_confirm($order_id) {
+
+        $this->db->where('id', $order_id);
+        $this->db->set('payment_status', 1, FALSE);
+        $this->db->set('payment_date', 'NOW()', FALSE);
+        $this->db->update('order');
 
     }
 

@@ -25,8 +25,14 @@
               <li><a href="#">Memphis</a></li>
             </ul>
           </li>
-          <li><a href="<?php echo site_url('admin/users') ?>">Usuarios</a></li>
-          <li><a href="<?php echo site_url('admin/orders') ?>">Órdenes</a></li>
+          <li><a href="<?php echo site_url('admin/users') ?>">Clientes</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Órdenes <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="<?php echo site_url('admin/orders/paid') ?>">Pagadas</a></li>
+              <li><a href="<?php echo site_url('admin/orders/payable') ?>">Por Pagar</a></li>
+            </ul>
+          </li>
         </ul>
         <p class="navbar-text navbar-right"><a href="<?php echo site_url('admin/logout'); ?>" class="navbar-link">Salir</a></p>
       </div>

@@ -75,9 +75,11 @@ $route['admin/user/new'] = 'admin/user_new';
 $route['admin/user/edit/(:num)'] = 'admin/user_edit/$1';
 $route['admin/user/delete/(:num)'] = 'admin/user_delete/$1';
 
-$route['admin/orders'] = 'admin/orders';
+$route['admin/orders/paid'] = 'admin/orders_paid';
+$route['admin/orders/payable'] = 'admin/orders_payable';
 $route['admin/order/(:num)'] = 'admin/order_show/$1';
 $route['admin/order/download/(:num)'] = 'admin/order_get_pdf/$1';
+$route['admin/order/payment_confirm/(:num)'] = 'admin/order_payment_confirm/$1';
 
 $route['admin'] = 'admin/categories';
 
