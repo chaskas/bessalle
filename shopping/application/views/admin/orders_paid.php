@@ -25,11 +25,11 @@
                     <td class="text-center"><?php echo $order->rut; ?></td>
                     <td><?php echo $order->name; ?></td>
                     <td class="text-right">$<?php echo number_format ( $order->neto + $order->iva , 0 , "," , "." ); ?>.-</td>
-                    <td class="text-center"><?php echo $order->carrier == 0 ? 'Chilexpress' : 'Memphis'; ?></td>
+                    <td class="text-center"><?php if ( $order->carrier == 0 ) { echo 'Chilexpress'; } else if ( $order->carrier == 1 ) { echo 'Memphis'; } else { echo 'Retiro en Bodega'; } ?></td>
                     <td class="text-center">
                         <div class="btn-group btn-group-xs" role="group">
-                            <a href="<?php echo site_url('admin/order/'.$order->id);?>" class="btn" title="Detalle"><span class="glyphicon glyphicon-list-alt"></span></a>
-                            <a href="<?php echo site_url('admin/order/download/'.$order->id);?>" class="btn" title="Descargar" target="_blank"><span class="glyphicon glyphicon-download-alt"></span></a>
+                            <a href="<?php echo site_url('admin/order/'.$order->id);?>" class="btn btn-default" title="Detalle"><span class="glyphicon glyphicon-list-alt"></span></a>
+                            <a href="<?php echo site_url('admin/order/download/'.$order->id);?>" class="btn btn-default" title="Descargar" target="_blank"><span class="glyphicon glyphicon-download-alt"></span></a>
                         </div>
                     </td>
                 </tr>

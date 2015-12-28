@@ -1,6 +1,6 @@
 <div>
   <ul class="nav nav-tabs right-to-left" role="tablist">
-    <li role="presentation" class="active"><a href="<?php echo site_url('admin/ordenes');?>" aria-controls="ordenes" role="tab">Órdenes por Pagar</a></li>
+    <li role="presentation" class="active"><a href="<?php echo site_url('admin/ordenes');?>" aria-controls="ordenes" role="tab">Órdenes por Enviar</a></li>
   </ul>
 
   <div class="tab-content padding-top-30">
@@ -30,7 +30,7 @@
                         <div class="btn-group btn-group-xs" role="group">
                             <a href="<?php echo site_url('admin/order/'.$order->id);?>" class="btn btn-default" title="Detalle"><span class="glyphicon glyphicon-list-alt"></span></a>
                             <a href="<?php echo site_url('admin/order/download/'.$order->id);?>" class="btn btn-default" title="Descargar" target="_blank"><span class="glyphicon glyphicon-download-alt"></span></a>
-                            <a href="<?php echo site_url('admin/order/payment_confirm/'.$order->id);?>" class="btn btn-default" title="Confirmar el Pago" onclick="return confirm('¿Deseas confirmar el Pago?')"><span class="glyphicon glyphicon-ok"></span></a>
+                            <button class="btn btn-default" title="Confirmar el Envío" data-toggle="modal" data-target="#modal_tracking" onclick="javascript:setTrackingOrderId(<?php echo $order->id; ?>)"><span class="glyphicon glyphicon-ok"></span></button>
                         </div>
                     </td>
                 </tr>
@@ -41,3 +41,33 @@
   </div>
 
 </div>
+
+<div class="modal fade" id="modal_tracking" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <form action="<?php echo site_url('admin/order/tracking_confirm');?>" method="post">
+        <input type="hidden" id="order_id" name="order_id">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Código de Seguimiento</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="name">Ingrese código de seguimiento:</label>
+                    <input type="text" class="form-control" id="order_tracking_number" name="order_tracking_number">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function setTrackingOrderId(order_id) {
+        $('#order_id').val(order_id);
+    }
+</script>

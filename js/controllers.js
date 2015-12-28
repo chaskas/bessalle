@@ -131,6 +131,9 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         } else if (type === 1) {
             Data.carrier = 1;
             ngCart.setShipping(Data.shippingT2);
+        } else if (type === 2) {
+            Data.carrier = 2;
+            ngCart.setShipping(0);
         }
     }
 
@@ -139,6 +142,7 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         $scope.shipping.currentComuna.id;
         $scope.shipping.shippingT1 = 0;
         $scope.shipping.shippingT2 = 0;
+        ngCart.setShipping(0);
 
         Data.carrier = 0;
 
@@ -148,7 +152,6 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
             {
                 costo = data['costo'] * value.getQuantity();
                 Data.shippingT2 = Data.shippingT2 + costo;
-                ngCart.setShipping(Data.shippingT2);
             });
         });
 
@@ -159,12 +162,9 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
                 {
                     costo = data['costo'] * value.getQuantity();
                     Data.shippingT1 = Data.shippingT1 + costo;
-                    ngCart.setShipping(Data.shippingT1);
                 });
             });
         },1000);
-
-
 
     }
 
@@ -317,6 +317,10 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         return Data.paymentType;
     }
 
+    this.proccessCheckout = function () {
+        $location.path('checkout');
+    }
+
     store.Data = Data;
 
 }]);
@@ -357,6 +361,8 @@ storeControllers.factory('Data', function(){
     var data = [];
     data.shipping = [];
     data.billing = [];
+    data.shippingType = [];
+    data.paymentType = [];
 
     return data;
 });

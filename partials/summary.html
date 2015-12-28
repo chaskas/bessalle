@@ -178,23 +178,31 @@
 
                     </div>
                 </div>
+                <hr>
+                <form role="form"  name="summaryForm" novalidate>
                 <div class="row">
-                    <div class="col-md-3">
-                        <label for="shippingType">Método de Envío:</label>
+                    <div class="col-md-5">
+                        <label for="shippingType"><h4>Método de Envío:</h4></label>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-7">
                         <div class="radio">
                             <label>
-                            <input type="radio" name="shippingType" id="shippingType" value="0" checked class="radio" ng-click="ShippCtrl.setShipping(0)"> &nbsp; Chilexpress {{ ShippCtrl.Data.shippingT1 | currency : '$' : 0 }}
+                            <input type="radio" name="shippingType" id="shippingType" value="0" class="radio" ng-click="ShippCtrl.setShipping(0)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Chilexpress 24-48 Hrs {{ ShippCtrl.Data.shippingT1 | currency : '$' : 0 }}
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                            <input type="radio" name="shippingType" id="shippingType" value="1" class="radio" ng-click="ShippCtrl.setShipping(1)"> &nbsp; Normal {{ ShippCtrl.Data.shippingT2 | currency : '$' : 0 }}
+                            <input type="radio" name="shippingType" id="shippingType" value="1" class="radio" ng-click="ShippCtrl.setShipping(1)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Despacho por Bus {{ ShippCtrl.Data.shippingT2 | currency : '$' : 0 }}
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                            <input type="radio" name="shippingType" id="shippingType" value="2" class="radio" ng-click="ShippCtrl.setShipping(2)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Retiro en Bodega
                             </label>
                         </div>
                     </div>
                 </div>
+                <hr>
                 <br>
                 <div class="row">
                     <div class="col-md-12">
@@ -229,7 +237,7 @@
                     <div class="col-md-9">
                         <div class="radio">
                             <label>
-                            <input type="radio" name="paymentType" id="paymentType" value="0" checked class="radio" ng-click="ShippCtrl.setPaymentType(0)"> &nbsp; Transferencia Bancaria
+                            <input type="radio" name="paymentType" id="paymentType" value="0" checked class="radio" ng-click="ShippCtrl.setPaymentType(0)" ng-model="ShippCtrl.Data.paymentTyoe" required> &nbsp; Transferencia Bancaria
                             </label>
                         </div>
                         <!-- <div class="radio">
@@ -239,6 +247,7 @@
                         </div> -->
                     </div>
                 </div>
+                </form>
                 <br><br>
                 <div class="row">
                     <div class="col-md-12" ng-show="!ShippCtrl.getPaymentType()">
@@ -271,7 +280,7 @@
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-2"><label>Email:</label></div>
-                                    <div class="col-md-9">plasticos1@gmail.com</div>
+                                    <div class="col-md-9">produccion002@gmail.com</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-1"></div>
@@ -288,7 +297,7 @@
             </div>
             <div class="panel-footer text-right">
                 <a href="#/shipping" class="btn btn-success">Atrás</a>
-                <a href="#/checkout" class="btn btn-success">Confirmar Pedido</a>
+                <button class="btn btn-success" ng-disabled="summaryForm.$invalid" ng-click="ShippCtrl.proccessCheckout()">Confirmar Pedido</button>
             </div>
         </div>
 

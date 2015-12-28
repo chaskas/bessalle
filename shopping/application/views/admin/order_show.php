@@ -133,6 +133,11 @@
         </div>
         <hr>
         <div class="row">
+            <div class="col-md-2"><label>Método de Pago:</label></div>
+            <div class="col-md-10"><?php echo $order->payment_type == 0 ? "Transferencia Bancaria" : "WebPay" ?></div>
+        </div>
+        <hr>
+        <div class="row">
             <div class="col-md-12">
                 <h4>
                     Información del Envío
@@ -192,7 +197,7 @@
             <div class="col-md-4">
                 <label>Método de Envío:</label>
                 <br>
-                <?php echo !$order->carrier ? 'Chilexpress' : 'Memphis'; ?>
+                <?php if ( $order->carrier == 0 ) { echo 'Chilexpress'; } else if ( $order->carrier == 1 ) { echo 'Memphis'; } else { echo 'Retiro en Bodega'; } ?>
             </div>
             <div class="col-md-4">
                 <label>Costo Envío:</label>

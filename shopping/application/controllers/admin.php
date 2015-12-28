@@ -403,12 +403,133 @@ class Admin extends CI_Controller {
 
     }
 
+    public function orders_tracking()
+    {
+
+        $data['orders'] = $this->order_model->get_orders_tracking();
+
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/navbar');
+        $this->load->view('admin/orders_tracking', $data);
+        $this->load->view('admin/templates/footer');
+
+    }
+
+    public function orders_withdraw()
+    {
+
+        $data['orders'] = $this->order_model->get_orders_withdraw();
+
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/navbar');
+        $this->load->view('admin/orders_withdraw', $data);
+        $this->load->view('admin/templates/footer');
+
+    }
+
     public function order_payment_confirm($order_id)
     {
 
         $this->order_model->payment_confirm($order_id);
 
+        $order = $this->order_model->get_order_by_id($order_id);
+
+        $this->send_order_payment_confirm_email($order->id, $order->billing_email);
+
         redirect('admin/orders/payable', 'refresh');
+
+    }
+
+    public function send_order_payment_confirm_email($order_id, $order_email)
+    {
+        $this->load->library('email');
+
+        $this->email->from('ventasweb@bessalle.cl', 'Bessalle Ltda.');
+        $this->email->to($order_email);
+
+        $this->email->subject('Pago Confirmado en Bessalle Ltda.');
+
+        $message = "<html><head><title>Pl&aacute;sticos Bessalle Ltda.</title></head>";
+
+        $message .= "<body>";
+
+        $message .= "<p>Estimado:</p>";
+
+        $message .= "<p>Se ha confirmado el pago de su orden de compra N&ordm; <strong>I".$order_id."</strong> </p>";
+
+        $message .= "<p>Puede descargar su orden haciendo click <a href='".site_url('order/download/'.$order_id)."'>aqui.</a></p>";
+
+        $message .= "<br>";
+        $message .= "<p><strong>Atte.</strong><br>";
+        $message .= "<strong>Pl&aacute;sticos Bessalle LTDA.<br>Bulnes 753, Concepci&oacute;n<br>+56 41 224 3755</strong></p>";
+
+        $message .= "</body></html>";
+
+        $this->email->message($message);
+
+        $this->email->send();
+
+    }
+
+    public function order_tracking_confirm()
+    {
+        $this->load->helper('form');
+
+        $order_id = $this->input->post('order_id');
+        $order_tracking_number = $this->input->post('order_tracking_number');
+
+        $this->order_model->tracking_confirm($order_id, $order_tracking_number);
+
+        $order = $this->order_model->get_order_by_id($order_id);
+
+        $this->send_order_tracking_confirm_email($order->id, $order->billing_email, $order_tracking_number, $order->carrier);
+
+        redirect('admin/orders/tracking', 'refresh');
+
+    }
+
+    public function send_order_tracking_confirm_email($order_id, $order_email, $order_tracking_number, $carrier_code)
+    {
+        $this->load->library('email');
+
+        $this->email->from('ventasweb@bessalle.cl', 'Bessalle Ltda.');
+        $this->email->to($order_email);
+
+        $this->email->subject('Su orden ha sido enviada - Bessalle Ltda.');
+
+        $message = "<html><head><title>Pl&aacute;sticos Bessalle Ltda.</title></head>";
+
+        $message .= "<body>";
+
+        $message .= "<p>Estimado:</p>";
+
+        if($carrier_code == 0) $carrier = 'Chilexpress';
+        else if($carrier_code == 1) $carrier = 'Memphis';
+
+        $message .= "<p>Se ha enviado su pedido con orden de compra N&ordm; <strong>I".$order_id."</strong> a trav&eacute;s de <strong>".$carrier."</strong></p>";
+
+        $message .= "<p>El c&oacute;digo de seguimiento es: <strong>".$order_tracking_number."</strong> </p>";
+
+        $message .= "<p>Puede descargar su orden haciendo click <a href='".site_url('order/download/'.$order_id)."'>aqui.</a></p>";
+
+        $message .= "<br>";
+        $message .= "<p><strong>Atte.</strong><br>";
+        $message .= "<strong>Pl&aacute;sticos Bessalle LTDA.<br>Bulnes 753, Concepci&oacute;n<br>+56 41 224 3755</strong></p>";
+
+        $message .= "</body></html>";
+
+        $this->email->message($message);
+
+        $this->email->send();
+
+    }
+
+    public function order_withdraw_confirm($order_id)
+    {
+
+        $this->order_model->withdraw_confirm($order_id);
+
+        redirect('admin/orders/withdraw', 'refresh');
 
     }
 
@@ -558,32 +679,57 @@ class Admin extends CI_Controller {
         $pdf->Cell($w[3], 0, '$'.number_format ( $order->neto + $order->iva , 0 , "," , "." ), 'LTRB',$fill,'R');
         $pdf->Ln();
 
+        $metodo_pago = !$order->payment_type ? 'Transferencia Bancaria' : 'WebPay';
+
+        $pdf->SetY(-70);
+        $pdf->Line(10,225,200,225,array());
+        $pdf->Cell(0,5,'Método de Pago: ' . $metodo_pago ,$border = 0,$ln = 0,$align = 'C',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
+        $pdf->Line(10,235,200,235,array());
+
+        $pdf->Ln();
+
+        if ( $order->carrier == 0 ) { $metodo_envio = 'Chilexpress'; } else if ( $order->carrier == 1 ) { $metodo_envio = 'Memphis'; } else { $metodo_envio = 'Retiro en Bodega'; }
+
+        if($order->carrier == 2) {
+            $pdf->SetY(-40);
+            $pdf->Line(10,255,200,255,array());
+            $pdf->Cell(0,5,'INFORMACIÓN DEL RETIRO',$border = 0,$ln = 0,$align = 'C',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
+            $pdf->Line(10,265,200,265,array());
+            $pdf->Ln();
+            $pdf->Ln();
+            $pdf->Ln();
+            $pdf->Cell(0,5,'Nombre: ________________________________________________ RUT: ____________________',$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
+            $pdf->Ln();
+            $pdf->Ln();
+            $pdf->Cell(0,5,'Fecha: ________________________________________________ Firma: ____________________',$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
+            $pdf->Ln();
+            $pdf->Line(10,293,200,293,array());
+            $pdf->Ln();
+        } else {
+
+            $pdf->SetY(-50);
+            $pdf->Line(10,245,200,245,array());
+            $pdf->Cell(0,5,'INFORMACIÓN DEL ENVÍO',$border = 0,$ln = 0,$align = 'C',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
+            $pdf->Line(10,255,200,255,array());
+            $pdf->Ln();
+            $pdf->Ln();
+            $pdf->Cell(0,5,'Nombre: '.$order->shipping_name,$border = 0,$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
+            $pdf->Ln();
+            $pdf->Cell(0,5,'RUT: '.$order->shipping_rut,$border = 0,$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
+            $pdf->Ln();
+            $pdf->Cell(0,5,'Dirección: '.$order->shipping_address1.' '.$order->shipping_address2.', Comuna: '.$shipping_comuna.', Provincia: '.$shipping_comuna.', Region: '.$shipping_region,$border = 0,$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
+            $pdf->Ln();
+            $pdf->Cell(0,5,'Email: '.$order->shipping_email,$border = 0,$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
+            $pdf->Ln();
+            $pdf->Cell(0,5,'Fono: '.$order->shipping_phone,$border = 0,$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
+            $pdf->Ln();
+            $pdf->Cell(0,5,'Método de envío: '.$metodo_envio. ', Costo: $'.number_format ( $order->shipping_cost , 0 , "," , "." ).', Código de Seguimiento: '.$order->tracking_number,$border = 0,$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
+            $pdf->Ln();
+            $pdf->Line(10,293,200,293,array());
+            $pdf->Ln();
+        }
 
 
-        $pdf->Ln();
-
-        $metodo_envio = !$order->carrier ? 'Chilexpress' : 'Memphis';
-
-        $pdf->SetY(-50);
-        $pdf->Line(10,245,200,245,array());
-        $pdf->Cell(0,5,'INFORMACIÓN DEL ENVÍO',$border = 0,$ln = 0,$align = 'C',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
-        $pdf->Line(10,255,200,255,array());
-        $pdf->Ln();
-        $pdf->Ln();
-        $pdf->Cell(0,5,'Nombre: '.$order->shipping_name,$border = 0,$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
-        $pdf->Ln();
-        $pdf->Cell(0,5,'RUT: '.$order->shipping_rut,$border = 0,$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
-        $pdf->Ln();
-        $pdf->Cell(0,5,'Dirección: '.$order->shipping_address1.' '.$order->shipping_address2.', Comuna: '.$shipping_comuna.', Provincia: '.$shipping_comuna.', Region: '.$shipping_region,$border = 0,$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
-        $pdf->Ln();
-        $pdf->Cell(0,5,'Email: '.$order->shipping_email,$border = 0,$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
-        $pdf->Ln();
-        $pdf->Cell(0,5,'Fono: '.$order->shipping_phone,$border = 0,$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
-        $pdf->Ln();
-        $pdf->Cell(0,5,'Método de envío: '.$metodo_envio. ', Costo: $'.number_format ( $order->shipping_cost , 0 , "," , "." ).', Código de Seguimiento: '.$order->tracking_number,$border = 0,$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
-        $pdf->Ln();
-        $pdf->Line(10,293,200,293,array());
-        $pdf->Ln();
 
 
 

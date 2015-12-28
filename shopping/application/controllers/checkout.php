@@ -20,6 +20,8 @@ class Checkout extends CI_Controller {
             $comuna_id = $user->shipping_comuna;
             $carrier = $data->carrier;
 
+            $paymentType = $data->paymentType;
+
             $cart = $data->cart;
 
             $rut_exploded = explode("-", $user->billing_rut);
@@ -32,6 +34,7 @@ class Checkout extends CI_Controller {
             $total = 0;
             $products_cost = 0;
             $shipping_cost = 0;
+
             foreach ( $cart->items as $item ) {
                 $price = $this->product_model->get_final_price_by_id($item->_id);
                 $shipping_cost = $shipping_cost + $item->_quantity * $this->shippcalc_model->get_cost($comuna_id, $item->_id, $carrier);
@@ -43,7 +46,7 @@ class Checkout extends CI_Controller {
 
             $total = round($products_cost + $iva + $shipping_cost);
 
-            $this->order_model->create(
+            $order_id = $this->order_model->create(
                 $user->id,
                 $code,
                 $cart->items,
@@ -70,24 +73,96 @@ class Checkout extends CI_Controller {
                 $user->shipping_provincia,
                 $user->shipping_comuna,
                 $user->shipping_address1,
-                $user->shipping_address2
+                $user->shipping_address2,
+                $paymentType
             );
+
+            $this->send_new_order_email($order_id, $code, $user->billing_email, $user->billing_name, $paymentType, $carrier, $products_cost, $iva, $total);
+
+            $this->send_new_order_admin_email($order_id, $user->billing_name);
 
         }
 
-        public function send_email($mail_recipient)
+        public function send_new_order_email($order_id, $code, $billing_email, $billing_name, $paymentType, $carrier, $products_cost, $iva, $total)
         {
             $this->load->library('email');
 
-            $this->email->from('your@example.com', 'Your Name');
-            $this->email->to($mail_recipient); 
+            $this->email->from('ventasweb@bessalle.cl', 'Bessalle Ltda.');
+            $this->email->to($billing_email);
 
-            $this->email->subject('Email Test');
-            $this->email->message('Testing the email class.');
+            $this->email->subject('Compra Realizada en Bessalle Ltda.');
+
+            $message = "<html><head><title>Pl&aacute;sticos Bessalle Ltda.</title></head>";
+
+            $message .= "<body>";
+
+            $message .= "<p>Estimado <strong>".$billing_name."</strong></p>";
+            $message .= "<p>Confirmo a usted la compra realizada el ".date("d/m/Y H:i")."</p>";
+            $message .= "<p>Con n&uacute;mero de orden: <strong>I".$order_id."</strong></p>";
+
+            if($paymentType == 0) // Transferencia Bancaria
+            {
+                $message .= "<p>Para confirmar la compra debe realizar una transferencia con los siguientes datos:</p>";
+
+                $message .= "<p><trong>Nombre:</strong> Pl&aacute;sticos Bessalle Ltda.<br>";
+                $message .= "<trong>Banco:</strong> Santander<br>";
+                $message .= "<trong>RUT:</strong> 76.047.525-4<br>";
+                $message .= "<trong>N&ordm; Cuenta:</strong> 62625058<br>";
+                if($carrier == 2) $message .= "<trong>Monto:</strong> $".number_format ( round($products_cost + $iva) , 0 , "," , "." ).".-<br>";
+                else $message .= "<trong>Monto:</strong> $".number_format ( $total , 0 , "," , "." ).".-<br>";
+                $message .= "<trong>Email:</strong> produccion002@gmail.com</p>";
+
+                $message .= "<p>Para confirmar el pago debe env&iacute;ar el comprobante de transferencia a produccion002@gmail.com.<br>";
+                $message .= "Con asunto: <strong>Orden de Compra N&ordm;: I".$order_id."</strong></p>";
+
+            }
+
+            $message .= "<p>Luego de confirmado el pago su pedido ser&aacute; procesado.</p>";
+
+            $message .= "<p>Puede descargar su orden de compra haciendo click <a href='".site_url('order/download/'.$order_id)."'>aqui.</a></p>";
+
+            $message .= "<br>";
+            $message .= "<p><strong>Atte.</strong><br>";
+            $message .= "<strong>Pl&aacute;sticos Bessalle LTDA.<br>Bulnes 753, Concepci&oacute;n<br>+56 41 224 3755</strong></p>";
+
+            $message .= "</body></html>";
+
+            $this->email->message($message);
 
             $this->email->send();
 
-            echo $this->email->print_debugger();
+        }
+
+        public function send_new_order_admin_email($order_id, $billing_name)
+        {
+            $this->load->library('email');
+            $this->config->load('bessalle');
+
+            $this->email->from('ventasweb@bessalle.cl', 'Bessalle Ltda.');
+            $this->email->to($this->config->item('email'));
+
+            $this->email->subject('Compra Realizada en Bessalle Ltda.');
+
+            $message = "<html><head><title>Pl&aacute;sticos Bessalle Ltda.</title></head>";
+
+            $message .= "<body>";
+
+            $message .= "<p>Estimado:</p>";
+
+            $message .= "<p>El cliente <strong>".$billing_name."</strong> acaba de realizar una compra con orden N&ordm; <strong>I".$order_id."</strong> </p>";
+
+            $message .= "<p>Puede visualizar la orden de compra haciendo click <a href='".site_url('admin/order/'.$order_id)."'>aqui.</a></p>";
+
+            $message .= "<br>";
+            $message .= "<p><strong>Atte.</strong><br>";
+            $message .= "<strong>Pl&aacute;sticos Bessalle LTDA.<br>Bulnes 753, Concepci&oacute;n<br>+56 41 224 3755</strong></p>";
+
+            $message .= "</body></html>";
+
+            $this->email->message($message);
+
+            $this->email->send();
+
         }
 
 }

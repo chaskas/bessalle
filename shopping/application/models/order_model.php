@@ -8,7 +8,7 @@ class Order_model extends CI_Model {
         $this->load->model('product_model');
     }
 
-    public function create( $user_id, $code, $items, $neto, $iva, $shipping_cost, $total, $carrier, $billing_rut, $billing_business, $billing_name, $billing_email, $billing_phone, $billing_region, $billing_provincia, $billing_comuna, $billing_address1, $billing_address2, $shipping_rut, $shipping_name, $shipping_email, $shipping_phone, $shipping_region, $shipping_provincia, $shipping_comuna, $shipping_address1, $shipping_address2 )
+    public function create( $user_id, $code, $items, $neto, $iva, $shipping_cost, $total, $carrier, $billing_rut, $billing_business, $billing_name, $billing_email, $billing_phone, $billing_region, $billing_provincia, $billing_comuna, $billing_address1, $billing_address2, $shipping_rut, $shipping_name, $shipping_email, $shipping_phone, $shipping_region, $shipping_provincia, $shipping_comuna, $shipping_address1, $shipping_address2, $paymentType )
     {
         $this->load->helper('url');
 
@@ -41,7 +41,8 @@ class Order_model extends CI_Model {
             'shipping_comuna' => $shipping_comuna,
             'shipping_address1' => $shipping_address1,
             'shipping_address2' => $shipping_address2,
-            'date' => $date
+            'date' => $date,
+            'payment_type' => $paymentType
         );
 
         $this->db->insert('order', $data);
@@ -60,6 +61,8 @@ class Order_model extends CI_Model {
             );
             $this->db->insert('order_product', $data);
         }
+
+        return $order_id;
 
     }
 
@@ -165,5 +168,85 @@ class Order_model extends CI_Model {
         $this->db->update('order');
 
     }
+
+    public function tracking_confirm($order_id, $tracking_number) {
+
+        $this->db->where('id', $order_id);
+        $this->db->set('tracking_number', $tracking_number, FALSE);
+        $this->db->update('order');
+
+    }
+
+    public function withdraw_confirm($order_id) {
+
+        $this->db->where('id', $order_id);
+        $this->db->set('withdrawn', 1, FALSE);
+        $this->db->update('order');
+
+    }
+
+    public function get_orders_tracking()
+    {
+
+        $this->db->select('
+            order.id,
+            order.date,
+            order.code,
+            order.user_id,
+            order.neto,
+            order.iva,
+            order.carrier,
+            user.billing_rut as rut,
+            user.billing_name as name');
+
+        $this->db->where('order.tracking_number is null');
+        $this->db->where('order.carrier != 2');
+        $this->db->where('order.payment_status = 1');
+
+        $this->db->order_by('order.date','DESC');
+
+        $this->db->from('order');
+        $this->db->join('user', 'user.id = order.user_id');
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0) {
+            return $query->result();
+        } else return array();
+
+    }
+
+    public function get_orders_withdraw()
+    {
+
+        $this->db->select('
+            order.id,
+            order.date,
+            order.code,
+            order.user_id,
+            order.neto,
+            order.iva,
+            order.carrier,
+            user.billing_rut as rut,
+            user.billing_name as name');
+
+        $this->db->where('order.carrier = 2');
+        $this->db->where('order.withdrawn = 0');
+        $this->db->where('order.payment_status = 1');
+
+        $this->db->order_by('order.date','DESC');
+
+        $this->db->from('order');
+        $this->db->join('user', 'user.id = order.user_id');
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0) {
+            return $query->result();
+        } else return array();
+
+    }
+
+
 
 }

@@ -1,6 +1,6 @@
 <div>
   <ul class="nav nav-tabs right-to-left" role="tablist">
-    <li role="presentation" class="active"><a href="<?php echo site_url('admin/ordenes');?>" aria-controls="ordenes" role="tab">Órdenes por Pagar</a></li>
+    <li role="presentation" class="active"><a href="<?php echo site_url('admin/ordenes');?>" aria-controls="ordenes" role="tab">Órdenes por Retirar</a></li>
   </ul>
 
   <div class="tab-content padding-top-30">
@@ -30,7 +30,7 @@
                         <div class="btn-group btn-group-xs" role="group">
                             <a href="<?php echo site_url('admin/order/'.$order->id);?>" class="btn btn-default" title="Detalle"><span class="glyphicon glyphicon-list-alt"></span></a>
                             <a href="<?php echo site_url('admin/order/download/'.$order->id);?>" class="btn btn-default" title="Descargar" target="_blank"><span class="glyphicon glyphicon-download-alt"></span></a>
-                            <a href="<?php echo site_url('admin/order/payment_confirm/'.$order->id);?>" class="btn btn-default" title="Confirmar el Pago" onclick="return confirm('¿Deseas confirmar el Pago?')"><span class="glyphicon glyphicon-ok"></span></a>
+                            <a href="<?php echo site_url('admin/order/withdraw_confirm/'.$order->id);?>" class="btn btn-default" title="Confirmar el Retiro" onclick="return confirm('¿Deseas confirmar el Retiro?')"><span class="glyphicon glyphicon-ok"></span></a>
                         </div>
                     </td>
                 </tr>

@@ -31,6 +31,8 @@
             <ul class="dropdown-menu">
               <li><a href="<?php echo site_url('admin/orders/paid') ?>">Pagadas</a></li>
               <li><a href="<?php echo site_url('admin/orders/payable') ?>">Por Pagar</a></li>
+              <li><a href="<?php echo site_url('admin/orders/tracking') ?>">Por Enviar</a></li>
+              <li><a href="<?php echo site_url('admin/orders/withdraw') ?>">Por Retirar</a></li>
             </ul>
           </li>
         </ul>
