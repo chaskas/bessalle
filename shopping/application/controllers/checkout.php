@@ -98,7 +98,7 @@ class Checkout extends CI_Controller {
 
             $message .= "<p>Estimado <strong>".$billing_name."</strong></p>";
             $message .= "<p>Confirmo a usted la compra realizada el ".date("d/m/Y H:i")."</p>";
-            $message .= "<p>Con n&uacute;mero de orden: <strong>I".$order_id."</strong></p>";
+            $message .= "<p>Con n&uacute;mero de orden: <strong>IN".$order_id."</strong></p>";
 
             if($paymentType == 0) // Transferencia Bancaria
             {
@@ -113,7 +113,7 @@ class Checkout extends CI_Controller {
                 $message .= "<trong>Email:</strong> produccion002@gmail.com</p>";
 
                 $message .= "<p>Para confirmar el pago debe env&iacute;ar el comprobante de transferencia a produccion002@gmail.com.<br>";
-                $message .= "Con asunto: <strong>Orden de Compra N&ordm;: I".$order_id."</strong></p>";
+                $message .= "Con asunto: <strong>Orden de Compra N&ordm;: IN".$order_id."</strong></p>";
 
             }
 
@@ -141,7 +141,7 @@ class Checkout extends CI_Controller {
             $this->email->from('ventasweb@bessalle.cl', 'Bessalle Ltda.');
             $this->email->to($this->config->item('email'));
 
-            $this->email->subject('Compra Realizada en Bessalle Ltda.');
+            $this->email->subject('Compra Realizada en Bessalle Ltda. - Orden N&ordm;: IN'.$order_id);
 
             $message = "<html><head><title>Pl&aacute;sticos Bessalle Ltda.</title></head>";
 
@@ -149,7 +149,7 @@ class Checkout extends CI_Controller {
 
             $message .= "<p>Estimado:</p>";
 
-            $message .= "<p>El cliente <strong>".$billing_name."</strong> acaba de realizar una compra con orden N&ordm; <strong>I".$order_id."</strong> </p>";
+            $message .= "<p>El cliente <strong>".$billing_name."</strong> acaba de realizar una compra con orden N&ordm; <strong>IN".$order_id."</strong> </p>";
 
             $message .= "<p>Puede visualizar la orden de compra haciendo click <a href='".site_url('admin/order/'.$order_id)."'>aqui.</a></p>";
 

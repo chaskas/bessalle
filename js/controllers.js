@@ -335,6 +335,10 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
             return false;
     }
 
+    this.back = function () {
+        window.history.back();
+    }
+
     store.Data = Data;
 
 }]);
