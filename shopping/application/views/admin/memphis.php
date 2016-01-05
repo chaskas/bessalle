@@ -1,6 +1,6 @@
 <div>
   <ul class="nav nav-tabs right-to-left" role="tablist">
-    <li role="presentation" class="active"><a href="#" aria-controls="chilexpress" role="tab">Chilexpress</a></li>
+    <li role="presentation" class="active"><a href="#" aria-controls="chilexpress" role="tab">Memphis</a></li>
   </ul>
 
   <div class="tab-content padding-top-30">
@@ -34,7 +34,7 @@
                     <td class="text-center"><?php echo $t['ADIC']; ?></td>
                     <td class="text-center">
                         <div class="btn-group btn-group-xs" role="group">
-                            <a href="<?php echo site_url('admin/transport/chilexpress/'.$t['id']);?>" class="btn btn-default" title="Editar"><span class="glyphicon glyphicon-edit"></span></a>
+                            <a href="<?php echo site_url('admin/transport/memphis/'.$t['id']);?>" class="btn btn-default" title="Editar"><span class="glyphicon glyphicon-edit"></span></a>
                         </div>
                     </td>
                 </tr>
