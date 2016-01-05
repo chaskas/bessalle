@@ -34,7 +34,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h4>
-                            {{ product.price * product.minimun | currency : '$' : 0 }}<ngcart-addtocart id="{{ product.id }}" name="{{ product.name }}" price="{{ product.price * product.minimun }}" data="product">Agregar</ngcart-addtocart>
+                            {{ product.price * product.minimun | currency : '$' : 0 }}<ngcart-addtocart ng-hide="{{ !ProdCtrl.hasStock(product.stock) }}" id="{{ product.id }}" name="{{ product.name }}" price="{{ product.price * product.minimun }}" data="product">Agregar</ngcart-addtocart><span class="pull-right" ng-show="{{ !ProdCtrl.hasStock(product.stock) }}">No disponible</span>
                             </h4>
                         </div>
                     </div>

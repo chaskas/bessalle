@@ -480,7 +480,7 @@ class Admin extends CI_Controller {
 
         $message .= "<p>Estimado:</p>";
 
-        $message .= "<p>Se ha confirmado el pago de su orden de compra N&ordm; <strong>I".$order_id."</strong> </p>";
+        $message .= "<p>Se ha confirmado el pago de su orden de compra N&ordm; <strong>IN".$order_id."</strong> </p>";
 
         $message .= "<p>Puede descargar su orden haciendo click <a href='".site_url('order/download/'.$order_id)."'>aqui.</a></p>";
 
@@ -531,7 +531,7 @@ class Admin extends CI_Controller {
         if($carrier_code == 0) $carrier = 'Chilexpress';
         else if($carrier_code == 1) $carrier = 'Memphis';
 
-        $message .= "<p>Se ha enviado su pedido con orden de compra N&ordm; <strong>I".$order_id."</strong> a trav&eacute;s de <strong>".$carrier."</strong></p>";
+        $message .= "<p>Se ha enviado su pedido con orden de compra N&ordm; <strong>IN".$order_id."</strong> a trav&eacute;s de <strong>".$carrier."</strong></p>";
 
         $message .= "<p>El c&oacute;digo de seguimiento es: <strong>".$order_tracking_number."</strong> </p>";
 
@@ -630,7 +630,7 @@ class Admin extends CI_Controller {
 
         $pdf->Cell(0,5,'Order de Compra',$border = 0,$ln = 0,$align = 'C',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
         $pdf->Ln();
-        $pdf->Cell(0,5,'Nº: I'.$order->id,$border = 0,$ln = 0,$align = 'C',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
+        $pdf->Cell(0,5,'Nº: IN'.$order->id,$border = 0,$ln = 0,$align = 'C',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
         $pdf->Ln();
 
         $pdf->Line(10,40,200,40,array());

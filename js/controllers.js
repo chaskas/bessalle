@@ -14,6 +14,12 @@ storeControllers.controller('ProductListCtrl', ['$scope', '$routeParams', '$http
         store.products = data;
     });
 
+    this.hasStock = function (stock) {
+        if (stock > 0)
+            return true;
+        else return false;
+    }
+
 }]);
 
 storeControllers.controller('CategoryCtrl', ['$scope', '$routeParams', '$http', '$filter', 'ngCart', function($scope, $routeParams, $http, $filter, ngCart){

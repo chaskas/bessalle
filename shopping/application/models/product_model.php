@@ -12,7 +12,7 @@ class Product_model extends CI_Model {
         $this->db->select();
 
         $query = $this->db->where('category_id',$category_id);
-        $query = $this->db->where('stock > 0');
+        //$query = $this->db->where('stock > 0');
 
         $this->db->from('product');
 
