@@ -232,12 +232,12 @@
                 <br><br>
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="shippingType">Pago:</label>
+                        <label for="paymentType">Pago:</label>
                     </div>
                     <div class="col-md-9">
                         <div class="radio">
                             <label>
-                            <input type="radio" name="paymentType" id="paymentType" value="0" checked class="radio" ng-click="ShippCtrl.setPaymentType(0)" ng-model="ShippCtrl.Data.paymentTyoe" required> &nbsp; Transferencia Bancaria
+                            <input type="radio" name="paymentType" id="paymentType" value="0"  class="radio" ng-click="ShippCtrl.setPaymentType(0)" ng-model="ShippCtrl.Data.paymentType" required> &nbsp; Transferencia Bancaria
                             </label>
                         </div>
                         <!-- <div class="radio">
@@ -254,7 +254,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <h4>Datos Transferencia</h4>
-                                Debe realizar una transferencia con los siguientes datos, una vez realizada envíe el comprobante a: plasticos1@gmail.com.
+                                Debe realizar una transferencia con los siguientes datos, una vez realizada envíe el comprobante a: produccion002@gmail.com.
                                 Luego de comprobado el pago su orden será envíada.
                                 <hr>
                                 <div class="row">
@@ -297,7 +297,7 @@
             </div>
             <div class="panel-footer text-right">
                 <a href="#/shipping" class="btn btn-success">Atrás</a>
-                <button class="btn btn-success" ng-disabled="summaryForm.$invalid" ng-click="ShippCtrl.proccessCheckout()">Confirmar Pedido</button>
+                <button class="btn btn-success" ng-disabled="!ShippCtrl.validCheckoxes()" ng-click="ShippCtrl.proccessCheckout()">Confirmar Pedido</button>
             </div>
         </div>
 

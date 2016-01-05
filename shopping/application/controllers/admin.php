@@ -19,6 +19,7 @@ class Admin extends CI_Controller {
             $this->load->model('comuna_model');
             $this->load->model('provincia_model');
             $this->load->model('region_model');
+            $this->load->model('transport_model');
         }
         else
         {
@@ -194,6 +195,18 @@ class Admin extends CI_Controller {
     public function product_delete($product_id){
         $this->product_model->delete($product_id);
         redirect('admin/products', 'refresh');
+    }
+
+    public function product_stock()
+    {
+
+        $data['products'] = $this->product_model->get_products();
+
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/navbar');
+        $this->load->view('admin/product_stock', $data);
+        $this->load->view('admin/templates/footer');
+
     }
 
     private function dropdown_categories($selected_id = 0)
@@ -411,6 +424,18 @@ class Admin extends CI_Controller {
         $this->load->view('admin/templates/header');
         $this->load->view('admin/templates/navbar');
         $this->load->view('admin/orders_tracking', $data);
+        $this->load->view('admin/templates/footer');
+
+    }
+
+    public function orders_finished()
+    {
+
+        $data['orders'] = $this->order_model->get_orders_finished();
+
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/navbar');
+        $this->load->view('admin/orders_finished', $data);
         $this->load->view('admin/templates/footer');
 
     }
@@ -729,13 +754,90 @@ class Admin extends CI_Controller {
             $pdf->Ln();
         }
 
-
-
-
-
-
         $pdf->Output('order.pdf', 'I');
 
+    }
+
+    public function chilexpress()
+    {
+
+        $data['transport'] = $this->transport_model->get_chilexpress();
+
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/navbar');
+        $this->load->view('admin/chilexpress', $data);
+        $this->load->view('admin/templates/footer');
+
+    }
+
+    public function chilexpress_edit($chilexpress_id){
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $data['title'] = 'Editar Chilexpress';
+
+        $chilexpress = $this->transport_model->chilexpress_get_by_id($chilexpress_id);
+
+        $data['chilexpress'] = $chilexpress;
+
+        $this->form_validation->set_rules('nombre', 'Nombre', 'required');
+        $this->form_validation->set_message('required', 'Obligatorio');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('admin/templates/header');
+            $this->load->view('admin/templates/navbar');
+            $this->load->view('admin/chilexpress_edit', $data);
+            $this->load->view('admin/templates/footer');
+
+        }
+        else
+        {
+            $this->transport_model->chilexpress_edit($chilexpress_id);
+            redirect('admin/transport/chilexpress', 'refresh');
+        }
+    }
+
+    public function memphis()
+    {
+
+        $data['transport'] = $this->transport_model->get_memphis();
+
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/navbar');
+        $this->load->view('admin/memphis', $data);
+        $this->load->view('admin/templates/footer');
+
+    }
+
+    public function memphis_edit($memphis_id){
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $data['title'] = 'Editar Chilexpress';
+
+        $memphis = $this->transport_model->memphis_get_by_id($memphis_id);
+
+        $data['memphis'] = $memphis;
+
+        $this->form_validation->set_rules('nombre', 'Nombre', 'required');
+        $this->form_validation->set_message('required', 'Obligatorio');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('admin/templates/header');
+            $this->load->view('admin/templates/navbar');
+            $this->load->view('admin/memphis_edit', $data);
+            $this->load->view('admin/templates/footer');
+
+        }
+        else
+        {
+            $this->transport_model->memphis_edit($memphis_id);
+            redirect('admin/transport/memphis', 'refresh');
+        }
     }
 
     public function logout()

@@ -50,7 +50,8 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
     Data.shippingT1 = 0;
     Data.shippingT2 = 0;
 
-    Data.paymentType = 0;
+    Data.paymentType = -1;
+    Data.shippingType = -1;
 
     Data.carrier = 0;
 
@@ -319,6 +320,13 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
 
     this.proccessCheckout = function () {
         $location.path('checkout');
+    }
+
+    this.validCheckoxes = function () {
+        if (Data.paymentType > -1 && Data.shippingType > -1)
+            return true;
+        else
+            return false;
     }
 
     store.Data = Data;

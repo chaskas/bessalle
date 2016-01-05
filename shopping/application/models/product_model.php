@@ -9,8 +9,18 @@ class Product_model extends CI_Model {
     public function get_products_by_cat_id($category_id)
     {
 
-        $query = $this->db->get_where('product', array('category_id' => $category_id));
-        return $query->result_array();
+        $this->db->select();
+
+        $query = $this->db->where('category_id',$category_id);
+        $query = $this->db->where('stock > 0');
+
+        $this->db->from('product');
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0) {
+            return $query->result();
+        } else return array();
 
     }
 
@@ -135,7 +145,7 @@ class Product_model extends CI_Model {
         $this->db->where('id', $product_id);
         $this->db->set('stock', 'stock-'.$quantity, FALSE);
         $this->db->update('product');
-        
+
     }
 
 }

@@ -63,6 +63,7 @@ $route['admin/category/edit/(:num)'] = 'admin/category_edit/$1';
 $route['admin/category/delete/(:num)'] = 'admin/category_delete/$1';
 
 $route['admin/products'] = 'admin/products';
+$route['admin/stock'] = 'admin/product_stock';
 $route['admin/product/new'] = 'admin/product_new';
 $route['admin/product/edit/(:num)'] = 'admin/product_edit/$1';
 $route['admin/product/delete/(:num)'] = 'admin/product_delete/$1';
@@ -84,6 +85,12 @@ $route['admin/order/tracking_confirm'] = 'admin/order_tracking_confirm';
 $route['admin/order/withdraw_confirm/(:num)'] = 'admin/order_withdraw_confirm/$1';
 $route['admin/orders/tracking'] = 'admin/orders_tracking';
 $route['admin/orders/withdraw'] = 'admin/orders_withdraw';
+$route['admin/orders/finished'] = 'admin/orders_finished';
+
+$route['admin/transport/chilexpress'] = 'admin/chilexpress';
+$route['admin/transport/chilexpress/(:num)'] = 'admin/chilexpress_edit/$1';
+$route['admin/transport/memphis'] = 'admin/memphis';
+$route['admin/transport/memphis/(:num)'] = 'admin/memphis_edit/$1';
 
 $route['admin'] = 'admin/categories';
 

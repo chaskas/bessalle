@@ -247,6 +247,37 @@ class Order_model extends CI_Model {
 
     }
 
+    public function get_orders_finished()
+    {
+
+        $this->db->select('
+            order.id,
+            order.date,
+            order.code,
+            order.user_id,
+            order.neto,
+            order.iva,
+            order.carrier,
+            user.billing_rut as rut,
+            user.billing_name as name');
+
+        $this->db->where('order.tracking_number is not null');
+        $this->db->where('order.withdrawn = 1');
+        $this->db->or_where('order.payment_status = 1');
+
+        $this->db->order_by('order.date','DESC');
+
+        $this->db->from('order');
+        $this->db->join('user', 'user.id = order.user_id');
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0) {
+            return $query->result();
+        } else return array();
+
+    }
+
 
 
 }

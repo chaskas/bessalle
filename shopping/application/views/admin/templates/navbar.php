@@ -16,13 +16,14 @@
             <ul class="dropdown-menu">
               <li><a href="<?php echo site_url('admin/categories') ?>">Categorías</a></li>
               <li><a href="<?php echo site_url('admin/products') ?>">Productos</a></li>
+              <li><a href="<?php echo site_url('admin/stock') ?>">Stock</a></li>
             </ul>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transportes <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Chilexpress</a></li>
-              <li><a href="#">Memphis</a></li>
+              <li><a href="<?php echo site_url('admin/transport/chilexpress') ?>">Chilexpress</a></li>
+              <li><a href="<?php echo site_url('admin/transport/memphis') ?>">Memphis</a></li>
             </ul>
           </li>
           <li><a href="<?php echo site_url('admin/users') ?>">Clientes</a></li>
@@ -33,6 +34,7 @@
               <li><a href="<?php echo site_url('admin/orders/payable') ?>">Por Pagar</a></li>
               <li><a href="<?php echo site_url('admin/orders/tracking') ?>">Por Enviar</a></li>
               <li><a href="<?php echo site_url('admin/orders/withdraw') ?>">Por Retirar</a></li>
+              <li><a href="<?php echo site_url('admin/orders/finished') ?>">Procesadas</a></li>
             </ul>
           </li>
         </ul>
