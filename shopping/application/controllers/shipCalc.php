@@ -8,13 +8,13 @@ class ShipCalc extends CI_Controller
         $this->load->model('shippcalc_model');
     }
 
-    public function getCost($comuna_id, $product_id, $carrier)
+    public function getCost($comuna_id, $product_id, $product_quantity, $carrier)
     {
 
         header('Content-Type: application/json');
 
         $costo = 0;
-        $costo = $this->shippcalc_model->get_cost($comuna_id, $product_id, $carrier);
+        $costo = $this->shippcalc_model->get_cost($comuna_id, $product_id, $product_quantity, $carrier);
 
         echo json_encode( array("costo" => $costo, JSON_NUMERIC_CHECK ));
 

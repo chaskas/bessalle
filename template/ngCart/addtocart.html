@@ -1,6 +1,21 @@
 
-<a class="btn btn-lg btn-primary pull-right" ng-disabled="true" ng-transclude ng-hide="attrs.id"></a>
-<a class="btn btn-xs btn-primary pull-right"
+<button ng-disabled="true" ng-transclude ng-hide="attrs.id"></button>
+<fieldset>
+    <legend>Cantidad:</legend>
+    <div class="wpsc_quantity_update">
+        <div class="inp_field">
+            <input type="text" name="quantity" id="quantity" ng-model="q" size="2" value="1" />
+        </div>
+        <div class="qtyupdown">
+            <a class="down" ng-click="q > 1 ? q = q - 1 : q = q"></a>
+            <a class="up" ng-click="q = q + 1"></a>
+        </div>
+
+    </div>
+</fieldset>
+<div class="wpsc_buy_button_container">
+<button
    ng-click="ngCart.addItem(id, name, price, q, data)"
    ng-transclude
-   ng-show="attrs.id"></a>
+   ng-show="attrs.id"></button>
+</div>

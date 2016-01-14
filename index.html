@@ -1,93 +1,309 @@
 <!doctype html>
-<html lang="en" ng-app="store">
+<html lang="es" ng-app="store">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Plásticos Bessalle</title>
 
-  <title>Plásticos Bessalle</title>
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport">
+    <meta name="description" content="Bessalle" />
+    <meta charset="UTF-8" />
+    <meta name='robots' content='noindex,nofollow' />
 
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="bower_components/normalize.css/normalize.css">
-  <link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen"/>
-  <link rel="stylesheet" href="css/app.css">
 
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="bower_components/angular/angular_es-cl.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/ngcart/dist/ngCart.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/controllers.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.custom.css">
+    <link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="css/style2.css" />
 
-  <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+    <!--[if IE 8]>
+        <link rel="stylesheet" type="text/css" media="all" href="css/ie.css"/>
+    </script>
+    <![endif]-->
 
+    <!--[if lt IE 9]>
+    <script src="IE8.js">IE7_PNG_SUFFIX=".png";</script>
+    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+    <![endif]-->
+
+    <!-- <link rel='stylesheet' id='bwp-rc-css'  href='http://lookshop.transparentideas.com/wp-content/plugins/bwp-recent-comments/css/bwp-recent-comments.css?ver=1.2.0RC1' type='text/css' media='all' /> -->
+    <!-- <link rel='stylesheet' id='validate-engine-css-css'  href='http://lookshop.transparentideas.com/wp-content/plugins/wysija-newsletters/css/validationEngine.jquery.css?ver=2.3.1' type='text/css' media='all' /> -->
+    <!-- <link rel='stylesheet' id='theme-my-login-css'  href='http://lookshop.transparentideas.com/wp-content/plugins/theme-my-login/theme-my-login.css?ver=6.2.3' type='text/css' media='all' /> -->
+    <!-- <link rel='stylesheet' id='jQueryUI-css'  href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/base/jquery-ui.css?ver=3.5.1' type='text/css' media='all' /> -->
+    <link rel='stylesheet' id='wpecSlider-css'  href='http://lookshop.transparentideas.com/wp-content/plugins/wpec-product-slider/wpec-slider/css/wpec-slider.css?ver=3.5.1' type='text/css' media='all' />
+    <!-- <link rel='stylesheet' id='wpsc-colorbox-css-css'  href='http://lookshop.transparentideas.com/wp-content/plugins/wp-e-commerce/wpsc-core/js/wpsc_colorbox.css?ver=3.8.9.5.649230' type='text/css' media='all' /> -->
+    <link rel='stylesheet' id='wpsc-theme-css-css'  href='css/wpsc-default.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='wpsc-theme-css-compatibility-css'  href='http://lookshop.transparentideas.com/wp-content/plugins/wp-e-commerce/wpsc-theme/compatibility.css?ver=3.8.9.5.649230' type='text/css' media='all' />
+    <!-- <link rel='stylesheet' id='ctsocial-styles-css'  href='http://lookshop.transparentideas.com/wp-content/plugins/captain-social/includes/css/ctsocial-styles.css?ver=1.0.0' type='text/css' media='all' /> -->
+    <!-- <link rel='stylesheet' id='contact-form-7-css'  href='http://lookshop.transparentideas.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=3.3.3' type='text/css' media='all' /> -->
+    <!-- <link rel='stylesheet' id='wpecfp-style-css'  href='http://lookshop.transparentideas.com/wp-content/plugins/wpecfeaturedproducts/css/wpecfp.css?ver=3.5.1' type='text/css' media='all' /> -->
+    <!-- <link rel='stylesheet' id='GoogleFonts-css'  href='http://fonts.googleapis.com/css?family=PT+Sans%3A400%2C700&ver=3.5.1' type='text/css' media='all' /> -->
+    <!-- <link rel='stylesheet' id='elastslidecss-css'  href='http://lookshop.transparentideas.com/wp-content/themes/lookshop/css/elast/elastislide.css?ver=3.5.1' type='text/css' media='all' /> -->
+    <!-- <link rel='stylesheet' id='ticolors-css'  href='http://lookshop.transparentideas.com/wp-content/themes/lookshop/colors/colors.css?ver=3.5.1' type='text/css' media='all' /> -->
+    <!-- <link rel='stylesheet' id='patterns-css'  href='http://lookshop.transparentideas.com/wp-content/themes/lookshop/patterns/patterns.css?ver=3.5.1' type='text/css' media='all' /> -->
+    <!-- <link rel='stylesheet' id='cpstyes-css'  href='http://lookshop.transparentideas.com/wp-content/themes/lookshop/cpanel/cpanel.css?ver=3.5.1' type='text/css' media='all' /> -->
+    <!-- <link rel='stylesheet' id='mediaelementjs-styles-css'  href='http://lookshop.transparentideas.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/mediaelementplayer.css?ver=3.5.1' type='text/css' media='all' /> -->
+    <!-- <link rel='stylesheet' id='tw-recent-posts-widget-css'  href='http://lookshop.transparentideas.com/wp-content/plugins/tw-recent-posts-widget/tw-recent-posts-widget.css?ver=1.0.3' type='text/css' media='screen' /> -->
+
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular_es-cl.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/ngcart/dist/ngCart.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script type='text/javascript' src='js/wp-e-commerce.js'></script>
+
+    <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/wpec-product-slider/wpec-slider/js/jquery.easing.1.2.js?ver=3.5.1'></script>
+    <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/wpec-product-slider/wpec-slider/js/jquery.transform2d.js?ver=3.5.1'></script>
+    <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/wpec-product-slider/wpec-slider/js/jquery-ui-1.8.23.resizable.min.js?ver=3.5.1'></script>
+    <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/wpec-product-slider/wpec-slider/js/spin.min.js?ver=3.5.1'></script>
+    <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/wpec-product-slider/wpec-slider/js/jquery.wpec-slider.js?ver=3.5.1'></script>
+    <!-- <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/wp-e-commerce/wpsc-core/js/jquery.infieldlabel.min.js?ver=3.8.9.5.649230'></script> -->
+    <!-- <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/wp-e-commerce/wpsc-core/js/ajax.js?ver=3.8.9.5.649230'></script> -->
+    <!-- <script type='text/javascript' src='http://lookshop.transparentideas.com/index.php?wpsc_user_dynamic_js=true&ver=3.8.9.5.649230'></script> -->
+    <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/wp-e-commerce/wpsc-admin/js/jquery.livequery.js?ver=1.0.3'></script>
+    <!-- <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/wp-e-commerce/wpsc-core/js/user.js?ver=3.8.9.5649230'></script> -->
+    <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/wp-e-commerce/wpsc-core/js/jquery.colorbox-min.js?ver=Instinct_e-commerce'></script>
+    <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/wp-e-commerce/wpsc-core/js/wpsc_colorbox.js?ver=Instinct_e-commerce'></script>
+    <!-- <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/themes/lookshop/js/infinitesl.js?ver=3.5.1'></script> -->
+    <!-- <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/wpec-elastic-slider/js/jquery.easing.1.3.js?ver=3.5.1'></script> -->
+    <!-- <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/wpec-elastic-slider/js/jquery.eislideshow.js?ver=3.5.1'></script> -->
+    <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/themes/lookshop/js/ddsmoothmenu.js?ver=3.5.1'></script>
+    <!-- <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/themes/lookshop/js/jquery.capSlide.js?ver=3.5.1'></script> -->
+    <!-- <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/themes/lookshop/js/jquery-ui.min.js?ver=3.5.1'></script> -->
+    <!-- <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/themes/lookshop/js/elast/modernizr.custom.js?ver=3.5.1'></script> -->
+    <!-- <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/themes/lookshop/js/elast/jquery.hovrizr.js?ver=3.5.1'></script> -->
+    <!-- <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/themes/lookshop/js/elast/jquery.elastislide.js?ver=3.5.1'></script> -->
+    <!-- <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/themes/lookshop/cpanel/cpanel.js?ver=3.5.1'></script> -->
+    <!-- <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/media-element-html5-video-and-audio-player/mediaelement/mediaelement-and-player.min.js?ver=2.1.3'></script> -->
+
+    <script type='text/javascript' src='js/lookshop.js'></script>
 
 </head>
-<body class="bessalle">
 
-    <div class="container">
+<body>
 
-        <div class="row">
+    <header>
+        <section class="chrome">
+            <div class="container">
+            <div class="row">
 
-            <div class="col-md-4">
-              <a href="/">
-                <img src="images/logo.png" width="300" height="95" alt="Plasticos Besalle">
-              </a>
-            </div>
+                    <div class="col-md-7">
 
-            <div class="col-md-4">
-              <a href="#/shopping">
-                <img src="images/compre-aqui.png" alt="Compre Aqui">
-              </a>
-            </div>
+                        <div id="header_sidebar">
+                            <div class="textwidget">
+                                <div style="margin: 13px">Bienvenido a nuestra tienda online</div>
+                            </div>
+                        </div>
 
-            <div class="col-md-4 pull-right" >
-              <div class="row">
-                <img src="images/fonos.png" alt="Fonos" class="pull-right">
-              </div>
-              <div class="row pull-right">
-                <img src="images/social/twitter.png" alt="Twitter" class="pull-right">
-                <img src="images/social/facebook.png" alt="Facebook" class="pull-right">
-                <img src="images/social/email.png" alt="eMail" class="pull-right">
-              </div>
-            </div>
+                        <div id="hidden_menu">
+                            <div id="smoothmenu_top" class="ddsmoothmenu">
+                                <ul id="hid" class="menu">
+                                    <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home  current-menu-item current_page_item current-menu-ancestor current-menu-parent alpha">
+                                        <a href="#/home"><span>Inicio</span></a>
+                                    </li>
+                                    <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/we"><span>Empresa</span></a></li>
+                                    <li  class="menu-item menu-item-type-post_type menu-item-object-page">
+                                        <a href="#/products"><span>Productos</span></a>
+                                        <ul class="sub-menu">
+                                            <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Bolsas Camiseta</span></a></li>
+                                            <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Bolsas Tipo Riñon</span></a></li>
+                                            <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Bolsas Tipo Basura</span></a></li>
+                                            <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Bolsas a Medida</span></a></li>
+                                            <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Bolsas Tipo Carbón</span></a></li>
+                                            <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Rollos y Mangas</span></a></li>
+                                            <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Biodegradables</span></a></li>
+                                            <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Bolsas PLA</span></a></li>
+                                            <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Señalización</span></a></li>
+                                        </ul>
+                                    </li>
+                                    <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#services"><span>Servicios</span></a></li>
+                                    <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#offers"><span>Ofertas</span></a></li>
+                                    <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#contact"><span>Contacto</span></a></li>
+                                </ul>
+                            </div>
+                            <script type="text/javascript">
 
-        </div>
+                                if (document.documentElement.clientWidth > 470) {
 
-        <div class="row content">
-            <div class="col-md-12">
+                                    ddsmoothmenu.init({
+                                        mainmenuid: "smoothmenu_top",
+                                        orientation: 'h',
+                                        classname: 'ddsmoothmenu',
+                                        contentsource: "markup"
+                                    });
 
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                <li><a href="#/home">Inicio</a></li>
-                                <li><a href="#/we">Empresa</a></li>
-                                <li><a href="#/products">Productos</a></li>
-                                <li><a href="#/services">Servicios</a></li>
-                                <li><a href="#/offers">Ofertas</a></li>
-                                <li><a href="#/news">Novedades</a></li>
-                                <li><a href="#/contact">Contacto</a></li>
-                            </ul>
+                                }
+
+                            </script>
                         </div>
                     </div>
-                </nav>
+
+                    <div class="col-md-5">
+                        <ngcart-summary></ngcart-summary>
+                    </div>
 
             </div>
+            <div class="clear"></div>
+            </div>
+        </section>
+        <div class="container">
+        <div class="row">
+            <div class="col-md-4 header_container">
+                <div id="logo">
+                    <a href="#/home" title="Bessalle" rel="home">
+                        <img src="images/logo.png"  alt="Bessalle"/>
+                    </a>
+                </div>
+            </div>
 
+            <div class="col-md-8 menu-container header_container">
+
+                    <nav id="main_menu">
+                        <div id="smoothmenu1" class="ddsmoothmenu">
+                            <ul id="menu-main-menu" class="menu">
+                                <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home  current-menu-item current_page_item current-menu-ancestor current-menu-parent alpha">
+                                    <a href="#/home"><span>Inicio</span></a>
+                                </li>
+                                <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/we"><span>Empresa</span></a></li>
+                                <li  class="menu-item menu-item-type-post_type menu-item-object-page">
+                                    <a href="#/products"><span>Productos</span></a>
+                                    <ul class="sub-menu">
+                                        <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Bolsas Camiseta</span></a></li>
+                                        <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Bolsas Tipo Riñon</span></a></li>
+                                        <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Bolsas Tipo Basura</span></a></li>
+                                        <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Bolsas a Medida</span></a></li>
+                                        <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Bolsas Tipo Carbón</span></a></li>
+                                        <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Rollos y Mangas</span></a></li>
+                                        <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Biodegradables</span></a></li>
+                                        <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Bolsas PLA</span></a></li>
+                                        <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/shopping"><span>Señalización</span></a></li>
+                                    </ul>
+                                </li>
+                                <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#services"><span>Servicios</span></a></li>
+                                <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#offers"><span>Ofertas</span></a></li>
+                                <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#contact"><span>Contacto</span></a></li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <script>
+
+                        if (document.documentElement.clientWidth > 470) {
+                            try{
+                                ddsmoothmenu.init({
+                                    mainmenuid: "smoothmenu1",
+                                    orientation: 'h',
+                                    classname: 'ddsmoothmenu',
+                                    contentsource: "markup"
+                                });
+
+                            } catch(error){
+                                if (window.console) {
+                                    console.log(error)
+                                }
+                            }
+                        }
+                    </script>
+
+                    <div class="clear"></div>
+
+            </div>
         </div>
-
-        <div ng-view></div>
-
-        <div style=" border-top-style:solid; border-width:thin;padding-top:10px;margin-top:50px;">
-            <p>
-                <a href="#/contact" class="bessalle">Dirección: Bulnes 753. Concepción | Derechos Reservados por Plásticos Besalle 2012.</a>
-                <a href="http://www.webdevel.cl" target="_blank" class="bessalle pull-right">WebDevel.cl</a>
-            </p>
-
+        <div class="clear"></div>
         </div>
+    </header>
 
-    </div>
+    <div ng-view></div>
+
+    <div class="clear"></div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 content">
+                    <div class="footer_container">
+                        <div id="footer_upper">
+                            <div class="col-md-4">
+                                <h3>Productos</h3>
+                                <div class="textwidget">
+                                    <ul>
+
+                                    <li><a href="#/shopping"><span>Bolsas Camiseta</span></a></li>
+                                    <li><a href="#/shopping"><span>Bolsas Tipo Riñon</span></a></li>
+                                    <li><a href="#/shopping"><span>Bolsas Tipo Basura</span></a></li>
+                                    <li><a href="#/shopping"><span>Bolsas a Medida</span></a></li>
+                                    <li><a href="#/shopping"><span>Bolsas Tipo Carbón</span></a></li>
+                                    <li><a href="#/shopping"><span>Rollos y Mangas</span></a></li>
+                                    <li><a href="#/shopping"><span>Biodegradables</span></a></li>
+                                    <li><a href="#/shopping"><span>Bolsas PLA</span></a></li>
+                                    <li><a href="#/shopping"><span>Señalización</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h3>Servicios</h3>
+                                <div class="textwidget">
+                                    <ul>
+                                        <li><a href="#/services">Impresión Flexográfica</a></li>
+                                        <li><a href="#/services">Despacho a Domicilio</a></li>
+                                        <li><a href="#/services">Diseño de Arte y Logotipo</a></li>
+                                    </ul>
+                                </div>
+                                <br>
+                                <h3>Otros</h3>
+                                <div class="textwidget">
+                                    <ul>
+                                        <li><a href="#/we"><span>Empresa</span></a></li>
+                                        <li><a href="#/offers"><span>Ofertas</span></a></li>
+                                        <li><a href="#/contact"><span>Contacto</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h3>Informaciones</h3>
+                                <div class="textwidget">
+                                    <ul class="contacts">
+                                        <li class="phone"><a href="#/contact"><span>+56 41 224 3755</span></a></li>
+                                        <li class="location"><a href="#/contact"><span>Manuel Bulnes 753, Concepción</span></a></li>
+                                        <li class="mail"><a href="#/contact"><span>plasticos1@gmail.com</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div id="end">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="bottom_content text-center">
+                            by <a href="http://www.webdevel.cl" title="WebDevel" target="_blank">WebDevel</a>
+                        </div>
+                        <div id="bot_container"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <link rel='stylesheet' id='elast-style-css'  href='http://lookshop.transparentideas.com/wp-content/plugins/wpec-elastic-slider/css/elastislide.css?ver=3.5.1' type='text/css' media='all' />
+    <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.25.0-2013.01.18'></script>
+    <script type='text/javascript'>
+    /* <![CDATA[ */
+    var _wpcf7 = {"loaderUrl":"http:\/\/lookshop.transparentideas.com\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
+    /* ]]> */
+    </script>
+    <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=3.3.3'></script>
+    <script type='text/javascript' src='http://lookshop.transparentideas.com/wp-content/plugins/sp-wpec-variation-image-swap/js/sp-wpec-variation-image-swap.js?ver=2.0.7'></script>
 
 </body>
 </html>

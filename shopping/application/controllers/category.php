@@ -14,7 +14,19 @@ class Category extends CI_Controller {
                 $data['categories'] = $this->category_model->get_categories();
 
                 echo json_encode( $data['categories'] );
-                
+
         }
+
+        public function get_category($id)
+        {
+                header('Content-Type: application/json');
+
+                $data['category'] = $this->category_model->getById($id);
+
+                echo json_encode( $data['category'] );
+
+        }
+
+
 
 }

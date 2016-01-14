@@ -1,0 +1,75 @@
+div.default_product_display div.textcol{
+    margin-left: 228px !important;
+    min-height: 96px;
+    _height: 96px;
+}
+
+div.default_product_display  div.textcol div.imagecol{
+    position:absolute;
+    top:0px;
+    left: 0px;
+    margin-left: -228px !important;
+}
+
+div.default_product_display  div.textcol div.imagecol a img {
+    width: 218px;
+    height: 96px;
+}
+
+.wpsc_category_grid_item  {
+    display:block;
+    float:left;
+    width: 128px;
+    height: px;
+}
+.wpsc_category_grid_item  span{
+    position:relative;
+    top:10.444444444444px;
+}
+div.default_product_display div.item_no_image a  {
+    width: 216px;
+}
+
+div.default_product_display .imagecol img.no-image, #content div.default_product_display .imagecol img.no-image {
+    width: 218px;
+    height: 96px;
+}
+
+
+/*
+* Single View Styling
+*/
+
+div.single_product_display div.item_no_image  {
+    width: 298px;
+    height: -2px;
+}
+div.single_product_display div.item_no_image a  {
+    width: 298px;
+}
+
+div.single_product_display div.textcol{
+    margin-left: 310px !important;
+    min-height: px;
+    _height: px;
+}
+
+
+div.single_product_display  div.textcol div.imagecol{
+    position:absolute;
+
+    margin-left: -310px !important;
+}
+
+div.single_product_display  div.textcol div.imagecol a img {
+    width: 300px;
+    height: px;
+}
+
+div#categorydisplay{
+display: block;
+}
+
+div#branddisplay{
+display: none;
+}

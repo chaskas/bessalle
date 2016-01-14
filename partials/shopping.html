@@ -1,50 +1,98 @@
-<div class="row">
+<section id="content">
+	<div class="container">
+		<div class="row">
 
-    <div class="col-md-3">
+			<div class="col-md-3 side_col_left shop">
+				<div class="widget-1 alpha box  widget_text">
+	                <div class="textwidget">
+	                    <h2>Categorias</h2>
+	                </div>
+			    </div>
 
-        <div class="list-group" ng-controller="CategoryCtrl as CatCtrl">
-            <a href="#/category/{{category.id}}" class="list-group-item" ng-class="{active: CatCtrl.isSelected(category.id)}" ng-repeat="category in CatCtrl.categories | orderBy: 'name'" ng-click="CatCtrl.setCategory(category.id)">
-               {{ category.name }} </a>
-        </div>
+	            <div class="box  widget_wpsc_categorisation" ng-controller="CategoryCtrl as CatCtrl">
 
-    </div>
-    <div class="col-md-9">
+	                <div class="wpsc_categorisation_group" ng-repeat="category in CatCtrl.categories | orderBy: 'name'">
+	        			<ul class="wpsc_categories wpsc_top_level_categories">
+	        				<li class="wpsc_category_7">
+	            				<a href="#/category/{{category.id}}" class="wpsc_category_image_link" ng-click="CatCtrl.setCategory(category.id)"></a>
+	        					<a href="#/category/{{category.id}}" ng-click="CatCtrl.setCategory(category.id)">{{ category.name }}</a>
+	        				</li>
+	        			</ul>
+	    			    <div class="clear_category_group"></div>
+			        </div>
 
-        <ngcart-summary></ngcart-summary>
+	            </div>
 
-        <div class="row" ng-controller="ProductListCtrl as ProdCtrl">
+	            <div class="shade"><div class="shade_in"><div class="shade_bg"></div></div></div>
 
-            <div class="col-md-6" ng-repeat="product in ProdCtrl.products | orderBy: 'name'">
+				<div class="clear"></div>
 
-              <div class="panel panel-default">
+			</div>
 
-                <div class="panel-heading">
-                  <h3 class="panel-title">{{ product.name }}</h3>
-                </div>
+			<div class="col-md-9" ng-controller="ProductListCtrl as ProdCtrl">
 
-                <div class="panel-body">
-                  <img ng-src="{{ product.image }}" alt="{{ product.name }}" class="img-rounded" height="301" width="301">
-                  <br><br>
-                  {{ product.price | currency }} / {{ product.unit == 0 ? "Kg" : "Unidad" }}
-                  <br>
-                  {{ product.description }}
-                </div>
+	            <h1 class="category-title">{{ ProdCtrl.Data.currentCategory.name }}</h1>
 
-                <div class="panel-footer">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>
-                            {{ product.price * product.minimun | currency : '$' : 0 }}<ngcart-addtocart ng-hide="{{ !ProdCtrl.hasStock(product.stock) }}" id="{{ product.id }}" name="{{ product.name }}" price="{{ product.price * product.minimun }}" data="product">Agregar</ngcart-addtocart><span class="pull-right" ng-show="{{ !ProdCtrl.hasStock(product.stock) }}">No disponible</span>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
+	            <div class="wrap wpsc_container">
 
-              </div>
+					<div class="wpsc_default_product_list row">
 
-            </div>
+						<div class="col-md-6" ng-repeat="product in ProdCtrl.products | orderBy: 'name'">
 
-        </div>
-    </div>
+		                    <div class="default_product_display" >
 
-</div>
+		                        <div class="imagecol">
+		                            <a href="#/detail/{{product.id}}">
+									    <img class="product_image" title="{{ product.name }}" ng-src="{{ product.image }}" alt="{{ product.name }}" height="300" width="300" />
+								    </a>
+						        </div>
+
+						        <div class="productcol">
+							        <h3 class="prodtitle entry-title">
+									    <a class="wpsc_product_title" href="#/detail/{{product.id}}">{{ product.name }}</a>
+		            				</h3>
+
+		    						<div class="wpsc_description">
+		    							<p>
+		                                    {{ product.price | currency : '' : 0 }} / {{ product.unit == 0 ? "Kg" : "Unidad" }}
+		                                    <br>
+		                                    {{ product.description }}
+		                                </p>
+		                            </div>
+
+		                            <div class="wpsc_product_price">
+		                                <p class="pricedisplay">
+		                                    <span class="currentprice pricedisplay">
+		                                        <span class="price_price">Precio:</span>
+		                                        <span class="csymb">$</span>
+		                                        {{ product.price * product.minimun | currency : '' : 0 }}
+		                                    </span>
+		                                </p>
+										<div class="clear"></div>
+							        </div>
+
+									<div class="wpsc_buy_button_container">
+										<a class="button" href="#/detail/{{product.id}}"><span>Comprar</span></a>
+									</div>
+
+		                            <div class="entry-utility wpsc_product_utility"></div>
+
+								</div>
+
+		                        <div class="shade"><div class="shade_in"><div class="shade_bg"></div></div></div>
+
+			                </div>
+
+						</div>
+
+						<div class="clear"></div>
+
+
+					</div>
+
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</section>

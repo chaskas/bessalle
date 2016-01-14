@@ -18,4 +18,14 @@ class Product extends CI_Controller {
 
         }
 
+        public function get_product($id)
+        {
+                header('Content-Type: application/json');
+
+                $data['product'] = $this->product_model->getById($id);
+
+                echo json_encode( $data['product'] );
+
+        }
+
 }

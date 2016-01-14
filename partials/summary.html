@@ -1,305 +1,308 @@
-<div class="row">
-    <div class="col-md-3">
+<section id="content">
 
-        <div class="list-group" ng-controller="CategoryCtrl as CatCtrl">
-            <a href="#/category/{{category.id}}" class="list-group-item" ng-class="{active: CatCtrl.isSelected(category.id)}" ng-repeat="category in CatCtrl.categories | orderBy: 'name'" ng-click="CatCtrl.setCategory(category.id)">
-               {{ category.name }} </a>
-        </div>
+    <div class="container">
+        <div class="row">
 
-    </div>
+            <div class="col-md-12" ng-controller="ShippingCtrl as ShippCtrl">
 
-    <div class="col-md-9" ng-controller="ShippingCtrl as ShippCtrl">
+                <h1>Resumen del Pedido</h1>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Resumen del Pedido</h3>
-            </div>
-            <div class="panel-body">
+                <div class="panel panel-default">
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>
-                            Información del Envío
-                            <a href="#/shipping" class="btn btn-warning btn-xs pull-right">Corregir</a>
-                        </h4>
+                    <div class="panel-body">
 
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <label>Nombre Completo:</label>
-                        <br>
-                        {{ ShippCtrl.Data.shipping.name }}
-                    </div>
-
-                    <div class="col-md-6">
-                        <label>RUT:</label>
-                        <br>
-                        {{ ShippCtrl.Data.shipping.rut }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <label>Direción:</label>
-                        <br>
-                        {{ ShippCtrl.Data.shipping.address1 }}, {{ ShippCtrl.Data.shipping.address2 }}
-                    </div>
-                    <div class="col-md-3">
-                        <label>Comuna:</label>
-                        <br>
-                        {{ ShippCtrl.Data.shipping.comuna.COMUNA_NOMBRE }}
-                    </div>
-                    <div class="col-md-3">
-                        <label>Provincia:</label>
-                        <br>
-                        {{ ShippCtrl.Data.shipping.provincia.PROVINCIA_NOMBRE }}
-                    </div>
-                    <div class="col-md-3">
-                        <label>Región:</label>
-                        <br>
-                        {{ ShippCtrl.Data.shipping.region.REGION_NOMBRE }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label>Fono:</label>
-                        <br>
-                        {{ ShippCtrl.Data.shipping.phone }}
-                    </div>
-                    <div class="col-md-6">
-                        <label>Email:</label>
-                        <br>
-                        {{ ShippCtrl.Data.shipping.email }}
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>Información de Facturación</h4>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <label>Razón Social:</label>
-                        <br>
-                        {{ ShippCtrl.Data.billing.name }}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <label>RUT:</label>
-                        <br>
-                        {{ ShippCtrl.Data.billing.rut }}
-                    </div>
-                    <div class="col-md-8">
-                        <label>Giro:</label>
-                        <br>
-                        {{ ShippCtrl.Data.billing.business }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <label>Direción:</label>
-                        <br>
-                        {{ ShippCtrl.Data.billing.address1 }}, {{ ShippCtrl.Data.billing.address2 }}
-                    </div>
-                    <div class="col-md-3">
-                        <label>Comuna:</label>
-                        <br>
-                        {{ ShippCtrl.Data.billing.comuna.COMUNA_NOMBRE }}
-                    </div>
-                    <div class="col-md-3">
-                        <label>Provincia:</label>
-                        <br>
-                        {{ ShippCtrl.Data.billing.provincia.PROVINCIA_NOMBRE }}
-                    </div>
-                    <div class="col-md-3">
-                        <label>Región:</label>
-                        <br>
-                        {{ ShippCtrl.Data.billing.region.REGION_NOMBRE }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label>Fono:</label>
-                        <br>
-                        {{ ShippCtrl.Data.billing.phone }}
-                    </div>
-                    <div class="col-md-6">
-                        <label>Email:</label>
-                        <br>
-                        {{ ShippCtrl.Data.billing.email }}
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>
-                            Productos <a href="#/cart" class="btn btn-warning btn-xs pull-right">Corregir</a>
-                        </h4>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <table class="table table-condensed">
-                            <thead>
-                                <tr>
-                                    <th>Producto</th>
-                                    <th class="text-center">Cantidad</th>
-                                    <th class="text-right">Valor Unitario</th>
-                                    <th class="text-right">Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="item in ShippCtrl.ngCart.getCart().items track by $index">
-                                    <td>{{ item.getName() }}</td>
-                                    <td class="text-center">{{ item.getQuantity() | number }}</td>
-                                    <td class="text-right">{{ item.getPrice() | currency : '$' : 0 }}</td>
-                                    <td class="text-right">{{ item.getTotal() | currency : '$' : 0 }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td colspan="3" class="text-right">Subtotal</td>
-                                    <td class="text-right">{{ ShippCtrl.ngCart.getSubTotal() | currency : '$' : 0 }}</td>
-                                </tr>
-
-
-
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-                <hr>
-                <form role="form"  name="summaryForm" novalidate>
-                <div class="row">
-                    <div class="col-md-5">
-                        <label for="shippingType"><h4>Método de Envío:</h4></label>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="radio">
-                            <label>
-                            <input type="radio" name="shippingType" id="shippingType" value="0" class="radio" ng-click="ShippCtrl.setShipping(0)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Chilexpress 24-48 Hrs {{ ShippCtrl.Data.shippingT1 | currency : '$' : 0 }}
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                            <input type="radio" name="shippingType" id="shippingType" value="1" class="radio" ng-click="ShippCtrl.setShipping(1)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Despacho por Bus {{ ShippCtrl.Data.shippingT2 | currency : '$' : 0 }}
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                            <input type="radio" name="shippingType" id="shippingType" value="2" class="radio" ng-click="ShippCtrl.setShipping(2)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Retiro en Bodega
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <table class="table table-condensed">
-                            <tbody>
-                                <tr>
-                                    <td colspan="3" class="text-right">Subtotal</td>
-                                    <td class="text-right">{{ ShippCtrl.ngCart.getSubTotal() | currency : '$' : 0 }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3" class="text-right">IVA</td>
-                                    <td class="text-right">{{ ShippCtrl.ngCart.getTax() | currency : '$' : 0 }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3" class="text-right">Envío</td>
-                                    <td class="text-right">{{ ShippCtrl.ngCart.getShipping() | currency : '$' : 0 }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3" class="text-right">Total</td>
-                                    <td class="text-right">{{ ShippCtrl.ngCart.totalCost() | currency : '$' : 0 }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <hr>
-                <br><br>
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="paymentType">Pago:</label>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="radio">
-                            <label>
-                            <input type="radio" name="paymentType" id="paymentType" value="0"  class="radio" ng-click="ShippCtrl.setPaymentType(0)" ng-model="ShippCtrl.Data.paymentType" required> &nbsp; Transferencia Bancaria
-                            </label>
-                        </div>
-                        <!-- <div class="radio">
-                            <label>
-                            <input type="radio" name="paymentType" id="paymentType" value="1" class="radio" ng-click="ShippCtrl.setPaymentType(1)"> &nbsp; WebPay
-                            </label>
-                        </div> -->
-                    </div>
-                </div>
-                </form>
-                <br><br>
-                <div class="row">
-                    <div class="col-md-12" ng-show="!ShippCtrl.getPaymentType()">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <h4>Datos Transferencia</h4>
-                                Debe realizar una transferencia con los siguientes datos, una vez realizada envíe el comprobante a: produccion002@gmail.com.
-                                Luego de comprobado el pago su orden será envíada.
-                                <hr>
-                                <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-2"><label>Banco:</label></div>
-                                    <div class="col-md-9">Santander</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-2"><label>Nº Cuenta:</label></div>
-                                    <div class="col-md-9">62625058</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-2"><label>RUT:</label></div>
-                                    <div class="col-md-9">76.047.525-4</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-2"><label>Nombre:</label></div>
-                                    <div class="col-md-9">Plásticos Bessalle Ltda.</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-2"><label>Email:</label></div>
-                                    <div class="col-md-9">produccion002@gmail.com</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-2"><label>Monto:</label></div>
-                                    <div class="col-md-9">{{ ShippCtrl.ngCart.totalCost() | currency : '$' : 0 }}</div>
-                                </div>
-
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>
+                                    Información del Envío
+                                    <a href="#/shipping" class="btn btn-warning btn-xs pull-right">Corregir</a>
+                                </h4>
 
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Nombre Completo:</label>
+                                <br>
+                                {{ ShippCtrl.Data.shipping.name }}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>RUT:</label>
+                                <br>
+                                {{ ShippCtrl.Data.shipping.rut }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Direción:</label>
+                                <br>
+                                {{ ShippCtrl.Data.shipping.address1 }}, {{ ShippCtrl.Data.shipping.address2 }}
+                            </div>
+                            <div class="col-md-3">
+                                <label>Comuna:</label>
+                                <br>
+                                {{ ShippCtrl.Data.shipping.comuna.COMUNA_NOMBRE }}
+                            </div>
+                            <div class="col-md-3">
+                                <label>Provincia:</label>
+                                <br>
+                                {{ ShippCtrl.Data.shipping.provincia.PROVINCIA_NOMBRE }}
+                            </div>
+                            <div class="col-md-3">
+                                <label>Región:</label>
+                                <br>
+                                {{ ShippCtrl.Data.shipping.region.REGION_NOMBRE }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Fono:</label>
+                                <br>
+                                {{ ShippCtrl.Data.shipping.phone }}
+                            </div>
+                            <div class="col-md-6">
+                                <label>Email:</label>
+                                <br>
+                                {{ ShippCtrl.Data.shipping.email }}
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Información de Facturación</h4>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Razón Social:</label>
+                                <br>
+                                {{ ShippCtrl.Data.billing.name }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>RUT:</label>
+                                <br>
+                                {{ ShippCtrl.Data.billing.rut }}
+                            </div>
+                            <div class="col-md-8">
+                                <label>Giro:</label>
+                                <br>
+                                {{ ShippCtrl.Data.billing.business }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Direción:</label>
+                                <br>
+                                {{ ShippCtrl.Data.billing.address1 }}, {{ ShippCtrl.Data.billing.address2 }}
+                            </div>
+                            <div class="col-md-3">
+                                <label>Comuna:</label>
+                                <br>
+                                {{ ShippCtrl.Data.billing.comuna.COMUNA_NOMBRE }}
+                            </div>
+                            <div class="col-md-3">
+                                <label>Provincia:</label>
+                                <br>
+                                {{ ShippCtrl.Data.billing.provincia.PROVINCIA_NOMBRE }}
+                            </div>
+                            <div class="col-md-3">
+                                <label>Región:</label>
+                                <br>
+                                {{ ShippCtrl.Data.billing.region.REGION_NOMBRE }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Fono:</label>
+                                <br>
+                                {{ ShippCtrl.Data.billing.phone }}
+                            </div>
+                            <div class="col-md-6">
+                                <label>Email:</label>
+                                <br>
+                                {{ ShippCtrl.Data.billing.email }}
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>
+                                    Productos <a href="#/cart" class="btn btn-warning btn-xs pull-right">Corregir</a>
+                                </h4>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>Producto</th>
+                                            <th class="text-center">Cantidad</th>
+                                            <th class="text-right">Valor Unitario</th>
+                                            <th class="text-right">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in ShippCtrl.ngCart.getCart().items track by $index">
+                                            <td>{{ item.getName() }}</td>
+                                            <td class="text-center">{{ item.getQuantity() | number }}</td>
+                                            <td class="text-right">{{ item.getPrice() | currency : '$' : 0 }}</td>
+                                            <td class="text-right">{{ item.getTotal() | currency : '$' : 0 }}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="3" class="text-right">Subtotal</td>
+                                            <td class="text-right">{{ ShippCtrl.ngCart.getSubTotal() | currency : '$' : 0 }}</td>
+                                        </tr>
+
+
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                        <hr>
+                        <form role="form"  name="summaryForm" novalidate>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label for="shippingType"><h4>Método de Envío:</h4></label>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="radio">
+                                    <label>
+                                    <input type="radio" name="shippingType" id="shippingType" value="0" class="radio" ng-click="ShippCtrl.setShipping(0)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Chilexpress 24-48 Hrs {{ ShippCtrl.Data.shippingT1 | currency : '$' : 0 }}
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                    <input type="radio" name="shippingType" id="shippingType" value="1" class="radio" ng-click="ShippCtrl.setShipping(1)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Despacho por Bus {{ ShippCtrl.Data.shippingT2 | currency : '$' : 0 }}
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                    <input type="radio" name="shippingType" id="shippingType" value="2" class="radio" ng-click="ShippCtrl.setShipping(2)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Retiro en Bodega
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-condensed">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="3" class="text-right">Subtotal</td>
+                                            <td class="text-right">{{ ShippCtrl.ngCart.getSubTotal() | currency : '$' : 0 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" class="text-right">IVA</td>
+                                            <td class="text-right">{{ ShippCtrl.ngCart.getTax() | currency : '$' : 0 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" class="text-right">Envío</td>
+                                            <td class="text-right">{{ ShippCtrl.ngCart.getShipping() | currency : '$' : 0 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" class="text-right">Total</td>
+                                            <td class="text-right">{{ ShippCtrl.ngCart.totalCost() | currency : '$' : 0 }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <hr>
+                        <br><br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="paymentType"><h4>Pago:</h4></label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="radio">
+                                    <label>
+                                    <input type="radio" name="paymentType" id="paymentType" value="0"  class="radio" ng-click="ShippCtrl.setPaymentType(0)" ng-model="ShippCtrl.Data.paymentType" required> &nbsp; Transferencia Bancaria
+                                    </label>
+                                </div>
+                                <!-- <div class="radio">
+                                    <label>
+                                    <input type="radio" name="paymentType" id="paymentType" value="1" class="radio" ng-click="ShippCtrl.setPaymentType(1)"> &nbsp; WebPay
+                                    </label>
+                                </div> -->
+                            </div>
+                        </div>
+                        </form>
+                        <br><br>
+                        <div class="row">
+                            <div class="col-md-12" ng-show="!ShippCtrl.getPaymentType()">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <h4>Datos Transferencia</h4>
+                                        Debe realizar una transferencia con los siguientes datos, una vez realizada envíe el comprobante a: produccion002@gmail.com.
+                                        Luego de comprobado el pago su orden será envíada.
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-2"><label>Banco:</label></div>
+                                            <div class="col-md-9">Santander</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-2"><label>Nº Cuenta:</label></div>
+                                            <div class="col-md-9">62625058</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-2"><label>RUT:</label></div>
+                                            <div class="col-md-9">76.047.525-4</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-2"><label>Nombre:</label></div>
+                                            <div class="col-md-9">Plásticos Bessalle Ltda.</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-2"><label>Email:</label></div>
+                                            <div class="col-md-9">produccion002@gmail.com</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-2"><label>Monto:</label></div>
+                                            <div class="col-md-9">{{ ShippCtrl.ngCart.totalCost() | currency : '$' : 0 }}</div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <button class="pull-right" ng-disabled="!ShippCtrl.validCheckoxes()" ng-click="ShippCtrl.proccessCheckout()"><span>Confirmar Pedido</span></button>
+                        <a href="#/shipping" class="button pull-right"><span>Atrás</span></a>
                     </div>
                 </div>
 
             </div>
-            <div class="panel-footer text-right">
-                <a href="#/shipping" class="btn btn-success">Atrás</a>
-                <button class="btn btn-success" ng-disabled="!ShippCtrl.validCheckoxes()" ng-click="ShippCtrl.proccessCheckout()">Confirmar Pedido</button>
-            </div>
         </div>
-
     </div>
-</div>
+
+</section>

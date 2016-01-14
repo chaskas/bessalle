@@ -1,0 +1,967 @@
+/*-----Blue----------*/
+.blue a{
+	color: #33b3cd;
+}
+
+.blue .recent-title a:hover{
+	color: #33b3cd;
+}
+
+.blue #twi_auth{
+	color: #33b3cd;
+}
+
+.blue #twidget{
+	background: url("blue/twitter_ico.png") no-repeat left center;
+}
+
+.blue #hidden_menu ul li a:hover{
+	color:#33b3cd;
+}
+
+.blue #hidden_menu ul li ul{
+	border-top:2px solid #33b3cd;
+}
+
+.blue #srch_form{
+	border-bottom-color: #33b3cd;
+}
+
+.blue #cart_icon{
+	background: url("blue/cart_ico.png") no-repeat center center;
+}
+
+.blue #shade{
+	background-color: #33b3cd;
+}
+
+.blue .featured_products li h3 a:hover{
+	color: #33b3cd;
+}
+
+.blue .pricedisplay{
+	color: #33b3cd;
+}
+
+.blue .coupons_widget .promo{
+	color: #33b3cd;
+}
+
+.blue .coupons_widget .sale_end #the_code{
+	color: #33b3cd;
+}
+
+.blue span.sale{
+	background: url("blue/sale_ic.png") no-repeat  center center;
+}
+
+.blue .textwidget b{
+	color: #33b3cd;
+}
+
+.blue .footer_lower .wysija-instruct b{
+	color: #33b3cd;
+}
+
+.blue #main_menu ul li a:hover, .blue #main_menu ul li.current-menu-item a, .blue #main_menu ul li a.selected{
+	background: url("blue/m_but_lt.png") no-repeat left center;
+}
+
+.blue #main_menu ul li a:hover span, .blue #main_menu ul li.current-menu-item a span, .blue #main_menu ul li a.selected span{
+	background: url("blue/m_but_b.png") no-repeat right center;	
+}
+
+.blue .sub-menu li a:hover span, .blue .sub-menu li a.selected span{
+	color:#33b3cd !important;
+}
+
+.blue button, .blue .button, .blue  input.button2, .blue button.reverse:hover, .blue .button.reverse:hover, .blue .newer-older a{
+	background: url(blue/btns.png) 303px -369px;
+}
+
+.blue button span, .blue .button span, .blue  input.button2 span, .blue button.reverse:hover span, .blue .button.reverse:hover span, .blue .newer-older a span{
+	background: url(blue/btns.png) 100% -335px;
+}
+
+
+.blue button:hover, .blue .button:hover, .blue  input.button2:hover, .blue button.reverse, .blue .button.reverse{
+	background: url(blue/btns.png) 304px -301px; 
+}
+
+.blue button:hover span, .blue .button:hover span, .blue input.button2:hover span, .blue button.reverse span, .blue .button.reverse span{
+	background: url(blue/btns.png) 100% -267px;
+}
+
+.blue .button-2, .blue .newer-older a, .blue #cancel-comment-reply-link, .blue #filters li{
+	background: url(blue/btns.png) 303px -171px;
+} 
+
+.blue .button-2 span, .blue .newer-older a span, .blue #cancel-comment-reply-link span, .blue #filters li span{
+	background: url(blue/btns.png) 100% -139px;
+	color: #313131;
+}
+
+.blue .button-2:hover, .blue .newer-older a:hover, .blue #cancel-comment-reply-link:hover, .blue #filters li:hover, .blue #filters li.selected{
+	background: url(blue/btns.png) 304px -235px;
+}
+
+.blue .button-2:hover span, .blue .newer-older a:hover span, .blue #cancel-comment-reply-link:hover span, .blue #filters li:hover span, .blue #filters li.selected span{
+	background: url(blue/btns.png) 100% -203px;
+	
+}
+
+.blue .button-3{
+	background: url(blue/btns.png) 305px -35px;
+}
+
+.blue .button-3 span{
+	background: url(blue/btns.png) 100% 0px;
+	color: #313131;
+}
+
+.blue .button-3:hover{
+	background: url(blue/btns.png) 305px -105px;
+}
+
+.blue .button-3:hover span{
+	background: url(blue/btns.png) 100% -70px;	
+}
+
+.blue .footer_lower .wysija-submit{
+	background: url("blue/sb_but.png") no-repeat center center;
+}
+
+.blue #plate h5{
+	color:#33b3cd;
+}
+
+.blue .box ul li:hover a{
+	color:#33b3cd !important;
+}
+
+.blue .box ul li:hover {
+	list-style: url(blue/box_li_hov.png) !important;
+	color:#33b3cd !important;
+	list-style-position: inside !important;	
+}
+
+.blue #wpec-slider .about h1{
+	color: #33b3cd;
+}
+
+.blue #wpec-slider .buyit input.wpsc_buy_button {
+	background-image:none !important;
+	background-color: #33b3cd;
+}
+
+.blue .box li:hover .pricedisplay{
+	color: #33b3cd !important;
+}
+
+.blue .single_product_display h2{
+	color: #33b3cd !important;
+}
+
+.blue .zommer-plus{
+	background: url("blue/or_plus.png") no-repeat center center;
+}
+
+.blue .zommer-line{
+	background-color:#33b3cd;
+}
+
+.blue .post-indent .heading h2 a:hover{
+	color:#33b3cd;
+}
+
+.blue #gallery-1 .gallery-caption{
+	background-color: #33b3cd !important;
+}
+
+@media only screen and (max-width: 479px) {
+	.blue .chrome {
+		border-bottom:#33b3cd 2px solid;
+	}
+	
+	.blue #responsive_main_menu{
+		background-color:#33b3cd;
+	}
+}
+
+
+
+/*--------Emerald--------------*/
+
+.emerald a{
+	color: #19ab8e;
+}
+
+.emerald .recent-title a:hover{
+	color: #33b3cd;
+}
+
+
+.emerald #twi_auth{
+	color: #19ab8e;
+}
+
+.emerald #twidget{
+	background: url("emerald/twitter_ico.png") no-repeat left center;
+}
+
+.emerald #hidden_menu ul li a:hover{
+	color:#19ab8e;
+}
+
+.emerald #hidden_menu ul li ul{
+	border-top:2px solid #19ab8e;
+}
+
+.emerald #srch_form{
+	border-bottom-color: #19ab8e;
+}
+
+.emerald #cart_icon{
+	background: url("emerald/cart_ico.png") no-repeat center center;
+}
+
+.emerald #shade{
+	background-color: #19ab8e;
+}
+
+.emerald .featured_products li h3 a:hover{
+	color: #19ab8e;
+}
+
+.emerald .pricedisplay{
+	color: #19ab8e;
+}
+
+.emerald .coupons_widget .promo{
+	color: #19ab8e;
+}
+
+.emerald .coupons_widget .sale_end #the_code{
+	color: #19ab8e;
+}
+
+.emerald span.sale{
+	background: url("emerald/sale_ic.png") no-repeat  center center;
+}
+
+.emerald .textwidget b{
+	color: #19ab8e;
+}
+
+.emerald .footer_lower .wysija-instruct b{
+	color: #19ab8e;
+}
+
+.emerald #main_menu ul li a:hover, .emerald #main_menu ul li.current-menu-item a, .emerald #main_menu ul li a.selected{
+	background: url("emerald/m_but_lt.png") no-repeat left center;
+}
+
+.emerald #main_menu ul li a:hover span, .emerald #main_menu ul li.current-menu-item a span, .emerald #main_menu ul li a.selected span{
+	background: url("emerald/m_but_b.png") no-repeat right center;	
+}
+
+.emerald .sub-menu li a:hover span, .emerald .sub-menu li a.selected span{
+	color:#19ab8e !important;
+}
+
+.emerald button, .emerald .button, .emerald  input.button2, .emerald  button.reverse:hover, .emerald .button.reverse:hover, .emerald .newer-older a{
+	background: url(emerald/btns.png) 303px -369px;
+}
+
+.emerald button span, .emerald .button span, .emerald  input.button2 span, .emerald button.reverse:hover span, .emerald .button.reverse:hover span, .emerald .newer-older a span{
+	background: url(emerald/btns.png) 100% -335px;
+}
+
+
+.emerald button:hover, .emerald .button:hover, .emerald  input.button2:hover, .emerald button.reverse, .emerald .button.reverse{
+	background: url(emerald/btns.png) 304px -301px;
+}
+
+.emerald button:hover span, .emerald .button:hover span, .emerald  input.button2:hover span, .emerald button.reverse span, .emerald .button.reverse span{
+	background: url(emerald/btns.png) 100% -267px;
+}
+
+.emerald .button-2, .newer-older a, #cancel-comment-reply-link, #filters li{
+	background: url(emerald/btns.png) 303px -171px;
+} 
+
+.emerald .button-2 span, .emerald .newer-older a span, .emerald #cancel-comment-reply-link span, .emerald #filters li span{
+	background: url(emerald/btns.png) 100% -139px;
+	color: #313131;
+}
+
+.emerald .button-2:hover, .emerald .newer-older a:hover, .emerald #cancel-comment-reply-link:hover, .emerald #filters li:hover, .emerald #filters li.selected{
+	background: url(emerald/btns.png) 304px -235px;
+}
+
+.emerald .button-2:hover span, .emerald .newer-older a:hover span, .emerald #cancel-comment-reply-link:hover span, .emerald #filters li:hover span, .emerald #filters li.selected span{
+	background: url(emerald/btns.png) 100% -203px;
+	
+}
+
+.emerald .button-3{
+	background: url(emerald/btns.png) 305px -35px;
+}
+
+.emerald .button-3 span{
+	background: url(emerald/btns.png) 100% 0px;
+	color: #313131;
+}
+
+.emerald .button-3:hover{
+	background: url(emerald/btns.png) 305px -105px;
+}
+
+.emerald .button-3:hover span{
+	background: url(emerald/btns.png) 100% -70px;	
+}
+
+.emerald .footer_lower .wysija-submit{
+	background: url("emerald/sb_but.png") no-repeat center center;
+}
+
+.emerald #plate h5{
+	color:#19ab8e;
+}
+
+.emerald .box ul li:hover a{
+	color:#19ab8e !important;
+}
+
+.emerald .box ul li:hover {
+	list-style: url(emerald/box_li_hov.png) !important;
+	color:#19ab8e !important;
+	list-style-position: inside !important;
+	
+}
+
+.emerald .box li:hover .pricedisplay{
+	color: #19ab8e !important;
+}
+
+.emerald #wpec-slider .about h1{
+	color: #19ab8e;
+}
+
+.emerald #wpec-slider .buyit input.wpsc_buy_button {
+	background-image:none !important;
+	background-color: #19ab8e;
+}
+
+.emerald .single_product_display h2{
+	color: #19ab8e !important;
+}
+
+.emerald .zommer-plus{
+	background: url("emerald/or_plus.png") no-repeat center center;
+}
+
+.emerald .zommer-line{
+	background-color:#19ab8e;
+}
+
+.emerald .post-indent .heading h2 a:hover{
+	color:#19ab8e;
+}
+
+.emerald #gallery-1 .gallery-caption{
+	background-color: #19ab8e !important;
+}
+
+@media only screen and (max-width: 479px) {
+	.emerald .chrome {
+		border-bottom:#19ab8e 2px solid;
+	}
+	
+	.emerald #responsive_main_menu{
+		background-color:#19ab8e;
+	}
+}
+
+/*-----Pink-----*/
+
+.pink a{
+	color: #f678a4;
+}
+
+.pink .recent-title a:hover{
+	color: #f678a4;
+}
+
+
+.pink #twi_auth{
+	color: #f678a4;
+}
+
+.pink #twidget{
+	background: url("pink/twitter_ico.png") no-repeat left center;
+}
+
+.pink #hidden_menu ul li a:hover{
+	color:#f678a4;
+}
+
+.pink #hidden_menu ul li ul{
+	border-top:2px solid #f678a4;
+}
+
+.pink #srch_form{
+	border-bottom-color: #f678a4;
+}
+
+.pink #cart_icon{
+	background: url("pink/cart_ico.png") no-repeat center center;
+}
+
+.pink #shade{
+	background-color: #f678a4;
+}
+
+.pink .featured_products li h3 a:hover{
+	color: #f678a4;
+}
+
+.pink .pricedisplay{
+	color: #f678a4;
+}
+
+.pink .coupons_widget .promo{
+	color: #f678a4;
+}
+
+.pink .coupons_widget .sale_end #the_code{
+	color: #f678a4;
+}
+
+.pink span.sale{
+	background: url("pink/sale_ic.png") no-repeat  center center;
+}
+
+.pink .textwidget b{
+	color: #f678a4;
+}
+
+.pink .footer_lower .wysija-instruct b{
+	color: #f678a4;
+}
+
+.pink #main_menu ul li a:hover, .pink #main_menu ul li.current-menu-item a, .pink #main_menu ul li a.selected{
+	background: url("pink/m_but_lt.png") no-repeat left center;
+}
+
+.pink #main_menu ul li a:hover span, .pink #main_menu ul li.current-menu-item a span, .pink #main_menu ul li a.selected span{
+	background: url("pink/m_but_b.png") no-repeat right center;	
+}
+
+.pink .sub-menu li a:hover span, .pink .sub-menu li a.selected span{
+	color:#f678a4 !important; 
+}
+
+.pink button, .pink .button, .pink  input.button2, .pink button.reverse:hover,  .pink .button.reverse:hover, .pink .newer-older a{
+	background: url(pink/btns.png) 303px -369px;
+}
+
+.pink button span, .pink .button span, .pink input.button2 span, .pink button.reverse:hover span, .pink .button.reverse:hover span, .pink .newer-older a span{
+	background: url(pink/btns.png) 100% -335px;
+}
+
+
+.pink button:hover, .pink .button:hover, .pink  input.button2:hover, .pink button.reverse, .pink .button.reverse{
+	background: url(pink/btns.png) 304px -301px;
+}
+
+.pink button:hover span, .pink .button:hover span, .pink  input.button2:hover span, .pink button.reverse span, .pink .button.reverse span{
+	background: url(pink/btns.png) 100% -267px;
+}
+
+.pink .button-2, .pink .newer-older a, .pink #cancel-comment-reply-link, .pink #filters li{
+	background: url(pink/btns.png) 303px -171px;
+} 
+
+.pink .button-2 span, .pink .newer-older a span, .pink #cancel-comment-reply-link span, .pink #filters li span{
+	background: url(pink/btns.png) 100% -139px;
+	color: #313131;
+}
+
+.pink .button-2:hover, .pink .newer-older a:hover, .pink #cancel-comment-reply-link:hover, .pink #filters li:hover, .pink #filters li.selected{
+	background: url(pink/btns.png) 304px -235px;
+}
+
+.pink .button-2:hover span, .pink .newer-older a:hover span, .pink #cancel-comment-reply-link:hover span, .pink #filters li:hover span, .pink #filters li.selected span{
+	background: url(pink/btns.png) 100% -203px;
+	
+}
+
+.pink .button-3{
+	background: url(pink/btns.png) 305px -35px;
+}
+
+.pink .button-3 span{
+	background: url(pink/btns.png) 100% 0px;
+	color: #313131;
+}
+
+.pink .button-3:hover{
+	background: url(pink/btns.png) 305px -105px;
+}
+
+.pink .button-3:hover span{
+	background: url(pink/btns.png) 100% -70px;	
+}
+
+.pink .footer_lower .wysija-submit{
+	background: url("pink/sb_but.png") no-repeat center center;
+}
+
+.pink #plate h5{
+	color:#f678a4;
+}
+
+.pink .box ul li:hover a{
+	color:#f678a4 !important;
+}
+
+.pink .box ul li:hover {
+	list-style: url(pink/box_li_hov.png) !important;
+	color:#f678a4 !important;
+	list-style-position: inside !important;
+	
+}
+
+.pink .box li:hover .pricedisplay{
+	color: #f678a4 !important;
+}
+
+.pink #wpec-slider .about h1{
+	color: #f678a4;
+}
+
+.pink #wpec-slider .buyit input.wpsc_buy_button {
+	background-image:none !important;
+	background-color: #f678a4;
+}
+
+.pink .single_product_display h2{
+	color: #f678a4 !important;
+}
+
+.pink .zommer-plus{
+	background: url("pink/or_plus.png") no-repeat center center;
+}
+
+.pink .zommer-line{
+	background-color:#f678a4;
+}
+
+.pink .post-indent .heading h2 a:hover{
+	color:#f678a4;
+}
+
+.pink #gallery-1 .gallery-caption{
+	background-color: #f678a4 !important;
+}
+
+@media only screen and (max-width: 479px) {
+	.pink .chrome {
+		border-bottom:#f678a4 2px solid;
+	}
+	
+	.pink #responsive_main_menu{
+		background-color:#f678a4;
+	}
+}
+
+/*----Red------*/
+.red a{
+	color: #dc304b;
+}
+
+.pink .recent-title a:hover{
+	color: #dc304b;
+}
+
+.red #twi_auth{
+	color: #dc304b;
+}
+
+.red #twidget{
+	background: url("red/twitter_ico.png") no-repeat left center;
+}
+
+.red #hidden_menu ul li a:hover{
+	color:#dc304b;
+}
+
+.red #hidden_menu ul li ul{
+	border-top:2px solid #dc304b;
+}
+
+.red #srch_form{
+	border-bottom-color: #dc304b;
+}
+
+.red #cart_icon{
+	background: url("red/cart_ico.png") no-repeat center center;
+}
+
+.red #shade{
+	background-color: #dc304b;
+}
+
+.red .featured_products li h3 a:hover{
+	color: #dc304b;
+}
+
+.red .pricedisplay{
+	color: #dc304b;
+}
+
+.red .coupons_widget .promo{
+	color: #dc304b;
+}
+
+.red .coupons_widget .sale_end #the_code{
+	color: #dc304b;
+}
+
+.red span.sale{
+	background: url("red/sale_ic.png") no-repeat  center center;
+}
+
+.red .textwidget b{
+	color: #dc304b;
+}
+
+.red .footer_lower .wysija-instruct b{
+	color: #dc304b;
+}
+
+.red #main_menu ul li a:hover, .red  #main_menu ul li.current-menu-item a, .red  #main_menu ul li a.selected{
+	background: url("red/m_but_lt.png") no-repeat left center;
+}
+
+.red #main_menu ul li a:hover span, .red  #main_menu ul li.current-menu-item a span, .red  #main_menu ul li a.selected span{
+	background: url("red/m_but_b.png") no-repeat right center;	
+}
+
+.red .sub-menu li a:hover span, .red  .sub-menu li a.selected span{
+	color:#dc304b !important;
+}
+
+.red button, .red  .button, .red  input.button2, .red  button.reverse:hover, .red .button.reverse:hover, .red  .newer-older a{
+	background: url(red/btns.png) 303px -369px;
+}
+
+.red button span, .red  .button span, .red  input.button2 span, .red  button.reverse:hover span, .red  .button.reverse:hover span, .red  .newer-older a span{
+	background: url(red/btns.png) 100% -335px;
+}
+
+
+.red button:hover, .red  .button:hover, .red   input.button2:hover, .red  button.reverse, .red  .button.reverse{
+	background: url(red/btns.png) 304px -301px;
+}
+
+.red button:hover span, .red  .button:hover span, .red   input.button2:hover span, .red  button.reverse span, .red  .button.reverse span{
+	background: url(red/btns.png) 100% -267px;
+}
+
+.red .button-2, .red  .newer-older a, .red  #cancel-comment-reply-link, .red  #filters li{
+	background: url(red/btns.png) 303px -171px;
+} 
+
+.red .button-2 span, .red  .newer-older a span, .red  #cancel-comment-reply-link span, .red  #filters li span{
+	background: url(red/btns.png) 100% -139px;
+	color: #313131;
+}
+
+.red .button-2:hover, .red  .newer-older a:hover, .red  #cancel-comment-reply-link:hover, .red  #filters li:hover, .red  #filters li.selected{
+	background: url(red/btns.png) 304px -235px;
+}
+
+.red .button-2:hover span, .red  .newer-older a:hover span, .red  #cancel-comment-reply-link:hover span, .red  #filters li:hover span, .red #filters li.selected span{
+	background: url(red/btns.png) 100% -203px;
+	
+}
+
+.red .button-3{
+	background: url(red/btns.png) 305px -35px;
+}
+
+.red .button-3 span{
+	background: url(red/btns.png) 100% 0px;
+	color: #313131;
+}
+
+.red .button-3:hover{
+	background: url(red/btns.png) 305px -105px;
+}
+
+.red .button-3:hover span{
+	background: url(red/btns.png) 100% -70px;	
+}
+
+.red .footer_lower .wysija-submit{
+	background: url("red/sb_but.png") no-repeat center center;
+}
+
+.red #plate h5{
+	color:#dc304b;
+}
+
+.red .box ul li:hover a{
+	color:#dc304b !important;
+}
+
+.red .box ul li:hover {
+	list-style: url(red/box_li_hov.png) !important;
+	color:#dc304b !important;
+	list-style-position: inside !important;
+	
+}
+
+.red .box li:hover .pricedisplay{
+	color: #dc304b !important;
+}
+
+.red #wpec-slider .about h1{
+	color: #dc304b;
+}
+
+.red #wpec-slider .buyit input.wpsc_buy_button {
+	background-image:none !important;
+	background-color: #dc304b;
+}
+
+.red .single_product_display h2{
+	color: #dc304b !important;
+}
+
+.red .zommer-plus{
+	background: url("red/or_plus.png") no-repeat center center;
+}
+
+.red .zommer-line{
+	background-color:#dc304b;
+}
+
+.red .post-indent .heading h2 a:hover{
+	color:#dc304b;
+}
+
+.red #gallery-1 .gallery-caption{
+	background-color: #dc304b !important;
+}
+
+@media only screen and (max-width: 479px) {
+	.red .chrome {
+		border-bottom:#dc304b 2px solid;
+	}
+	
+	.red #responsive_main_menu{
+		background-color:#dc304b;
+	}
+}
+
+/*---------Colors----------*/
+
+.violet a{
+	color: #8266b1;
+}
+
+.violet .recent-title a:hover{
+	color: #8266b1;
+}
+
+.violet  #twi_auth{
+	color: #8266b1;
+}
+
+.violet #twidget{
+	background: url("violet/twitter_ico.png") no-repeat left center;
+}
+
+.violet #hidden_menu ul li a:hover{
+	color:#8266b1;
+}
+
+.violet #hidden_menu ul li ul{
+	border-top:2px solid #8266b1;
+}
+
+.violet #srch_form{
+	border-bottom-color: #8266b1;
+}
+
+.violet #cart_icon{
+	background: url("violet/cart_ico.png") no-repeat center center;
+}
+
+.violet #shade{
+	background-color: #8266b1;
+}
+
+.violet .featured_products li h3 a:hover{
+	color: #8266b1;
+}
+
+.violet .pricedisplay{
+	color: #8266b1;
+}
+
+.violet .coupons_widget .promo{
+	color: #8266b1;
+}
+
+.violet .coupons_widget .sale_end #the_code{
+	color: #8266b1;
+}
+
+.violet span.sale{
+	background: url("violet/sale_ic.png") no-repeat  center center;
+}
+
+.violet .textwidget b{
+	color: #8266b1;
+}
+
+.violet .footer_lower .wysija-instruct b{
+	color: #8266b1;
+}
+
+.violet #main_menu ul li a:hover, .violet  #main_menu ul li.current-menu-item a, .violet  #main_menu ul li a.selected{
+	background: url("violet/m_but_lt.png") no-repeat left center;
+}
+
+.violet #main_menu ul li a:hover span, .violet  #main_menu ul li.current-menu-item a span, .violet  #main_menu ul li a.selected span{
+	background: url("violet/m_but_b.png") no-repeat right center;	
+}
+
+.violet .sub-menu li a:hover span, .violet  .sub-menu li a.selected span{
+	color:#8266b1 !important;
+}
+
+.violet button, .violet  .button, .violet   input.button2, .violet  button.reverse:hover, .violet  .button.reverse:hover, .violet  .newer-older a{
+	background: url(violet/btns.png) 303px -369px;
+}
+
+.violet button span, .violet  .button span, .violet   input.button2 span, .violet button.reverse:hover span, .violet  .button.reverse:hover span, .violet .newer-older a span{
+	background: url(violet/btns.png) 100% -335px;
+}
+
+
+.violet button:hover, .violet .button:hover, .violet   input.button2:hover, .violet  button.reverse, .violet  .button.reverse{
+	background: url(violet/btns.png) 304px -301px;
+}
+
+.violet button:hover span, .violet  .button:hover span, .violet  input.button2:hover span, .violet  button.reverse span, .violet .button.reverse span{
+	background: url(violet/btns.png) 100% -267px;
+}
+
+.violet .button-2, .violet  .newer-older a, .violet  #cancel-comment-reply-link, .violet  #filters li{
+	background: url(violet/btns.png) 303px -171px;
+} 
+
+.violet .button-2 span, .violet  .newer-older a span, .violet  #cancel-comment-reply-link span, .violet  #filters li span{
+	background: url(violet/btns.png) 100% -139px;
+	color: #313131;
+}
+
+.violet .button-2:hover, .violet  .newer-older a:hover, .violet  #cancel-comment-reply-link:hover, .violet  #filters li:hover, .violet  #filters li.selected{
+	background: url(violet/btns.png) 304px -235px;
+}
+
+.violet .button-2:hover span, .violet  .newer-older a:hover span, .violet  #cancel-comment-reply-link:hover span, .violet  #filters li:hover span, .violet #filters li.selected span{
+	background: url(violet/btns.png) 100% -203px;
+	
+}
+
+.violet .button-3{
+	background: url(violet/btns.png) 305px -35px;
+}
+
+.violet .button-3 span{
+	background: url(violet/btns.png) 100% 0px;
+	color: #313131;
+}
+
+.violet .button-3:hover{
+	background: url(violet/btns.png) 305px -105px;
+}
+
+.violet .button-3:hover span{
+	background: url(violet/btns.png) 100% -70px;	
+}
+
+.violet .footer_lower .wysija-submit{
+	background: url("violet/sb_but.png") no-repeat center center;
+}
+
+.violet #plate h5{
+	color:#8266b1;
+}
+
+.violet .box ul li:hover a{
+	color:#8266b1 !important;
+}
+
+.violet .box ul li:hover {
+	list-style: url(violet/box_li_hov.png) !important;
+	color:#8266b1 !important;
+	list-style-position: inside !important;
+	
+}
+
+.violet .box li:hover .pricedisplay{
+	color: #8266b1 !important;
+}
+
+.violet #wpec-slider .about h1{
+	color: #8266b1;
+}
+
+.violet #wpec-slider .buyit input.wpsc_buy_button {
+	background-image:none !important;
+	background-color: #8266b1;
+}
+
+.violet .single_product_display h2{
+	color: #8266b1 !important;
+}
+
+.violet .zommer-plus{
+	background: url("violet/or_plus.png") no-repeat center center;
+}
+
+.violet .zommer-line{
+	background-color:#8266b1;
+}
+
+.violet .post-indent .heading h2 a:hover{
+	color:#8266b1;
+}
+
+.violet #gallery-1 .gallery-caption{
+	background-color: #8266b1 !important;
+}
+
+@media only screen and (max-width: 479px) {
+.violet 	.chrome {
+		border-bottom:#8266b1 2px solid;
+	}
+	
+.violet 	#responsive_main_menu{
+		background-color:#8266b1;
+	}
+}
+
+
+
+
+
+
+

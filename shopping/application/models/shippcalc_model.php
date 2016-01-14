@@ -8,7 +8,7 @@ class ShippCalc_model extends CI_Model {
         $this->load->model('comuna_model');
     }
 
-    public function get_cost($comuna_id, $product_id, $carrier)
+    public function get_cost($comuna_id, $product_id, $product_quantity, $carrier)
     {
 
         $zona_id =  $this->comuna_model->get_zona_chilexpress_by_comuna_id($comuna_id);
@@ -18,10 +18,10 @@ class ShippCalc_model extends CI_Model {
         $peso_volumetrico = 0;
         $peso_fisico = 0;
 
-        if ($product->height > 60 || $product->width > 60 || $product->length > 60)
-            $peso_volumetrico = $product->height * $product->width * $product->length / 4000;
+        if ($product->height > 60 || $product->width > 60 || $product->length * $product_quantity > 60)
+            $peso_volumetrico = $product->height * $product->width * $product->length * $product_quantity / 4000;
         else
-            $peso_fisico = $product->weight;
+            $peso_fisico = $product->weight * $product_quantity;
 
         $peso = max($peso_fisico,$peso_volumetrico);
 
@@ -41,7 +41,6 @@ class ShippCalc_model extends CI_Model {
                 $this->db->select('15K,ADIC');
 
             $query = $this->db->get_where('chilexpress', array('ID' => $zona_id ));
-
 
             if ($query->num_rows() > 0)
             {

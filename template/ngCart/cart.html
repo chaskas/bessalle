@@ -1,13 +1,12 @@
-
 <div class="alert alert-warning text-center" role="alert" ng-show="ngCart.getTotalItems() === 0">
     No tienes productos en el carro.
     <br><br>
     Para continuar agrega un producto.
 </div>
 
-<div class="table-responsive col-lg-12" ng-show="ngCart.getTotalItems() > 0">
+<div class="table-responsive" ng-show="ngCart.getTotalItems() > 0">
 
-    <table class="table table-striped ngCart cart">
+    <table class="table table-hover ngCart cart">
 
         <thead>
         <tr>
@@ -18,6 +17,7 @@
             <th class="text-right">Total</th>
         </tr>
         </thead>
+
         <tfoot>
         <tr ng-show="ngCart.getTax()">
             <td></td>
@@ -34,6 +34,7 @@
             <td class="text-right">{{ ngCart.totalCost() | currency : '$' : 0 }}.-</td>
         </tr>
         </tfoot>
+
         <tbody>
         <tr ng-repeat="item in ngCart.getCart().items track by $index">
             <td><span ng-click="ngCart.removeItemById(item.getId())" class="glyphicon glyphicon-remove"></span></td>
@@ -43,7 +44,7 @@
             <td class="text-center">
                 <span class="glyphicon glyphicon-minus" ng-class="{'disabled':item.getQuantity()==1}" ng-click="item.setQuantity(-1, true); q > 1 ? q = q - 1 : q = q"></span>
                 &nbsp;&nbsp;
-                <input type="text" value="{{ item.getQuantity() | number }}" class="itemQuantity" ng-change="item.setQuantity(q,false)" name="q" ng-model="q" ng-init="q = item.getQuantity()"/>
+                <input type="text" value="{{ item.getQuantity() | number }}" class="itemQuantity text-center" ng-change="item.setQuantity(q,false)" name="q" ng-model="q" ng-init="q = item.getQuantity()"/>
                 &nbsp;&nbsp;
                 <span class="glyphicon glyphicon-plus" ng-click="item.setQuantity(1, true); q = q + 1;"></span>
             </td>

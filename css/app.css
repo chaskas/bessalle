@@ -17,7 +17,7 @@
 /* CSS Document */
 body.bessalle {  font-family: Arial, Verdana; font-style:normal; font-size: 12px; color: #999;
         border-width: 6px 0 0 0; border-style: solid; margin: 0; padding: 0;
-        background: url(../images/body-bg.gif) repeat-x left top #fff; padding-top: 30px;}
+        background: url(../images/body-bg.gif) repeat-x left top #fff; padding-top: 70px;}
 h1.bessalle, h2.bessalle, h3.bessalle, h4.bessalle, p.bessalle , ul.bessalle { padding: 0 10px 5px 10px; }
 h1.bessalle, h2.bessalle, h3.bessalle, h4.bessalle, { font-family: Arial, Verdana; padding: 0 0 5px 0; }
 h1.bessalle { font-size: 24px; color: #ee881a;  }

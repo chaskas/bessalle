@@ -1,13 +1,26 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid navbar-right">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#/cart">
-                <img alt="Bessalle" src="images/cart.png">
-            </a>
-            <p class="navbar-text text-right">Tienes {{ ngCart.getTotalItems() }} <ng-pluralize count="ngCart.getTotalItems()" when="{1: 'producto', 'other':'productos'}"></ng-pluralize> en tu carro.
-                <br />Por un total de {{ ngCart.totalCost() | currency : '$' : 0 }}.-
-            </p>
-            
+
+<div class="shopping_cart">
+    <div id="cart">
+        <div id="cart_content">
+            <div id="sliding_cart" class="shopping-cart-wrapper" >
+                <div id="cart_top_contents" class="itGeorgia">
+                    <div id="cart_icon"></div>
+                    <div id="switcher" class="arrow_close"></div>
+                    <div class="top_text text-center">
+                        <a href="#/cart">
+                            Total: {{ ngCart.totalCost() | currency : '$' : 0 }}.-
+                        </a>
+
+                    </div>
+                </div>
+                <div id="cart_bottom_contents" class="text-center">
+                    <div id="no_items">
+                        <p class="text-center"><a href="#/cart">Ver el Carrito</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div id="shade"></div>
     </div>
-</nav>
+    <br/>
+</div>

@@ -1,0 +1,58 @@
+<section id="content">
+
+	<div class="container">
+
+		<div class="row" ng-controller="ProductCtrl as PrdCtrl">
+
+
+			<div class="col-md-4">
+				<img ng-src="{{ PrdCtrl.product.image }}" alt="{{ PrdCtrl.product.name }}" class="img-rounded" height="301" width="301">
+            </div>
+
+			<div class="col-md-8">
+
+				<div class="row">
+
+					<div class="col-md-7">
+						<div class="wpsc-breadcrumbs">
+	                        <a class="wpsc-crumb" href="#/category/{{ PrdCtrl.product.category_id }}">{{ PrdCtrl.Data.currentCategory.name }}</a>
+	                        &nbsp;/&nbsp;
+	                        <span class="wpsc-crumb">{{ PrdCtrl.product.name }}</span>
+	                    </div>
+						<h2>{{ PrdCtrl.product.name }}</h2>
+						<div class="wpsc_product_price">
+	                        <p>
+	                            <span class="currentprice pricedisplay">
+	                                <span class="price_price">Price:</span>
+	                                <span class="csymb">$</span>
+	                                {{ PrdCtrl.product.price * PrdCtrl.product.minimun | currency : '' : 0 }}
+	                            </span>
+	                        </p>
+	                    </div>
+
+						<div class="product_description">
+							<p>{{ PrdCtrl.product.description }}</p>
+						</div>
+
+	                </div>
+
+	                <div class="col-md-5">
+	                    <div class="single_options">
+	                        <div class="title">Opciones:</div>
+
+									<ngcart-addtocart ng-show="PrdCtrl.product.stock > 0" id="{{ PrdCtrl.product.id }}" name="{{ PrdCtrl.product.name }}" price="{{ PrdCtrl.product.price * PrdCtrl.product.minimun }}" data="PrdCtrl.product" quantity="1" quantity-max="10">Agregar</ngcart-addtocart>
+
+									<span ng-show="PrdCtrl.product.stock <= 0">No disponible</span>
+
+	                        <div class="shade"><div class="shade_in"><div class="shade_bg"></div></div></div>
+	                    </div>
+	                </div>
+
+				</div>
+
+            </div>
+
+	    </div>
+
+	</div>
+</section>

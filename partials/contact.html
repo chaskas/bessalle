@@ -1,60 +1,93 @@
-<div class="row">
-    <div class="col-md-12"><img src="images/bn_contacto.png" alt="" width="940" height="180" /></div>
-</div>
+<section id="content">
 
-<div class="row">
-    <!-- Links Categorias -->
-    <div class="col-md-3">
-        <h1 class="bessalle">CATEGORIAS</h1>
+    <div class="container">
 
-        <p>Disponemos de una gran variedad de productos.</p>
-        <ul class="list">
-                <li><a href="bol_camiseta.html">Bolsas Camiseta</a> </li>
-                <li><a href="bol_tiporinon.html">Bolsas Tipo Riñon</a> </li>
-                <li><a href="bol_tipobasura.html">Bolsas Tipo Basura</a> </li>
-                <li><a href="bol_amedida.html">Bolsas a Medida</a> </li>
-                <li><a href="bol_tipocarbon.html">Bolsas Tipo Carbón</a> </li>
-                <li><a href="rollo_prepicados.html">Rollos y Mangas Prepicados</a> </li>
-                <li><a href="bol_biodegradable.html">Bolsas Biodegradables</a> </li>
-                <li><a href="bol_almidon.html">Bolsas de Almidón (PLA)</a> </li>
-                <li><a href="cintas.html">Cintas Peligro y Señalización</a> </li>
-        </ul>
+        <img src="images/bn_contacto.png" alt="" width="940" height="180" />
 
-    </div>
+        <br><br>
 
-    <div class="col-md-9">
-        <h1 class="bessalle">CONTACTO</h1>
-        <div class="row">
-          <div class="col-md-7">
-            <form>
-                <div class="form-group">
-                    <label>Nombre</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Empresa</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Fono</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Mensaje</label>
-                    <textarea class="form-control" rows="3"></textarea>
-                </div>
-                
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-7"><h1>Contacto</h1></div>
+                            <div class="col-md-5"><h2>Informaciones</h2></div>
+                        </div>
 
-                <button type="submit" class="btn btn-default">Enviar</button>
-            </form>
-          </div>
-          
-          <div class="col-md-5"><img src="images/mapa.jpg" alt="" width="220" height="400" class="pull-right"/></div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <form>
+                                    <div class="form-group">
+                                        <label>Nombre</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Empresa</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Fono</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mensaje</label>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit"><span>Enviar</span></button>
+                                </form>
+                            </div>
+                            <div class="col-md-5">
+
+                                <ul class="contacts">
+                                    <li class="phone">+56 41 224 3755</li>
+                                    <li class="location">Manuel Bulnes 753, Concepción</li>
+                                    <li class="mail">plasticos1@gmail.com</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-            
+
+        <h1>¿Donde estamos?</h1>
+
+        <div id="map">
+            <div id="map_canvas">
+
+            </div>
+        </div>
+
+        <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+
+        <script>
+            function initMap() {
+
+                var myLatLng = {lat: -36.819985, lng: -73.05301};
+
+                // Create a map object and specify the DOM element for display.
+                var map = new google.maps.Map(document.getElementById('map_canvas'), {
+                center: myLatLng,
+                scrollwheel: false,
+                zoom: 17
+                });
+
+                // Create a marker and set its position.
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: myLatLng,
+                    title: 'Manuel Bulnes 753'
+                });
+            }
+
+        </script>
+
     </div>
-</div>
+
+</section>
