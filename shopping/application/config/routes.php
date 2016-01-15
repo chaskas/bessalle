@@ -48,6 +48,7 @@ $route['region'] = 'region';
 $route['provincia/(:num)'] = 'provincia/index/$1';
 $route['comuna/(:num)'] = 'comuna/index/$1';
 $route['getShippCost/(:num)/(:num)/(:num)/(:num)'] = 'shipCalc/getCost/$1/$2/$3/$4';
+$route['getShippCost'] = 'shipCalc/getCost';
 $route['user/(:any)'] = 'user/getUser/$1';
 $route['user/add'] = 'user/addUser';
 $route['checkout/process'] = 'checkout/process';

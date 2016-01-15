@@ -104,7 +104,7 @@ storeControllers.controller('CategoryCtrl', ['$scope', '$routeParams', '$http', 
 
 }]);
 
-storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', 'Data', '$location', '$timeout', function($scope, $routeParams, $http,$filter, ngCart, Data, $location, $timeout){
+storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', 'Data', '$location', '$timeout', 'RutHelper', function($scope, $routeParams, $http,$filter, ngCart, Data, $location, $timeout, RutHelper){
 
     var store = this;
 
@@ -219,31 +219,53 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
 
         //$scope.shipping.currentComuna.id;
 
-        console.log(Data.shipping.comuna.COMUNA_NOMBRE);
+        //console.log(Data.shipping.comuna.COMUNA_NOMBRE);
 
-        $scope.shipping.shippingT1 = 0;
-        $scope.shipping.shippingT2 = 0;
+        Data.shippingT1 = 0;
+        Data.shippingT2 = 0;
         ngCart.setShipping(0);
 
         Data.carrier = 0;
 
-        angular.forEach(ngCart.getCart().items, function(value, key){
-            costo = 0;
-            $http.get('shopping/index.php/getShippCost/'+Data.shipping.comuna.COMUNA_ID+'/'+value.getId()+'/'+value.getQuantity()+'/1').success(function(data)
-            {
-                costo = data['costo'];
-                Data.shippingT2 = Data.shippingT2 + costo;
-            });
+        // angular.forEach(ngCart.getCart().items, function(value, key){
+        //     costo = 0;
+        //     $http.get('shopping/index.php/getShippCost/'+Data.shipping.comuna.COMUNA_ID+'/'+value.getId()+'/'+value.getQuantity()+'/1').success(function(data)
+        //     {
+        //         costo = data['costo'];
+        //         Data.shippingT2 = Data.shippingT2 + parseInt(costo);
+        //     });
+        // });
+
+
+        // $timeout(function(){
+        //     angular.forEach(ngCart.getCart().items, function(value, key){
+        //         costo = 0;
+        //         $http.get('shopping/index.php/getShippCost/'+Data.shipping.comuna.COMUNA_ID+'/'+value.getId()+'/'+value.getQuantity()+'/0').success(function(data)
+        //         {
+        //             costo = data['costo'];
+        //             Data.shippingT1 = Data.shippingT1 + parseInt(costo);
+        //         });
+        //     });
+        // },1000);
+
+        $http({
+            method: 'POST',
+            url: 'shopping/index.php/getShippCost',
+            data: JSON.stringify({ comuna: Data.shipping.comuna.COMUNA_ID, items: ngCart.getCart().items, carrier: 1 }),
+            headers: {'Content-Type': 'application/json'}
+        }).success(function(data){
+            Data.shippingT2 = Data.shippingT2 + parseInt(data['costo']);
         });
 
+
         $timeout(function(){
-            angular.forEach(ngCart.getCart().items, function(value, key){
-                costo = 0;
-                $http.get('shopping/index.php/getShippCost/'+Data.shipping.comuna.COMUNA_ID+'/'+value.getId()+'/'+value.getQuantity()+'/0').success(function(data)
-                {
-                    costo = data['costo'];
-                    Data.shippingT1 = Data.shippingT1 + costo;
-                });
+            $http({
+                method: 'POST',
+                url: 'shopping/index.php/getShippCost',
+                data: JSON.stringify({ comuna: Data.shipping.comuna.COMUNA_ID, items: ngCart.getCart().items, carrier: 0 }),
+                headers: {'Content-Type': 'application/json'}
+            }).success(function(data){
+                Data.shippingT1 = Data.shippingT1 + parseInt(data['costo']);
             });
         },1000);
 

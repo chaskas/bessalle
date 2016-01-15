@@ -48,7 +48,7 @@
                             <div class="row">
                                 <div class="col-md-4 form-group has-feedback" ng-class="{'has-success': !myForm.billing_rut.$invalid,'has-error': myForm.billing_rut.$invalid }">
                                     <label for="billing_rut">RUT: <span ng-show="myForm.billing_rut.$invalid" class="requerido">* Requerido</span></label>
-                                    <input ng-rut type="text" name="billing_rut" id="billing_rut" class="form-control" ng-model="ShippCtrl.Data.billing.rut" ng-blur="ShippCtrl.getPreviousData()">
+                                    <input ng-rut type="text" name="billing_rut" id="billing_rut" class="form-control" ng-model="ShippCtrl.Data.billing.rut" ng-blur="ShippCtrl.getPreviousData()" rut-format="live">
                                 </div>
                                 <div class="col-md-8 form-group" ng-class="{ 'has-success': !myForm.billing_business.$invalid, 'has-error': myForm.billing_business.$invalid }">
                                     <label for="billing_business">Giro: <span ng-show="myForm.billing_business.$error.required" class="requerido">* Requerido</span></label>

@@ -72,6 +72,10 @@ del {
 	width: 960px;
 }
 
+.itemQuantity {
+	width: 70px;
+}
+
 @font-face {
     font-family: 'Bitter';
     src: url('fonts/Bitter-Regular-webfont.eot');
