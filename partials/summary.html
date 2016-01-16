@@ -187,7 +187,7 @@
                                 </div>
                                 <div class="radio">
                                     <label>
-                                    <input type="radio" name="shippingType" id="shippingType" value="1" class="radio" ng-click="ShippCtrl.setShipping(1)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Despacho por Bus {{ ShippCtrl.Data.shippingT2 | currency : '$' : 0 }}
+                                    <input type="radio" name="shippingType" id="shippingType" value="1" class="radio" ng-click="ShippCtrl.setShipping(1)" ng-model="ShippCtrl.Data.shippingType" ng-disabled="ShippCtrl.Data.shippingT2  == 0" required> &nbsp; Despacho por Bus <span ng-if="ShippCtrl.Data.shippingT2  > 0">{{  ShippCtrl.Data.shippingT2 | currency : '$' : 0 }}</span><span ng-if="ShippCtrl.Data.shippingT2 == 0">No Disponible</span>
                                     </label>
                                 </div>
                                 <div class="radio">

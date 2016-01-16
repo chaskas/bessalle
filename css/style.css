@@ -5334,7 +5334,7 @@ header {
 	}
 
 section#content {
-
+	min-height: 700px;
 }
 	article {
 

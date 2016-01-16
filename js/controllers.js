@@ -1,5 +1,15 @@
 var storeControllers = angular.module('StoreControllers', ['ngCart']);
 
+storeControllers.run(function($rootScope, $location) {
+
+    $rootScope.menuClass = function(page) {
+        var current = $location.path().split('/')[1];
+        if(current === "detail" || current === "cart" || current === "shipping" || current === "summary" || current === "checkout" || current === "success") current = "shopping";
+        return page === current ? "current-menu-item" : "";
+    };
+
+});
+
 storeControllers.controller('ProductListCtrl', ['$scope', '$routeParams', '$http', '$filter', 'Data', function($scope, $routeParams, $http, $filter, Data){
 
     var store = this;
@@ -227,27 +237,6 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
 
         Data.carrier = 0;
 
-        // angular.forEach(ngCart.getCart().items, function(value, key){
-        //     costo = 0;
-        //     $http.get('shopping/index.php/getShippCost/'+Data.shipping.comuna.COMUNA_ID+'/'+value.getId()+'/'+value.getQuantity()+'/1').success(function(data)
-        //     {
-        //         costo = data['costo'];
-        //         Data.shippingT2 = Data.shippingT2 + parseInt(costo);
-        //     });
-        // });
-
-
-        // $timeout(function(){
-        //     angular.forEach(ngCart.getCart().items, function(value, key){
-        //         costo = 0;
-        //         $http.get('shopping/index.php/getShippCost/'+Data.shipping.comuna.COMUNA_ID+'/'+value.getId()+'/'+value.getQuantity()+'/0').success(function(data)
-        //         {
-        //             costo = data['costo'];
-        //             Data.shippingT1 = Data.shippingT1 + parseInt(costo);
-        //         });
-        //     });
-        // },1000);
-
         $http({
             method: 'POST',
             url: 'shopping/index.php/getShippCost',
@@ -273,7 +262,7 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
 
     this.getPreviousData = function () {
 
-        console.log("previous region: " + Data.billing.region);
+        //console.log("previous region: " + Data.billing.region);
 
         $http.get('shopping/index.php/user/'+Data.billing.rut).success(function(data)
         {
@@ -288,7 +277,7 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
             $scope.billing.currentRegion.id = data.billing_region;
             angular.forEach(Data.billing.regiones, function(value, key) {
                 if(data.billing_region == value.REGION_ID){
-                    console.log(value.REGION_NOMBRE + " seleccionado");
+                    //console.log(value.REGION_NOMBRE + " seleccionado");
                     Data.billing.region = value;
                 }
             });

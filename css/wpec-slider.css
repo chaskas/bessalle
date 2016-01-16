@@ -1,0 +1,155 @@
+@import "http://fonts.googleapis.com/css?family=Old+Standard+TT:400italic,700,400";
+/* apply a natural box layout model to all elements */
+#wpec-slider * {
+    -moz-box-sizing    : border-box;
+    -webkit-box-sizing : border-box;
+    box-sizing         : border-box;
+}
+#wpec-slider {
+    width    : 100%;
+    position : relative;
+    overflow : hidden;
+}
+#wpec-slider > ul {
+    background : url("../images/bg.jpg") center center repeat;
+    padding    : 0;
+    margin     : 0;
+    position   : relative;
+    height     : 100%;
+    width      : 100%;
+}
+#wpec-slider > .pagination {
+    list-style : none;
+    padding    : 0;
+    text-align : center;
+    position   : relative;
+    top        : -30px;
+    z-index    : 100;
+}
+#wpec-slider > .pagination li {
+    display : inline-block;
+}
+#wpec-slider > .pagination li a {
+    display     : block;
+    width       : 24px;
+    height      : 20px;
+    text-indent : -999em;
+    background  : url("../images/pg-controls.png") 6px 4px no-repeat;
+}
+#wpec-slider > .pagination li a:hover, #wpec-slider > .pagination li.curr a {
+    background : url("../images/pg-controls.png") -32px 4px no-repeat;
+}
+#wpec-slider > .pagination li.curr a {
+    color           : #f00;
+    text-decoration : none;
+    cursor          : default;
+}
+#wpec-slider > ul > li {
+    background : url("../images/bg.jpg") center center repeat;
+    height     : 100%;
+    width      : 100%;
+    list-style : none;
+    overflow   : hidden;
+    position   : absolute;
+}
+#wpec-slider li.first {
+    z-index : 100
+}
+#wpec-slider .about {
+    position : absolute;
+    width    : 52%;
+    top      : 50px;
+}
+#wpec-slider a {
+    outline : none;
+}
+#wpec-slider .product-image {
+    display  : block;
+    position : absolute;
+    outline  : none;
+}
+#wpec-slider .product-image:active img {
+    position : relative;
+    top      : 1px;
+}
+#wpec-slider .product-name {
+    text-decoration : none;
+    outline         : none;
+}
+#wpec-slider .product-name:active {
+    position : relative;
+    top      : 1px !important;
+}
+#wpec-slider .buyit {
+    margin-top : 2em;
+}
+#wpec-slider .product_form {
+    display        : inline-block;
+    vertical-align : top;
+}
+#wpec-slider .buyit input.wpsc_buy_button {
+    font             : normal 16px "Old Standard TT", serif;
+    border           : none;
+    background-image : url(../images/button-default.png);
+    /*box-shadow       : 0 1px 3px rgba(0, 0, 0, 0.2);*/
+    color            : #ffffff;
+    cursor           : pointer;
+    float            : right;
+}
+#wpec-slider .price {
+    font           : normal 39px/1.1 "Old Standard TT", serif;
+  
+    display        : inline-block;
+    vertical-align : top;
+    margin-right   : .5em;
+}
+#wpec-slider .price span {
+    font           : 24px/1.15 "Old Standard TT", serif;
+    margin-right   : 0.21em;
+    vertical-align : top;
+}
+#wpec-slider li.pim-right .about, #wpec-slider li.pim-left .product-image {
+    left : 0px;
+}
+#wpec-slider li.pim-left .about, #wpec-slider li.pim-right .product-image {
+    right : 0px;
+}
+#wpec-slider .about > * {
+    position : relative;
+}
+#wpec-slider .about h1 {
+    color          : inherit;
+    display        : inline-block;
+    font           : bold 39px/1.2 "Old Standard TT", serif;
+    text-transform : uppercase;
+    margin         : 0 0 0.5em 0;
+    /*text-shadow    : 1px 2px 0 rgba(255, 255, 255, 0.15);*/
+}
+#wpec-slider .description {
+    font   : normal 21px/1.2 "Old Standard TT", serif;
+    margin : 0;
+}
+#wpec-slider .prev, #wpec-slider .next {
+    position    : absolute;
+    z-index     : 100;
+    top         : 50%;
+    margin-top  : -20px;
+    width       : 40px;
+    height      : 40px;
+    text-indent : -999em;
+}
+#wpec-slider .prev {
+    left       : 0;
+    background : url("../images/nav-left.png") 0 0 no-repeat;
+}
+#wpec-slider .next {
+    right      : 0;
+    background : url("../images/nav-right.png") 0 0 no-repeat;
+}
+.ui-resizable-s {
+    height : 14px;
+}
+
+div.wpsc_loading_animation {
+    display : inline-block;
+}

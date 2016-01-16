@@ -80,12 +80,22 @@ class Transport_model extends CI_Model {
         $this->load->helper('url');
 
         $data = array(
-            '1K50' => $this->input->post('1K50'),
-            '3K' => $this->input->post('3K'),
-            '6K' => $this->input->post('6K'),
-            '10K' => $this->input->post('10K'),
-            '15K' => $this->input->post('15K'),
-            'ADIC' => $this->input->post('ADIC')
+            '5' => $this->input->post('5'),
+            '10' => $this->input->post('10'),
+            '15' => $this->input->post('15'),
+            '20' => $this->input->post('20'),
+            '30' => $this->input->post('30'),
+            '40' => $this->input->post('40'),
+            '50' => $this->input->post('50'),
+            '60' => $this->input->post('60'),
+            '70' => $this->input->post('70'),
+            '80' => $this->input->post('80'),
+            '90' => $this->input->post('90'),
+            '100' => $this->input->post('100'),
+            '2000' => $this->input->post('2000'),
+            '5000' => $this->input->post('5000'),
+            '10000' => $this->input->post('10000'),
+            'SUP' => $this->input->post('SUP')
         );
 
         $this->db->where('id', $memphis_id);

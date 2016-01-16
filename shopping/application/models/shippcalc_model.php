@@ -13,47 +13,20 @@ class ShippCalc_model extends CI_Model {
 
         $zona_id =  $this->comuna_model->get_zona_chilexpress_by_comuna_id($comuna_id);
 
-        $product_quantity = 0;
-
-        $area_mayor = 0;
-
-        $alto_total = 0;
-        $ancho_mayor = 0;
-        $largo_mayor = 0;
-        $peso_total = 0;
+        $peso_volumetrico = 0;
+        $peso_fisico = 0;
 
         foreach ($items as $item) {
 
             $product = $this->product_model->getById($item->_id);
-
-            $lados = array($product->height, $product->width, $product->length);
-            sort($lados, SORT_NUMERIC);
-
-            if($lados[1] * $lados[2] > $area_mayor){
-
-                $area_mayor = $lados[1] * $lados[2];
-
-                $ancho_mayor = $lados[1];
-                $largo_mayor = $lados[2];
-
-            }
-
-            $alto_total += $lados[0] * $item->_quantity;
-            $peso_total += $product->weight * $item->_quantity;
+            $peso_fisico += $product->weight * $item->_quantity;
+            $peso_volumetrico += ($product->height * $product->width * $product->length / 4000) * $item->_quantity;
 
         }
 
-        $peso_volumetrico = 0;
-        $peso_fisico = 0;
-
-        if ($alto_total > 60 || $ancho_mayor > 60 || $largo_mayor > 60)
-            $peso_volumetrico = $alto_total * $ancho_mayor * $largo_mayor / 4000;
-
-        $peso_fisico = $peso_total;
-
         $peso = max($peso_fisico,$peso_volumetrico);
 
-        //print_r(array("peso fisico" => $peso_fisico, "peso volumetrico" => $peso_volumetrico, "alto" => $alto_total, "ancho" => $ancho_mayor, "largo" => $largo_mayor));
+        //print_r(array("peso fisico" => $peso_fisico, "peso volumetrico" => $peso_volumetrico));
 
         if($carrier == 0)
         {
@@ -105,8 +78,110 @@ class ShippCalc_model extends CI_Model {
 
         } else if ($carrier == 1) {
 
-            return 1500;
+            $this->db->select('origen');
+            $query = $this->db->get_where('memphis', array('COMUNA_ID' => $comuna_id ));
 
+            if ($query->num_rows() > 0)
+            {
+                $row = $query->row_array();
+
+                if($peso <= 5)
+                    $this->db->select('5');
+                else if($peso > 5 && $peso <= 10)
+                    $this->db->select('10');
+                else if($peso > 10 && $peso <= 15)
+                    $this->db->select('15');
+                else if($peso > 15 && $peso <= 20)
+                    $this->db->select('20');
+                else if($peso > 20 && $peso <= 30)
+                    $this->db->select('30');
+                else if($peso > 30 && $peso <= 40)
+                    $this->db->select('40');
+                else if($peso > 40 && $peso <= 50)
+                    $this->db->select('50');
+                else if($peso > 50 && $peso <= 60)
+                    $this->db->select('60');
+                else if($peso > 60 && $peso <= 70)
+                    $this->db->select('70');
+                else if($peso > 70 && $peso <= 80)
+                    $this->db->select('80');
+                else if($peso > 80 && $peso <= 90)
+                    $this->db->select('90');
+                else if($peso > 90 && $peso <= 100)
+                    $this->db->select('100');
+                else if($peso > 100 && $peso <= 2000)
+                    $this->db->select('2000');
+                else if($peso > 2000 && $peso <= 5000)
+                    $this->db->select('5000');
+                else if($peso > 5000 && $peso <= 10000)
+                    $this->db->select('10000');
+                else if($peso > 10000)
+                    $this->db->select('SUP');
+
+                if($row['origen'] == 1) {
+                    $this->db->where('COMUNA_ID', 13101 );
+                    $this->db->or_where('COMUNA_ID', $comuna_id );
+                } else {
+                    $this->db->where('COMUNA_ID', $comuna_id );
+                }
+
+                $this->db->from('memphis');
+
+                $query = $this->db->get();
+
+                $total = 0;
+
+                if ($query->num_rows() > 0)
+                {
+
+                    foreach ($query->result_array() as $row)
+                    {
+                        if($peso <= 5)
+                            $total += $row['5'];
+                        else if($peso > 5 && $peso <= 10)
+                            $total += $row['10'];
+                        else if($peso > 10 && $peso <= 15)
+                            $total += $row['15'];
+                        else if($peso > 15 && $peso <= 20)
+                            $total += $row['20'];
+                        else if($peso > 20 && $peso <= 30)
+                            $total += $row['30'];
+                        else if($peso > 30 && $peso <= 40)
+                            $total += $row['40'];
+                        else if($peso > 40 && $peso <= 50)
+                            $total += $row['50'];
+                        else if($peso > 50 && $peso <= 60)
+                            $total += $row['60'];
+                        else if($peso > 60 && $peso <= 70)
+                            $total += $row['70'];
+                        else if($peso > 70 && $peso <= 80)
+                            $total += $row['80'];
+                        else if($peso > 80 && $peso <= 90)
+                            $total += $row['90'];
+                        else if($peso > 90 && $peso <= 100)
+                            $total += $row['100'];
+                        else if($peso > 100 && $peso <= 2000) {
+                            $peso_c = ceil($peso);
+                            $total += $peso_c * $row['2000'];
+                        } else if($peso > 2000 && $peso <= 5000) {
+                            $peso_c = ceil($peso);
+                            $total += $peso_c * $row['5000'];
+                        } else if($peso > 5000 && $peso <= 10000) {
+                            $peso_c = ceil($peso);
+                            $total += $peso_c * $row['10000'];
+                        } else if($peso > 10000){
+                            $peso_c = ceil($peso);
+                            $total += $peso_c * $row['SUP'];
+                        }
+                    }
+
+                    return $total*1.19;
+
+                } else {
+                    return 0;
+                }
+
+            } else return 0;
         }
 
     }

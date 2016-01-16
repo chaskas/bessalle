@@ -45,7 +45,7 @@
               templateUrl: 'partials/shipping.html',
               controller: 'ShippingCtrl'
             }).
-            when('/category/:categoryId', {
+            when('/shopping/:categoryId', {
               templateUrl: 'partials/shopping.html',
               controller: 'ProductListCtrl'
             }).
