@@ -5,6 +5,7 @@ storeControllers.run(function($rootScope, $location) {
     $rootScope.menuClass = function(page) {
         var current = $location.path().split('/')[1];
         if(current === "detail" || current === "cart" || current === "shipping" || current === "summary" || current === "checkout" || current === "success") current = "shopping";
+        if(current === "") current = "home";
         return page === current ? "current-menu-item" : "";
     };
 

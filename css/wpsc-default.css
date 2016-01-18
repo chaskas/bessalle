@@ -239,13 +239,13 @@ h2.wpsc_also_bought{
 
 .shade{
 	background: url(../../images/shd_left.png) bottom left no-repeat;
-	width: 94%;
+	width: 90%;
 	height: 5px;
 	position: absolute;
 	bottom:-5px;
 	left: 0;
 	z-index: 10;
-	padding-left: 12px;
+	padding-left: 25px;
 	overflow: hidden;
 
 }

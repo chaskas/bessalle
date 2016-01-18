@@ -2046,7 +2046,7 @@ div.wpsc_loading_animation{
 	border: #e6e6e6 1px solid;
 	border-radius: 3px;
 	position: absolute;
-	min-width: 170px;
+	min-width: 220px;
 	z-index: 2000000;
 	display: none;
 	left: -20px !important;
@@ -2504,7 +2504,7 @@ footer{
 .side_col_left, .side_col_right{
 	background: #fff;
 	border-radius: 5px;
-	position: relative;
+
 }
 
 .side_col_left h3, .side_col_right h3{

@@ -1,52 +1,61 @@
 <section id="content">
-    <div class="container_12">
+    <div class="container">
+    <div class="row">
 
-        <div class="grid_3 side_col_left shop">
-			<div class="widget-1 alpha box  widget_text">
-                <div class="textwidget">
-                    <h2>Categorias</h2>
+        <div class="col-md-3">
+
+            <div class="side_col_left shop">
+    			<div class="widget-1 alpha box  widget_text">
+                    <div class="textwidget">
+                        <h2>Categorias</h2>
+                    </div>
+    		    </div>
+
+                <div class="widget-2 box  widget_wpsc_categorisation" ng-controller="CategoryCtrl as CatCtrl">
+
+                    <div class="wpsc_categorisation_group" ng-repeat="category in CatCtrl.categories | orderBy: 'name'">
+            			<ul class="wpsc_categories wpsc_top_level_categories">
+            				<li class="wpsc_category_7">
+                				<a href="#/shopping/{{category.id}}" class="wpsc_category_image_link" ng-click="CatCtrl.setCategory(category.id)"></a>
+            					<a href="#/shopping/{{category.id}}" ng-click="CatCtrl.setCategory(category.id)">{{ category.name }}</a>
+            				</li>
+            			</ul>
+        			    <div class="clear_category_group"></div>
+    		        </div>
+
                 </div>
-		    </div>
 
-            <div class="widget-2 box  widget_wpsc_categorisation" ng-controller="CategoryCtrl as CatCtrl">
+                <div class="shade"><div class="shade_in"><div class="shade_bg"></div></div></div>
 
-                <div class="wpsc_categorisation_group" ng-repeat="category in CatCtrl.categories | orderBy: 'name'">
-        			<ul class="wpsc_categories wpsc_top_level_categories">
-        				<li class="wpsc_category_7">
-            				<a href="#/shopping/{{category.id}}" class="wpsc_category_image_link" ng-click="CatCtrl.setCategory(category.id)"></a>
-        					<a href="#/shopping/{{category.id}}" ng-click="CatCtrl.setCategory(category.id)">{{ category.name }}</a>
-        				</li>
-        			</ul>
-    			    <div class="clear_category_group"></div>
-		        </div>
+    			<div class="clear"></div>
 
-            </div>
+    		</div>
 
-            <div class="shade"><div class="shade_in"><div class="shade_bg"></div></div></div>
+        </div>
 
-			<div class="clear"></div>
+        <div class="col-md-9">
 
-		</div>
+            <div class="cont_col" ng-controller="ShippingCtrl as ShippCtrl">
 
-        <div class="grid_9 cont_col" ng-controller="ShippingCtrl as ShippCtrl">
+                <h1>Carrito de Compras</h1>
 
-            <h1>Carrito de Compras</h1>
-
-            <div class="panel panel-default" >
-                <div class="panel-body">
-                    <ngcart-cart></ngcart-cart>
+                <div class="panel panel-default" >
+                    <div class="panel-body">
+                        <ngcart-cart></ngcart-cart>
+                    </div>
                 </div>
-            </div>
 
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <button ng-disabled="ShippCtrl.isCartEmpty()" ng-click="ShippCtrl.askForShippingInfo()" class="pull-right"><span>Siguiente</span></button>
-                    <a class="button pull-right" href="#/shopping"><span>Agregar otro producto</span></a>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <button ng-disabled="ShippCtrl.isCartEmpty()" ng-click="ShippCtrl.askForShippingInfo()" class="pull-right"><span>Siguiente</span></button>
+                        <a class="button pull-right" href="#/shopping"><span>Agregar otro producto</span></a>
+                    </div>
                 </div>
-            </div>
 
-		</div>
+    		</div>
+        </div>
 		<div class="clear"></div>
 
+    </div>
     </div>
 </section>

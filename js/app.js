@@ -21,6 +21,33 @@
             when('/products', {
               templateUrl: 'partials/products.html',
             }).
+            when('/products/camiseta', {
+              templateUrl: 'partials/products/camiseta.html',
+            }).
+            when('/products/rinon', {
+              templateUrl: 'partials/products/rinon.html',
+            }).
+            when('/products/basura', {
+              templateUrl: 'partials/products/basura.html',
+            }).
+            when('/products/medida', {
+              templateUrl: 'partials/products/medida.html',
+            }).
+            when('/products/carbon', {
+              templateUrl: 'partials/products/carbon.html',
+            }).
+            when('/products/prepicado', {
+              templateUrl: 'partials/products/prepicado.html',
+            }).
+            when('/products/biodegradable', {
+              templateUrl: 'partials/products/biodegradable.html',
+            }).
+            when('/products/almidon', {
+              templateUrl: 'partials/products/almidon.html',
+            }).
+            when('/products/cintas', {
+              templateUrl: 'partials/products/cintas.html',
+            }).
             when('/services', {
               templateUrl: 'partials/services.html',
             }).
