@@ -72,6 +72,7 @@ Author URI: http://instinct.co.nz
 .wpsc_default_product_list .default_product_display{
 	background: #fff;
 	border-radius: 5px;
+	margin-bottom: 20px
 }
 
 .wpsc_default_product_list.list .default_product_display{

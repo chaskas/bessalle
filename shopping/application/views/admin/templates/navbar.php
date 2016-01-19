@@ -16,7 +16,6 @@
             <ul class="dropdown-menu">
               <li><a href="<?php echo site_url('admin/categories') ?>">Categorías</a></li>
               <li><a href="<?php echo site_url('admin/products') ?>">Productos</a></li>
-              <li><a href="<?php echo site_url('admin/stock') ?>">Stock</a></li>
             </ul>
           </li>
           <li class="dropdown">
@@ -37,6 +36,7 @@
               <li><a href="<?php echo site_url('admin/orders/finished') ?>">Procesadas</a></li>
             </ul>
           </li>
+          <li><a href="<?php echo site_url('admin/stock') ?>">Stock</a></li>
         </ul>
         <p class="navbar-text navbar-right"><a href="<?php echo site_url('admin/logout'); ?>" class="navbar-link">Salir</a></p>
       </div>

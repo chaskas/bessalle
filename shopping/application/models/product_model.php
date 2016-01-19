@@ -31,11 +31,15 @@ class Product_model extends CI_Model {
             product.id,
             product.name,
             product.price,
+            product.price_retail,
+            product.min_wholesale,
             product.description,
             product.image,
             product.unit,
             product.minimun,
             product.stock,
+            product.order,
+            product.highlight,
             category.name as category_name');
 
         $this->db->from('product');
@@ -86,6 +90,8 @@ class Product_model extends CI_Model {
         $data = array(
             'name' => $this->input->post('name'),
             'price' => $this->input->post('price'),
+            'price_retail' => $this->input->post('price_retail'),
+            'min_wholesale' => $this->input->post('min_wholesale'),
             'description' => $this->input->post('description'),
             'category_id' => $this->input->post('category_id'),
             'unit' => $this->input->post('unit'),
@@ -94,6 +100,8 @@ class Product_model extends CI_Model {
             'height' => $this->input->post('height'),
             'weight' => $this->input->post('weight'),
             'minimun' => $this->input->post('minimun'),
+            'order' => $this->input->post('order'),
+            'highlight' => $this->input->post('highlight'),
             'stock' => $this->input->post('stock')
         );
 
@@ -107,6 +115,8 @@ class Product_model extends CI_Model {
         $data = array(
             'name' => $this->input->post('name'),
             'price' => $this->input->post('price'),
+            'price_retail' => $this->input->post('price_retail'),
+            'min_wholesale' => $this->input->post('min_wholesale'),
             'description' => $this->input->post('description'),
             'category_id' => $this->input->post('category_id'),
             'unit' => $this->input->post('unit'),
@@ -115,6 +125,8 @@ class Product_model extends CI_Model {
             'height' => $this->input->post('height'),
             'weight' => $this->input->post('weight'),
             'minimun' => $this->input->post('minimun'),
+            'order' => $this->input->post('order'),
+            'highlight' => $this->input->post('highlight'),
             'stock' => $this->input->post('stock')
         );
 

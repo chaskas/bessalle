@@ -29,6 +29,8 @@
 
 					<div class="clear"></div>
 
+
+
 				</div>
 			</div>
 			<div class="col-md-9" ng-controller="ProductListCtrl as ProdCtrl">
@@ -39,7 +41,7 @@
 
 					<div class="wpsc_default_product_list row">
 
-						<div class="col-md-6" ng-repeat="product in ProdCtrl.products | orderBy: 'name'">
+						<div class="col-md-6" ng-repeat="product in ProdCtrl.products | orderBy: 'order'">
 
 		                    <div class="default_product_display" >
 
@@ -55,8 +57,8 @@
 		            				</h3>
 
 		    						<div class="wpsc_description">
-		    							<p>
-		                                    {{ product.price | currency : '' : 0 }} / {{ product.unit == 0 ? "Kg" : "Unidad" }}
+		    							<p class="text-center">
+		                                    <strong>{{ product.price | currency : '$' : 1 }} {{ product.unit == 0 ? "el Kg" : "la Unidad" }}</strong>
 		                                    <br>
 		                                    {{ product.description }}
 		                                </p>

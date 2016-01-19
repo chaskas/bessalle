@@ -5116,7 +5116,7 @@ div.blind_down ul li a{
 }
 
 
-ul.contacts li{
+ul.contacts li {
 	list-style: none !important;
 	margin-bottom: 20px;
 	border:none !important;
@@ -5131,7 +5131,7 @@ li.phone{
 	line-height: 1.5em;
 	background: url("../../images/phone_ico.png") left center no-repeat;
 	padding-left:22px;
-
+	font-size: 14pt;
 }
 
 li.location{
@@ -5139,6 +5139,7 @@ li.location{
 	line-height: 1.5em;
 	background: url("../../images/location_ico.png") left center no-repeat;
 	padding-left:22px;
+	font-size: 14pt;
 
 }
 
@@ -5147,6 +5148,7 @@ li.mail{
 	line-height: 1.5em;
 	background: url("../../images/envelop_ico.png") left center no-repeat;
 	padding-left:22px;
+	font-size: 14pt;
 
 }
 

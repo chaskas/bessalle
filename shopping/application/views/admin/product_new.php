@@ -40,38 +40,69 @@
                                 </div>
                             </div>
 
-
-                            <div class="form-group">
-                                <label for="description">Descripción</label>
-                                <textarea class="form-control" id="description" name="description"><?php echo set_value('description'); ?></textarea><span class="error"><?php echo form_error('description'); ?></span>
-                            </div>
-
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-8">
                                     <div class="form-group">
-                                        <label for="price">Precio</label>
-                                        <input type="text" class="form-control" id="price" name="price" value="<?php echo set_value('price'); ?>"><span class="error"><?php echo form_error('price'); ?></span>
+                                        <label for="description">Descripción</label>
+                                        <textarea class="form-control" id="description" name="description" style="height:107px"><?php echo set_value('description'); ?></textarea><span class="error"><?php echo form_error('description'); ?></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="minimun">Mínimo</label>
-                                        <input type="text" class="form-control" id="minimun" name="minimun" value="<?php echo set_value('minimun'); ?>"><span class="error"><?php echo form_error('minimun'); ?></span>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="minimun">Mínimo</label>
+                                                <input type="text" class="form-control" id="minimun" name="minimun" value="<?php echo set_value('minimun'); ?>"><span class="error"><?php echo form_error('minimun'); ?></span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="unit">Unidad</label>
-                                        <select name="unit" id="unit" class="form-control">
-                                            <option value="0" <?php if(set_value('unit') == 0) echo "selected"; ?>>Kg</option>
-                                            <option value="1" <?php if(set_value('unit') == 1) echo "selected"; ?>>Unidad</option>
-                                        </select>
-                                        <span class="error"><?php echo form_error('unit'); ?></span>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="unit">Unidad</label>
+                                                <select name="unit" id="unit" class="form-control">
+                                                    <option value="0" <?php if(set_value('unit') == 0) echo "selected"; ?>>Kg</option>
+                                                    <option value="1" <?php if(set_value('unit') == 1) echo "selected"; ?>>Unidad</option>
+                                                </select>
+                                                <span class="error"><?php echo form_error('unit'); ?></span>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
 
-                            <br>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title">Precios</div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="price_retail">Precio Minorista</label>
+                                                <input type="text" class="form-control" id="price_retail" name="price_retail" value="<?php echo set_value('price_retail'); ?>"><span class="error"><?php echo form_error('price_retail'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="price">Precio Mayorista</label>
+                                                <input type="text" class="form-control" id="price" name="price" value="<?php echo set_value('price'); ?>"><span class="error"><?php echo form_error('price'); ?></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="min_wholesale">Mínimo para Precio Mayorista</label>
+                                                <input type="text" class="form-control" id="min_wholesale" name="min_wholesale" value="<?php echo set_value('min_wholesale'); ?>"><span class="error"><?php echo form_error('min_wholesale'); ?></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -103,20 +134,50 @@
                                 </div>
                             </div>
 
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="panel-title">Stock</div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="panel-title">Stock</div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="stock">Cantidad</label>
+                                                    <input type="text" class="form-control" id="stock" name="stock" value="<?php echo set_value('stock'); ?>" disabled>
+                                                    <span class="error"><?php echo form_error('stock'); ?></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label for="stock">Cantidad</label>
-                                            <input type="text" class="form-control" id="stock" name="stock" value="<?php echo set_value('stock'); ?>">
-                                            <span class="error"><?php echo form_error('stock'); ?></span>
+                                <div class="col-md-4">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="panel-title">Otros</div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="stock">Orden</label>
+                                                    <input type="text" class="form-control" id="order" name="order" value="<?php echo set_value('order'); ?>">
+                                                    <span class="error"><?php echo form_error('order'); ?></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="stock">Destacado</label>
+                                                    <select name="highlight" id="highlight" class="form-control">
+                                                        <option value="0" <?php if(set_value('highlight') == 0) echo "selected"; ?>>No</option>
+                                                        <option value="1" <?php if(set_value('highlight') == 1) echo "selected"; ?>>Si</option>
+                                                    </select>
+                                                    <span class="error"><?php echo form_error('highlight'); ?></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
 
                         </div>
                     </div>
