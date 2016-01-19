@@ -210,6 +210,35 @@ class Admin extends CI_Controller {
 
     }
 
+    public function product_add_stock($product_id)
+    {
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $data['title'] = 'Agregar Stock';
+
+        $data['product'] = $this->product_model->getById($product_id);
+
+        $this->form_validation->set_rules('product_id', 'Producto', 'required');
+        $this->form_validation->set_rules('stock', 'Stock', 'required');
+        $this->form_validation->set_message('required', 'Obligatorio');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('admin/templates/header');
+            $this->load->view('admin/templates/navbar');
+            $this->load->view('admin/product_add_stock', $data);
+            $this->load->view('admin/templates/footer');
+
+        }
+        else
+        {
+            $this->product_model->add_stock();
+            redirect('admin/stock', 'refresh');
+        }
+    }
+
     private function dropdown_categories($selected_id = 0)
     {
         $result = $this->category_model->get_categories();

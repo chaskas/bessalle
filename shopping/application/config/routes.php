@@ -68,13 +68,15 @@ $route['admin/category/edit/(:num)'] = 'admin/category_edit/$1';
 $route['admin/category/delete/(:num)'] = 'admin/category_delete/$1';
 
 $route['admin/products'] = 'admin/products';
-$route['admin/stock'] = 'admin/product_stock';
 $route['admin/product/new'] = 'admin/product_new';
 $route['admin/product/edit/(:num)'] = 'admin/product_edit/$1';
 $route['admin/product/delete/(:num)'] = 'admin/product_delete/$1';
 $route['admin/pre_upload/(:num)'] = 'admin/pre_upload/$1';
 $route['admin/upload/(:num)'] = 'admin/upload/$1';
 $route['admin/post_upload/(:num)'] = 'admin/post_upload/$1';
+
+$route['admin/stock'] = 'admin/product_stock';
+$route['admin/stock/add/(:num)'] = 'admin/product_add_stock/$1';
 
 $route['admin/users'] = 'admin/users';
 $route['admin/user/new'] = 'admin/user_new';

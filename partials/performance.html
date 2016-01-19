@@ -77,16 +77,25 @@
 
         <div class="panel panel-default">
             <div class="panel-body">
-                <button ng-click="CRCtrl.calc()" class="pull-right"><span>Calcular</span></button>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="panel panel-default" ng-show="rendimiento">
+                            <div class="panel-body">
+                                <h4>Rendimiento: {{ rendimiento | number : 2 }} un/kg</h4>
+                                <h4>Valor Unitario: {{ neto | number : 2 }} + IVA c/u</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button ng-click="CRCtrl.calc()" class="pull-right"><span>Calcular</span></button>
+                    </div>
+                </div>
+                
             </div>
         </div>
 
-        <div class="panel panel-default" ng-show="rendimiento">
-            <div class="panel-body">
-                <h3>Rendimiento: {{ rendimiento | number : 2 }} un/kg</h3>
-                <h3>Valor Unitario: {{ neto | number : 2 }} + IVA c/u</h3>
-            </div>
-        </div>
+
 
     </div>
 

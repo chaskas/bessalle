@@ -74,10 +74,34 @@ class Product_model extends CI_Model {
 
     }
 
-    public function getById($product_id){
+    public function getById($product_id) {
 
-        $this->db->where('id', $product_id);
-        $query = $this->db->get('product');
+        $this->db->select('
+            product.id,
+            product.name,
+            product.price,
+            product.price_retail,
+            product.min_wholesale,
+            product.description,
+            product.image,
+            product.unit,
+            product.minimun,
+            product.stock,
+            product.order,
+            product.highlight,
+            product.category_id,
+            product.length,
+            product.width,
+            product.height,
+            product.weight,
+            category.name as category_name');
+
+        $this->db->where('product.id', $product_id);
+
+        $this->db->from('product');
+        $this->db->join('category', 'category.id = product.category_id');
+
+        $query = $this->db->get();
 
         if ($query->num_rows() > 0)
         {
@@ -173,6 +197,19 @@ class Product_model extends CI_Model {
 
         $this->db->where('id', $product_id);
         $this->db->set('stock', 'stock-'.$quantity, FALSE);
+        $this->db->update('product');
+
+    }
+
+    public function add_stock() {
+
+        $this->load->helper('url');
+
+        $product_id = $this->input->post('product_id');
+        $quantity = $this->input->post('stock');
+
+        $this->db->where('id', $product_id);
+        $this->db->set('stock', 'stock+'.$quantity, FALSE);
         $this->db->update('product');
 
     }
