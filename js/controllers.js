@@ -91,6 +91,9 @@ storeControllers.controller('ProductCtrl', ['$scope', '$routeParams', '$http', '
         store.product = data;
 
         $http.get('shopping/index.php/category/'+data.category_id).success(function(data) {
+
+            Data.currentCategory = [];
+            
             $scope.currentCategory.name = data.name;
             $scope.currentCategory.id = data.id;
             Data.currentCategory.name = data.name;
