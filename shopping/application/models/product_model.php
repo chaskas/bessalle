@@ -24,6 +24,25 @@ class Product_model extends CI_Model {
 
     }
 
+    public function get_highlights()
+    {
+
+        $this->db->select();
+
+        $this->db->where('highlight',1);
+
+        $this->db->limit(6);
+
+        $this->db->from('product');
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0) {
+            return $query->result();
+        } else return array();
+
+    }
+
     public function get_products()
     {
 
@@ -101,8 +120,7 @@ class Product_model extends CI_Model {
             'weight' => $this->input->post('weight'),
             'minimun' => $this->input->post('minimun'),
             'order' => $this->input->post('order'),
-            'highlight' => $this->input->post('highlight'),
-            'stock' => $this->input->post('stock')
+            'highlight' => $this->input->post('highlight')
         );
 
         return $this->db->insert('product', $data);
@@ -126,8 +144,7 @@ class Product_model extends CI_Model {
             'weight' => $this->input->post('weight'),
             'minimun' => $this->input->post('minimun'),
             'order' => $this->input->post('order'),
-            'highlight' => $this->input->post('highlight'),
-            'stock' => $this->input->post('stock')
+            'highlight' => $this->input->post('highlight')
         );
 
         $this->db->where('id', $product_id);
@@ -158,6 +175,12 @@ class Product_model extends CI_Model {
         $this->db->set('stock', 'stock-'.$quantity, FALSE);
         $this->db->update('product');
 
+    }
+
+    public function get_performances()
+    {
+        $query = $this->db->get('performance');
+        return $query->result_array();
     }
 
 }

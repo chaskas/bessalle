@@ -37,6 +37,7 @@
             </ul>
           </li>
           <li><a href="<?php echo site_url('admin/stock') ?>">Stock</a></li>
+          <li><a href="<?php echo site_url('admin/performance') ?>">Costo / Rendimiento</a></li>
         </ul>
         <p class="navbar-text navbar-right"><a href="<?php echo site_url('admin/logout'); ?>" class="navbar-link">Salir</a></p>
       </div>

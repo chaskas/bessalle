@@ -91,6 +91,10 @@
               templateUrl: 'partials/success.html',
               controller: 'SuccessCtrl'
             }).
+            when('/performance', {
+              templateUrl: 'partials/performance.html',
+              controller: 'CostoRendimientoCtrl'
+            }).
             otherwise({
               redirectTo: '/home'
             });

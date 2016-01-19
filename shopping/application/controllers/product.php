@@ -7,6 +7,15 @@ class Product extends CI_Controller {
                 $this->load->model('product_model');
         }
 
+        public function get_highlights()
+        {
+            header('Content-Type: application/json');
+
+            $data['products'] = $this->product_model->get_highlights();
+
+            echo json_encode( $data['products'] );
+        }
+
         public function index($category_id)
         {
 
@@ -25,6 +34,17 @@ class Product extends CI_Controller {
                 $data['product'] = $this->product_model->getById($id);
 
                 echo json_encode( $data['product'] );
+
+        }
+
+        public function get_performance()
+        {
+
+                header('Content-Type: application/json');
+
+                $data['products'] = $this->product_model->get_performances();
+
+                echo json_encode( $data['products'] );
 
         }
 

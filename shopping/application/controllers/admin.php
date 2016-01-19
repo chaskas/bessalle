@@ -20,6 +20,7 @@ class Admin extends CI_Controller {
             $this->load->model('provincia_model');
             $this->load->model('region_model');
             $this->load->model('transport_model');
+            $this->load->model('performance_model');
         }
         else
         {
@@ -796,6 +797,111 @@ class Admin extends CI_Controller {
         {
             $this->transport_model->chilexpress_edit($chilexpress_id);
             redirect('admin/transport/chilexpress', 'refresh');
+        }
+    }
+
+    public function performance()
+    {
+
+        $data['performances'] = $this->performance_model->get_performances();
+        $data['densities'] = $this->performance_model->get_densities();
+        $data['color'] = $this->performance_model->get_color();
+        $data['oxo'] = $this->performance_model->get_oxo();
+
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/navbar');
+        $this->load->view('admin/performance', $data);
+        $this->load->view('admin/templates/footer');
+
+    }
+
+    public function performance_edit($performance_id){
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $data['title'] = 'Editar Costo / Rendimiento';
+
+        $performance = $this->performance_model->get_by_id($performance_id);
+
+        $data['performance'] = $performance;
+
+        $this->form_validation->set_rules('clase_v', 'Clase', 'required');
+        $this->form_validation->set_rules('valor_1', 'Clase', 'required');
+        $this->form_validation->set_rules('valor_2', 'Clase', 'required');
+        $this->form_validation->set_message('required', 'Obligatorio');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('admin/templates/header');
+            $this->load->view('admin/templates/navbar');
+            $this->load->view('admin/performance_edit', $data);
+            $this->load->view('admin/templates/footer');
+
+        }
+        else
+        {
+            $this->performance_model->edit($performance_id);
+            redirect('admin/performance', 'refresh');
+        }
+    }
+
+    public function performance_edit_density($performance_id){
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $data['title'] = 'Editar Costo / Rendimiento';
+
+        $performance = $this->performance_model->get_by_id($performance_id);
+
+        $data['performance'] = $performance;
+
+        $this->form_validation->set_rules('tipo_1', 'Clase', 'required');
+        $this->form_validation->set_rules('tipo_2', 'Clase', 'required');
+        $this->form_validation->set_message('required', 'Obligatorio');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('admin/templates/header');
+            $this->load->view('admin/templates/navbar');
+            $this->load->view('admin/performance_edit_density', $data);
+            $this->load->view('admin/templates/footer');
+
+        }
+        else
+        {
+            $this->performance_model->edit_density($performance_id);
+            redirect('admin/performance', 'refresh');
+        }
+    }
+
+    public function performance_edit_other($performance_id){
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $data['title'] = 'Editar Costo / Rendimiento';
+
+        $performance = $this->performance_model->get_by_id($performance_id);
+
+        $data['performance'] = $performance;
+
+        $this->form_validation->set_rules('clase_v', 'Clase', 'required');
+        $this->form_validation->set_message('required', 'Obligatorio');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('admin/templates/header');
+            $this->load->view('admin/templates/navbar');
+            $this->load->view('admin/performance_edit_other', $data);
+            $this->load->view('admin/templates/footer');
+
+        }
+        else
+        {
+            $this->performance_model->edit_other($performance_id);
+            redirect('admin/performance', 'refresh');
         }
     }
 

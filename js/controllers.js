@@ -11,16 +11,34 @@ storeControllers.run(function($rootScope, $location) {
 
 });
 
-storeControllers.controller('ProductListCtrl', ['$scope', '$routeParams', '$http', '$filter', 'Data', function($scope, $routeParams, $http, $filter, Data){
+storeControllers.controller('ProductHighlightsCtrl', ['$scope', '$routeParams', '$http', '$filter', 'Data', function($scope, $routeParams, $http, $filter, Data){
+
+    var store = this;
+    store.products = [];
+
+    $http.get('shopping/index.php/products/highlights').success(function(data) {
+        store.products = data;
+    });
+
+
+}]);
+
+storeControllers.controller('ProductListCtrl', ['$scope', '$routeParams', '$http', '$filter', 'Data', '$location', function($scope, $routeParams, $http, $filter, Data, $location){
 
     var store = this;
     store.products = [];
 
     $scope.currentCategory = [];
 
+    $scope.highlights = [];
+
     if (!angular.isDefined($routeParams.categoryId)) {
 
-        $scope.currentCategory.id = 1;
+        $scope.highlights = $location.path().split('/')[2];
+
+        $http.get('shopping/index.php/products/highlights').success(function(data) {
+            store.products = data;
+        });
 
     } else {
 
@@ -33,11 +51,11 @@ storeControllers.controller('ProductListCtrl', ['$scope', '$routeParams', '$http
             Data.currentCategory.id = data.id;
         });
 
-    }
+        $http.get('shopping/index.php/products/'+$scope.currentCategory.id).success(function(data) {
+            store.products = data;
+        });
 
-    $http.get('shopping/index.php/products/'+$scope.currentCategory.id).success(function(data) {
-        store.products = data;
-    });
+    }
 
     this.hasStock = function (stock) {
         if (stock > 0)
@@ -62,6 +80,8 @@ storeControllers.controller('ProductCtrl', ['$scope', '$routeParams', '$http', '
     var store = this;
     store.product = [];
 
+    $scope.currentCategory = [];
+
     if (!angular.isDefined($routeParams.productId))
         $scope.currentProductId = 1;
     else
@@ -69,6 +89,14 @@ storeControllers.controller('ProductCtrl', ['$scope', '$routeParams', '$http', '
 
     $http.get('shopping/index.php/product/'+$routeParams.productId).success(function(data) {
         store.product = data;
+
+        $http.get('shopping/index.php/category/'+data.category_id).success(function(data) {
+            $scope.currentCategory.name = data.name;
+            $scope.currentCategory.id = data.id;
+            Data.currentCategory.name = data.name;
+            Data.currentCategory.id = data.id;
+        });
+
     });
 
     store.Data = Data;
@@ -460,6 +488,131 @@ storeControllers.controller('CheckOutCtrl',['$scope', '$routeParams', '$http', '
 storeControllers.controller('SuccessCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', 'Data', '$location', function($scope, $routeParams, $http,$filter, ngCart, Data, $location){
 
 
+
+}]);
+
+storeControllers.controller('CostoRendimientoCtrl', ['$scope', '$routeParams', '$http', '$filter', 'Data', function($scope, $routeParams, $http, $filter, Data){
+
+    // if ($_POST["color"] == 1) {$color_def = 'Blanco/Negro';}
+    // else if ($_POST["color"] == 2) {$color_def = 'Otros';}
+    //
+    // //Calculo del rendimiento
+    // $rendimiento = 1000 / (( $ancho * $largo / 10)*2* $espesor * $tipo * $clase );
+    //
+    // //Calculo del Valor Neto
+    // $valor = 0;
+    //
+    // // Camiseta - Alta densidad = $2.490
+    // if (($_POST["clase"] == 1) and ($_POST["tipo"] == 1)) {$valor = 2490;}
+    //
+    // // Rin - Alta densidad = $2.312
+    // if (($_POST["clase"] == 2) and ($_POST["tipo"] == 1)) {$valor = 2312;}
+    //
+    // // Taco - Alta densidad = $2.312
+    // if (($_POST["clase"] == 3) and ($_POST["tipo"] == 1)) {$valor = 2312;}
+    //
+    // // Camiseta - Baja densidad = $2622
+    // if (($_POST["clase"] == 1) and ($_POST["tipo"] == 2)) {$valor = 2622;}
+    //
+    // // Rin - Baja densidad = $2.703
+    // if (($_POST["clase"] == 2) and ($_POST["tipo"] == 2)) {$valor = 2703;}
+    //
+    // // Taco - Baja densidad = $2.703
+    // if (($_POST["clase"] == 3) and ($_POST["tipo"] == 2)) {$valor = 2703;}
+    //
+    // if ($_POST["color"] == 2) {$valor = $valor + 200;}
+    //
+    // if ($_POST["oxo"] == 2) {$valor = $valor + 200;}
+    //
+    // $neto = $valor/$rendimiento;
+    // $resultado = 1;
+
+    var performance = [];
+
+    $http.get('shopping/index.php/product/performance').success(function(data)
+    {
+        performance = data;
+    });
+
+    this.calc = function () {
+
+        var clase_v = 0;
+        var tipo_v = 0;
+        var ancho_v = 0;
+        var largo_v = 0;
+        var espesor_v = 0;
+        var valor = 0;
+
+        $scope.clase_t = "";
+        $scope.densidad_t = "";
+
+        if(angular.isDefined($scope.clase) && $scope.clase == 0 && angular.isDefined($scope.tipo) && $scope.tipo == 0) {
+            $scope.clase_t = performance[0].clase;
+            $scope.densidad_t = "Alta Densidad";
+            clase_v = performance[0].clase_v;
+            tipo_v = performance[0].tipo_1;
+            valor = parseInt(performance[0].valor_1);
+        } else if(angular.isDefined($scope.clase) && $scope.clase == 0 && angular.isDefined($scope.tipo) && $scope.tipo == 1) {
+            $scope.clase_t = performance[0].clase;
+            $scope.densidad_t = "Baja Densidad";
+            clase_v = performance[0].clase_v;
+            tipo_v = performance[0].tipo_2;
+            valor = parseInt(performance[0].valor_2);
+        } else if(angular.isDefined($scope.clase) && $scope.clase == 1 && angular.isDefined($scope.tipo) && $scope.tipo == 0) {
+            $scope.clase_t = performance[1].clase;
+            $scope.densidad_t = "Alta Densidad";
+            clase_v = performance[1].clase_v;
+            tipo_v = performance[0].tipo_1;
+            valor = parseInt(performance[1].valor_1);
+        } else if(angular.isDefined($scope.clase) && $scope.clase == 1 && angular.isDefined($scope.tipo) && $scope.tipo == 1) {
+            $scope.clase_t = performance[1].clase;
+            $scope.densidad_t = "Baja Densidad";
+            clase_v = performance[1].clase_v;
+            tipo_v = performance[0].tipo_2;
+            valor = parseInt(performance[1].valor_2);
+        } else if(angular.isDefined($scope.clase) && $scope.clase == 2 && angular.isDefined($scope.tipo) && $scope.tipo == 0) {
+            $scope.clase_t = performance[2].clase;
+            $scope.densidad_t = "Alta Densidad";
+            clase_v = performance[2].clase_v;
+            tipo_v = performance[0].tipo_1;
+            valor = parseInt(performance[2].valor_2);
+        } else if(angular.isDefined($scope.clase) && $scope.clase == 2 && angular.isDefined($scope.tipo) && $scope.tipo == 1) {
+            $scope.clase_t = performance[2].clase;
+            $scope.densidad_t = "Baja Densidad";
+            clase_v = performance[2].clase_v;
+            tipo_v = performance[0].tipo_2;
+            valor = parseInt(performance[2].valor_2);
+        }
+
+        if(angular.isDefined($scope.ancho)) {
+            ancho_v = $scope.ancho;
+        }
+        if(angular.isDefined($scope.largo)) {
+            largo_v = $scope.largo;
+        }
+        if(angular.isDefined($scope.espesor)) {
+            espesor_v = $scope.espesor;
+        }
+
+        if(angular.isDefined($scope.color) && $scope.color == 1) {
+            valor += parseInt(performance[3].clase_v);
+        }
+
+        if(angular.isDefined($scope.biodegradable) && $scope.biodegradable == 0) {
+            valor += parseInt(performance[4].clase_v);
+        }
+
+        var rendimiento = 1000 / (( ancho_v * largo_v / 10) * 2 * espesor_v * tipo_v * clase_v );
+        $scope.rendimiento = rendimiento;
+
+        var neto = valor / rendimiento;
+        $scope.neto = neto;
+
+        console.log(rendimiento);
+        console.log(valor);
+        console.log(neto);
+
+    }
 
 }]);
 

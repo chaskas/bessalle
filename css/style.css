@@ -2046,7 +2046,7 @@ div.wpsc_loading_animation{
 	border: #e6e6e6 1px solid;
 	border-radius: 3px;
 	position: absolute;
-	min-width: 220px;
+	min-width: 250px;
 	z-index: 2000000;
 	display: none;
 	left: -20px !important;

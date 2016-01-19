@@ -102,14 +102,14 @@
 
                         <div id="default_products_page_container" class="wrap wpsc_container">
 
-                            <div class="wpsc_default_product_list row">
-                                <div class="col-md-4">
+                            <div class="wpsc_default_product_list row" ng-controller="ProductHighlightsCtrl as HighCtrl">
+                                <div class="col-md-4" ng-repeat="product in HighCtrl.products">
                                     <div class="default_product_display">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="imagecol">
-                                                    <a href="#">
-                                                        <img class="product_image" alt="Silk Pillow" title="Silk Pillow" src="images/cojin.jpg"/>
+                                                    <a href="#/detail/{{product.id}}">
+                                                        <img class="product_image" title="{{ product.name }}" ng-src="{{ product.image }}" alt="{{ product.name }}" height="218" width="218" />
                                                     </a>
                                                 </div>
                                             </div>
@@ -119,103 +119,19 @@
                                             <div class="col-md-12">
                                                 <div class="productcol">
                                                     <h3 class="prodtitle entry-title">
-                                                        <a class="wpsc_product_title" href="#">Silk Pillow</a>
+                                                        <a class="wpsc_product_title" href="#/detail/{{product.id}}">{{ product.name }}</a>
                                                     </h3>
-                                                    <div class="wpsc_description">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor tellus, tempor ut ultrices fermentum, aliquam consequat metus. In vel turpis dolor, in dapibus dui. Aenean at auctor neque.</p>
+                                                    <div class="wpsc_description text-center">
+                                                        <strong>{{ product.price | currency : '$' : 1 }} {{ product.unit == 0 ? "el Kg" : "la Unidad" }}</strong>
+            		                                    <br>
+                                                        <p>{{ product.description }}</p>
                                                     </div>
                                                     <div class="wpsc_product_price">
-                                                        <p class="pricedisplay"> <span class="currentprice pricedisplay"><span class="price_price">Price:</span><span class="csymb">$</span>199.00</span></p>
+                                                        <p class="pricedisplay"> <span class="currentprice pricedisplay"><span class="price_price">Precio:</span><span class="csymb">$</span>{{ product.price * product.minimun | currency : '' : 0 }}</span></p>
                                                         <div class="clear"></div>
                                                     </div>
                                                     <div class="wpsc_buy_button_container">
-                                                        <a class="button" href="#/shopping"><span>Comprar</span></a>
-                                                    </div>
-                                                    <div class="entry-utility wpsc_product_utility"></div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="shade">
-                                            <div class="shade_in">
-                                                <div class="shade_bg"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="default_product_display">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="imagecol">
-                                                    <a href="#">
-                                                        <img class="product_image" alt="Silk Pillow" title="Silk Pillow" src="http://lookshop.transparentideas.com/wp-content/uploads/2013/02/alina-bedspread-and-cushion-covers__0102015_PE246342_S4-218x218.jpg"/>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="productcol">
-                                                    <h3 class="prodtitle entry-title">
-                                                        <a class="wpsc_product_title" href="#">Silk Pillow</a>
-                                                    </h3>
-                                                    <div class="wpsc_description">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor tellus, tempor ut ultrices fermentum, aliquam consequat metus. In vel turpis dolor, in dapibus dui. Aenean at auctor neque.</p>
-                                                    </div>
-                                                    <div class="wpsc_product_price">
-                                                        <p class="pricedisplay"> <span class="currentprice pricedisplay"><span class="price_price">Price:</span><span class="csymb">$</span>199.00</span></p>
-                                                        <div class="clear"></div>
-                                                    </div>
-                                                    <div class="wpsc_buy_button_container">
-                                                        <a class="button" href="#/shopping"><span>Comprar</span></a>
-                                                    </div>
-                                                    <div class="entry-utility wpsc_product_utility"></div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="shade">
-                                            <div class="shade_in">
-                                                <div class="shade_bg"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="default_product_display">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="imagecol">
-                                                    <a href="#">
-                                                        <img class="product_image" alt="Silk Pillow" title="Silk Pillow" src="http://lookshop.transparentideas.com/wp-content/uploads/2013/02/alina-bedspread-and-cushion-covers__0102015_PE246342_S4-218x218.jpg"/>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="productcol">
-                                                    <h3 class="prodtitle entry-title">
-                                                        <a class="wpsc_product_title" href="#">Silk Pillow</a>
-                                                    </h3>
-                                                    <div class="wpsc_description">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor tellus, tempor ut ultrices fermentum, aliquam consequat metus. In vel turpis dolor, in dapibus dui. Aenean at auctor neque.</p>
-                                                    </div>
-                                                    <div class="wpsc_product_price">
-                                                        <p class="pricedisplay"> <span class="currentprice pricedisplay"><span class="price_price">Price:</span><span class="csymb">$</span>199.00</span></p>
-                                                        <div class="clear"></div>
-                                                    </div>
-                                                    <div class="wpsc_buy_button_container">
-                                                        <a class="button" href="#/shopping"><span>Comprar</span></a>
+                                                        <a class="button" href="#/detail/{{product.id}}"><span>Comprar</span></a>
                                                     </div>
                                                     <div class="entry-utility wpsc_product_utility"></div>
 

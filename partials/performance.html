@@ -1,0 +1,93 @@
+<section id="content" ng-controller="CostoRendimientoCtrl as CRCtrl">
+
+    <div class="container">
+
+        <h1>Cálculo Costo / Rendimiento</h1>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="clase">Clase</label>
+                            <select name="clase" id="clase" class="form-control" ng-model="clase">
+                                <option value="0">Camiseta</option>
+                                <option value="1">Riñon</option>
+                                <option value="2">Taco</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tipo">Tipo</label>
+                            <select name="tipo" id="tipo" class="form-control" ng-model="tipo">
+                                <option value="0">Alta Densidad</option>
+                                <option value="1">Baja Densidad</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="ancho">Ancho (cm)</label>
+                            <input type="text" name="ancho" id="ancho" ng-model="ancho" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="largo">Largo (cm)</label>
+                            <input type="text" name="largo" id="largo" ng-model="largo" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="espesor">Espesor (mm)</label>
+                            <input type="text" name="espesor" id="espesor" ng-model="espesor" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="color">Color</label>
+                            <select name="color" id="color" class="form-control" ng-model="color">
+                                <option value="0">Blanco / Negro / Transparente</option>
+                                <option value="1">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="biodegradable">Oxo - Biodegradable</label>
+                            <select name="biodegradable" id="biodegradable" class="form-control" ng-model="biodegradable">
+                                <option value="0">Si</option>
+                                <option value="1">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <button ng-click="CRCtrl.calc()" class="pull-right"><span>Calcular</span></button>
+            </div>
+        </div>
+
+        <div class="panel panel-default" ng-show="rendimiento">
+            <div class="panel-body">
+                <h3>Rendimiento: {{ rendimiento | number : 2 }} un/kg</h3>
+                <h3>Valor Unitario: {{ neto | number : 2 }} + IVA c/u</h3>
+            </div>
+        </div>
+
+    </div>
+
+</section>

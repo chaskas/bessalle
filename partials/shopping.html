@@ -7,7 +7,7 @@
 				<div class="side_col_left shop">
 					<div class="widget-1 alpha box  widget_text">
 		                <div class="textwidget">
-		                    <h2>Categorias</h2>
+		                    <h2>Productos</h2>
 		                </div>
 				    </div>
 
@@ -35,6 +35,9 @@
 			</div>
 			<div class="col-md-9" ng-controller="ProductListCtrl as ProdCtrl">
 
+
+
+				<h1 class="category-title" ng-show="highlights != ''">Ofertas Destacadas</h1>
 	            <h1 class="category-title">{{ ProdCtrl.Data.currentCategory.name }}</h1>
 
 	            <div class="wrap wpsc_container">

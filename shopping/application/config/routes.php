@@ -44,6 +44,7 @@ $route['category'] = 'category';
 $route['category/(:num)'] = 'category/get_category/$1';
 $route['products/(:num)'] = 'product/index/$1';
 $route['product/(:num)'] = 'product/get_product/$1';
+$route['products/highlights'] = 'product/get_highlights';
 $route['region'] = 'region';
 $route['provincia/(:num)'] = 'provincia/index/$1';
 $route['comuna/(:num)'] = 'comuna/index/$1';
@@ -52,6 +53,7 @@ $route['getShippCost'] = 'shipCalc/getCost';
 $route['user/(:any)'] = 'user/getUser/$1';
 $route['user/add'] = 'user/addUser';
 $route['checkout/process'] = 'checkout/process';
+$route['product/performance'] = 'product/get_performance';
 
 
 // Backend
@@ -96,6 +98,12 @@ $route['admin/transport/memphis'] = 'admin/memphis';
 $route['admin/transport/memphis/(:num)'] = 'admin/memphis_edit/$1';
 
 $route['admin'] = 'admin/categories';
+$route['admin/performance'] = 'admin/performance';
+$route['admin/performance/edit/(:num)'] = 'admin/performance_edit/$1';
+$route['admin/performance/edit/density/(:num)'] = 'admin/performance_edit_density/$1';
+$route['admin/performance/edit/other/(:num)'] = 'admin/performance_edit_other/$1';
+$route['admin/performance/edit/color/(:num)'] = 'admin/performance_edit_other/$1';
+$route['admin/performance/edit/oxo/(:num)'] = 'admin/performance_edit_other/$1';
 
 // Defaults
 
