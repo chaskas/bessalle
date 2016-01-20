@@ -93,7 +93,7 @@ storeControllers.controller('ProductCtrl', ['$scope', '$routeParams', '$http', '
         $http.get('shopping/index.php/category/'+data.category_id).success(function(data) {
 
             Data.currentCategory = [];
-            
+
             $scope.currentCategory.name = data.name;
             $scope.currentCategory.id = data.id;
             Data.currentCategory.name = data.name;
@@ -496,40 +496,6 @@ storeControllers.controller('SuccessCtrl',['$scope', '$routeParams', '$http', '$
 
 storeControllers.controller('CostoRendimientoCtrl', ['$scope', '$routeParams', '$http', '$filter', 'Data', function($scope, $routeParams, $http, $filter, Data){
 
-    // if ($_POST["color"] == 1) {$color_def = 'Blanco/Negro';}
-    // else if ($_POST["color"] == 2) {$color_def = 'Otros';}
-    //
-    // //Calculo del rendimiento
-    // $rendimiento = 1000 / (( $ancho * $largo / 10)*2* $espesor * $tipo * $clase );
-    //
-    // //Calculo del Valor Neto
-    // $valor = 0;
-    //
-    // // Camiseta - Alta densidad = $2.490
-    // if (($_POST["clase"] == 1) and ($_POST["tipo"] == 1)) {$valor = 2490;}
-    //
-    // // Rin - Alta densidad = $2.312
-    // if (($_POST["clase"] == 2) and ($_POST["tipo"] == 1)) {$valor = 2312;}
-    //
-    // // Taco - Alta densidad = $2.312
-    // if (($_POST["clase"] == 3) and ($_POST["tipo"] == 1)) {$valor = 2312;}
-    //
-    // // Camiseta - Baja densidad = $2622
-    // if (($_POST["clase"] == 1) and ($_POST["tipo"] == 2)) {$valor = 2622;}
-    //
-    // // Rin - Baja densidad = $2.703
-    // if (($_POST["clase"] == 2) and ($_POST["tipo"] == 2)) {$valor = 2703;}
-    //
-    // // Taco - Baja densidad = $2.703
-    // if (($_POST["clase"] == 3) and ($_POST["tipo"] == 2)) {$valor = 2703;}
-    //
-    // if ($_POST["color"] == 2) {$valor = $valor + 200;}
-    //
-    // if ($_POST["oxo"] == 2) {$valor = $valor + 200;}
-    //
-    // $neto = $valor/$rendimiento;
-    // $resultado = 1;
-
     var performance = [];
 
     $http.get('shopping/index.php/product/performance').success(function(data)
@@ -616,6 +582,29 @@ storeControllers.controller('CostoRendimientoCtrl', ['$scope', '$routeParams', '
         console.log(neto);
 
     }
+
+}]);
+
+storeControllers.controller('ContactCtrl', ['$scope', '$routeParams', '$http', '$filter', '$location', function($scope, $routeParams, $http, $filter, $location){
+
+    this.send = function() {
+
+        $location.path('contact-process');
+
+        $http({
+
+            method: 'POST',
+            url: 'shopping/index.php/send_contact',
+            data: JSON.stringify({ 'name': $scope.name, 'business': $scope.business, 'email': $scope.email, 'phone': $scope.phone, 'message': $scope.message }),
+            headers: { 'Content-Type': 'application/json' }
+
+        }).success(function(data) {
+
+            $location.path('contact-sent');
+
+        });
+
+    };
 
 }]);
 

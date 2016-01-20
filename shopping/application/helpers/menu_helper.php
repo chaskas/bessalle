@@ -15,7 +15,7 @@ if(!function_exists('active_link')) {
     if($controller == "ordenes")
         $menues = array ("orders_paid", "orders_payable", "order_show", "orders_tracking", "orders_withdraw", "orders_finished");
     if($controller == "stock")
-        $menues = array ("product_stock", "product_add_stock");
+        $menues = array ("product_stock", "product_add_stock", "product_historical_stock");
     if($controller == "performance")
         $menues = array ("performance", "performance_edit", "performance_edit_density", "performance_edit_other");
 

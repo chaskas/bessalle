@@ -54,6 +54,7 @@ $route['user/(:any)'] = 'user/getUser/$1';
 $route['user/add'] = 'user/addUser';
 $route['checkout/process'] = 'checkout/process';
 $route['product/performance'] = 'product/get_performance';
+$route['send_contact'] = 'contact/send_contact_email';
 
 
 // Backend

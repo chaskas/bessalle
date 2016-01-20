@@ -59,6 +59,13 @@
             }).
             when('/contact', {
               templateUrl: 'partials/contact.html',
+              controller: 'ContactCtrl'
+            }).
+            when('/contact-process', {
+              templateUrl: 'partials/contact-process.html',
+            }).
+            when('/contact-sent', {
+              templateUrl: 'partials/contact-sent.html',
             }).
             when('/shopping', {
               templateUrl: 'partials/shopping.html',
