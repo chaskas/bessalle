@@ -118,12 +118,18 @@ class ShippCalc_model extends CI_Model {
                 else if($peso > 10000)
                     $this->db->select('SUP');
 
-                if($row['origen'] == 1) {
-                    $this->db->where('COMUNA_ID', 13101 );
-                    $this->db->or_where('COMUNA_ID', $comuna_id );
-                } else {
-                    $this->db->where('COMUNA_ID', $comuna_id );
-                }
+                // TOMANDO SANTIAGO COMO INTERMEDIO
+                // if($row['origen'] == 1) {
+                //     $this->db->where('COMUNA_ID', 13101 );
+                //     $this->db->or_where('COMUNA_ID', $comuna_id );
+                // } else {
+                //     $this->db->where('COMUNA_ID', $comuna_id );
+                // }
+                // TOMANDO SANTIAGO COMO INTERMEDIO
+
+                // NORMAL
+                $this->db->where('COMUNA_ID', $comuna_id );
+                // NORMAL
 
                 $this->db->from('memphis');
 
