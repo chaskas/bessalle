@@ -5338,6 +5338,12 @@ header {
 section#content {
 	min-height: 700px;
 }
+section#slider {
+
+	background:url("../../images/chr_pt.png");
+	padding-top: 40px;
+
+}
 	article {
 
 	}
