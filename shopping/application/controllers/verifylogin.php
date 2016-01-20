@@ -45,6 +45,11 @@ class VerifyLogin extends CI_Controller {
             $sess_array = array(
                 'username' => $username
             );
+
+            if($username == "pelao"){
+                $this->session->set_userdata('is_admin', true);
+            }
+
             $this->session->set_userdata('logged_in', $sess_array);
 
             return TRUE;
@@ -61,8 +66,14 @@ class VerifyLogin extends CI_Controller {
         $U1 = "pelao";
         $P1 = "pelao123";
 
-        if($username == $U1 && $password == $P1)
+        $U2 = "secretaria";
+        $P2 = "secretaria123";
+
+        if($username == $U1 && $password == $P1) {
             return true;
+        } else if($username == $U2 && $password == $P2) {
+            return true;
+        }
 
         return false;
 

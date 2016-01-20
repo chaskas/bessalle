@@ -22,7 +22,7 @@
                     <td><?php echo $product->stock; ?></td>
                     <td class="text-center">
                         <div class="btn-group btn-group-xs" role="group">
-                            <a href="<?php echo site_url('admin/stock/add/'.$product->id);?>" class="btn btn-warning" alt="Agregar Stock" title="Agregar Stock"><span class="glyphicon glyphicon-log-in"></span></a>
+                            <?php if($is_admin) : ?><a href="<?php echo site_url('admin/stock/add/'.$product->id);?>" class="btn btn-warning" alt="Agregar Stock" title="Agregar Stock"><span class="glyphicon glyphicon-log-in"></span></a><?php endif; ?>
                         </div>
                     </td>
                 </tr>

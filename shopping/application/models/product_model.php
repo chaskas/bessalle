@@ -212,6 +212,14 @@ class Product_model extends CI_Model {
         $this->db->set('stock', 'stock+'.$quantity, FALSE);
         $this->db->update('product');
 
+        $data = array(
+            'product_id' => $product_id,
+            'quantity' => $quantity,
+            'date' => date("Y-m-d H:i:s")
+        );
+
+        $this->db->insert('historical_stock', $data);
+
     }
 
     public function get_performances()

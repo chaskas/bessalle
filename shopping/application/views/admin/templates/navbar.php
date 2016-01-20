@@ -39,8 +39,8 @@
           <li class="dropdown <?php echo active_menu('stock'); ?>">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stock <span class="caret"></a>
               <ul class="dropdown-menu">
-                  <li><a href="<?php echo site_url('admin/stock') ?>">Agregar</a></li>
-                <li><a href="#">Histórico</a></li>
+                <li><a href="<?php echo site_url('admin/stock') ?>">Actual</a></li>
+                <?php if($this->session->userdata('is_admin')) : ?><li><a href="<?php echo site_url('admin/stock/history') ?>">Histórico</a></li><?php endif ?>
               </ul>
           </li>
           <li class="<?php echo active_menu('performance'); ?>"><a href="<?php echo site_url('admin/performance') ?>">Costo / Rendimiento</a></li>

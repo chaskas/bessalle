@@ -76,6 +76,7 @@ $route['admin/upload/(:num)'] = 'admin/upload/$1';
 $route['admin/post_upload/(:num)'] = 'admin/post_upload/$1';
 
 $route['admin/stock'] = 'admin/product_stock';
+$route['admin/stock/history'] = 'admin/product_historical_stock';
 $route['admin/stock/add/(:num)'] = 'admin/product_add_stock/$1';
 
 $route['admin/users'] = 'admin/users';
