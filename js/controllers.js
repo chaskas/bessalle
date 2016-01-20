@@ -1,6 +1,6 @@
 var storeControllers = angular.module('StoreControllers', ['ngCart']);
 
-storeControllers.run(function($rootScope, $location) {
+storeControllers.run(function($rootScope, $location, ngCart) {
 
     $rootScope.menuClass = function(page) {
         var current = $location.path().split('/')[1];
@@ -8,6 +8,8 @@ storeControllers.run(function($rootScope, $location) {
         if(current === "") current = "home";
         return page === current ? "current-menu-item" : "";
     };
+
+    ngCart.setTaxRate(19);
 
 });
 
@@ -113,8 +115,6 @@ storeControllers.controller('CategoryCtrl', ['$scope', '$routeParams', '$http', 
     $scope.currentCategory = [];
 
     Data.currentCategory = [];
-
-    ngCart.setTaxRate(19);
 
     $http.get('shopping/index.php/category').success(function(data) {
         store.categories = data;
