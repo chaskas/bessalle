@@ -8,7 +8,7 @@ class Order_model extends CI_Model {
         $this->load->model('product_model');
     }
 
-    public function create( $user_id, $code, $items, $neto, $iva, $shipping_cost, $total, $carrier, $billing_rut, $billing_business, $billing_name, $billing_email, $billing_phone, $billing_region, $billing_provincia, $billing_comuna, $billing_address1, $billing_address2, $shipping_rut, $shipping_name, $shipping_email, $shipping_phone, $shipping_region, $shipping_provincia, $shipping_comuna, $shipping_address1, $shipping_address2, $paymentType )
+    public function create( $user_id, $code, $items, $neto, $iva, $shipping_cost, $total, $carrier, $billing_rut, $billing_business, $billing_name, $billing_email, $billing_phone, $billing_region, $billing_provincia, $billing_comuna, $billing_address1, $billing_address2, $shipping_rut, $shipping_name, $shipping_email, $shipping_phone, $shipping_region, $shipping_provincia, $shipping_comuna, $shipping_address1, $shipping_address2, $paymentType, $withdrawer_rut, $withdrawer_name )
     {
         $this->load->helper('url');
 
@@ -42,7 +42,9 @@ class Order_model extends CI_Model {
             'shipping_address1' => $shipping_address1,
             'shipping_address2' => $shipping_address2,
             'date' => $date,
-            'payment_type' => $paymentType
+            'payment_type' => $paymentType,
+            'withdrawer_rut' => $withdrawer_rut,
+            'withdrawer_name' => $withdrawer_name
         );
 
         $this->db->insert('order', $data);

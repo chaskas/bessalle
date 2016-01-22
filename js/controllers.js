@@ -449,8 +449,10 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
     }
 
     this.validRadios = function () {
-        if (Data.paymentType > -1 && Data.shippingType > -1)
+        if (Data.paymentType > -1 && Data.shippingType > -1) {
+            if($scope.summaryForm.$invalid) return false;
             return true;
+        }
         else
             return false;
     }
@@ -464,6 +466,13 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
 
     this.validRadioShippingType = function () {
         if (Data.shippingType > -1)
+            return true;
+        else
+            return false;
+    }
+
+    this.checkWithdraw = function () {
+        if (Data.shippingType == 2)
             return true;
         else
             return false;
@@ -485,7 +494,7 @@ storeControllers.controller('CheckOutCtrl',['$scope', '$routeParams', '$http', '
 
         method: 'POST',
         url: 'shopping/index.php/checkout/process',
-        data: JSON.stringify({ 'user_rut': Data.billing.rut, 'cart': ngCart.getCart(), 'carrier': Data.carrier, 'paymentType': Data.paymentType }),
+        data: JSON.stringify({ 'user_rut': Data.billing.rut, 'cart': ngCart.getCart(), 'carrier': Data.carrier, 'paymentType': Data.paymentType, 'withdrawer_name':  Data.withdrawer.name, 'withdrawer_rut':  Data.withdrawer.rut }),
         headers: { 'Content-Type': 'application/json' }
 
     }).success(function(data) {

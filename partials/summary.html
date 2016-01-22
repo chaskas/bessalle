@@ -198,6 +198,24 @@
                                     <span ng-show="!ShippCtrl.validRadioShippingType()" class="requerido">* Requerido</span>
                                     </label>
                                 </div>
+                                <div class="panel panel-default" ng-show="ShippCtrl.checkWithdraw()">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    <label for="withdrawer_name">Nombre de Quién Retira <span ng-show="summaryForm.withdrawer_name.$invalid" class="requerido">* Requerido</span></label>
+                                                    <input type="text" name="withdrawer_name" id="withdrawer_name" class="form-control" ng-model="ShippCtrl.Data.withdrawer.name" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label for="withdrawer_rut">RUT: <span ng-show="summaryForm.withdrawer_rut.$invalid" class="requerido">* Requerido</span></label>
+                                                    <input ng-rut type="text" name="withdrawer_rut" id="withdrawer_rut" class="form-control" ng-model="ShippCtrl.Data.withdrawer.rut" rut-format="live">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <hr>

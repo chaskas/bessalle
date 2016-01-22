@@ -74,7 +74,9 @@ class Checkout extends CI_Controller {
                 $user->shipping_comuna,
                 $user->shipping_address1,
                 $user->shipping_address2,
-                $paymentType
+                $paymentType,
+                $data->withdrawer_rut,
+                $data->withdrawer_name
             );
 
             $this->send_new_order_email($order_id, $code, $user->billing_email, $user->billing_name, $paymentType, $carrier, $products_cost, $iva, $total);
