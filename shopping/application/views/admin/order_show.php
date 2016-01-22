@@ -211,6 +211,16 @@
             </div>
         </div>
 
+        <?php if($order->carrier == 2) : ?>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Datos de quién retira:</label>
+                    <br>
+                    <?php echo "RUT: ".$order->withdrawer_rut." Nombre: ".$order->withdrawer_name; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+
     </div>
     <div class="panel-footer text-right">
         <a href="<?php echo site_url('admin/order/download/'.$order->id);?>" class="btn btn-success" target="_blank">PDF</a>

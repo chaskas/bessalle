@@ -37,10 +37,11 @@ class Checkout extends CI_Controller {
 
             foreach ( $cart->items as $item ) {
                 $price = $this->product_model->get_final_price_by_id($item->_id);
-                $shipping_cost = $shipping_cost +  $this->shippcalc_model->get_cost($comuna_id, $item->_id, $item->_quantity, $carrier);
                 $products_cost = $products_cost + $price;
                 $this->product_model->discount_stock($item->_id, $item->_quantity);
             }
+
+            $shipping_cost = $this->shippcalc_model->get_cost($comuna_id, $items, $carrier);
 
             $iva = $products_cost * 0.19;
 

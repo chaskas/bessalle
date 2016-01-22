@@ -450,7 +450,7 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
 
     this.validRadios = function () {
         if (Data.paymentType > -1 && Data.shippingType > -1) {
-            if($scope.summaryForm.$invalid) return false;
+            if($scope.summaryForm.withdrawer_rut.$error.required || $scope.summaryForm.withdrawer_name.$invalid) return false;
             return true;
         }
         else
@@ -638,6 +638,7 @@ storeControllers.factory('Data', function(){
     data.billing = [];
     data.shippingType = [];
     data.paymentType = [];
+    data.withdrawer = [];
 
     return data;
 });

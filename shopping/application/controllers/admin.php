@@ -774,7 +774,7 @@ class Admin extends CI_Controller {
             $pdf->Ln();
             $pdf->Ln();
             $pdf->Ln();
-            $pdf->Cell(0,5,'Nombre: ________________________________________________ RUT: ____________________',$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
+            $pdf->Cell(0,5,'Nombre: '.$order->withdrawer_name.' RUT: '.$order->withdrawer_rut,$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
             $pdf->Ln();
             $pdf->Ln();
             $pdf->Cell(0,5,'Fecha: ________________________________________________ Firma: ____________________',$ln = 0,$align = '',$fill = false,$link = '',$stretch = 0,$ignore_min_height = false,$calign = 'T',$valign = 'M');
