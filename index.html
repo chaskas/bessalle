@@ -31,6 +31,7 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular_es-cl.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="bower_components/ngcart/dist/ngCart.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
@@ -76,12 +77,12 @@
                                             <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/camiseta"><span>Bolsas Camiseta</span></a></li>
                                             <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/rinon"><span>Bolsas Tipo Riñon</span></a></li>
                                             <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/basura"><span>Bolsas Tipo Basura</span></a></li>
+                                            <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/cintas"><span>Cintas Peligro y Señalización</span></a></li>
                                             <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/medida"><span>Bolsas a Medida</span></a></li>
                                             <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/carbon"><span>Bolsas Tipo Carbón</span></a></li>
                                             <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/prepicado"><span>Rollos y Mangas Prepicados</span></a></li>
                                             <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/biodegradable"><span>Bolsas Oxo-Biodegradables</span></a></li>
                                             <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/almidon"><span>Bolsas de Almidón (PLA)</span></a></li>
-                                            <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/cintas"><span>Cintas Peligro y Señalización</span></a></li>
                                         </ul>
                                     </li>
                                     <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#services"><span>Servicios</span></a></li>
@@ -139,12 +140,12 @@
                                         <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/camiseta"><span>Bolsas Camiseta</span></a></li>
                                         <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/rinon"><span>Bolsas Tipo Riñon</span></a></li>
                                         <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/basura"><span>Bolsas Tipo Basura</span></a></li>
+                                        <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/cintas"><span>Cintas Peligro y Señalización</span></a></li>
                                         <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/medida"><span>Bolsas a Medida</span></a></li>
                                         <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/carbon"><span>Bolsas Tipo Carbón</span></a></li>
                                         <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/prepicado"><span>Rollos y Mangas Prepicados</span></a></li>
                                         <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/biodegradable"><span>Bolsas Oxo-Biodegradables</span></a></li>
                                         <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/almidon"><span>Bolsas de Almidón (PLA)</span></a></li>
-                                        <li  class="menu-item menu-item-type-post_type menu-item-object-page"><a href="#/products/cintas"><span>Cintas Peligro y Señalización</span></a></li>
                                     </ul>
                                 </li>
                                 <li  class="menu-item menu-item-type-post_type menu-item-object-page" ng-class="menuClass('services')"><a href="#services"><span>Servicios</span></a></li>
@@ -195,23 +196,22 @@
                                 <h3>Productos</h3>
                                 <div class="textwidget">
                                     <ul>
-
-                                    <li><a href="#/shopping"><span>Bolsas Camiseta</span></a></li>
-                                    <li><a href="#/shopping"><span>Bolsas Tipo Riñon</span></a></li>
-                                    <li><a href="#/shopping"><span>Bolsas Tipo Basura</span></a></li>
-                                    <li><a href="#/shopping"><span>Bolsas a Medida</span></a></li>
-                                    <li><a href="#/shopping"><span>Bolsas Tipo Carbón</span></a></li>
+                                        <li><a href="#/products/camiseta"><span>Bolsas Camiseta</span></a></li>
+                                        <li><a href="#/products/rinon"><span>Bolsas Tipo Riñon</span></a></li>
+                                        <li><a href="#/products/basura"><span>Bolsas Tipo Basura</span></a></li>
+                                        <li><a href="#/products/cintas"><span>Cintas Peligro y Señalización</span></a></li>
+                                        <li><a href="#/products/medida"><span>Bolsas a Medida</span></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <h3>Productos</h3>
+                                <h3>&nbsp;</h3>
                                 <div class="textwidget">
                                     <ul>
-                                    <li><a href="#/shopping"><span>Rollos y Mangas</span></a></li>
-                                    <li><a href="#/shopping"><span>Biodegradables</span></a></li>
-                                    <li><a href="#/shopping"><span>Bolsas PLA</span></a></li>
-                                    <li><a href="#/shopping"><span>Señalización</span></a></li>
+                                        <li><a href="#/products/carbon"><span>Bolsas Tipo Carbón</span></a></li>
+                                        <li><a href="#/products/prepicado"><span>Rollos y Mangas Prepicados</span></a></li>
+                                        <li><a href="#/products/biodegradable"><span>Bolsas Oxo-Biodegradables</span></a></li>
+                                        <li><a href="#/products/almidon"><span>Bolsas de Almidón (PLA)</span></a></li>
                                     </ul>
                                 </div>
                             </div>

@@ -75,6 +75,15 @@
                                 </div>
                             </div>
 
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="description2">Información Extra</label>
+                                        <textarea class="form-control" id="description2" name="description2"><?php echo $product->description2; ?></textarea><span class="error"><?php echo form_error('description2'); ?></span>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <div class="panel-title">Precios</div>

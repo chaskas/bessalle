@@ -42,7 +42,9 @@
 
 	            <div class="wrap wpsc_container">
 
-					<div class="wpsc_default_product_list row">
+					<div class="wpsc_default_product_list">
+
+						<div class="row">
 
 						<div class="col-md-6" ng-repeat="product in ProdCtrl.products | orderBy: 'order'">
 
@@ -89,6 +91,10 @@
 		                        <div class="shade"><div class="shade_in"><div class="shade_bg"></div></div></div>
 
 			                </div>
+
+						</div>
+
+						<div class="clearfix" ng-show="($index+1)%2==0" ng-repeat="product in ProdCtrl.products"></div>
 
 						</div>
 

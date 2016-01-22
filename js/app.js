@@ -3,7 +3,8 @@
   var app = angular.module('store', [
     'ngRoute',
     'StoreControllers',
-    'ng-rut'
+    'ng-rut',
+    'ngSanitize'
     ]);
 
     app.config(['$routeProvider',

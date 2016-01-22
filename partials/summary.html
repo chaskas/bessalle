@@ -195,6 +195,7 @@
                                     <input type="radio" name="shippingType" id="shippingType" value="2" class="radio" ng-click="ShippCtrl.setShipping(2)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Retiro en Bodega
                                     </label>
                                 </div>
+                                <span ng-show="summaryForm.shippingType.$invalid" class="requerido">* Requerido</span>
                             </div>
                         </div>
                         <hr>
@@ -233,6 +234,7 @@
                                 <div class="radio">
                                     <label>
                                     <input type="radio" name="paymentType" id="paymentType" value="0"  class="radio" ng-click="ShippCtrl.setPaymentType(0)" ng-model="ShippCtrl.Data.paymentType" required> &nbsp; Transferencia Bancaria
+                                    <span ng-show="summaryForm.paymentType.$invalid" class="requerido">* Requerido</span>
                                     </label>
                                 </div>
                                 <!-- <div class="radio">

@@ -2,7 +2,7 @@
 
     <div class="container">
 
-        <h1>Cálculo Costo / Rendimiento</h1>
+        <h1>Calcule el Rendimiento</h1>
 
         <div class="panel panel-default">
             <div class="panel-body">
@@ -50,27 +50,6 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="color">Color</label>
-                            <select name="color" id="color" class="form-control" ng-model="color">
-                                <option value="0">Blanco / Negro / Transparente</option>
-                                <option value="1">Otro</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="biodegradable">Oxo - Biodegradable</label>
-                            <select name="biodegradable" id="biodegradable" class="form-control" ng-model="biodegradable">
-                                <option value="0">Si</option>
-                                <option value="1">No</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
 
             </div>
         </div>
@@ -83,7 +62,6 @@
                         <div class="panel panel-default" ng-show="rendimiento">
                             <div class="panel-body">
                                 <h4>Rendimiento: {{ rendimiento | number : 2 }} un/kg</h4>
-                                <h4>Valor Unitario: {{ neto | number : 2 }} + IVA c/u</h4>
                             </div>
                         </div>
                     </div>
@@ -91,7 +69,7 @@
                         <button ng-click="CRCtrl.calc()" class="pull-right"><span>Calcular</span></button>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 

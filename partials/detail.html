@@ -13,13 +13,17 @@
 
 				<div class="row">
 
-					<div class="col-md-7">
+					<div class="col-md-8">
 						<div class="wpsc-breadcrumbs">
 	                        <a class="wpsc-crumb" href="#/shopping/{{ PrdCtrl.product.category_id }}">{{ PrdCtrl.Data.currentCategory.name }}</a>
 	                        &nbsp;/&nbsp;
 	                        <span class="wpsc-crumb">{{ PrdCtrl.product.name }}</span>
 	                    </div>
-						<h2>{{ PrdCtrl.product.name }}</h2>
+						<h2>
+							{{ PrdCtrl.product.name }}
+						</h2>
+						<span class="product_description">{{ PrdCtrl.product.description }}</span>
+						<br><br>
 						<div class="wpsc_product_price">
 	                        <p>
 	                            <span class="currentprice pricedisplay">
@@ -27,16 +31,25 @@
 	                                <span class="csymb">$</span>
 	                                {{ PrdCtrl.product.price * PrdCtrl.product.minimun | currency : '' : 0 }}
 	                            </span>
+
 	                        </p>
 	                    </div>
 
 						<div class="product_description">
-							<p>{{ PrdCtrl.product.description }}</p>
+
+							<p ng-bind-html="PrdCtrl.product.description2"></p>
+
+						</div>
+
+						<div class="row" style="margin-top: 100px" ng-show="PrdCtrl.product.category_id == 10">
+							<div class="col-md-12 text-center">
+							<img src="http://www.bessalle.cl/nuevo/shopping/uploads/bolsa1.jpg" alt="">
+							</div>
 						</div>
 
 	                </div>
 
-	                <div class="col-md-5">
+	                <div class="col-md-4">
 	                    <div class="single_options">
 	                        <div class="title">Opciones:</div>
 
@@ -50,11 +63,7 @@
 
 				</div>
 
-				<div class="row" style="margin-top: 100px" ng-show="PrdCtrl.product.category_id == 10">
-					<div class="col-md-12 text-center">
-					<img src="http://www.bessalle.cl/nuevo/shopping/uploads/bolsa1.jpeg" alt="">
-					</div>
-				</div>
+
 
             </div>
 
