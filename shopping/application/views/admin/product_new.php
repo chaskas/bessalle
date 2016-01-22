@@ -76,7 +76,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="description2">Información Extra</label>
-                                        <textarea class="form-control" id="description2" name="description2"><?php echo set_value('description2'); ?></textarea><span class="error"><?php echo form_error('description2'); ?></span>
+                                        <textarea class="form-control" id="description2" name="description2" style="height:150px"><?php echo set_value('description2'); ?></textarea><span class="error"><?php echo form_error('description2'); ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -201,3 +201,6 @@
   </div>
 
 </div>
+
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'#description2', toolbar: 'undo redo | bold italic | bullist numlist outdent indent | preview', menubar: false, statusbar: false });</script>

@@ -448,8 +448,22 @@ storeControllers.controller('ShippingCtrl',['$scope', '$routeParams', '$http', '
         $location.path('checkout');
     }
 
-    this.validCheckoxes = function () {
+    this.validRadios = function () {
         if (Data.paymentType > -1 && Data.shippingType > -1)
+            return true;
+        else
+            return false;
+    }
+
+    this.validRadioPaymentType = function () {
+        if (Data.paymentType > -1)
+            return true;
+        else
+            return false;
+    }
+
+    this.validRadioShippingType = function () {
+        if (Data.shippingType > -1)
             return true;
         else
             return false;

@@ -183,19 +183,21 @@
                                 <div class="radio">
                                     <label>
                                     <input type="radio" name="shippingType" id="shippingType" value="0" class="radio" ng-click="ShippCtrl.setShipping(0)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Chilexpress 24-48 Hrs {{ ShippCtrl.Data.shippingT1 | currency : '$' : 0 }}
+                                    <span ng-show="!ShippCtrl.validRadioShippingType()" class="requerido">* Requerido</span>
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
                                     <input type="radio" name="shippingType" id="shippingType" value="1" class="radio" ng-click="ShippCtrl.setShipping(1)" ng-model="ShippCtrl.Data.shippingType" ng-disabled="ShippCtrl.Data.shippingT2  == 0" required> &nbsp; Despacho por Bus <span ng-if="ShippCtrl.Data.shippingT2  > 0">{{  ShippCtrl.Data.shippingT2 | currency : '$' : 0 }}</span><span ng-if="ShippCtrl.Data.shippingT2 == 0">No Disponible</span>
+                                    <span ng-show="!ShippCtrl.validRadioShippingType()" class="requerido">* Requerido</span>
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
                                     <input type="radio" name="shippingType" id="shippingType" value="2" class="radio" ng-click="ShippCtrl.setShipping(2)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Retiro en Bodega
+                                    <span ng-show="!ShippCtrl.validRadioShippingType()" class="requerido">* Requerido</span>
                                     </label>
                                 </div>
-                                <span ng-show="summaryForm.shippingType.$invalid" class="requerido">* Requerido</span>
                             </div>
                         </div>
                         <hr>
@@ -234,7 +236,7 @@
                                 <div class="radio">
                                     <label>
                                     <input type="radio" name="paymentType" id="paymentType" value="0"  class="radio" ng-click="ShippCtrl.setPaymentType(0)" ng-model="ShippCtrl.Data.paymentType" required> &nbsp; Transferencia Bancaria
-                                    <span ng-show="summaryForm.paymentType.$invalid" class="requerido">* Requerido</span>
+                                    <span ng-show="!ShippCtrl.validRadioPaymentType()" class="requerido">* Requerido</span>
                                     </label>
                                 </div>
                                 <!-- <div class="radio">
@@ -298,7 +300,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
 
-                        <button class="pull-right" ng-disabled="!ShippCtrl.validCheckoxes()" ng-click="ShippCtrl.proccessCheckout()"><span>Confirmar Pedido</span></button>
+                        <button class="pull-right" ng-disabled="!ShippCtrl.validRadios()" ng-click="ShippCtrl.proccessCheckout()"><span>Confirmar Pedido</span></button>
                         <a href="#/shipping" class="button pull-right"><span>Atrás</span></a>
                     </div>
                 </div>

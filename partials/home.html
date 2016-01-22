@@ -39,7 +39,7 @@
 
                         <div id="default_products_page_container" class="wrap wpsc_container">
 
-                            <div class="wpsc_default_product_list row" ng-controller="ProductHighlightsCtrl as HighCtrl">
+                            <div class="wpsc_default_product_list row" ng-controller="ProductHighlightsCtrl as HighCtrl" data-equal-height='.default_product_display' id="product_list">
                                 <div class="col-md-4" ng-repeat="product in HighCtrl.products">
                                     <div class="default_product_display">
                                         <div class="row">
@@ -102,3 +102,34 @@
         </div>
     </div>
 </section>
+
+
+<script>
+
+
+    var make_equal_height = function (element) {
+        var $within     = jQuery(element),
+        selector    = $within.attr('data-equal-height'),
+        $children   = jQuery(selector, $within),
+        tallest     = 0;
+
+        $children.each( function() {
+            var $this = jQuery(this);
+
+            $this.css('min-height', '');
+            var h = $this.height();
+
+            if ( h > tallest ) {
+                tallest = h;
+            }
+        });
+
+        $children.each( function() {
+            jQuery(this).css('min-height', tallest - 80 + 'px');
+        });
+
+    };
+
+    make_equal_height(jQuery('#product_list'));
+
+</script>

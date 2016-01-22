@@ -46,7 +46,7 @@
 
 						<div class="row">
 
-						<div class="col-md-6" ng-repeat="product in ProdCtrl.products | orderBy: 'order'">
+						<div class="col-md-6" ng-repeat="product in ProdCtrl.products | orderBy: 'order'"  data-equal-height='.default_product_display' id="product_list">
 
 		                    <div class="default_product_display" >
 
@@ -109,3 +109,33 @@
 		</div>
 	</div>
 </section>
+
+<script>
+
+
+    var make_equal_height = function (element) {
+        var $within     = jQuery(element),
+        selector    = $within.attr('data-equal-height'),
+        $children   = jQuery(selector, $within),
+        tallest     = 0;
+
+        $children.each( function() {
+            var $this = jQuery(this);
+
+            $this.css('min-height', '');
+            var h = $this.height();
+
+            if ( h > tallest ) {
+                tallest = h;
+            }
+        });
+
+        $children.each( function() {
+            jQuery(this).css('min-height', tallest - 50 + 'px');
+        });
+
+    };
+
+    make_equal_height(jQuery('#product_list'));
+
+</script>
