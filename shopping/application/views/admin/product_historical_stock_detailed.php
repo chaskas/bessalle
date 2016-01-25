@@ -12,13 +12,17 @@
             <thead>
                 <tr>
                     <th class="text-center">Fecha</th>
-                    <th class="text-center">Stock Total</th>
+                    <th class="text-center">Categoría</th>
+                    <th class="text-center">Producto</th>
+                    <th class="text-center">Total</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($products as $product): ?>
                 <tr>
-                    <td class="text-center"><a href="<?php echo site_url('admin/product_historical_stock_detailed/'.date_format(date_create($product->date), 'd-m-Y')); ?>"><?php echo date_format(date_create($product->date), 'd/m/Y'); ?></a></td>
+                    <td class="text-center"><?php echo date_format(date_create($product->date), 'd/m/Y'); ?></td>
+                    <td class="text-center"><?php echo $product->category_name; ?></td>
+                    <td class="text-center"><?php echo $product->product_name; ?></td>
                     <td class="text-center"><?php echo $product->quantity; ?></td>
                 </tr>
                 <?php endforeach ?>

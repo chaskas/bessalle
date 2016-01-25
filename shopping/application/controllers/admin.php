@@ -229,6 +229,21 @@ class Admin extends CI_Controller {
 
     }
 
+    public function product_historical_stock_detailed($date)
+    {
+        if($this->session->userdata('is_admin'))
+            $data['is_admin'] = true;
+        else $data['is_admin'] = false;
+
+        $data['products'] = $this->stock_model->get_historical_stock_detailed($date);
+
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/navbar');
+        $this->load->view('admin/product_historical_stock_detailed', $data);
+        $this->load->view('admin/templates/footer');
+
+    }
+
     public function product_add_stock($product_id)
     {
         if(!$this->session->userdata('is_admin'))

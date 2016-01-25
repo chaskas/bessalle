@@ -761,9 +761,11 @@ body{min-width:720px}.container_12{margin-left:auto;margin-right:auto;width:720p
 
 .requerido {
     color: red;
-    font-size: 7pt;
+    font-size: 9pt;
 }
-
+.bold {
+    font-weight: bold;
+}
 
 
 /* `Clear Floated Elements

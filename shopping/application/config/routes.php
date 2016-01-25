@@ -55,6 +55,7 @@ $route['user/add'] = 'user/addUser';
 $route['checkout/process'] = 'checkout/process';
 $route['product/performance'] = 'product/get_performance';
 $route['send_contact'] = 'contact/send_contact_email';
+$route['checkout/success/(:num)'] = 'checkout/order_show/$1';
 
 
 // Backend
@@ -78,6 +79,7 @@ $route['admin/post_upload/(:num)'] = 'admin/post_upload/$1';
 
 $route['admin/stock'] = 'admin/product_stock';
 $route['admin/stock/history'] = 'admin/product_historical_stock';
+$route['admin/stock/history/(:any)'] = 'admin/product_historical_stock_detailed/$1';
 $route['admin/stock/add/(:num)'] = 'admin/product_add_stock/$1';
 
 $route['admin/users'] = 'admin/users';

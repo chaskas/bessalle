@@ -183,19 +183,19 @@
                                 <div class="radio">
                                     <label>
                                     <input type="radio" name="shippingType" id="shippingType" value="0" class="radio" ng-click="ShippCtrl.setShipping(0)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Chilexpress 24-48 Hrs {{ ShippCtrl.Data.shippingT1 | currency : '$' : 0 }}
-                                    <span ng-show="!ShippCtrl.validRadioShippingType()" class="requerido">* Requerido</span>
+                                    <span ng-show="!ShippCtrl.validRadioShippingType()" class="requerido bold">* Requerido</span>
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
                                     <input type="radio" name="shippingType" id="shippingType" value="1" class="radio" ng-click="ShippCtrl.setShipping(1)" ng-model="ShippCtrl.Data.shippingType" ng-disabled="ShippCtrl.Data.shippingT2  == 0" required> &nbsp; Despacho por Bus <span ng-if="ShippCtrl.Data.shippingT2  > 0">{{  ShippCtrl.Data.shippingT2 | currency : '$' : 0 }}</span><span ng-if="ShippCtrl.Data.shippingT2 == 0">No Disponible</span>
-                                    <span ng-show="!ShippCtrl.validRadioShippingType()" class="requerido">* Requerido</span>
+                                    <span ng-show="!ShippCtrl.validRadioShippingType()" class="requerido bold">* Requerido</span>
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
                                     <input type="radio" name="shippingType" id="shippingType" value="2" class="radio" ng-click="ShippCtrl.setShipping(2)" ng-model="ShippCtrl.Data.shippingType" required> &nbsp; Retiro en Bodega
-                                    <span ng-show="!ShippCtrl.validRadioShippingType()" class="requerido">* Requerido</span>
+                                    <span ng-show="!ShippCtrl.validRadioShippingType()" class="requerido bold">* Requerido</span>
                                     </label>
                                 </div>
                                 <div class="panel panel-default" ng-show="ShippCtrl.checkWithdraw()">
@@ -203,13 +203,13 @@
                                         <div class="row">
                                             <div class="col-md-7">
                                                 <div class="form-group">
-                                                    <label for="withdrawer_name">Nombre de Quién Retira <span ng-show="summaryForm.withdrawer_name.$invalid" class="requerido">* Requerido</span></label>
+                                                    <label for="withdrawer_name">Nombre de Quién Retira <span ng-show="summaryForm.withdrawer_name.$invalid" class="requerido bold">* Requerido</span></label>
                                                     <input type="text" name="withdrawer_name" id="withdrawer_name" class="form-control" ng-model="ShippCtrl.Data.withdrawer.name" ng-required="ShippCtrl.Data.shippingType == 2">
                                                 </div>
                                             </div>
                                             <div class="col-md-5">
                                                 <div class="form-group">
-                                                    <label for="withdrawer_rut">RUT: <span ng-show="summaryForm.withdrawer_rut.$invalid" class="requerido">* Requerido</span></label>
+                                                    <label for="withdrawer_rut">RUT: <span ng-show="summaryForm.withdrawer_rut.$invalid" class="requerido bold">* Requerido</span></label>
                                                     <input ng-rut type="text" name="withdrawer_rut" id="withdrawer_rut" class="form-control" ng-model="ShippCtrl.Data.withdrawer.rut" rut-format="live" ng-required="ShippCtrl.Data.shippingType == 2" ng-show="ShippCtrl.Data.shippingType == 2">
                                                 </div>
                                             </div>
@@ -254,7 +254,7 @@
                                 <div class="radio">
                                     <label>
                                     <input type="radio" name="paymentType" id="paymentType" value="0"  class="radio" ng-click="ShippCtrl.setPaymentType(0)" ng-model="ShippCtrl.Data.paymentType" required> &nbsp; Transferencia Bancaria
-                                    <span ng-show="!ShippCtrl.validRadioPaymentType()" class="requerido">* Requerido</span>
+                                    <span ng-show="!ShippCtrl.validRadioPaymentType()" class="requerido bold">* Requerido</span>
                                     </label>
                                 </div>
                                 <!-- <div class="radio">
@@ -328,3 +328,11 @@
     </div>
 
 </section>
+
+<script type='text/javascript'>
+    function blink() {
+        $(".requerido").fadeOut(500).fadeIn(500, blink);
+    }
+
+    $( document ).ready( blink );
+</script>

@@ -37,14 +37,19 @@
 
 						<div class="product_description">
 
-							<p ng-bind-html="PrdCtrl.product.description2"></p>
+							<div class="row">
 
-						</div>
+								<div class="col-md-6">
+									<p ng-bind-html="PrdCtrl.product.description2"></p>
+								</div>
 
-						<div class="row" style="margin-top: 100px" ng-show="PrdCtrl.product.category_id == 10">
-							<div class="col-md-12 text-center">
-							<img src="http://www.bessalle.cl/nuevo/shopping/uploads/bolsa1.jpg" alt="">
+								<div class="col-md-6">
+									<img src="http://www.bessalle.cl/nuevo/shopping/uploads/bolsa1.jpg" alt="" ng-show="PrdCtrl.product.category_id == 10" style="margin-top: 20px;width:405px">
+								</div>
+
 							</div>
+
+
 						</div>
 
 	                </div>
@@ -59,6 +64,7 @@
 
 	                        <div class="shade"><div class="shade_in"><div class="shade_bg"></div></div></div>
 	                    </div>
+
 	                </div>
 
 				</div>

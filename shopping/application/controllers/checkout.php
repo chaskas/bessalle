@@ -9,6 +9,8 @@ class Checkout extends CI_Controller {
                 $this->load->model('order_model');
                 $this->load->model('product_model');
                 $this->load->model('shippcalc_model');
+                $this->load->model('provincia_model');
+                $this->load->model('region_model');
         }
 
         public function process ()
@@ -35,13 +37,21 @@ class Checkout extends CI_Controller {
             $products_cost = 0;
             $shipping_cost = 0;
 
+            $withdrawer_rut = "";
+            $withdrawer_name = "";
+
+            if($carrier == 2) {
+                $withdrawer_rut = $data->withdrawer_rut;
+                $withdrawer_name = $data->withdrawer_name;
+            }
+
             foreach ( $cart->items as $item ) {
                 $price = $this->product_model->get_final_price_by_id($item->_id);
-                $products_cost = $products_cost + $price;
+                $products_cost = $products_cost + $price * $item->_quantity;
                 $this->product_model->discount_stock($item->_id, $item->_quantity);
             }
 
-            $shipping_cost = $this->shippcalc_model->get_cost($comuna_id, $items, $carrier);
+            $shipping_cost = $this->shippcalc_model->get_cost($comuna_id, $cart->items, $carrier);
 
             $iva = $products_cost * 0.19;
 
@@ -76,13 +86,17 @@ class Checkout extends CI_Controller {
                 $user->shipping_address1,
                 $user->shipping_address2,
                 $paymentType,
-                $data->withdrawer_rut,
-                $data->withdrawer_name
+                $withdrawer_rut,
+                $withdrawer_name
             );
 
             $this->send_new_order_email($order_id, $code, $user->billing_email, $user->billing_name, $paymentType, $carrier, $products_cost, $iva, $total);
 
             $this->send_new_order_admin_email($order_id, $user->billing_name);
+
+            header('Content-Type: application/json');
+
+            echo json_encode( array('state' => 'success', 'order_id' => $order_id) );
 
         }
 
@@ -165,6 +179,34 @@ class Checkout extends CI_Controller {
             $this->email->message($message);
 
             $this->email->send();
+
+        }
+
+        public function order_show($order_id)
+        {
+
+            $data['order'] = $this->order_model->get_order_by_id($order_id);
+
+            $billing_comuna = $this->comuna_model->get_comuna_by_id($data['order']->billing_comuna);
+            $data['billing_comuna'] = $billing_comuna['COMUNA_NOMBRE'];
+            $shipping_comuna = $this->comuna_model->get_comuna_by_id($data['order']->shipping_comuna);
+            $data['shipping_comuna'] = $shipping_comuna['COMUNA_NOMBRE'];
+
+            $billing_provincia = $this->provincia_model->get_provincia_by_id($data['order']->billing_provincia);
+            $data['billing_provincia'] = $billing_provincia['PROVINCIA_NOMBRE'];
+            $shipping_provincia = $this->provincia_model->get_provincia_by_id($data['order']->shipping_provincia);
+            $data['shipping_provincia'] = $shipping_provincia['PROVINCIA_NOMBRE'];
+
+            $billing_region = $this->region_model->get_region_by_id($data['order']->billing_region);
+            $data['billing_region'] = $billing_region['REGION_NOMBRE'];
+            $shipping_region = $this->region_model->get_region_by_id($data['order']->shipping_region);
+            $data['shipping_region'] = $shipping_region['REGION_NOMBRE'];
+
+            $data['products'] = $this->order_model->get_order_products_by_order_id($order_id);
+
+            header('Content-Type: application/json');
+
+            echo json_encode( $data );
 
         }
 

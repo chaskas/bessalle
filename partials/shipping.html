@@ -204,3 +204,10 @@
         </div>
     </div>
 </section>
+<script type='text/javascript'>
+    function blink() {
+        $(".requerido").fadeOut(500).fadeIn(500, blink);
+    }
+
+    $( document ).ready( blink );
+</script>

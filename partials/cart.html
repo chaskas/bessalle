@@ -48,7 +48,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <button ng-disabled="ShippCtrl.isCartEmpty()" ng-click="ShippCtrl.askForShippingInfo()" class="pull-right"><span>Siguiente</span></button>
-                        <a class="button pull-right" href="#/shopping"><span>Agregar otro producto</span></a>
+                        <a class="button pull-right" href="#/shopping/{{ ShippCtrl.Data.currentCategory.id }}"><span>Agregar otro producto</span></a>
                     </div>
                 </div>
 

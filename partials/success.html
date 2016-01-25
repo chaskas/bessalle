@@ -2,16 +2,179 @@
 
     <div class="container">
 
-        <div class="panel panel-default">
+        <div class="alert alert-success" role="alert">
+
+            Compra realizada exitosamente.
+
+        </div>
+
+        <div class="panel panel-default" ng-controller="SuccessCtrl as SCtrl">
+
             <div class="panel-body">
+
                 <div class="row">
                     <div class="col-md-12">
-                        <center>
-                            Compra realizada Exitosamente...
-                        </center>
+                        <h4>Información de Envío</h4>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Nombre Completo:</label>
+                        <br>
+                        {{ SCtrl.Data.order.order.shipping_name }}
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>RUT:</label>
+                        <br>
+                        {{ SCtrl.Data.order.order.shipping_rut }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Direción:</label>
+                        <br>
+                        {{ SCtrl.Data.order.order.shipping_address1 }}, {{ SCtrl.Data.order.order.shipping_address2 }}
+                    </div>
+                    <div class="col-md-3">
+                        <label>Comuna:</label>
+                        <br>
+                        {{ SCtrl.Data.order.shipping_comuna }}
+                    </div>
+                    <div class="col-md-3">
+                        <label>Provincia:</label>
+                        <br>
+                        {{ SCtrl.Data.order.shipping_provincia }}
+                    </div>
+                    <div class="col-md-3">
+                        <label>Región:</label>
+                        <br>
+                        {{ SCtrl.Data.order.shipping_region }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Fono:</label>
+                        <br>
+                        {{ SCtrl.Data.order.order.shipping_phone }}
+                    </div>
+                    <div class="col-md-6">
+                        <label>Email:</label>
+                        <br>
+                        {{ SCtrl.Data.order.order.shipping_email }}
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Información de Facturación</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Razón Social:</label>
+                        <br>
+                        {{ SCtrl.Data.order.order.billing_name }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>RUT:</label>
+                        <br>
+                        {{ SCtrl.Data.order.order.billing_rut }}
+                    </div>
+                    <div class="col-md-8">
+                        <label>Giro:</label>
+                        <br>
+                        {{ SCtrl.Data.order.order.billing_business }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Direción:</label>
+                        <br>
+                        {{ SCtrl.Data.order.order.billing_address1 }}, {{ SCtrl.Data.order.order.billing_address2 }}
+                    </div>
+                    <div class="col-md-3">
+                        <label>Comuna:</label>
+                        <br>
+                        {{ SCtrl.Data.order.billing_comuna }}
+                    </div>
+                    <div class="col-md-3">
+                        <label>Provincia:</label>
+                        <br>
+                        {{ SCtrl.Data.order.billing_provincia }}
+                    </div>
+                    <div class="col-md-3">
+                        <label>Región:</label>
+                        <br>
+                        {{ SCtrl.Data.order.billing_region }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Fono:</label>
+                        <br>
+                        {{ SCtrl.Data.order.order.billing_phone }}
+                    </div>
+                    <div class="col-md-6">
+                        <label>Email:</label>
+                        <br>
+                        {{ SCtrl.Data.order.order.billing_email }}
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th class="text-center">Cantidad</th>
+                                    <th class="text-right">Valor Unitario</th>
+                                    <th class="text-right">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in SCtrl.Data.order.products track by $index">
+                                    <td>{{ item.name }}</td>
+                                    <td class="text-center">{{ item.quantity | number }}</td>
+                                    <td class="text-right">{{ item.price | currency : '$' : 0 }}</td>
+                                    <td class="text-right">{{ item.price * item.quantity | currency : '$' : 0 }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="3" class="text-right">Subtotal</td>
+                                    <td class="text-right">{{ SCtrl.Data.order.order.neto | currency : '$' : 0 }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-right">IVA</td>
+                                    <td class="text-right">{{ SCtrl.Data.order.order.iva | currency : '$' : 0 }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-right">Envío</td>
+                                    <td class="text-right">{{ SCtrl.Data.order.order.shipping_cost | currency : '$' : 0 }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-right">Total</td>
+                                    <td class="text-right">{{ SCtrl.Data.order.order.total | currency : '$' : 0 }}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
             </div>
+
         </div>
 
     </div>

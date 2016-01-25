@@ -505,6 +505,10 @@ storeControllers.controller('CheckOutCtrl',['$scope', '$routeParams', '$http', '
         Data.billing = [];
         Data.shipping = [];
 
+        Data.order = data['order_id'];
+
+        store.Data = Data;
+
         $location.path('success');
 
     });
@@ -513,6 +517,16 @@ storeControllers.controller('CheckOutCtrl',['$scope', '$routeParams', '$http', '
 
 storeControllers.controller('SuccessCtrl',['$scope', '$routeParams', '$http', '$filter', 'ngCart', 'Data', '$location', function($scope, $routeParams, $http,$filter, ngCart, Data, $location){
 
+    var store = this;
+
+    var order = [];
+
+    $http.get('shopping/index.php/checkout/success/'+Data.order).success(function(data)
+    {
+        Data.order = data;
+    });
+
+    store.Data = Data;
 
 
 }]);
@@ -600,10 +614,6 @@ storeControllers.controller('CostoRendimientoCtrl', ['$scope', '$routeParams', '
         var neto = valor / rendimiento;
         $scope.neto = neto;
 
-        console.log(rendimiento);
-        console.log(valor);
-        console.log(neto);
-
     }
 
 }]);
@@ -639,6 +649,8 @@ storeControllers.factory('Data', function(){
     data.shippingType = [];
     data.paymentType = [];
     data.withdrawer = [];
+    data.currentCategory = [];
+    data.order = 0;
 
     return data;
 });
