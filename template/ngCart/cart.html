@@ -19,18 +19,25 @@
         </thead>
 
         <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-right">Subtotal:</td>
+            <td class="text-right">{{ ngCart.getSubTotal() | currency : '$' : 0 }}</td>
+        </tr>
         <tr ng-show="ngCart.getTax()">
             <td></td>
             <td></td>
             <td></td>
-            <td>IVA ({{ ngCart.getTaxRate() }}%):</td>
+            <td class="text-right">IVA ({{ ngCart.getTaxRate() }}%):</td>
             <td class="text-right">{{ ngCart.getTax() | currency : '$' : 0 }}</td>
         </tr>
         <tr>
             <td></td>
             <td></td>
             <td></td>
-            <td>Total:</td>
+            <td class="text-right">Total:</td>
             <td class="text-right">{{ ngCart.totalCost() | currency : '$' : 0 }}.-</td>
         </tr>
         </tfoot>

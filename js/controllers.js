@@ -94,7 +94,7 @@ storeControllers.controller('ProductCtrl', ['$scope', '$routeParams', '$http', '
 
         $http.get('shopping/index.php/category/'+data.category_id).success(function(data) {
 
-            Data.currentCategory = [];
+            // Data.currentCategory = [];
 
             $scope.currentCategory.name = data.name;
             $scope.currentCategory.id = data.id;
@@ -114,7 +114,7 @@ storeControllers.controller('CategoryCtrl', ['$scope', '$routeParams', '$http', 
     store.categories = [];
     $scope.currentCategory = [];
 
-    Data.currentCategory = [];
+    // Data.currentCategory = [];
 
     $http.get('shopping/index.php/category').success(function(data) {
         store.categories = data;
@@ -650,6 +650,8 @@ storeControllers.factory('Data', function(){
     data.paymentType = [];
     data.withdrawer = [];
     data.currentCategory = [];
+    data.currentCategory.id = 0;
+    data.currentCategory.name = "";
     data.order = 0;
 
     return data;
