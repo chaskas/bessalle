@@ -165,7 +165,7 @@ class Order_model extends CI_Model {
     public function payment_confirm($order_id) {
 
         $this->db->where('id', $order_id);
-        $this->db->set('payment_status', 1, FALSE);
+        $this->db->set('payment_status', 1, TRUE);
         $this->db->set('payment_date', 'NOW()', FALSE);
         $this->db->update('order');
 
@@ -174,7 +174,7 @@ class Order_model extends CI_Model {
     public function tracking_confirm($order_id, $tracking_number) {
 
         $this->db->where('id', $order_id);
-        $this->db->set('tracking_number', $tracking_number, FALSE);
+        $this->db->set('tracking_number', $tracking_number, TRUE);
         $this->db->update('order');
 
     }
@@ -182,7 +182,7 @@ class Order_model extends CI_Model {
     public function withdraw_confirm($order_id) {
 
         $this->db->where('id', $order_id);
-        $this->db->set('withdrawn', 1, FALSE);
+        $this->db->set('withdrawn', 1, TRUE);
         $this->db->update('order');
 
     }
