@@ -30,7 +30,7 @@
                         <div class="btn-group btn-group-xs" role="group">
                             <a href="<?php echo site_url('admin/order/'.$order->id);?>" class="btn btn-default" title="Detalle"><span class="glyphicon glyphicon-list-alt"></span></a>
                             <a href="<?php echo site_url('admin/order/download/'.$order->id);?>" class="btn btn-default" title="Descargar" target="_blank"><span class="glyphicon glyphicon-download-alt"></span></a>
-                            <a href="<?php echo site_url('admin/order/payment_confirm/'.$order->id);?>" class="btn btn-default" title="Confirmar el Pago" onclick="return confirm('¿Deseas confirmar el Pago?')"><span class="glyphicon glyphicon-ok"></span></a>
+                            <button class="btn btn-default" title="Confirmar el Pago" data-toggle="modal" data-target="#modal_payment" onclick="javascript:setOrderId(<?php echo $order->id; ?>)"><span class="glyphicon glyphicon-ok"></span></button>
                         </div>
                     </td>
                 </tr>
@@ -41,3 +41,39 @@
   </div>
 
 </div>
+
+<div class="modal fade" id="modal_payment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <form action="<?php echo site_url('admin/order/payment_confirm');?>" method="post">
+        <input type="hidden" id="order_id" name="order_id">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirmar Pago</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="name">Fecha en que se realizó el pago:</label>
+                    <input type="text" class="form-control" id="order_payment_date" name="order_payment_date" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+<script>
+
+    function setOrderId(order_id) {
+        $('#order_id').val(order_id);
+    }
+
+    $(function() {
+        $( "#order_payment_date" ).datepicker();
+    });
+
+</script>

@@ -162,11 +162,13 @@ class Order_model extends CI_Model {
 
     }
 
-    public function payment_confirm($order_id) {
+    public function payment_confirm($order_id, $payment_date) {
+
+        $date = date_format(date_create_from_format('d/m/Y', $payment_date), 'Y-m-d');
 
         $this->db->where('id', $order_id);
         $this->db->set('payment_status', 1, TRUE);
-        $this->db->set('payment_date', 'NOW()', FALSE);
+        $this->db->set('payment_date', $date, TRUE);
         $this->db->update('order');
 
     }

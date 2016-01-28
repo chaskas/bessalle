@@ -518,10 +518,14 @@ class Admin extends CI_Controller {
 
     }
 
-    public function order_payment_confirm($order_id)
+    public function order_payment_confirm()
     {
+        $this->load->helper('form');
 
-        $this->order_model->payment_confirm($order_id);
+        $order_id = $this->input->post('order_id');
+        $payment_date = $this->input->post('order_payment_date');
+
+        $this->order_model->payment_confirm($order_id, $payment_date);
 
         $order = $this->order_model->get_order_by_id($order_id);
 
@@ -537,8 +541,9 @@ class Admin extends CI_Controller {
 
         $this->email->from('ventasweb@bessalle.cl', 'Bessalle Ltda.');
         $this->email->to($order_email);
+        $this->email->cc($this->config->item('email'));
 
-        $this->email->subject('Pago Confirmado en Bessalle Ltda.');
+        $this->email->subject('Orden: IN'.$order_id.', Pago Confirmado en Bessalle Ltda.');
 
         $message = "<html><head><title>Pl&aacute;sticos Bessalle Ltda.</title></head>";
 
@@ -585,8 +590,9 @@ class Admin extends CI_Controller {
 
         $this->email->from('ventasweb@bessalle.cl', 'Bessalle Ltda.');
         $this->email->to($order_email);
+        $this->email->cc($this->config->item('email'));
 
-        $this->email->subject('Su orden ha sido enviada - Bessalle Ltda.');
+        $this->email->subject('Su orden: IN'.$order_id.' ha sido enviada - Bessalle Ltda.');
 
         $message = "<html><head><title>Pl&aacute;sticos Bessalle Ltda.</title></head>";
 
