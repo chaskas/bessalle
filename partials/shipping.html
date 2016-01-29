@@ -205,9 +205,13 @@
     </div>
 </section>
 <script type='text/javascript'>
+
+    var j = jQuery.noConflict();
+
     function blink() {
-        $(".requerido").fadeOut(500).fadeIn(500, blink);
+        j(".requerido").fadeOut(500).fadeIn(500, blink);
     }
 
-    $( document ).ready( blink );
+    j( document ).ready( blink );
+
 </script>

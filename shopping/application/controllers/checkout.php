@@ -158,7 +158,7 @@ class Checkout extends CI_Controller {
             $this->email->from('ventasweb@bessalle.cl', 'Bessalle Ltda.');
             $this->email->to($this->config->item('email'));
 
-            $this->email->subject('Compra Realizada en Bessalle Ltda. - Orden N&ordm;: IN'.$order_id);
+            $this->email->subject('Compra Realizada en Bessalle Ltda. - Orden Nº: IN'.$order_id);
 
             $message = "<html><head><title>Pl&aacute;sticos Bessalle Ltda.</title></head>";
 
