@@ -90,7 +90,7 @@ $route['admin/user/delete/(:num)'] = 'admin/user_delete/$1';
 $route['admin/orders/paid'] = 'admin/orders_paid';
 $route['admin/orders/payable'] = 'admin/orders_payable';
 $route['admin/order/(:num)'] = 'admin/order_show/$1';
-$route['admin/order/download/(:num)'] = 'admin/order_get_pdf/$1';
+$route['admin/order/download/(:num)'] = 'checkout/order_get_pdf/$1';
 $route['admin/order/payment_confirm'] = 'admin/order_payment_confirm';
 $route['admin/order/tracking_confirm'] = 'admin/order_tracking_confirm';
 $route['admin/order/withdraw_confirm/(:num)'] = 'admin/order_withdraw_confirm/$1';
@@ -113,7 +113,7 @@ $route['admin/performance/edit/oxo/(:num)'] = 'admin/performance_edit_other/$1';
 
 // Defaults
 
-$route['order/download/(:num)'] = 'admin/order_get_pdf/$1';
+$route['order/download/(:num)'] = 'checkout/order_get_pdf/$1';
 
 $route['default_controller'] = "admin";
 $route['404_override'] = '';
