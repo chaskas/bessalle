@@ -524,8 +524,9 @@ class Admin extends CI_Controller {
 
         $order_id = $this->input->post('order_id');
         $payment_date = $this->input->post('order_payment_date');
+        $payment_amount = $this->input->post('order_payment_amount');
 
-        $this->order_model->payment_confirm($order_id, $payment_date);
+        $this->order_model->payment_confirm($order_id, $payment_date, $payment_amount);
 
         $order = $this->order_model->get_order_by_id($order_id);
 
@@ -538,6 +539,7 @@ class Admin extends CI_Controller {
     public function send_order_payment_confirm_email($order_id, $order_email)
     {
         $this->load->library('email');
+        $this->config->load('bessalle');
 
         $this->email->from('ventasweb@bessalle.cl', 'Bessalle Ltda.');
         $this->email->to($order_email);
@@ -587,6 +589,7 @@ class Admin extends CI_Controller {
     public function send_order_tracking_confirm_email($order_id, $order_email, $order_tracking_number, $carrier_code)
     {
         $this->load->library('email');
+        $this->config->load('bessalle');
 
         $this->email->from('ventasweb@bessalle.cl', 'Bessalle Ltda.');
         $this->email->to($order_email);

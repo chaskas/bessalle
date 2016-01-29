@@ -52,9 +52,19 @@
                 <h4 class="modal-title" id="myModalLabel">Confirmar Pago</h4>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <label for="name">Fecha en que se realizó el pago:</label>
-                    <input type="text" class="form-control" id="order_payment_date" name="order_payment_date" required>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="order_payment_date">Fecha en que se realizó el pago:</label>
+                            <input type="text" class="form-control" id="order_payment_date" name="order_payment_date" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="order_payment_amount">Monto Pagado:</label>
+                            <input type="text" class="form-control" id="order_payment_amount" name="order_payment_amount" required>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">

@@ -134,7 +134,14 @@
         <hr>
         <div class="row">
             <div class="col-md-2"><label>Método de Pago:</label></div>
-            <div class="col-md-10"><?php echo $order->payment_type == 0 ? "Transferencia Bancaria" : "WebPay" ?></div>
+            <?php if($order->payment_type == 0) : ?>
+                <div class="col-md-3">Transferencia Bancaria</div>
+                <div class="col-md-3"><label>Monto:</label> $<?php echo number_format ( $order->payment_amount , 0 , "," , "." ); ?></div>
+                <div class="col-md-4"><label>Fecha:</label> <?php echo date_format(date_create($order->payment_date), 'd/m/Y'); ?></div>
+                <div class="col-md-4"></div>
+            <?php else : ?>
+                <div class="col-md-10">WebPay</div>
+            <?php endif; ?>
         </div>
         <hr>
         <div class="row">
