@@ -31,7 +31,7 @@ class Product_model extends CI_Model {
 
         $this->db->where('highlight',1);
 
-        $this->db->limit(6);
+        $this->db->limit(9);
 
         $this->db->from('product');
 

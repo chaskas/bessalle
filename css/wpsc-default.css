@@ -521,7 +521,6 @@ h2.wpsc_also_bought{
 .default_product_display .wpsc_description, #content .default_product_display .wpsc_description {
 	line-height:1.4em;
 	font-family: 'PT Sans';
-	font-size: 18px;
 }
 
 .default_product_display .additional_description, #content .default_product_display .additional_description {

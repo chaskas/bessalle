@@ -38,7 +38,7 @@
 
 
 				<h1 class="category-title" ng-show="highlights != ''">Ofertas Destacadas</h1>
-	            <h1 class="category-title">{{ ProdCtrl.Data.currentCategory.name }}</h1>
+	            <h1 class="category-title" ng-hide="highlights != ''">{{ ProdCtrl.Data.currentCategory.name }}</h1>
 
 	            <div class="wrap wpsc_container">
 
@@ -46,53 +46,63 @@
 
 						<div class="row">
 
-						<div class="col-md-6" ng-repeat="product in ProdCtrl.products | orderBy: 'order'"  data-equal-height='.default_product_display' id="product_list">
 
-		                    <div class="default_product_display" >
 
-		                        <div class="imagecol">
-		                            <a href="#/detail/{{product.id}}">
-									    <img class="product_image" title="{{ product.name }}" ng-src="{{ product.image }}" alt="{{ product.name }}" height="300" width="300" />
-								    </a>
-						        </div>
+							<div class="col-md-4" ng-repeat="product in ProdCtrl.products | orderBy: 'order'"  data-equal-height='.default_product_display' id="product_list">
 
-						        <div class="productcol">
-							        <h3 class="prodtitle entry-title">
-									    <a class="wpsc_product_title" href="#/detail/{{product.id}}">{{ product.name }}</a>
-		            				</h3>
 
-		    						<div class="wpsc_description">
-		    							<p class="text-center">
-		                                    <strong>{{ product.price | currency : '$' : 1 }} {{ product.unit == 0 ? "el Kg" : "la Unidad" }}</strong>
-		                                    <br>
-		                                    {{ product.description }}
-		                                </p>
-		                            </div>
 
-		                            <div class="wpsc_product_price">
-		                                <p class="pricedisplay">
-		                                    <span class="currentprice pricedisplay">
-		                                        <span class="price_price">Precio:</span>
-		                                        <span class="csymb">$</span>
-		                                        {{ product.price * product.minimun | currency : '' : 0 }}
-		                                    </span>
-		                                </p>
-										<div class="clear"></div>
-							        </div>
+									<div class="default_product_display" style="overflow: hidden">
 
-									<div class="wpsc_buy_button_container">
-										<a class="button" href="#/detail/{{product.id}}"><span>Comprar</span></a>
-									</div>
+										<div ng-show="product.highlight == 1" class="corner-ribbon top-left red shadow">Oferta</div>
 
-		                            <div class="entry-utility wpsc_product_utility"></div>
+				                        <div class="imagecol">
+				                            <a href="#/detail/{{product.id}}">
+											    <img class="product_image" title="{{ product.name }}" ng-src="{{ product.image }}" alt="{{ product.name }}" height="215" width="215" />
+										    </a>
+								        </div>
 
-								</div>
+								        <div class="productcol">
+									        <h3 class="prodtitle entry-title">
+											    <a class="wpsc_product_title" href="#/detail/{{product.id}}">{{ product.name }}</a>
+				            				</h3>
 
-		                        <div class="shade"><div class="shade_in"><div class="shade_bg"></div></div></div>
+				    						<div class="wpsc_description">
+				    							<p class="text-center" style="height: 70px;">
+				                                    <strong>{{ product.price | currency : '$' : 1 }} {{ product.unit == 0 ? "el Kg" : "la Unidad" }}</strong>
+				                                    <br>
+				                                    {{ product.description }}
+				                                </p>
+				                            </div>
 
-			                </div>
+				                            <div class="wpsc_product_price">
+				                                <p class="pricedisplay">
+				                                    <span class="currentprice pricedisplay">
+				                                        <span class="price_price">Precio:</span>
+				                                        <span class="csymb">$</span>
+				                                        {{ product.price * product.minimun | currency : '' : 0 }} <span class="csymb">+ IVA</span>
+				                                    </span>
+				                                </p>
+												<div class="clear"></div>
+									        </div>
 
-						</div>
+											<div class="wpsc_buy_button_container">
+												<a class="button" href="#/detail/{{product.id}}"><span>Comprar</span></a>
+											</div>
+
+				                            <div class="entry-utility wpsc_product_utility"></div>
+
+										</div>
+
+				                        <div class="shade"><div class="shade_in"><div class="shade_bg"></div></div></div>
+
+					                </div>
+
+
+
+
+
+							</div>
 
 						</div>
 
@@ -128,7 +138,7 @@
         });
 
         $children.each( function() {
-            jQuery(this).css('min-height', tallest - 50 + 'px');
+            jQuery(this).css('min-height', tallest - 110 + 'px');
         });
 
     };

@@ -29,7 +29,7 @@
 	                            <span class="currentprice pricedisplay">
 	                                <span class="price_price">Price:</span>
 	                                <span class="csymb">$</span>
-	                                {{ PrdCtrl.product.price * PrdCtrl.product.minimun | currency : '' : 0 }}
+	                                {{ PrdCtrl.product.price * PrdCtrl.product.minimun | currency : '' : 0 }} <span class="csymb">+ IVA</span>
 	                            </span>
 
 	                        </p>
@@ -39,12 +39,8 @@
 
 							<div class="row">
 
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<p ng-bind-html="PrdCtrl.product.description2"></p>
-								</div>
-
-								<div class="col-md-6">
-									<img src="http://www.bessalle.cl/nuevo/shopping/uploads/bolsa1.jpg" alt="" ng-show="PrdCtrl.product.category_id == 10" style="margin-top: 20px;width:405px">
 								</div>
 
 							</div>
