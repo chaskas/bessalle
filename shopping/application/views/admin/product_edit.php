@@ -35,11 +35,16 @@
                                         <input type="text" class="form-control" id="name" name="name" value="<?php echo $product->name; ?>"><span class="error"><?php echo form_error('name'); ?></span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="category_id">Categoría</label>
                                         <?php echo $categories; ?><span class="error"><?php echo form_error('category_id'); ?></span>
                                     </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="order">Orden</label>
+                                    <input type="text" class="form-control" id="order" name="order" value="<?php echo $product->order; ?>">
+                                    <span class="error"><?php echo form_error('order'); ?></span>
                                 </div>
                             </div>
 
@@ -163,15 +168,10 @@
                                 <div class="col-md-4">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <div class="panel-title">Otros</div>
+                                            <div class="panel-title">Destacado</div>
                                         </div>
                                         <div class="panel-body">
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Orden</label>
-                                                    <input type="text" class="form-control" id="order" name="order" value="<?php echo $product->order; ?>">
-                                                    <span class="error"><?php echo form_error('order'); ?></span>
-                                                </div>
                                                 <div class="col-md-6">
                                                     <label>Destacado</label>
                                                     <select name="highlight" id="highlight" class="form-control">
@@ -179,6 +179,11 @@
                                                         <option value="1" <?php if($product->highlight == 1) echo "selected"; ?>>Si</option>
                                                     </select>
                                                     <span class="error"><?php echo form_error('highlight'); ?></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="highlight_order">Orden</label>
+                                                    <input type="text" class="form-control" id="highlight_order" name="highlight_order" value="<?php echo $product->highlight_order; ?>">
+                                                    <span class="error"><?php echo form_error('highlight_order'); ?></span>
                                                 </div>
                                             </div>
                                         </div>

@@ -31,6 +31,8 @@ class Product_model extends CI_Model {
 
         $this->db->where('highlight',1);
 
+        $this->db->order_by("highlight_order"); 
+
         $this->db->limit(9);
 
         $this->db->from('product');
@@ -60,6 +62,7 @@ class Product_model extends CI_Model {
             product.stock,
             product.order,
             product.highlight,
+            product.highlight_order,
             category.name as category_name');
 
         $this->db->from('product');
@@ -91,6 +94,7 @@ class Product_model extends CI_Model {
             product.stock,
             product.order,
             product.highlight,
+            product.highlight_order,
             product.category_id,
             product.length,
             product.width,
@@ -147,7 +151,8 @@ class Product_model extends CI_Model {
             'weight' => $this->input->post('weight'),
             'minimun' => $this->input->post('minimun'),
             'order' => $this->input->post('order'),
-            'highlight' => $this->input->post('highlight')
+            'highlight' => $this->input->post('highlight'),
+            'highlight_order' => $this->input->post('highlight_order')
         );
 
         return $this->db->insert('product', $data);
@@ -172,7 +177,8 @@ class Product_model extends CI_Model {
             'weight' => $this->input->post('weight'),
             'minimun' => $this->input->post('minimun'),
             'order' => $this->input->post('order'),
-            'highlight' => $this->input->post('highlight')
+            'highlight' => $this->input->post('highlight'),
+            'highlight_order' => $this->input->post('highlight_order')
         );
 
         $this->db->where('id', $product_id);
