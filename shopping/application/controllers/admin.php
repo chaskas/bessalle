@@ -134,6 +134,14 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('height', 'Alto', 'required');
         $this->form_validation->set_rules('weight', 'Peso', 'required');
 
+        $this->form_validation->set_rules('order', 'Orden', 'required');
+        $this->form_validation->set_rules('highlight_order', 'Orden', 'required');
+
+        $this->form_validation->set_rules('price_retail', 'Precio Minorista', 'required');
+        $this->form_validation->set_rules('min_wholesale', 'Minimo para Precio Mayorista', 'required');
+
+
+
         $this->form_validation->set_message('required', 'Obligatorio');
 
         $data['categories'] = $this->dropdown_categories();
@@ -175,6 +183,12 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('width', 'Ancho', 'required');
         $this->form_validation->set_rules('height', 'Alto', 'required');
         $this->form_validation->set_rules('weight', 'Peso', 'required');
+
+        $this->form_validation->set_rules('order', 'Orden', 'required');
+        $this->form_validation->set_rules('highlight_order', 'Orden', 'required');
+
+        $this->form_validation->set_rules('price_retail', 'Precio Minorista', 'required');
+        $this->form_validation->set_rules('min_wholesale', 'Minimo para Precio Mayorista', 'required');
 
         $this->form_validation->set_message('required', 'Obligatorio');
 

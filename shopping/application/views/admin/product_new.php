@@ -40,8 +40,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <label for="order">Orden</label>
-                                    <input type="text" class="form-control" id="order" name="order" value="<?php echo $product->order; ?>">
-                                    <span class="error"><?php echo form_error('order'); ?></span>
+                                    <input type="text" class="form-control" id="order" name="order" value="<?php echo set_value('order'); ?>"><span class="error"><?php echo form_error('order'); ?></span>
                                 </div>
                             </div>
 
