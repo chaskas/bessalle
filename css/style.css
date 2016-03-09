@@ -1009,7 +1009,8 @@ footer ul li{
 
 #content ul li{
 	list-style: url("../../images/bl.png");
-	list-style-position: inside;
+	/*list-style-position: inside;*/
+	margin-left: 10px;
 }
 
 

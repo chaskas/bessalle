@@ -67,12 +67,11 @@
 											    <a class="wpsc_product_title" href="#/detail/{{product.id}}">{{ product.name }}</a>
 				            				</h3>
 
-				    						<div class="wpsc_description">
-				    							<p class="text-center" style="height: 70px;">
+				    						<div class="wpsc_description" style="height: 80px; margin-bottom: 20px;">
+				    							<p class="text-center">
 				                                    <strong>{{ product.price | currency : '$' : 1 }} {{ product.unit == 0 ? "el Kg" : "la Unidad" }}</strong>
-				                                    <br>
-				                                    {{ product.description }}
 				                                </p>
+				                                <p ng-bind-html="product.description"></p>
 				                            </div>
 
 				                            <div class="wpsc_product_price">
@@ -138,7 +137,7 @@
         });
 
         $children.each( function() {
-            jQuery(this).css('min-height', tallest - 110 + 'px');
+            jQuery(this).css('min-height', tallest - 80 + 'px');
         });
 
     };

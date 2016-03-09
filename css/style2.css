@@ -170,6 +170,8 @@ display: none;
 
 .corner-ribbon.red {
   background: #e43;
+  font-weight: bold;
+  font-size: 14pt;
 }
 
 .corner-ribbon.orange {

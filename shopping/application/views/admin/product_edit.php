@@ -209,3 +209,4 @@
 
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'#description2', toolbar: 'undo redo | bold italic | bullist numlist outdent indent | preview', menubar: false, statusbar: false });</script>
+<script>tinymce.init({ selector:'#description', toolbar: 'undo redo | bold italic | bullist numlist outdent indent | preview', menubar: false, statusbar: false });</script>

@@ -14,7 +14,7 @@ class Product_model extends CI_Model {
         $query = $this->db->where('category_id',$category_id);
         //$query = $this->db->where('stock > 0');
 
-        $this->db->order_by("order"); 
+        $this->db->order_by("order");
 
         $this->db->from('product');
 
@@ -35,7 +35,7 @@ class Product_model extends CI_Model {
 
         $this->db->order_by("highlight_order");
 
-        $this->db->limit(9);
+        $this->db->limit(12);
 
         $this->db->from('product');
 
