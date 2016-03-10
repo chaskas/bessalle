@@ -161,6 +161,52 @@ class Admin extends CI_Controller {
         }
     }
 
+    public function product_new_by_prev()
+    {
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $data['title'] = 'Nuevo Producto';
+
+        $this->form_validation->set_rules('name', 'Nombre', 'required');
+        $this->form_validation->set_rules('price', 'Precio', 'required');
+        $this->form_validation->set_rules('category_id', 'Categoría', 'required');
+        $this->form_validation->set_rules('minimun', 'Mínimo', 'required');
+        $this->form_validation->set_rules('unit', 'Unidad', 'required');
+
+        $this->form_validation->set_rules('length', 'Largo', 'required');
+        $this->form_validation->set_rules('width', 'Ancho', 'required');
+        $this->form_validation->set_rules('height', 'Alto', 'required');
+        $this->form_validation->set_rules('weight', 'Peso', 'required');
+
+        $this->form_validation->set_rules('order', 'Orden', 'required');
+        $this->form_validation->set_rules('highlight_order', 'Orden', 'required');
+
+        $this->form_validation->set_rules('price_retail', 'Precio Minorista', 'required');
+        $this->form_validation->set_rules('min_wholesale', 'Minimo para Precio Mayorista', 'required');
+
+
+
+        $this->form_validation->set_message('required', 'Obligatorio');
+
+        $data['categories'] = $this->dropdown_categories();
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('admin/templates/header');
+            $this->load->view('admin/templates/navbar');
+            $this->load->view('admin/product_new', $data);
+            $this->load->view('admin/templates/footer');
+
+        }
+        else
+        {
+            $this->product_model->create();
+            redirect('admin/products', 'refresh');
+        }
+    }
+
     public function product_edit($product_id){
 
         $this->load->helper('form');

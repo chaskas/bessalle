@@ -71,6 +71,7 @@ $route['admin/category/delete/(:num)'] = 'admin/category_delete/$1';
 
 $route['admin/products'] = 'admin/products';
 $route['admin/product/new'] = 'admin/product_new';
+$route['admin/product/newByPrev'] = 'admin/product_new_by_prev';
 $route['admin/product/edit/(:num)'] = 'admin/product_edit/$1';
 $route['admin/product/delete/(:num)'] = 'admin/product_delete/$1';
 $route['admin/pre_upload/(:num)'] = 'admin/pre_upload/$1';

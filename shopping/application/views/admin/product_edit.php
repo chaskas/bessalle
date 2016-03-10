@@ -6,7 +6,7 @@
 
   <div class="tab-content padding-top-30">
     <div role="tabpanel" class="tab-pane active">
-        <?php echo form_open('admin/product/edit/'.$product->id) ?>
+        <?php echo form_open('admin/product/edit/'.$product->id, array('id' => 'editProductForm')) ?>
             <div class="panel panel-default">
 
                 <div class="panel-heading">
@@ -198,6 +198,7 @@
 
                 </div>
                 <div class="panel-footer text-right">
+                    <button type="button" class="btn btn-warning" onclick="newByPrev()">Nuevo</button>
                     <button type="submit" class="btn btn-success">Guardar</button>
                 </div>
             </div>
@@ -210,3 +211,9 @@
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'#description2', toolbar: 'undo redo | bold italic | bullist numlist outdent indent | preview', menubar: false, statusbar: false });</script>
 <script>tinymce.init({ selector:'#description', toolbar: 'undo redo | bold italic | bullist numlist outdent indent | preview', menubar: false, statusbar: false });</script>
+<script>
+    function newByPrev() {
+        $('#editProductForm').attr("action", "/nuevo/shopping/index.php/admin/product/newByPrev");
+        $('#editProductForm').submit();
+    }
+</script>
